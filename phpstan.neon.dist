@@ -1,0 +1,15 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: max
+
+    paths:
+        - src
+        - tests
+
+    autoload_files:
+        - vendor-bin/test/vendor/autoload.php
+
+    excludes_analyse:
+        - tests/bootstrap.php

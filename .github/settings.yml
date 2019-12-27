@@ -1,0 +1,37 @@
+# These settings are synced to GitHub by https://probot.github.io/apps/settings/
+
+_extends: .github
+
+repository:
+  name: NucleosUserBundle
+  description: Lightweight user management for symfony.
+  homepage: https://core23.de
+  topics: symfony, symfony-bundle, bundle, user, management
+
+branches:
+  - name: master
+    protection:
+      enforce_admins: falser
+      required_status_checks:
+        contexts:
+          - "Coding Standards (7.4)"
+          - "Static Code Analysis (7.4)"
+          - "Tests (7.2, lowest, ~4.4)"
+          - "Tests (7.2, lowest, ~5.0)"
+          - "Tests (7.2, highest, ~4.4)"
+          - "Tests (7.2, highest, ~5.0)"
+          - "Tests (7.3, lowest, ~4.4)"
+          - "Tests (7.3, lowest, ~5.0)"
+          - "Tests (7.3, highest, ~4.4)"
+          - "Tests (7.3, highestf, ~5.0)"
+          - "Tests (7.4, lowest, ~4.4)"
+          - "Tests (7.4, lowest, ~5.0)"
+          - "Tests (7.4, highest, ~4.4)"
+          - "Tests (7.4, highest, ~5.0)"
+          - "Code Coverage (7.4)"
+          - "Mutation Tests (7.4)"
+          - "Mutation Tests (7.4)"
+        strict: true
+
+      required_pull_request_reviews: null
+      restrictions: null

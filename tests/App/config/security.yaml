@@ -1,0 +1,26 @@
+security:
+    encoders:
+        Nucleos\UserBundle\Model\UserInterface: sha512
+
+    providers:
+        nucleos_userbundle:
+            id: nucleos_user.user_provider.username
+
+    firewalls:
+        main:
+            switch_user:  true
+            pattern:      .*
+            context:      user
+            form_login:
+                provider:       nucleos_userbundle
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -1,0 +1,7 @@
+.*               export-ignore
+Makefile         export-ignore
+Jenkinsfile      export-ignore
+phpstan.neon     export-ignore
+phpunit.xml.dist export-ignore
+/tests           export-ignore
+/vendor-bin      export-ignore

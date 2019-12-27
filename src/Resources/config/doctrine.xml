@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <service id="nucleos_user.user_manager.default" class="Nucleos\UserBundle\Doctrine\UserManager" public="false">
+      <argument type="service" id="nucleos_user.util.password_updater"/>
+      <argument type="service" id="nucleos_user.util.canonical_fields_updater"/>
+      <argument type="service" id="nucleos_user.object_manager"/>
+      <argument>%nucleos_user.model.user.class%</argument>
+    </service>
+    <!-- The factory is configured in the DI extension class to support more Symfony versions -->
+    <service id="nucleos_user.object_manager" class="Doctrine\Persistence\ObjectManager" public="false">
+      <argument>%nucleos_user.model_manager_name%</argument>
+    </service>
+    <service id="nucleos_user.user_listener" class="Nucleos\UserBundle\Doctrine\UserListener" public="false">
+      <argument type="service" id="nucleos_user.util.password_updater"/>
+      <argument type="service" id="nucleos_user.util.canonical_fields_updater"/>
+    </service>
+  </services>
+</container>

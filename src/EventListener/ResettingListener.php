@@ -1,0 +1,77 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the NucleosUserBundle package.
+ *
+ * (c) Christian Gripp <mail@core23.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Nucleos\UserBundle\EventListener;
+
+use Nucleos\UserBundle\Event\FormEvent;
+use Nucleos\UserBundle\Event\GetResponseUserEvent;
+use Nucleos\UserBundle\Model\UserInterface;
+use Nucleos\UserBundle\NucleosUserEvents;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
+final class ResettingListener implements EventSubscriberInterface
+{
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $router;
+
+    /**
+     * @var int
+     */
+    private $tokenTtl;
+
+    public function __construct(UrlGeneratorInterface $router, int $tokenTtl)
+    {
+        $this->router   = $router;
+        $this->tokenTtl = $tokenTtl;
+    }
+
+    /**
+     * @return string[]
+     */
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            NucleosUserEvents::RESETTING_RESET_INITIALIZE => 'onResettingResetInitialize',
+            NucleosUserEvents::RESETTING_RESET_SUCCESS    => 'onResettingResetSuccess',
+            NucleosUserEvents::RESETTING_RESET_REQUEST    => 'onResettingResetRequest',
+        ];
+    }
+
+    public function onResettingResetInitialize(GetResponseUserEvent $event): void
+    {
+        if (!$event->getUser()->isPasswordRequestNonExpired($this->tokenTtl)) {
+            $event->setResponse(new RedirectResponse($this->router->generate('nucleos_user_resetting_request')));
+        }
+    }
+
+    public function onResettingResetSuccess(FormEvent $event): void
+    {
+        /** @var UserInterface $user */
+        $user = $event->getForm()->getData();
+
+        $user->setConfirmationToken(null);
+        $user->setPasswordRequestedAt(null);
+        $user->setEnabled(true);
+    }
+
+    public function onResettingResetRequest(GetResponseUserEvent $event): void
+    {
+        if (!$event->getUser()->isAccountNonLocked()) {
+            $event->setResponse(new RedirectResponse($this->router->generate('nucleos_user_resetting_request')));
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://symfony.com/schema/routing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+  <route id="nucleos_user_security_login" path="/login" methods="GET POST">
+    <default key="_controller">Nucleos\UserBundle\Action\LoginAction</default>
+  </route>
+  <route id="nucleos_user_security_check" path="/login_check" methods="POST">
+    <default key="_controller">Nucleos\UserBundle\Action\CheckLoginAction</default>
+  </route>
+  <route id="nucleos_user_security_loggedin" path="/loggedin" methods="GET POST">
+    <default key="_controller">Nucleos\UserBundle\Action\LoggedinAction</default>
+  </route>
+  <route id="nucleos_user_security_logout" path="/logout" methods="GET POST">
+    <default key="_controller">nNucleos\UserBundle\Action\LogoutAction</default>
+  </route>
+</routes>

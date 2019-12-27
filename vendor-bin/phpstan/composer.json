@@ -1,0 +1,10 @@
+{
+    "require": {
+        "jangregor/phpstan-prophecy": "^0.5",
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "phpstan/phpstan-strict-rules": "^0.12",
+        "phpstan/phpstan-symfony": "^0.12"
+    }
+}

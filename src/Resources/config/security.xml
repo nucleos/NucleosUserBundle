@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <service id="nucleos_user.security.interactive_login_listener" class="Nucleos\UserBundle\EventListener\LastLoginListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="nucleos_user.user_manager"/>
+    </service>
+    <service id="nucleos_user.security.login_manager" class="Nucleos\UserBundle\Security\LoginManager">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.user_checker"/>
+      <argument type="service" id="security.authentication.session_strategy"/>
+      <argument type="service" id="request_stack"/>
+      <argument>null</argument>
+      <!-- remember_me service -->
+    </service>
+    <service id="Nucleos\UserBundle\Security\LoginManagerInterface" alias="nucleos_user.security.login_manager" public="false"/>
+    <service id="nucleos_user.user_provider.username" class="Nucleos\UserBundle\Security\UserProvider" public="false">
+      <argument type="service" id="nucleos_user.user_manager"/>
+    </service>
+    <service id="nucleos_user.user_provider.username_email" class="Nucleos\UserBundle\Security\EmailUserProvider" public="false">
+      <argument type="service" id="nucleos_user.user_manager"/>
+    </service>
+    <service id="nucleos_user.user_provider.email" class="Nucleos\UserBundle\Security\EmailProvider" public="false">
+      <argument type="service" id="nucleos_user.user_manager"/>
+    </service>
+    <service id="Nucleos\UserBundle\Action\LoginAction" public="true">
+      <argument type="service" id="twig"/>
+      <argument type="service" id="security.csrf.token_manager" on-invalid="null"/>
+    </service>
+    <service id="Nucleos\UserBundle\Action\LogoutAction" public="true">
+    </service>
+    <service id="Nucleos\UserBundle\Action\LoggedinAction" public="true">
+      <argument type="service" id="twig"/>
+    </service>
+    <service id="Nucleos\UserBundle\Action\CheckLoginAction" public="true">
+    </service>
+  </services>
+</container>

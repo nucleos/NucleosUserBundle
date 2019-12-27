@@ -1,0 +1,17 @@
+# https://dependabot.com/docs/config-file/
+
+version: 1
+
+update_configs:
+  - package_manager: "php:composer"
+    directory: "/"    
+    automerged_updates:
+      - match:
+          dependency_type: "development"
+    default_assignees:
+      - "core23"     
+    default_labels:
+      - "dependency"
+    default_reviewers:
+      - "core23"     
+    update_schedule: "daily"

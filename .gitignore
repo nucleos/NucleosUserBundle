@@ -1,0 +1,9 @@
+.php_cs.cache
+.phpunit.result.cache
+coverage
+composer.lock
+phpunit.xml
+/build
+/vendor
+/vendor-bin/*/vendor
+!/vendor-bin/*/composer.json
