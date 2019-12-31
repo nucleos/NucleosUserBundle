@@ -16,10 +16,6 @@ branches:
         contexts:
           - "Coding Standards (7.4)"
           - "Static Code Analysis (7.4)"
-          - "Tests (7.2, lowest, ~4.4)"
-          - "Tests (7.2, lowest, ~5.0)"
-          - "Tests (7.2, highest, ~4.4)"
-          - "Tests (7.2, highest, ~5.0)"
           - "Tests (7.3, lowest, ~4.4)"
           - "Tests (7.3, lowest, ~5.0)"
           - "Tests (7.3, highest, ~4.4)"
