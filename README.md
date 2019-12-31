@@ -12,7 +12,7 @@ NucleosUserBundle
 [![Continuous Integration](https://github.com/nucleos/NucleosUserBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosUserBundle/actions)
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosUserBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosUserBundle)
 
-The NucleosUserBundle is a fork of [FOSUSerBundle](https://github.com/FriendsOfSymfony/FOSUserBundle/) which adds a lightweight support for a database-backed user system in symfony.
+The NucleosUserBundle is a fork of [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle/) which adds a lightweight support for a database-backed user system in symfony.
 
 There are some major changes and refactorings if you want to migrate from FOS:
 
@@ -22,7 +22,7 @@ There are some major changes and refactorings if you want to migrate from FOS:
 - Only symfony 4.4 / 5.x support
 - There are only two *optional* dependencies: **doctrine/orm** and **doctrine/mongodb-orm**
 
-Features include:
+Features included:
 
 - Users can be stored via Doctrine ORM or MongoDB ODM
 - Password reset support
