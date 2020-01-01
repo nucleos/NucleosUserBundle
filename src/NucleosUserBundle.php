@@ -17,7 +17,6 @@ use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappi
 use Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass;
 use Nucleos\UserBundle\DependencyInjection\Compiler\InjectRememberMeServicesPass;
 use Nucleos\UserBundle\DependencyInjection\Compiler\InjectUserCheckerPass;
-use Nucleos\UserBundle\DependencyInjection\Compiler\ValidationPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -27,7 +26,6 @@ final class NucleosUserBundle extends Bundle
     {
         parent::build($container);
 
-        $container->addCompilerPass(new ValidationPass());
         $container->addCompilerPass(new InjectUserCheckerPass());
         $container->addCompilerPass(new InjectRememberMeServicesPass());
 

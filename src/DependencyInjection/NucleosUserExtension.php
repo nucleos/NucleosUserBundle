@@ -18,11 +18,12 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-final class NucleosUserExtension extends Extension
+final class NucleosUserExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * @var array
@@ -126,6 +127,29 @@ final class NucleosUserExtension extends Extension
             // Use a private alias rather than a parameter, to avoid leaking it at runtime (the private alias will be removed)
             $container->setAlias('nucleos_user.session', new Alias('session', false));
         }
+    }
+
+    public function prepend(ContainerBuilder $container): void
+    {
+        if (!$container->hasParameter('nucleos_user.storage')) {
+            return;
+        }
+
+        $storage = $container->getParameter('nucleos_user.storage');
+
+        if ('custom' === $storage) {
+            return;
+        }
+
+        $container->prependExtensionConfig('framework', [
+            'validation' => [
+                'mapping' => [
+                    'paths' => [
+                        __DIR__.'/../../Resources/config/storage-validation/'.$storage,
+                    ],
+                ],
+            ],
+        ]);
     }
 
     private function remapParameters(array $config, ContainerBuilder $container, array $map): void
