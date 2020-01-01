@@ -111,11 +111,6 @@ parameters:
 			path: src/DependencyInjection/Configuration.php
 
 		-
-			message: "#^Parameter \\#1 \\$node of method Nucleos\\\\UserBundle\\\\DependencyInjection\\\\Configuration\\:\\:addChangePasswordSection\\(\\) expects Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\ArrayNodeDefinition, Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition given\\.$#"
-			count: 1
-			path: src/DependencyInjection/Configuration.php
-
-		-
 			message: "#^Parameter \\#1 \\$node of method Nucleos\\\\UserBundle\\\\DependencyInjection\\\\Configuration\\:\\:addResettingSection\\(\\) expects Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\ArrayNodeDefinition, Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition given\\.$#"
 			count: 1
 			path: src/DependencyInjection/Configuration.php
@@ -132,7 +127,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method scalarNode\\(\\) on Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeParentInterface\\|null\\.$#"
-			count: 4
+			count: 3
 			path: src/DependencyInjection/Configuration.php
 
 		-
@@ -162,11 +157,6 @@ parameters:
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\DependencyInjection\\\\NucleosUserExtension\\:\\:remapParametersNamespaces\\(\\) has parameter \\$namespaces with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/DependencyInjection/NucleosUserExtension.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\DependencyInjection\\\\NucleosUserExtension\\:\\:loadChangePassword\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/DependencyInjection/NucleosUserExtension.php
 
@@ -214,21 +204,6 @@ parameters:
 			message: "#^Method Nucleos\\\\UserBundle\\\\EventListener\\\\FlashListener\\:\\:trans\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/EventListener/FlashListener.php
-
-		-
-			message: "#^Property Nucleos\\\\UserBundle\\\\Form\\\\Factory\\\\FormFactory\\:\\:\\$validationGroups type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Factory/FormFactory.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Form\\\\Factory\\\\FormFactory\\:\\:__construct\\(\\) has parameter \\$validationGroups with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Factory/FormFactory.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Form\\\\Factory\\\\FormFactory\\:\\:createForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Factory/FormFactory.php
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Form\\\\Type\\\\ChangePasswordFormType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"

@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="nucleos_user.resetting.form.factory" class="Nucleos\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>%nucleos_user.resetting.form.name%</argument>
-      <argument>%nucleos_user.resetting.form.type%</argument>
-      <argument>%nucleos_user.resetting.form.validation_groups%</argument>
-    </service>
-    <service id="nucleos_user.resetting.form.type" class="Nucleos\UserBundle\Form\Type\ResettingFormType">
-      <tag name="form.type" alias="nucleos_user_resetting"/>
+    <service id="Nucleos\UserBundle\Form\Type\ResettingFormType">
+      <tag name="form.type"/>
       <argument>Nucleos\UserBundle\Form\Model\Resetting</argument>
     </service>
     <service id="nucleos_user.listener.resetting" class="Nucleos\UserBundle\EventListener\ResettingListener">
@@ -23,7 +17,7 @@
       <argument type="service" id="twig"/>
       <argument type="service" id="router"/>
       <argument type="service" id="event_dispatcher"/>
-      <argument type="service" id="nucleos_user.resetting.form.factory"/>
+      <argument type="service" id="form.factory"/>
       <argument type="service" id="nucleos_user.user_manager"/>
     </service>
     <service id="Nucleos\UserBundle\Action\SendEmailAction" public="true">

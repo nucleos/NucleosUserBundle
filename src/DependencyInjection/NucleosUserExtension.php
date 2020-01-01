@@ -111,13 +111,8 @@ final class NucleosUserExtension extends Extension
             ],
         ]);
 
-        if (isset($config['change_password'])) {
-            $this->loadChangePassword($config['change_password'], $container, $loader);
-        }
-
-        if (isset($config['resetting'])) {
-            $this->loadResetting($config['resetting'], $container, $loader, $config['from_email']);
-        }
+        $this->loadChangePassword($loader);
+        $this->loadResetting($config['resetting'], $container, $loader, $config['from_email']);
 
         if (isset($config['group'])) {
             $this->loadGroups($config['group'], $container, $loader, $config['db_driver']);
@@ -164,13 +159,9 @@ final class NucleosUserExtension extends Extension
         }
     }
 
-    private function loadChangePassword(array $config, ContainerBuilder $container, XmlFileLoader $loader): void
+    private function loadChangePassword(XmlFileLoader $loader): void
     {
         $loader->load('change_password.xml');
-
-        $this->remapParametersNamespaces($config, $container, [
-            'form' => 'nucleos_user.change_password.form.%s',
-        ]);
     }
 
     private function loadResetting(array $config, ContainerBuilder $container, XmlFileLoader $loader, string $fromEmail): void
@@ -192,7 +183,6 @@ final class NucleosUserExtension extends Extension
                 'token_ttl' => 'nucleos_user.resetting.token_ttl',
             ],
             'email' => 'nucleos_user.resetting.email.%s',
-            'form'  => 'nucleos_user.resetting.form.%s',
         ]);
     }
 

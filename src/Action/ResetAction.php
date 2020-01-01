@@ -14,10 +14,11 @@ namespace Nucleos\UserBundle\Action;
 use Nucleos\UserBundle\Event\FilterUserResponseEvent;
 use Nucleos\UserBundle\Event\FormEvent;
 use Nucleos\UserBundle\Event\GetResponseUserEvent;
-use Nucleos\UserBundle\Form\Factory\FactoryInterface;
 use Nucleos\UserBundle\Form\Model\Resetting;
+use Nucleos\UserBundle\Form\Type\ResettingFormType;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\NucleosUserEvents;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,7 +44,7 @@ final class ResetAction
     private $eventDispatcher;
 
     /**
-     * @var FactoryInterface
+     * @var FormFactoryInterface
      */
     private $formFactory;
 
@@ -59,7 +60,7 @@ final class ResetAction
         Environment $twig,
         RouterInterface $router,
         EventDispatcherInterface $eventDispatcher,
-        FactoryInterface $formFactory,
+        FormFactoryInterface $formFactory,
         UserManagerInterface $userManager
     ) {
         $this->twig            = $twig;
@@ -84,8 +85,9 @@ final class ResetAction
             return $event->getResponse();
         }
 
-        $form = $this->formFactory->createForm();
-        $form->setData(new Resetting());
+        $form = $this->formFactory->create(ResettingFormType::class, new Resetting(), [
+            'validation_groups' => ['ResetPassword', 'Default'],
+        ]);
 
         $form->handleRequest($request);
 

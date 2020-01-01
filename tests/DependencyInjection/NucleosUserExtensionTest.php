@@ -101,16 +101,6 @@ final class NucleosUserExtensionTest extends TestCase
         $this->assertParameter('custom', 'nucleos_user.storage');
     }
 
-    public function testDisableChangePassword(): void
-    {
-        $this->configuration       = new ContainerBuilder();
-        $loader                    = new NucleosUserExtension();
-        $config                    = $this->getEmptyConfig();
-        $config['change_password'] = false;
-        $loader->load([$config], $this->configuration);
-        $this->assertNotHasDefinition('nucleos_user.change_password.form.factory');
-    }
-
     public function testUserLoadModelClassWithDefaults(): void
     {
         $this->createEmptyConfiguration();
@@ -143,46 +133,6 @@ final class NucleosUserExtensionTest extends TestCase
         $this->assertParameter('custom', 'nucleos_user.model_manager_name');
         $this->assertAlias('acme_my.user_manager', 'nucleos_user.user_manager');
         $this->assertAlias('nucleos_user.group_manager.default', 'nucleos_user.group_manager');
-    }
-
-    public function testUserLoadFormClass(): void
-    {
-        $this->createFullConfiguration();
-
-        $this->assertParameter('acme_my_change_password', 'nucleos_user.change_password.form.type');
-        $this->assertParameter('acme_my_resetting', 'nucleos_user.resetting.form.type');
-    }
-
-    public function testUserLoadFormNameWithDefaults(): void
-    {
-        $this->createEmptyConfiguration();
-
-        $this->assertParameter('nucleos_user_change_password_form', 'nucleos_user.change_password.form.name');
-        $this->assertParameter('nucleos_user_resetting_form', 'nucleos_user.resetting.form.name');
-    }
-
-    public function testUserLoadFormName(): void
-    {
-        $this->createFullConfiguration();
-
-        $this->assertParameter('acme_change_password_form', 'nucleos_user.change_password.form.name');
-        $this->assertParameter('acme_resetting_form', 'nucleos_user.resetting.form.name');
-    }
-
-    public function testUserLoadFormServiceWithDefaults(): void
-    {
-        $this->createEmptyConfiguration();
-
-        $this->assertHasDefinition('nucleos_user.change_password.form.factory');
-        $this->assertHasDefinition('nucleos_user.resetting.form.factory');
-    }
-
-    public function testUserLoadFormService(): void
-    {
-        $this->createFullConfiguration();
-
-        $this->assertHasDefinition('nucleos_user.change_password.form.factory');
-        $this->assertHasDefinition('nucleos_user.resetting.form.factory');
     }
 
     public function testUserLoadUtilServiceWithDefaults(): void
@@ -291,19 +241,10 @@ use_flash_notifications: false
 user_class: Acme\MyBundle\Entity\User
 model_manager_name: custom
 from_email: Acme Corp <admin@acme.org>
-change_password:
-    form:
-        type: acme_my_change_password
-        name: acme_change_password_form
-        validation_groups: [acme_change_password]
 resetting:
     retry_ttl: 7200
     token_ttl: 86400
     from_email: Acme Corp <reset@acme.org>
-    form:
-        type: acme_my_resetting
-        name: acme_resetting_form
-        validation_groups: [acme_resetting]
 service:
     mailer: acme_my.mailer
     email_canonicalizer: acme_my.email_canonicalizer

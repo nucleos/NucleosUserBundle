@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\DependencyInjection;
 
-use Nucleos\UserBundle\Form\Type;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -63,7 +62,6 @@ final class Configuration implements ConfigurationInterface
             ->end()
         ;
 
-        $this->addChangePasswordSection($rootNode);
         $this->addResettingSection($rootNode);
         $this->addGroupSection($rootNode);
         $this->addServiceSection($rootNode);
@@ -82,42 +80,6 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('retry_ttl')->defaultValue(7200)->end()
                         ->scalarNode('token_ttl')->defaultValue(86400)->end()
                         ->scalarNode('from_email')->isRequired()->cannotBeEmpty()->end()
-                        ->arrayNode('form')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('type')->defaultValue(Type\ResettingFormType::class)->end()
-                                ->scalarNode('name')->defaultValue('nucleos_user_resetting_form')->end()
-                                ->arrayNode('validation_groups')
-                                    ->prototype('scalar')->end()
-                                    ->defaultValue(['ResetPassword', 'Default'])
-                                ->end()
-                            ->end()
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-        ;
-    }
-
-    private function addChangePasswordSection(ArrayNodeDefinition $node): void
-    {
-        $node
-            ->children()
-                ->arrayNode('change_password')
-                    ->addDefaultsIfNotSet()
-                    ->canBeUnset()
-                    ->children()
-                        ->arrayNode('form')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('type')->defaultValue(Type\ChangePasswordFormType::class)->end()
-                                ->scalarNode('name')->defaultValue('nucleos_user_change_password_form')->end()
-                                ->arrayNode('validation_groups')
-                                    ->prototype('scalar')->end()
-                                    ->defaultValue(['ChangePassword', 'Default'])
-                                ->end()
-                            ->end()
-                        ->end()
                     ->end()
                 ->end()
             ->end()
