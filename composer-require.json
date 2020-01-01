@@ -1,0 +1,25 @@
+{
+    "symbol-whitelist": [
+        "null",
+        "true",
+        "false",
+        "static",
+        "self",
+        "parent",
+        "array",
+        "string",
+        "int",
+        "float",
+        "bool",
+        "iterable",
+        "callable",
+        "void",
+        "object",
+        "Doctrine\\Bundle\\DoctrineBundle\\DependencyInjection\\Compiler\\DoctrineOrmMappingsPass",
+        "Doctrine\\Bundle\\MongoDBBundle\\DependencyInjection\\Compiler\\DoctrineMongoDBMappingsPass",
+        "Doctrine\\ODM\\MongoDB\\DocumentManager",
+        "Doctrine\\ODM\\MongoDB\\Mapping\\ClassMetadata",
+        "Doctrine\\ORM\\EntityManager",
+        "Doctrine\\ORM\\Mapping\\ClassMetadata"
+    ]
+}

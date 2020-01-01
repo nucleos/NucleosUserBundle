@@ -10,7 +10,7 @@ cs: vendor
 	export PHP_CS_FIXER_IGNORE_ENV=1 && php	vendor/bin/php-cs-fixer fix --verbose
 
 checkdeps: vendor
-	vendor/bin/composer-require-checker check composer.json
+	vendor/bin/composer-require-checker check --config-file composer-require.json composer.json
 
 phpstan: vendor
 	vendor/bin/phpstan analyse
