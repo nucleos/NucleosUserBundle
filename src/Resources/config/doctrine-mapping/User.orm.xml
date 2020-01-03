@@ -11,6 +11,8 @@
     <field name="lastLogin" column="last_login" type="datetime" nullable="true"/>
     <field name="confirmationToken" column="confirmation_token" type="string" length="180" unique="true" nullable="true"/>
     <field name="passwordRequestedAt" column="password_requested_at" type="datetime" nullable="true"/>
+    <field name="locale" type="string" column="locale" length="8" nullable="true"/>
+    <field name="timezone" type="string" column="timezone" length="64" nullable="true"/>
     <field name="roles" column="roles" type="array"/>
   </mapped-superclass>
 </doctrine-mapping>

@@ -23,7 +23,7 @@ use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
  * @template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
  * @implements \Nucleos\UserBundle\Model\GroupableInterface<GroupTemplate>
  */
-abstract class User implements UserInterface, GroupableInterface
+abstract class User implements UserInterface, GroupableInterface, LocaleAwareInterface
 {
     /**
      * @var mixed
@@ -94,6 +94,16 @@ abstract class User implements UserInterface, GroupableInterface
      * @var string[]
      */
     protected $roles;
+
+    /**
+     * @var string|null
+     */
+    protected $locale;
+
+    /**
+     * @var string|null
+     */
+    protected $timezone;
 
     public function __construct()
     {
@@ -408,6 +418,26 @@ abstract class User implements UserInterface, GroupableInterface
         if ($this->getGroups()->contains($group)) {
             $this->getGroups()->removeElement($group);
         }
+    }
+
+    public function setLocale(?string $locale): void
+    {
+        $this->locale = $locale;
+    }
+
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    public function setTimezone(?string $timezone): void
+    {
+        $this->timezone = $timezone;
+    }
+
+    public function getTimezone(): ?string
+    {
+        return $this->timezone;
     }
 
     public function isEqualTo(BaseUserInterface $user): bool
