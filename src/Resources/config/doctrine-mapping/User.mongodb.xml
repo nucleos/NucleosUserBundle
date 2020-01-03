@@ -11,6 +11,8 @@
     <field name="lastLogin" type="date"/>
     <field name="confirmationToken" type="string"/>
     <field name="passwordRequestedAt" type="date"/>
+    <field name="locale" type="string"/>
+    <field name="timezone" type="string"/>
     <field name="roles" type="collection"/>
     <indexes>
       <index>

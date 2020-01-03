@@ -206,6 +206,11 @@ parameters:
 			path: src/EventListener/FlashListener.php
 
 		-
+			message: "#^Call to method Symfony\\\\Component\\\\HttpFoundation\\\\Request\\:\\:hasSession\\(\\) will always evaluate to true\\.$#"
+			count: 2
+			path: src/EventListener/LocaleEventSubscriber.php
+
+		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Form\\\\Type\\\\ChangePasswordFormType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Form/Type/ChangePasswordFormType.php
