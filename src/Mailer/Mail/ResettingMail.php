@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Nucleos\UserBundle\Mailer\Mai;
+namespace Nucleos\UserBundle\Mailer\Mail;
 
 use Nucleos\UserBundle\Model\UserInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
