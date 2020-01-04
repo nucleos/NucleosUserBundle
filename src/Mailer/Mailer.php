@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Mailer;
 
-use Nucleos\UserBundle\Mailer\Mai\ResettingMail;
+use Nucleos\UserBundle\Mailer\Mail\ResettingMail;
 use Nucleos\UserBundle\Model\UserInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface as SymfonyMailer;
