@@ -20,7 +20,7 @@ There are some major changes and refactorings if you want to migrate from FOS:
 - Swift mailer was dropped in favor of symfony mailer
 - Couch DB support was removed
 - Only symfony 4.4 / 5.x support
-- There are only two *optional* dependencies: **doctrine/orm** and **doctrine/mongodb-orm**
+- There are only two *optional* dependencies: **doctrine/orm** and **doctrine/mongodb-odm**
 
 Features included:
 
