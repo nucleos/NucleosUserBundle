@@ -26,3 +26,16 @@ Features included:
 
 - Users can be stored via Doctrine ORM or MongoDB ODM
 - Password reset support
+
+Documentation
+-------------
+
+The source of the documentation is stored in the `docs/` folder
+in this bundle.
+
+[Read the Documentation](docs/index.rst)
+
+Installation
+------------
+
+All the installation instructions are located in the documentation.
