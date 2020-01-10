@@ -53,7 +53,9 @@ If you encounter installation errors pointing at a lack of configuration paramet
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable the bundle in the kernel::
+Enable the bundle in the kernel:
+
+.. code-block:: php-annotations
 
     // config/bundles.php
     return [
@@ -143,7 +145,9 @@ b) MongoDB User class
 
 If you're persisting your users via the Doctrine MongoDB ODM, then your ``User``
 class should live in the ``Document`` namespace of your bundle and look like
-this to start::
+this to start.
+
+.. code-block:: php-annotations
 
     // src/Document/User.php
     namespace App\Document;
