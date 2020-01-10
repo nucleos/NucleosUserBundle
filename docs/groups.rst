@@ -1,5 +1,5 @@
-Using Groups With NucleosUserBundle
-===================================
+Using groups
+============
 
 NucleosUserBundle allows you to associate groups to your users. Groups are a
 way to group a collection of roles. The roles of a group will be granted
@@ -17,17 +17,15 @@ name (FQCN) of your ``Group`` class which must implement ``Nucleos\UserBundle\Mo
 
 Below is an example configuration for enabling groups support.
 
-.. configuration-block::
+.. code-block:: yaml
 
-    .. code-block:: yaml
-
-        # config/packages/nucleos_user.yaml
-        nucleos_user:
-            db_driver: orm
-            firewall_name: main
-            user_class: App\Entity\User
-            group:
-                group_class: App\Entity\Group
+    # config/packages/nucleos_user.yaml
+    nucleos_user:
+        db_driver: orm
+        firewall_name: main
+        user_class: App\Entity\User
+        group:
+            group_class: App\Entity\Group
 
 The Group class
 ---------------
@@ -38,29 +36,27 @@ provided by the bundle.
 a) ORM Group class implementation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. configuration-block::
+.. code-block:: php-annotations
 
-    .. code-block:: php-annotations
+    // src/Entity/Group.php
+    namespace App\Entity;
 
-        // src/Entity/Group.php
-        namespace App\Entity;
+    use Doctrine\ORM\Mapping as ORM;
+    use Nucleos\UserBundle\Model\Group as BaseGroup;
 
-        use Doctrine\ORM\Mapping as ORM;
-        use Nucleos\UserBundle\Model\Group as BaseGroup;
-
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="nucleos_user__group")
+     */
+    class Group extends BaseGroup
+    {
         /**
-         * @ORM\Entity
-         * @ORM\Table(name="nucleos_user__group")
+         * @ORM\Id
+         * @ORM\Column(type="integer")
+         * @ORM\GeneratedValue(strategy="AUTO")
          */
-        class Group extends BaseGroup
-        {
-            /**
-             * @ORM\Id
-             * @ORM\Column(type="integer")
-             * @ORM\GeneratedValue(strategy="AUTO")
-             */
-             protected $id;
-        }
+         protected $id;
+    }
 
 .. note::
 
@@ -96,37 +92,36 @@ The next step is to map the relation in your ``User`` class.
 a) ORM User-Group mapping
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. configuration-block::
 
-    .. code-block:: php-annotations
+.. code-block:: php-annotations
 
-        // src/Entity/User.php
-        namespace App\Entity;
+    // src/Entity/User.php
+    namespace App\Entity;
 
-        use Nucleos\UserBundle\Model\User as BaseUser;
+    use Nucleos\UserBundle\Model\User as BaseUser;
+
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="nucleos_user__user")
+     */
+    class User extends BaseUser
+    {
+        /**
+         * @ORM\Id
+         * @ORM\Column(type="integer")
+         * @ORM\GeneratedValue(strategy="AUTO")
+         */
+        protected $id;
 
         /**
-         * @ORM\Entity
-         * @ORM\Table(name="nucleos_user__user")
+         * @ORM\ManyToMany(targetEntity="App\Entity\Group")
+         * @ORM\JoinTable(name="nucleos_user_user_group",
+         *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+         *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+         * )
          */
-        class User extends BaseUser
-        {
-            /**
-             * @ORM\Id
-             * @ORM\Column(type="integer")
-             * @ORM\GeneratedValue(strategy="AUTO")
-             */
-            protected $id;
-
-            /**
-             * @ORM\ManyToMany(targetEntity="App\Entity\Group")
-             * @ORM\JoinTable(name="nucleos_user_user_group",
-             *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-             *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
-             * )
-             */
-            protected $groups;
-        }
+        protected $groups;
+    }
 
 b) MongoDB User-Group mapping
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

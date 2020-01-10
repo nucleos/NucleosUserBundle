@@ -1,5 +1,5 @@
-NucleosUserBundle Command Line Tools
-====================================
+Command line tools
+==================
 
 The NucleosUserBundle provides a number of command line utilities to help manage your
 application's users. Commands are available for the following tasks:

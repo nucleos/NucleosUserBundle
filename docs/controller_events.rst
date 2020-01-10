@@ -1,4 +1,4 @@
-Hooking into the controllers
+Hooking into the Controllers
 ============================
 
 The controllers packaged with the NucleosUserBundle provide a lot of
@@ -62,14 +62,12 @@ resetting to go to the homepage.
 
 You can then register this listener:
 
-.. configuration-block::
+.. code-block:: yaml
 
-    .. code-block:: yaml
-
-        # config/services.yaml
-        services:
-            app.password_resetting:
-                class: App\EventListener\PasswordResettingListener
-                arguments: ['@router']
-                tags:
-                    - { name: kernel.event_subscriber }
+    # config/services.yaml
+    services:
+        app.password_resetting:
+            class: App\EventListener\PasswordResettingListener
+            arguments: ['@router']
+            tags:
+                - { name: kernel.event_subscriber }
