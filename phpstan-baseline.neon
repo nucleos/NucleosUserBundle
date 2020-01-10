@@ -221,11 +221,6 @@ parameters:
 			path: src/Form/Type/ResettingFormType.php
 
 		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Form\\\\Type\\\\UsernameFormType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Type/UsernameFormType.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\Group\\:\\:__construct\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/Group.php

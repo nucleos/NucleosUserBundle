@@ -44,7 +44,6 @@ final class Configuration implements ConfigurationInterface
                 ->booleanNode('use_authentication_listener')->defaultTrue()->end()
                 ->booleanNode('use_listener')->defaultTrue()->end()
                 ->booleanNode('use_flash_notifications')->defaultTrue()->end()
-                ->booleanNode('use_username_form_type')->defaultTrue()->end()
                 ->scalarNode('from_email')->isRequired()->cannotBeEmpty()->end()
             ->end()
             // Using the custom driver requires changing the manager services
