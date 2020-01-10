@@ -19,4 +19,6 @@
     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
 
     <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+
+    <a href="{{ path('nucleos_user_resetting_request') }}">{{ 'security.forgotten_password'|trans }}</a>
 </form>

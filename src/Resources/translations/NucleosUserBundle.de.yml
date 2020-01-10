@@ -4,6 +4,7 @@ security:
         password: Passwort
         remember_me: 'An mich erinnern'
         submit: Anmelden
+    forgotten_password: 'Passwort vergessen?'
 change_password:
     submit: 'Passwort ändern'
     flash:
