@@ -17,6 +17,7 @@ use Nucleos\UserBundle\Event\FilterUserResponseEvent;
 use Nucleos\UserBundle\Event\FormEvent;
 use Nucleos\UserBundle\Event\GetResponseUserEvent;
 use Nucleos\UserBundle\Form\Model\ChangePassword;
+use Nucleos\UserBundle\Form\Type\ChangePasswordFormType;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\NucleosUserEvents;
@@ -94,7 +95,7 @@ final class ChangePasswordAction
             return $event->getResponse();
         }
 
-        $form = $this->formFactory->create(ChangePassword::class, new ChangePassword(), [
+        $form = $this->formFactory->create(ChangePasswordFormType::class, new ChangePassword(), [
             'validation_groups' => ['ChangePassword', 'Default'],
         ]);
 
