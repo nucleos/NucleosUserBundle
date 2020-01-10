@@ -12,7 +12,7 @@ repository:
     allow_merge_commit: true
     allow_rebase_merge: true
     has_issues: true
-    has_pages: false
+    has_pages: true
     has_projects: false
     has_wiki: false
 
@@ -57,6 +57,7 @@ branches:
                     - "Code Coverage (7.4)"
                     - "Mutation Tests (7.4)"
                     - "Mutation Tests (7.4)"
+                    - "Lint / DOCtor-RST"
                 strict: true
 
             required_pull_request_reviews: null
