@@ -1,5 +1,5 @@
-NucleosUserBundle Canonicalization
-==================================
+Canonicalization
+================
 
 NucleosUserBundle stores canonicalized versions of the username and the email
 which are used when querying and checking for uniqueness.

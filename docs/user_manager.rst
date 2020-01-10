@@ -1,5 +1,5 @@
-About NucleosUserBundle User Manager
-====================================
+User Manager
+============
 
 In order to be storage agnostic, all operations on the user instances are
 handled by a user manager implementing ``Nucleos\UserBundle\Model\UserManagerInterface``.
@@ -81,14 +81,12 @@ Updating a User object
     scenes. If you always save the user through the user manager, you may
     want to disable it to improve performance.
 
-    .. configuration-block::
+.. code-block:: yaml
 
-        .. code-block:: yaml
-
-            # config/packages/nucleos_user.yaml
-            nucleos_user:
-                # ...
-                use_listener: false
+    # config/packages/nucleos_user.yaml
+    nucleos_user:
+        # ...
+        use_listener: false
 
 .. note::
 

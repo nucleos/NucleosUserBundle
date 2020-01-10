@@ -1,5 +1,5 @@
-NucleosUserBundle Emails
-========================
+Sending E-Mails
+===============
 
 The NucleosUserBundle has built-in support for sending emails in two different
 instances.

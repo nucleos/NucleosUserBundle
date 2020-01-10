@@ -1,5 +1,5 @@
-More about Doctrine implementations
-===================================
+Doctrine Implementations
+========================
 
 This chapter describes some things specific to these implementations.
 

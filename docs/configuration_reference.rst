@@ -1,5 +1,5 @@
-NucleosUserBundle Configuration Reference
-=========================================
+Configuration reference
+=======================
 
 All available configuration options are listed below with their default values.
 
