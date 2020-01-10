@@ -18,7 +18,9 @@ Accessing the User Manager service
 ----------------------------------
 
 The user manager is available in the container as a ``Nucleos\UserBundle\Model\UserManagerInterface``
-service::
+service.
+
+.. code-block:: php-annotations
 
     use Nucleos\UserBundle\Model\UserManagerInterface;
 
@@ -30,7 +32,9 @@ service::
 Creating a new User
 -------------------
 
-A new instance of your User class can be created by the user manager::
+A new instance of your User class can be created by the user manager.
+
+.. code-block:: php-annotations
 
     $user = $userManager->createUser();
 
@@ -94,7 +98,9 @@ Updating a User object
     This will then be equivalent to calling ``updateCanonicalFields`` and
     ``updatePassword``.
 
-An ORM example::
+An ORM example:
+
+.. code-block:: php-annotations
 
     use Nucleos\UserBundle\Model\UserManagerInterface;
 

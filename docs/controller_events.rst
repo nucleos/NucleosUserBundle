@@ -20,7 +20,9 @@ Controllers with a form also dispatch an ``INITIALIZE`` event after the entity i
 fetched, but before the form is created.
 
 For instance, this listener will change the redirection after the password
-resetting to go to the homepage::
+resetting to go to the homepage.
+
+.. code-block:: php-annotations
 
     // src/App/EventListener/PasswordResettingListener.php
     namespace App\EventListener;
