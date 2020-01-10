@@ -33,7 +33,7 @@ Documentation
 The source of the documentation is stored in the `docs/` folder
 in this bundle.
 
-[Read the Documentation](docs/index.rst)
+[Read the Documentation](https://nucleosuserbundle.readthedocs.io)
 
 Installation
 ------------

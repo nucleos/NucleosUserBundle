@@ -3,7 +3,7 @@
 repository:
     name: NucleosUserBundle
     description: Lightweight user management for symfony.
-    homepage: https://core23.de
+    homepage: https://nucleosuserbundle.readthedocs.io
     topics: symfony, symfony-bundle, bundle, user, management
 
     default_branch: master
@@ -12,7 +12,7 @@ repository:
     allow_merge_commit: true
     allow_rebase_merge: true
     has_issues: true
-    has_pages: true
+    has_pages: false
     has_projects: false
     has_wiki: false
 
