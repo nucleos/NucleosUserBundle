@@ -177,7 +177,7 @@ in your application:
     # config/packages/security.yaml
     security:
         encoders:
-            Nucleos\UserBundle\Model\UserInterface: bcrypt
+            Nucleos\UserBundle\Model\UserInterface: auto
 
         role_hierarchy:
             ROLE_ADMIN:       ROLE_USER
@@ -190,7 +190,6 @@ in your application:
         firewalls:
             main:
                 pattern: ^/
-                user_checker: nucleos_user.user_checker
                 form_login:
                     provider: nucleos_userbundle
                     csrf_token_generator: security.csrf.token_manager
@@ -201,6 +200,7 @@ in your application:
         access_control:
             - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/change-password, role: IS_AUTHENTICATED_REMEMBERED }
             # If you have an admin backend, uncomment the following line
             # - { path: ^/admin/, role: ROLE_ADMIN }
 
