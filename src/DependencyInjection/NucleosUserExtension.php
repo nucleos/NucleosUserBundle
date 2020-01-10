@@ -99,10 +99,6 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
             }
         }
 
-        if ($config['use_username_form_type']) {
-            $loader->load('username_form_type.xml');
-        }
-
         $this->remapParametersNamespaces($config, $container, [
             '' => [
                 'db_driver'          => 'nucleos_user.storage',
