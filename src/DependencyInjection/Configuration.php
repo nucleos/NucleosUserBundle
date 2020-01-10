@@ -79,7 +79,7 @@ final class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('retry_ttl')->defaultValue(7200)->end()
                         ->scalarNode('token_ttl')->defaultValue(86400)->end()
-                        ->scalarNode('from_email')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('from_email')->end()
                     ->end()
                 ->end()
             ->end()
