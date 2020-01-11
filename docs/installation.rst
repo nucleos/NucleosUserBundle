@@ -198,8 +198,6 @@ in your application:
                 anonymous:    true
 
         access_control:
-            - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/change-password, role: IS_AUTHENTICATED_REMEMBERED }
             # If you have an admin backend, uncomment the following line
             # - { path: ^/admin/, role: ROLE_ADMIN }
