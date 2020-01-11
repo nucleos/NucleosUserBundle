@@ -13,11 +13,14 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Action;
 
+use Nucleos\UserBundle\Event\GetResponseLoginEvent;
+use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 
 final class LoginAction
@@ -28,18 +31,34 @@ final class LoginAction
     private $twig;
 
     /**
+     * @var EventDispatcherInterface
+     */
+    private $eventDispatcher;
+
+    /**
      * @var CsrfTokenManagerInterface|null
      */
     private $tokenManager;
 
-    public function __construct(Environment $twig, CsrfTokenManagerInterface $tokenManager = null)
-    {
-        $this->twig         = $twig;
-        $this->tokenManager = $tokenManager;
+    public function __construct(
+        Environment $twig,
+        EventDispatcherInterface $eventDispatcher,
+        CsrfTokenManagerInterface $tokenManager = null
+    ) {
+        $this->twig            = $twig;
+        $this->eventDispatcher = $eventDispatcher;
+        $this->tokenManager    = $tokenManager;
     }
 
     public function __invoke(Request $request): Response
     {
+        $event = new GetResponseLoginEvent($request);
+        $this->eventDispatcher->dispatch($event, NucleosUserEvents::SECURITY_LOGIN_INITIALIZE);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
         $session = $request->hasSession() ? $request->getSession() : null;
 
         $authErrorKey    = Security::AUTHENTICATION_ERROR;

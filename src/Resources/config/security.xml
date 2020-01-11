@@ -25,12 +25,15 @@
     </service>
     <service id="Nucleos\UserBundle\Action\LoginAction" public="true">
       <argument type="service" id="twig"/>
+      <argument type="service" id="event_dispatcher"/>
       <argument type="service" id="security.csrf.token_manager" on-invalid="null"/>
     </service>
     <service id="Nucleos\UserBundle\Action\LogoutAction" public="true">
     </service>
     <service id="Nucleos\UserBundle\Action\LoggedinAction" public="true">
       <argument type="service" id="twig"/>
+      <argument type="service" id="event_dispatcher"/>
+      <argument type="service" id="security.helper"/>
     </service>
     <service id="Nucleos\UserBundle\Action\CheckLoginAction" public="true">
     </service>
