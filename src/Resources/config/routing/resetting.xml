@@ -10,6 +10,6 @@
     <default key="_controller">Nucleos\UserBundle\Action\CheckEmailAction</default>
   </route>
   <route id="nucleos_user_resetting_reset" path="/reset/{token}" methods="GET POST">
-    <default key="_controller">Nucleos\UserBundle\Action\RequestResetAction</default>
+    <default key="_controller">Nucleos\UserBundle\Action\ResetAction</default>
   </route>
 </routes>
