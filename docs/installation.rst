@@ -163,7 +163,7 @@ this to start.
 
 
 Step 4: Configure your application's security.yaml
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order for Symfony's security component to use the NucleosUserBundle, you must
 tell it to do so in the ``security.yaml`` file. The ``security.yaml`` file is where the
@@ -277,7 +277,7 @@ Only four configuration's nodes are required to use the bundle:
     of your doctrine configuration.)
 
 Step 6: Import NucleosUserBundle routing files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have activated and configured the bundle, all that is left to do is
 import the NucleosUserBundle routing files.
@@ -289,7 +289,7 @@ logging in, creating users, etc.
 
     # config/routes/nucleos_user.yaml
     nucleos_user:
-        resource: "@NucleosUserBundle/src/Resources/config/routing/all.xml"
+        resource: "@NucleosUserBundle/Resources/config/routing/all.xml"
 
 .. note::
 
