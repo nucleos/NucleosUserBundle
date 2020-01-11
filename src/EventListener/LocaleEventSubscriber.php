@@ -53,6 +53,8 @@ final class LocaleEventSubscriber implements EventSubscriberInterface
             NucleosUserEvents::SECURITY_IMPLICIT_LOGIN => 'onImplicitLogin',
             SecurityEvents::INTERACTIVE_LOGIN          => 'onSecurityInteractiveLogin',
             KernelEvents::REQUEST                      => [['onKernelRequest', 20]],
+            NucleosUserEvents::USER_LOCALE_CHANGED     => 'onLocaleChanged',
+            NucleosUserEvents::USER_TIMEZONE_CHANGED   => 'onTimezoneChanged',
         ];
     }
 
@@ -97,6 +99,24 @@ final class LocaleEventSubscriber implements EventSubscriberInterface
 
         if (null !== $timezone = $session->get('_timezone')) {
             $this->setTwigTimezone($timezone);
+        }
+    }
+
+    public function onTimezoneChanged(UserEvent $event): void
+    {
+        $user = $event->getUser();
+
+        if ($user instanceof LocaleAwareInterface) {
+            $this->setTimezone($event->getRequest(), $user);
+        }
+    }
+
+    public function onLocaleChanged(UserEvent $event): void
+    {
+        $user = $event->getUser();
+
+        if ($user instanceof LocaleAwareInterface) {
+            $this->setLocale($event->getRequest(), $user);
         }
     }
 

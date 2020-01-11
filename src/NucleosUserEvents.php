@@ -80,6 +80,25 @@ final class NucleosUserEvents
      * @Event("Nucleos\UserBundle\Event\UserEvent")
      */
     public const USER_DEMOTED = 'nucleos_user.user.demoted';
+
+    /**
+     * The USER_LOCALE_CHANGED event occurs when the user changed the locale.
+     *
+     * This event allows you to access the user settings and to add some behaviour after the locale change.
+     *
+     * @Event("Nucleos\UserBundle\Event\UserEvent")
+     */
+    public const USER_LOCALE_CHANGED = 'nucleos_user.user.locale_changed';
+
+    /**
+     * The USER_TIMEZONE_CHANGED event occurs when the user changed the timezone.
+     *
+     * This event allows you to access the user settings and to add some behaviour after the timezone change.
+     *
+     * @Event("Nucleos\UserBundle\Event\UserEvent")
+     */
+    public const USER_TIMEZONE_CHANGED = 'nucleos_user.user.timezone_changed';
+
     /**
      * The CHANGE_PASSWORD_INITIALIZE event occurs when the change password process is initialized.
      *
