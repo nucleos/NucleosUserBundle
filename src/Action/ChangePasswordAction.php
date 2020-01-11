@@ -73,7 +73,7 @@ final class ChangePasswordAction
     ) {
         $this->twig            = $twig;
         $this->router          = $router;
-        $this->security        =$security;
+        $this->security        = $security;
         $this->userManager     = $userManager;
 
         $this->eventDispatcher = $eventDispatcher;
