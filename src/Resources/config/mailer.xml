@@ -7,6 +7,6 @@
       <argument type="service" id="router"/>
       <argument>%nucleos_user.resetting.from_email%</argument>
     </service>
-    <service id="nucleos_user.mailer.noop" class="Nucleos\UserBundle\Mailer\Mailer"/>
+    <service id="nucleos_user.mailer.noop" class="Nucleos\UserBundle\Mailer\NoopMailer"/>
   </services>
 </container>
