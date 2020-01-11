@@ -13,7 +13,7 @@ All available configuration options are listed below with their default values.
         use_flash_notifications:    true
         model_manager_name:         null  # change it to the name of your entity/document manager if you don't want to use the default one.
         use_authentication_listener: true
-        from_email:             webmaster@example.com
+        from_email:             ~ # Required
         resetting:
             retry_ttl: 7200 # Value in seconds, logic will use as hours
             token_ttl: 86400

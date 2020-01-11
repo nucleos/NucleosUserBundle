@@ -65,7 +65,9 @@ emails or change the content of the email you
 may do so by defining your own service.
 
 First you must create a new class which implements ``Nucleos\UserBundle\Mailer\MailerInterface``
-which is listed below::
+which is listed below:
+
+.. code-block:: php-annotations
 
     namespace Nucleos\UserBundle\Mailer;
 
@@ -79,7 +81,7 @@ which is listed below::
          *
          * @param UserInterface $user
          */
-        function sendResettingEmailMessage(UserInterface $user);
+        function sendResettingEmailMessage(UserInterface $user): void;
     }
 
 After you have implemented your custom mailer class and defined it as a service,

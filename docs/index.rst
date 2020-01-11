@@ -26,3 +26,4 @@ The following documents are available:
     custom_storage_layer
     routing
     configuration_reference
+    migrate_from_fos
