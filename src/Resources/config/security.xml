@@ -32,6 +32,8 @@
     </service>
     <service id="Nucleos\UserBundle\Action\LoggedinAction" public="true">
       <argument type="service" id="twig"/>
+      <argument type="service" id="event_dispatcher"/>
+      <argument type="service" id="security.helper"/>
     </service>
     <service id="Nucleos\UserBundle\Action\CheckLoginAction" public="true">
     </service>
