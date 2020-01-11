@@ -136,6 +136,16 @@ final class NucleosUserEvents
     public const RESETTING_RESET_COMPLETED = 'nucleos_user.resetting.reset.completed';
 
     /**
+     * The SECURITY_LOGIN_INITIALIZE event occurs when the send email process is initialized.
+     *
+     * This event allows you to set the response to bypass the login.
+     * The event listener method receives a Nucleos\UserBundle\Event\GetResponseLoginEvent instance.
+     *
+     * @Event("Nucleos\UserBundle\Event\GetResponseLoginEvent")
+     */
+    public const SECURITY_LOGIN_INITIALIZE = 'nucleos_user.security.login.initialize';
+
+    /**
      * The SECURITY_IMPLICIT_LOGIN event occurs when the user is logged in programmatically.
      *
      * This event allows you to access the response which will be sent.
