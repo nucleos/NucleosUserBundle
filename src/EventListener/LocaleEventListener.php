@@ -26,7 +26,7 @@ use Symfony\Contracts\Translation\LocaleAwareInterface as LocaleAwareTranslator;
 use Twig\Environment;
 use Twig\Extension\CoreExtension;
 
-final class LocaleEventSubscriber implements EventSubscriberInterface
+final class LocaleEventListener implements EventSubscriberInterface
 {
     /**
      * @var LocaleAwareTranslator

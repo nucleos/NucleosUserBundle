@@ -6,7 +6,7 @@
       <argument type="service" id="nucleos_user.security.login_manager"/>
       <argument>%nucleos_user.firewall_name%</argument>
     </service>
-    <service id="Nucleos\UserBundle\EventListener\LocaleEventSubscriber">
+    <service id="Nucleos\UserBundle\EventListener\LocaleEventListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="translator"/>
       <argument type="service" id="twig"/>
