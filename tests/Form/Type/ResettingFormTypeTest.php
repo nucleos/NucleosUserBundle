@@ -15,12 +15,13 @@ namespace Nucleos\UserBundle\Tests\Form\Type;
 
 use Nucleos\UserBundle\Form\Model\Resetting;
 use Nucleos\UserBundle\Form\Type\ResettingFormType;
+use Nucleos\UserBundle\Model\UserInterface;
 
 final class ResettingFormTypeTest extends ValidatorExtensionTypeTestCase
 {
     public function testSubmit(): void
     {
-        $model = new Resetting();
+        $model = new Resetting($this->createStub(UserInterface::class));
 
         $form     = $this->factory->create(ResettingFormType::class, $model);
         $formData = [

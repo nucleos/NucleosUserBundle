@@ -11,12 +11,24 @@
 
 namespace Nucleos\UserBundle\Form\Model;
 
+use Nucleos\UserBundle\Model\UserInterface;
+
 final class Resetting
 {
     /**
      * @var string|null
      */
     private $plainPassword;
+
+    /**
+     * @var UserInterface
+     */
+    private $user;
+
+    public function __construct(UserInterface $user)
+    {
+        $this->user = $user;
+    }
 
     public function getPlainPassword(): ?string
     {
@@ -26,5 +38,10 @@ final class Resetting
     public function setPlainPassword(?string $plainPassword): void
     {
         $this->plainPassword = $plainPassword;
+    }
+
+    public function getUser(): UserInterface
+    {
+        return $this->user;
     }
 }

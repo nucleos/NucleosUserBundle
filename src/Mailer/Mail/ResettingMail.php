@@ -58,4 +58,15 @@ final class ResettingMail extends TemplatedEmail
     {
         return $this->user;
     }
+
+    /**
+     * @return array<mixed>
+     */
+    public function getContext(): array
+    {
+        return array_merge([
+            'user'             => $this->getUser(),
+            'confirmationUrl'  => $this->getConfirmationUrl(),
+        ], parent::getContext());
+    }
 }

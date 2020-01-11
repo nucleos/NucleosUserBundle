@@ -85,7 +85,7 @@ final class ResetAction
             return $event->getResponse();
         }
 
-        $form = $this->formFactory->create(ResettingFormType::class, new Resetting(), [
+        $form = $this->formFactory->create(ResettingFormType::class, new Resetting($user), [
             'validation_groups' => ['ResetPassword', 'Default'],
         ]);
 

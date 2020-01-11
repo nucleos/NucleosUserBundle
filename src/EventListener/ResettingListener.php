@@ -15,7 +15,7 @@ namespace Nucleos\UserBundle\EventListener;
 
 use Nucleos\UserBundle\Event\FormEvent;
 use Nucleos\UserBundle\Event\GetResponseUserEvent;
-use Nucleos\UserBundle\Model\UserInterface;
+use Nucleos\UserBundle\Form\Model\Resetting;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -60,8 +60,13 @@ final class ResettingListener implements EventSubscriberInterface
 
     public function onResettingResetSuccess(FormEvent $event): void
     {
-        /** @var UserInterface $user */
-        $user = $event->getForm()->getData();
+        $model = $event->getForm()->getData();
+
+        if (!$model instanceof Resetting) {
+            return;
+        }
+
+        $user = $model->getUser();
 
         $user->setConfirmationToken(null);
         $user->setPasswordRequestedAt(null);
