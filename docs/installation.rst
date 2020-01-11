@@ -291,11 +291,6 @@ logging in, creating users, etc.
     nucleos_user:
         resource: "@NucleosUserBundle/src/Resources/config/routing/all.xml"
 
-.. note::
-
-    In order to use the built-in email functionality (confirmation of the account,
-    resetting of the password), you must activate and configure the SwiftmailerBundle.
-
 Step 7: Update your database schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
