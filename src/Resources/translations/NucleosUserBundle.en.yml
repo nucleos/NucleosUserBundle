@@ -1,5 +1,6 @@
 security:
     login:
+        title: 'Login'
         username: Username
         password: Password
         remember_me: 'Remember me'
