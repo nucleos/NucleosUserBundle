@@ -5,7 +5,7 @@
       <tag name="form.type"/>
       <argument>Nucleos\UserBundle\Form\Model\Resetting</argument>
     </service>
-    <service id="nucleos_user.listener.resetting" class="Nucleos\UserBundle\EventListener\ResettingListener">
+    <service id="Nucleos\UserBundle\EventListener\ResettingListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="router"/>
       <argument>%nucleos_user.resetting.token_ttl%</argument>

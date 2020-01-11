@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="nucleos_user.listener.authentication" class="Nucleos\UserBundle\EventListener\AuthenticationListener">
+    <service id="Nucleos\UserBundle\EventListener\AuthenticationListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="nucleos_user.security.login_manager"/>
       <argument>%nucleos_user.firewall_name%</argument>
