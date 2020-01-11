@@ -13,14 +13,14 @@
       <argument>null</argument>
       <!-- remember_me service -->
     </service>
-    <service id="Nucleos\UserBundle\Security\LoginManagerInterface" alias="nucleos_user.security.login_manager" public="false"/>
-    <service id="nucleos_user.user_provider.username" class="Nucleos\UserBundle\Security\UserProvider" public="false">
+    <service id="Nucleos\UserBundle\Security\LoginManagerInterface" alias="nucleos_user.security.login_manager"/>
+    <service id="nucleos_user.user_provider.username" class="Nucleos\UserBundle\Security\UserProvider">
       <argument type="service" id="nucleos_user.user_manager"/>
     </service>
-    <service id="nucleos_user.user_provider.username_email" class="Nucleos\UserBundle\Security\EmailUserProvider" public="false">
+    <service id="nucleos_user.user_provider.username_email" class="Nucleos\UserBundle\Security\EmailUserProvider">
       <argument type="service" id="nucleos_user.user_manager"/>
     </service>
-    <service id="nucleos_user.user_provider.email" class="Nucleos\UserBundle\Security\EmailProvider" public="false">
+    <service id="nucleos_user.user_provider.email" class="Nucleos\UserBundle\Security\EmailProvider">
       <argument type="service" id="nucleos_user.user_manager"/>
     </service>
     <service id="Nucleos\UserBundle\Action\LoginAction" public="true">

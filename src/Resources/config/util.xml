@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="nucleos_user.util.canonicalizer.default" class="Nucleos\UserBundle\Util\Canonicalizer" public="false"/>
+    <service id="nucleos_user.util.canonicalizer.default" class="Nucleos\UserBundle\Util\Canonicalizer"/>
     <service id="nucleos_user.util.user_manipulator" class="Nucleos\UserBundle\Util\UserManipulator">
       <argument type="service" id="nucleos_user.user_manager"/>
       <argument type="service" id="event_dispatcher"/>
       <argument type="service" id="request_stack"/>
     </service>
-    <service id="nucleos_user.util.token_generator.default" class="Nucleos\UserBundle\Util\TokenGenerator" public="false"/>
-    <service id="Nucleos\UserBundle\Util\TokenGeneratorInterface" alias="nucleos_user.util.token_generator" public="false"/>
-    <service id="nucleos_user.util.password_updater" class="Nucleos\UserBundle\Util\PasswordUpdater" public="false">
+    <service id="nucleos_user.util.token_generator.default" class="Nucleos\UserBundle\Util\TokenGenerator"/>
+    <service id="Nucleos\UserBundle\Util\TokenGeneratorInterface" alias="nucleos_user.util.token_generator"/>
+    <service id="nucleos_user.util.password_updater" class="Nucleos\UserBundle\Util\PasswordUpdater">
       <argument type="service" id="security.encoder_factory"/>
     </service>
-    <service id="Nucleos\UserBundle\Util\PasswordUpdaterInterface" alias="nucleos_user.util.password_updater" public="false"/>
-    <service id="nucleos_user.util.canonical_fields_updater" class="Nucleos\UserBundle\Util\CanonicalFieldsUpdater" public="false">
+    <service id="Nucleos\UserBundle\Util\PasswordUpdaterInterface" alias="nucleos_user.util.password_updater"/>
+    <service id="nucleos_user.util.canonical_fields_updater" class="Nucleos\UserBundle\Util\CanonicalFieldsUpdater">
       <argument type="service" id="nucleos_user.util.username_canonicalizer"/>
       <argument type="service" id="nucleos_user.util.email_canonicalizer"/>
     </service>
-    <service id="Nucleos\UserBundle\Util\CanonicalFieldsUpdater" alias="nucleos_user.util.canonical_fields_updater" public="false"/>
-    <service id="Nucleos\UserBundle\Model\UserManagerInterface" alias="nucleos_user.user_manager" public="false"/>
+    <service id="Nucleos\UserBundle\Util\CanonicalFieldsUpdater" alias="nucleos_user.util.canonical_fields_updater"/>
+    <service id="Nucleos\UserBundle\Model\UserManagerInterface" alias="nucleos_user.user_manager"/>
   </services>
 </container>
