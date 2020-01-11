@@ -4,21 +4,40 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<form action="{{ path("nucleos_user_security_check") }}" method="post">
-    {% if csrf_token %}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-    {% endif %}
+<form action="{{ path("nucleos_user_security_check") }}" method="post" class="login-form">
+    <fieldset>
+        <legend><i class="fa fa-lock" aria-hidden="true"></i> {{ 'security.login.title'|trans }}</legend>
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+        <div class="form-group">
+            <label for="username">{{ 'security.login.username'|trans }}</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"
+                   autocomplete="username" class="form-control"/>
+        </div>
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+        <div class="form-group">
+            <label for="password">{{ 'security.login.password'|trans }}</label>
+            <input type="password" id="password" name="_password" required="required" class="form-control"
+                   autocomplete="current-password"/>
+        </div>
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        <div class="form-group">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}"/>
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+        {% endif %}
 
-    <a href="{{ path('nucleos_user_resetting_request') }}">{{ 'security.forgotten_password'|trans }}</a>
+        <div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-sign-in" aria-hidden="true"></i> {{ 'security.login.submit'|trans }}
+            </button>
+
+            <a href="{{ path('nucleos_user_resetting_request') }}">
+                {{ 'security.forgotten_password'|trans }}
+            </a>
+        </div>
+    </fieldset>
 </form>

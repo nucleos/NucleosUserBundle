@@ -1,11 +1,14 @@
 {% trans_default_domain 'NucleosUserBundle' %}
 
-<form action="{{ path('nucleos_user_resetting_send_email') }}" method="POST" class="nucleos_user_resetting_request">
-    <div>
+<form action="{{ path('nucleos_user_resetting_send_email') }}" method="POST" class="resetting-form">
+    <div class="form-group">
         <label for="username">{{ 'resetting.request.username'|trans }}</label>
-        <input type="text" id="username" name="username" required="required" />
+        <input type="text" id="username" name="username" required="required" class="form-control" />
     </div>
+
     <div>
-        <input type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+        <button type="submit" class="btn btn-primary">
+            {{ 'resetting.request.submit'|trans }}
+        </button>
     </div>
 </form>
