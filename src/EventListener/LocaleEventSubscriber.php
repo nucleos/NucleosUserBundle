@@ -106,7 +106,7 @@ final class LocaleEventSubscriber implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        if ($user instanceof LocaleAwareInterface) {
+        if ($user instanceof LocaleAwareInterface && null !== $event->getRequest()) {
             $this->setTimezone($event->getRequest(), $user);
         }
     }
@@ -115,7 +115,7 @@ final class LocaleEventSubscriber implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        if ($user instanceof LocaleAwareInterface) {
+        if ($user instanceof LocaleAwareInterface && null !== $event->getRequest()) {
             $this->setLocale($event->getRequest(), $user);
         }
     }
