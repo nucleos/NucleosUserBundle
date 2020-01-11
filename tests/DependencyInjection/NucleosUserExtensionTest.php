@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\DependencyInjection;
 
 use Nucleos\UserBundle\DependencyInjection\NucleosUserExtension;
+use Nucleos\UserBundle\EventListener\FlashListener;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -157,14 +158,14 @@ final class NucleosUserExtensionTest extends TestCase
     {
         $this->createEmptyConfiguration();
 
-        $this->assertHasDefinition('nucleos_user.listener.flash');
+        $this->assertHasDefinition(FlashListener::class);
     }
 
     public function testUserLoadFlashesCanBeDisabled(): void
     {
         $this->createFullConfiguration();
 
-        $this->assertNotHasDefinition('nucleos_user.listener.flash');
+        $this->assertNotHasDefinition(FlashListener::class);
     }
 
     /**

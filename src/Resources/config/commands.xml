@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="nucleos_user.command.activate_user" class="Nucleos\UserBundle\Command\ActivateUserCommand">
+    <service id="Nucleos\UserBundle\Command\ActivateUserCommand">
       <argument type="service" id="nucleos_user.util.user_manipulator"/>
       <tag name="console.command" command="nucleos:user:activate"/>
     </service>
-    <service id="nucleos_user.command.change_password" class="Nucleos\UserBundle\Command\ChangePasswordCommand">
+    <service id="Nucleos\UserBundle\Command\ChangePasswordCommand">
       <argument type="service" id="nucleos_user.util.user_manipulator"/>
       <tag name="console.command" command="nucleos:user:change-password"/>
     </service>
-    <service id="nucleos_user.command.create_user" class="Nucleos\UserBundle\Command\CreateUserCommand">
+    <service id="Nucleos\UserBundle\Command\CreateUserCommand">
       <argument type="service" id="nucleos_user.util.user_manipulator"/>
       <tag name="console.command" command="nucleos:user:create"/>
     </service>
-    <service id="nucleos_user.command.deactivate_user" class="Nucleos\UserBundle\Command\DeactivateUserCommand">
+    <service id="Nucleos\UserBundle\Command\DeactivateUserCommand">
       <argument type="service" id="nucleos_user.util.user_manipulator"/>
       <tag name="console.command" command="nucleos:user:deactivate"/>
     </service>
-    <service id="nucleos_user.command.demote_user" class="Nucleos\UserBundle\Command\DemoteUserCommand">
+    <service id="Nucleos\UserBundle\Command\DemoteUserCommand">
       <argument type="service" id="nucleos_user.util.user_manipulator"/>
       <tag name="console.command" command="nucleos:user:demote"/>
     </service>
-    <service id="nucleos_user.command.promote_user" class="Nucleos\UserBundle\Command\PromoteUserCommand">
+    <service id="Nucleos\UserBundle\Command\PromoteUserCommand">
       <argument type="service" id="nucleos_user.util.user_manipulator"/>
       <tag name="console.command" command="nucleos:user:promote"/>
     </service>
