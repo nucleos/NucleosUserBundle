@@ -1,5 +1,5 @@
-Install the bundle
-==================
+Installation
+============
 
 Prerequisites
 -------------
@@ -30,7 +30,7 @@ Installation
 7. Update your database schema
 
 Step 1: Download NucleosUserBundle using composer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Require the bundle with composer:
 
@@ -244,7 +244,7 @@ For more information on configuring the ``security.yaml`` file please read the S
     in the next step when you configure the NucleosUserBundle.
 
 Step 5: Configure the NucleosUserBundle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have properly configured your application's ``security.yaml`` to work
 with the NucleosUserBundle, the next step is to configure the bundle to work with
