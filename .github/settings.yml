@@ -3,7 +3,7 @@
 repository:
     name: NucleosUserBundle
     description: Lightweight user management for symfony.
-    homepage: https://nucleosuserbundle.readthedocs.io
+    homepage: https://docs.nucleos.rocks/projects/user-bundle/
     topics: symfony, symfony-bundle, bundle, user, management
 
     default_branch: master
