@@ -20,8 +20,8 @@ use Nucleos\UserBundle\Model\GroupManager as BaseGroupManager;
 use Nucleos\UserBundle\Model\UserInterface;
 
 /**
- * @template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
- * @extends \Nucleos\UserBundle\Model\GroupManager<GroupTemplate>
+ * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
+ * @phpstan-extends \Nucleos\UserBundle\Model\GroupManager<GroupTemplate>
  */
 final class GroupManager extends BaseGroupManager
 {
