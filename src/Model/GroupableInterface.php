@@ -16,7 +16,7 @@ namespace Nucleos\UserBundle\Model;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * @template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
+ * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
  */
 interface GroupableInterface
 {

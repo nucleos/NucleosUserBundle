@@ -16,7 +16,7 @@ namespace Nucleos\UserBundle\Tests\App\Entity;
 use Nucleos\UserBundle\Model\User;
 
 /**
- * @extends User<\Nucleos\UserBundle\Model\GroupInterface>
+ * @phpstan-extends User<\Nucleos\UserBundle\Model\GroupInterface>
  */
 class TestUser extends User
 {

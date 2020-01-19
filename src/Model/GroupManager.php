@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Model;
 
 /**
- * @template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
- * @implements GroupManagerInterface<GroupTemplate>
+ * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
+ * @phpstan-implements GroupManagerInterface<GroupTemplate>
  */
 abstract class GroupManager implements GroupManagerInterface
 {

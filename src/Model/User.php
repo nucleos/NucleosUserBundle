@@ -20,8 +20,8 @@ use DomainException;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
- * @template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
- * @implements \Nucleos\UserBundle\Model\GroupableInterface<GroupTemplate>
+ * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
+ * @phpstan-implements \Nucleos\UserBundle\Model\GroupableInterface<GroupTemplate>
  */
 abstract class User implements UserInterface, GroupableInterface, LocaleAwareInterface
 {
