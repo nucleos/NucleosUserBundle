@@ -61,7 +61,7 @@ jobs:
             php${{ matrix.php-version }}-php-cs-fixer-
 
       - name: "Run friendsofphp/php-cs-fixer"
-        run: vendor/bin/php-cs-fixer fix --diff --diff-format=udiff --dry-run --verbose
+        run: composer cs-diff
 
   static-code-analysis:
     name: "Static Code Analysis"
@@ -96,7 +96,7 @@ jobs:
         run: composer install --no-interaction --no-progress --no-suggest
 
       - name: "Run phpstan/phpstan"
-        run: vendor/bin/phpstan analyse
+        run: composer phpstan
 
   tests:
     name: "Tests"
@@ -148,7 +148,7 @@ jobs:
         run: composer update --no-interaction --no-progress --no-suggest
 
       - name: "Run tests with phpunit/phpunit"
-        run: vendor/bin/phpunit
+        run: composer test
 
   code-coverage:
     name: "Code Coverage"
@@ -183,7 +183,7 @@ jobs:
         run: composer install --no-interaction --no-progress --no-suggest
 
       - name: "Collect code coverage with pcov and phpunit/phpunit"
-        run: vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
+        run: composer coverage
 
       - name: "Send code coverage report to Codecov.io"
         env:
@@ -220,4 +220,4 @@ jobs:
         run: composer install --no-interaction --no-progress --no-suggest
 
       - name: "Run mutation tests with pcov and infection/infection"
-        run: vendor/bin/infection --ignore-msi-with-no-mutations --min-covered-msi=65 --min-msi=35
+        run: composer infection
