@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <services>
+    <service id="nucleos_user.user_manager.default" class="Nucleos\UserBundle\Noop\UserManager">
+      <argument type="service" id="nucleos_user.util.password_updater"/>
+      <argument type="service" id="nucleos_user.util.canonical_fields_updater"/>
+    </service>
+    <service id="nucleos_user.user_listener" class="Nucleos\UserBundle\Noop\UserListener">
+    </service>
+  </services>
+</container>

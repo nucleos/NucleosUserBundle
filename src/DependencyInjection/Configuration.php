@@ -25,7 +25,7 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode = $treeBuilder->getRootNode();
 
-        $supportedDrivers = ['orm', 'mongodb', 'custom'];
+        $supportedDrivers = ['noop', 'orm', 'mongodb', 'custom'];
 
         $rootNode
             ->children()
@@ -35,7 +35,7 @@ final class Configuration implements ConfigurationInterface
                         ->thenInvalid('The driver %s is not supported. Please choose one of '.json_encode($supportedDrivers))
                     ->end()
                     ->cannotBeOverwritten()
-                    ->isRequired()
+                    ->defaultValue('noop')
                     ->cannotBeEmpty()
                 ->end()
                 ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()

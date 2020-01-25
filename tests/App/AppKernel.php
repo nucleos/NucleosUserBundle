@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\App;
 
-use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Nucleos\UserBundle\NucleosUserBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -38,7 +37,6 @@ final class AppKernel extends Kernel
         yield new FrameworkBundle();
         yield new TwigBundle();
         yield new SecurityBundle();
-        yield new DoctrineBundle();
         yield new NucleosUserBundle();
     }
 

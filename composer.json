@@ -102,7 +102,7 @@
         "cs": "PHP_CS_FIXER_IGNORE_ENV=1 && vendor/bin/php-cs-fixer fix --verbose",
         "cs-diff": "PHP_CS_FIXER_IGNORE_ENV=1 && vendor/bin/php-cs-fixer fix  --verbose --diff --diff-format=udiff --dry-run",
         "deps": "vendor/bin/composer-require-checker check --config-file composer-require.json composer.json",
-        "infection": "vendor/bin/infection --ignore-msi-with-no-mutations --min-covered-msi=65 --min-msi=35",
+        "infection": "vendor/bin/infection --ignore-msi-with-no-mutations --min-covered-msi=64 --min-msi=34",
         "lint": [
             "find ./src \\( -name '*.xml' -or -name '*.xml.dist' -or -name '*.xlf' \\) -type f -exec xmllint --encode UTF-8 --output '{}' --format '{}' \\;",
             "find ./src \\( -name '*.yml' -or -name '*.yaml' \\) -not -path '*/vendor/*' | xargs yaml-lint"

@@ -141,7 +141,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
 
         $storage = $container->getParameter('nucleos_user.storage');
 
-        if ('custom' === $storage) {
+        if (!\in_array($storage, ['orm', 'mongodb'], true)) {
             return;
         }
 
