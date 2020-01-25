@@ -108,6 +108,6 @@
             "find ./src \\( -name '*.yml' -or -name '*.yaml' \\) -not -path '*/vendor/*' | xargs yaml-lint"
         ],
         "phpstan": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/phpunit --colors=always --coverage-clover build/logs/clover.xml"
+        "test": "vendor/bin/phpunit --colors=always"
     }
 }
