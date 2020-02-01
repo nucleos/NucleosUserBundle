@@ -44,9 +44,6 @@ final class LocaleEventListener implements EventSubscriberInterface
         $this->twig       = $twig;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public static function getSubscribedEvents(): array
     {
         return [

@@ -16,19 +16,7 @@ framework:
         storage_id: session.storage.mock_file
         handler_id: session.handler.native_file
 
-doctrine:
-    dbal:
-        default_connection: default
-        connections:
-            default:
-                driver:   pdo_sqlite
-                memory:   true
-
-    orm:
-        auto_mapping: true
-
 nucleos_user:
-    db_driver:      orm
     firewall_name:  main
 
     from_email:  'no-reply@localhost'

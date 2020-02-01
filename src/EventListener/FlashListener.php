@@ -46,9 +46,6 @@ final class FlashListener implements EventSubscriberInterface
         $this->translator = $translator;
     }
 
-    /**
-     * @return string[]
-     */
     public static function getSubscribedEvents(): array
     {
         return [

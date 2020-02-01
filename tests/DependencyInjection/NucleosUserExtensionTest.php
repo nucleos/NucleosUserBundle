@@ -28,16 +28,6 @@ final class NucleosUserExtensionTest extends TestCase
      */
     protected $configuration;
 
-    public function testUserLoadThrowsExceptionUnlessDatabaseDriverSet(): void
-    {
-        $this->expectException(InvalidConfigurationException::class);
-
-        $loader = new NucleosUserExtension();
-        $config = $this->getEmptyConfig();
-        unset($config['db_driver']);
-        $loader->load([$config], new ContainerBuilder());
-    }
-
     public function testUserLoadThrowsExceptionUnlessDatabaseDriverIsValid(): void
     {
         $this->expectException(InvalidConfigurationException::class);
