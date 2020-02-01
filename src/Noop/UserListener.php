@@ -17,9 +17,6 @@ use Doctrine\Common\EventSubscriber;
 
 final class UserListener implements EventSubscriber
 {
-    /**
-     * @return string[]
-     */
     public function getSubscribedEvents(): array
     {
         return [

@@ -136,11 +136,6 @@ parameters:
 			path: src/DependencyInjection/NucleosUserExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\DependencyInjection\\\\NucleosUserExtension\\:\\:load\\(\\) has parameter \\$configs with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/DependencyInjection/NucleosUserExtension.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\DependencyInjection\\\\NucleosUserExtension\\:\\:remapParameters\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/DependencyInjection/NucleosUserExtension.php
@@ -211,16 +206,6 @@ parameters:
 			path: src/EventListener/LocaleEventListener.php
 
 		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Form\\\\Type\\\\ChangePasswordFormType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Type/ChangePasswordFormType.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Form\\\\Type\\\\ResettingFormType\\:\\:buildForm\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Form/Type/ResettingFormType.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\Group\\:\\:__construct\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/Group.php
@@ -254,6 +239,16 @@ parameters:
 			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\UserManagerInterface\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/UserManagerInterface.php
+
+		-
+			message: "#^Method Nucleos\\\\UserBundle\\\\Noop\\\\GroupManager\\:\\:findGroupBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Noop/GroupManager.php
+
+		-
+			message: "#^Method Nucleos\\\\UserBundle\\\\Noop\\\\UserManager\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Noop/UserManager.php
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Security\\\\UserProvider\\:\\:loadUserByUsername\\(\\) has parameter \\$username with no typehint specified\\.$#"

@@ -39,9 +39,6 @@ final class AuthenticationListener implements EventSubscriberInterface
         $this->firewallName = $firewallName;
     }
 
-    /**
-     * @return string[]
-     */
     public static function getSubscribedEvents(): array
     {
         return [
