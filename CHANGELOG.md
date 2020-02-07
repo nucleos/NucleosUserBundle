@@ -1,3 +1,11 @@
+# 1.2.0
+
+## Changes
+
+## 🚀 Features
+
+- Use bootstrap 3 layout as default form theme @core23 (#36)
+
 # 1.1.0
 
 ## Changes
