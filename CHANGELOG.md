@@ -1,3 +1,11 @@
+# 1.3.0
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- Find methods could return null @core23 (#38)
+
 # 1.2.0
 
 ## Changes
