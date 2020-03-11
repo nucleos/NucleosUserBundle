@@ -30,9 +30,9 @@ abstract class GroupManager implements GroupManagerInterface
     }
 
     /**
-     * @return GroupTemplate
+     * @return GroupTemplate|null
      */
-    public function findGroupByName(string $name): GroupInterface
+    public function findGroupByName(string $name): ?GroupInterface
     {
         return $this->findGroupBy(['name' => $name]);
     }

@@ -171,7 +171,7 @@ parameters:
 			path: src/Doctrine/GroupManager.php
 
 		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\GroupManager\\:\\:findGroupBy\\(\\) should return GroupTemplate of Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface but returns object\\|null\\.$#"
+			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\GroupManager\\:\\:findGroupBy\\(\\) should return GroupTemplate of Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\|null but returns object\\|null\\.$#"
 			count: 1
 			path: src/Doctrine/GroupManager.php
 
