@@ -33,16 +33,16 @@ interface GroupManagerInterface
     /**
      * Finds one group by the given criteria.
      *
-     * @return GroupTemplate
+     * @return GroupTemplate|null
      */
-    public function findGroupBy(array $criteria): GroupInterface;
+    public function findGroupBy(array $criteria): ?GroupInterface;
 
     /**
      * Finds a group by name.
      *
-     * @return GroupTemplate
+     * @return GroupTemplate|null
      */
-    public function findGroupByName(string $name): GroupInterface;
+    public function findGroupByName(string $name): ?GroupInterface;
 
     /**
      * Returns a collection with all group instances.

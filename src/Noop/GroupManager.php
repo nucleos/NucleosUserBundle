@@ -29,7 +29,7 @@ final class GroupManager extends BaseGroupManager
         throw new NoDriverException();
     }
 
-    public function findGroupBy(array $criteria): GroupInterface
+    public function findGroupBy(array $criteria): ?GroupInterface
     {
         throw new NoDriverException();
     }
