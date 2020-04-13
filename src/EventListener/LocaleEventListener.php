@@ -162,6 +162,7 @@ final class LocaleEventListener implements EventSubscriberInterface
             return;
         }
 
-        $extension->setTimezone($timezone);
+        // TODO: Find a way to manipulate all DateTimes for a user
+//        $extension->setTimezone($timezone);
     }
 }
