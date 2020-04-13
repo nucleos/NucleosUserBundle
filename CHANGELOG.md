@@ -1,3 +1,9 @@
+# 1.3.1
+
+## 🐛 Bug Fixes
+
+- Disable setting twig timezone @core23 (#40)
+
 # 1.3.0
 
 ## Changes
