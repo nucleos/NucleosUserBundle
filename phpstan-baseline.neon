@@ -1,9 +1,19 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Action/CheckEmailAction.php
+
+		-
 			message: "#^Call to method Symfony\\\\Component\\\\HttpFoundation\\\\Request\\:\\:hasSession\\(\\) will always evaluate to true\\.$#"
 			count: 1
 			path: src/Action/LoginAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$usernameOrEmail of method Nucleos\\\\UserBundle\\\\Model\\\\UserManagerInterface\\:\\:findUserByUsernameOrEmail\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Action/SendEmailAction.php
 
 		-
 			message: "#^Parameter \\#1 \\$username of method Nucleos\\\\UserBundle\\\\Util\\\\UserManipulator\\:\\:activate\\(\\) expects string, array\\<string\\>\\|string\\|null given\\.$#"
@@ -259,69 +269,4 @@ parameters:
 			message: "#^Method Nucleos\\\\UserBundle\\\\Security\\\\UserProvider\\:\\:supportsClass\\(\\) has parameter \\$class with no typehint specified\\.$#"
 			count: 1
 			path: src/Security/UserProvider.php
-
-		-
-			message: "#^Offset 0 does not exist on array\\|string\\|null\\.$#"
-			count: 2
-			path: tests/DependencyInjection/NucleosUserExtensionTest.php
-
-		-
-			message: "#^Offset 1 does not exist on array\\|string\\|null\\.$#"
-			count: 1
-			path: tests/DependencyInjection/NucleosUserExtensionTest.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\DependencyInjection\\\\NucleosUserExtensionTest\\:\\:getEmptyConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/DependencyInjection/NucleosUserExtensionTest.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\DependencyInjection\\\\NucleosUserExtensionTest\\:\\:getFullConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/DependencyInjection/NucleosUserExtensionTest.php
-
-		-
-			message: "#^Property Nucleos\\\\UserBundle\\\\Tests\\\\Mailer\\\\MailerTest\\:\\:\\$swiftMailer \\(Prophecy\\\\Prophecy\\\\ObjectProphecy&Symfony\\\\Component\\\\Mailer\\\\MailerInterface\\) does not accept Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Mailer\\\\MailerInterface\\>\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Property Nucleos\\\\UserBundle\\\\Tests\\\\Mailer\\\\MailerTest\\:\\:\\$translator \\(Prophecy\\\\Prophecy\\\\ObjectProphecy&Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface\\) does not accept Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface\\>\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Property Nucleos\\\\UserBundle\\\\Tests\\\\Mailer\\\\MailerTest\\:\\:\\$generator \\(Prophecy\\\\Prophecy\\\\ObjectProphecy&Symfony\\\\Component\\\\Routing\\\\Generator\\\\UrlGeneratorInterface\\) does not accept Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Routing\\\\Generator\\\\UrlGeneratorInterface\\>\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$mailer of class Nucleos\\\\UserBundle\\\\Mailer\\\\Mailer constructor expects Symfony\\\\Component\\\\Mailer\\\\MailerInterface, object given\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$translator of class Nucleos\\\\UserBundle\\\\Mailer\\\\Mailer constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Parameter \\#3 \\$router of class Nucleos\\\\UserBundle\\\\Mailer\\\\Mailer constructor expects Symfony\\\\Component\\\\Routing\\\\Generator\\\\UrlGeneratorInterface, object given\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Model\\\\UserManagerTest\\:\\:getUserManager\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/Model/UserManagerTest.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Routing\\\\RoutingTest\\:\\:testLoadRouting\\(\\) has parameter \\$methods with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/Routing/RoutingTest.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Routing\\\\RoutingTest\\:\\:loadRoutingProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/Routing/RoutingTest.php
 
