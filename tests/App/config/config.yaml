@@ -22,6 +22,3 @@ nucleos_user:
     from_email:  'no-reply@localhost'
 
     user_class:  'Nucleos\UserBundle\Tests\App\Entity\User'
-
-    group:
-        group_class: 'Nucleos\UserBundle\Tests\App\Entity\Group'

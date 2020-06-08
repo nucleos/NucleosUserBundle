@@ -110,7 +110,6 @@ final class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->arrayNode('group')
-                    ->canBeUnset()
                     ->children()
                         ->scalarNode('group_class')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('group_manager')->defaultValue('nucleos_user.group_manager.default')->end()
