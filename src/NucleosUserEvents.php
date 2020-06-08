@@ -155,6 +155,43 @@ final class NucleosUserEvents
     public const RESETTING_RESET_COMPLETED = 'nucleos_user.resetting.reset.completed';
 
     /**
+     * The TWO_FACTOR_LOGIN_REQUEST event occurs when a user tries to login without a device token.
+     *
+     * This event allows you to check intercept the flow before redirecting to the two factor form.
+     * The event listener method receives a Nucleos\UserBundle\Event\GetResponseUserEvent instance.
+     *
+     * @Event("Nucleos\UserBundle\Event\GetResponseUserEvent")
+     */
+    public const TWO_FACTOR_LOGIN_REQUEST = 'nucleos_user.two_factor.login.request';
+
+    /**
+     * The TWO_FACTOR_LOGIN_INITIALIZE event occurs when the two factor form is initialized.
+     *
+     * This event allows you to set the response to bypass the processing.
+     *
+     * @Event("Nucleos\UserBundle\Event\GetResponseUserEvent")
+     */
+    public const TWO_FACTOR_LOGIN_INITIALIZE = 'nucleos_user.two_factor.login.initialize';
+
+    /**
+     * The TWO_FACTOR_LOGIN_SUCCESS event occurs when the two factor  form is submitted successfully.
+     *
+     * This event allows you to set the response instead of using the default one.
+     *
+     * @Event("Nucleos\UserBundle\Event\FormEvent ")
+     */
+    public const TWO_FACTOR_LOGIN_SUCCESS = 'nucleos_user.two_factor.login.success';
+
+    /**
+     * The TWO_FACTOR_LOGIN_COMPLETED event occurs after saving the device token in the two factor process.
+     *
+     * This event allows you to access the response which will be sent.
+     *
+     * @Event("Nucleos\UserBundle\Event\FilterUserResponseEvent")
+     */
+    public const TWO_FACTOR_LOGIN_COMPLETED = 'nucleos_user.two_factor.login.completed';
+
+    /**
      * The SECURITY_LOGIN_INITIALIZE event occurs when the send email process is initialized.
      *
      * This event allows you to set the response to bypass the login.
@@ -213,4 +250,35 @@ final class NucleosUserEvents
      * @Event("Nucleos\UserBundle\Event\GetResponseUserEvent")
      */
     public const RESETTING_SEND_EMAIL_COMPLETED = 'nucleos_user.resetting.send_email.completed';
+
+    /**
+     * The TWO_FACTOR_SEND_EMAIL_INITIALIZE event occurs when the send email process is initialized.
+     *
+     * This event allows you to set the response to bypass the email confirmation processing.
+     * The event listener method receives a Nucleos\UserBundle\Event\GetResponseNullableUserEvent instance.
+     *
+     * @Event("Nucleos\UserBundle\Event\GetResponseNullableUserEvent")
+     */
+    public const TWO_FACTOR_SEND_EMAIL_INITIALIZE = 'nucleos_user.resetting.send_email.initialize';
+
+    /**
+     * The TWO_FACTOR_SEND_EMAIL_CONFIRM event occurs when all prerequisites to send email are
+     * confirmed and before the mail is sent.
+     *
+     * This event allows you to set the response to bypass the email sending.
+     * The event listener method receives a Nucleos\UserBundle\Event\GetResponseUserEvent instance.
+     *
+     * @Event("Nucleos\UserBundle\Event\GetResponseUserEvent")
+     */
+    public const TWO_FACTOR_SEND_EMAIL_CONFIRM = 'nucleos_user.resetting.send_email.confirm';
+
+    /**
+     * The TWO_FACTOR_SEND_EMAIL_COMPLETED event occurs after the email is sent.
+     *
+     * This event allows you to set the response to bypass the the redirection after the email is sent.
+     * The event listener method receives a Nucleos\UserBundle\Event\GetResponseUserEvent instance.
+     *
+     * @Event("Nucleos\UserBundle\Event\GetResponseUserEvent")
+     */
+    public const TWO_FACTOR_SEND_EMAIL_COMPLETED = 'nucleos_user.resetting.send_email.completed';
 }

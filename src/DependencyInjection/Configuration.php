@@ -64,6 +64,7 @@ final class Configuration implements ConfigurationInterface
         $this->addResettingSection($rootNode);
         $this->addGroupSection($rootNode);
         $this->addServiceSection($rootNode);
+        $this->addTwoFactorSection($rootNode);
 
         return $treeBuilder;
     }
@@ -113,6 +114,38 @@ final class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('group_class')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('group_manager')->defaultValue('nucleos_user.group_manager.default')->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addTwoFactorSection(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('two_factor')
+                    ->canBeUnset()
+                    ->children()
+                        ->integerNode('token_length')->min(4)->max(16)->defaultValue(5)->end()
+                        ->integerNode('token_ttl')
+                            ->defaultValue(1800)
+                            ->info('Lifetime of a generated token in seconds')
+                        ->end()
+                        ->integerNode('retry_delay')
+                            ->defaultValue(300)
+                            ->info('Delay between generating new 2fa token')
+                        ->end()
+                        ->integerNode('retry_limit')
+                            ->defaultValue(5)
+                            ->info('Number of mistyping token before invalidating token')
+                        ->end()
+                        ->scalarNode('cookie_name')
+                            ->defaultValue('device_token')
+                            ->info('Name of the cookie that stores the device token locally')
+                        ->end()
+                        ->scalarNode('token_class')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('trusted_device_class')->isRequired()->cannotBeEmpty()->end()
                     ->end()
                 ->end()
             ->end()

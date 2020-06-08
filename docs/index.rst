@@ -21,6 +21,7 @@ The following documents are available:
     logging_by_username_or_email
     emails
     groups
+    two_factor
     doctrine
     canonicalizer
     custom_storage_layer

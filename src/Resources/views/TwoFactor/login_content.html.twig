@@ -1,0 +1,12 @@
+{% trans_default_domain 'NucleosUserBundle' %}
+
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{{ form_start(form, { 'action': path('nucleos_user_two_factor_login', {'token': token}) }) }}
+    {{ form_widget(form) }}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" class="btn btn-primary" value="{{ 'two_factor.login.submit'|trans }}"/>
+        </div>
+    </div>
+{{ form_end(form) }}

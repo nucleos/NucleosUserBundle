@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://symfony.com/schema/routing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+  <route id="nucleos_user_two_factor_login" path="/login/confirm" methods="GET">
+    <default key="_controller">Nucleos\UserBundle\Action\ConfirmLoginAction</default>
+  </route>
+  <route id="nucleos_user_two_factor_send" path="/login/sendToken" methods="GET">
+    <default key="_controller">Nucleos\UserBundle\Action\SendTwoFactorTokenAction</default>
+  </route>
+</routes>

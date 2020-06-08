@@ -11,12 +11,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Nucleos\UserBundle\Util;
+namespace Nucleos\UserBundle\Tests\App\Entity;
 
-final class TokenGenerator implements TokenGeneratorInterface
+use Nucleos\UserBundle\Model\TrustedDevice;
+
+class TestTrustedDevice extends TrustedDevice
 {
-    public function generateToken(int $length = 32): string
-    {
-        return rtrim(strtr(base64_encode(random_bytes($length)), '+/', '-_'), '=');
-    }
 }

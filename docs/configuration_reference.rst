@@ -27,3 +27,11 @@ All available configuration options are listed below with their default values.
         group:
             group_class:    ~ # Required when using groups
             group_manager:  nucleos_user.group_manager.default
+        two_factor:
+            token_length:   4
+            token_ttl:      1800
+            retry_delay:    300
+            retry_limit:    5
+            cookie_name:    device_token
+            token_class:    ~ # Required when using groups
+            trusted_device_class:    ~ # Required when using groups

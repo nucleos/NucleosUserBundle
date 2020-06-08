@@ -1,0 +1,7 @@
+{% trans_default_domain 'NucleosUserBundle' %}
+
+{{ 'two_factor.email.message'|trans({
+    '%username%': user.username,
+    '%code%': token.code,
+    '%confirmationUrl%': confirmationUrl
+}) }}

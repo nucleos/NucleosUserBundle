@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Mailer;
 
 use Nucleos\UserBundle\Mailer\Mail\ResettingMail;
+use Nucleos\UserBundle\Mailer\Mail\TwoFactorMail;
+use Nucleos\UserBundle\Model\TrustedDeviceInterface;
 use Nucleos\UserBundle\Model\UserInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface as SymfonyMailer;
@@ -21,7 +23,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class Mailer implements MailerInterface
+final class Mailer implements MailerInterface, TwoFactorMailer
 {
     /**
      * @var SymfonyMailer
@@ -68,6 +70,28 @@ final class Mailer implements MailerInterface
             ], 'NucleosUserBundle'))
             ->setUser($user)
             ->setConfirmationUrl($url)
+        ;
+
+        $this->mailer->send($mail);
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendTwoFactorMessage(UserInterface $user, TrustedDeviceInterface $token): void
+    {
+        $url  = $this->router->generate('nucleos_user_two_factor_login', [
+        ], UrlGeneratorInterface::ABSOLUTE_URL);
+
+        $mail = (new TwoFactorMail())
+            ->from(Address::fromString($this->fromEmail))
+            ->to(new Address($user->getEmail()))
+            ->subject($this->translator->trans('two_factor.email.subject', [
+                '%username%' => $user->getUsername(),
+            ], 'NucleosUserBundle'))
+            ->setUser($user)
+            ->setConfirmationUrl($url)
+            ->setToken($token)
         ;
 
         $this->mailer->send($mail);

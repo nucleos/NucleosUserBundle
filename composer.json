@@ -4,6 +4,10 @@
     "description": "Lightweight user management for symfony",
     "keywords": [
         "user management",
+        "securty",
+        "2fa",
+        "two factor",
+        "2-step",
         "symfony"
     ],
     "homepage": "https://nucleos.rocks",

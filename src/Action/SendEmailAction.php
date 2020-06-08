@@ -14,7 +14,7 @@ namespace Nucleos\UserBundle\Action;
 use DateTime;
 use Nucleos\UserBundle\Event\GetResponseNullableUserEvent;
 use Nucleos\UserBundle\Event\GetResponseUserEvent;
-use Nucleos\UserBundle\Mailer\MailerInterface;
+use Nucleos\UserBundle\Mailer\ResettingMailer;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\NucleosUserEvents;
@@ -48,7 +48,7 @@ final class SendEmailAction
     private $tokenGenerator;
 
     /**
-     * @var MailerInterface
+     * @var ResettingMailer
      */
     private $mailer;
 
@@ -62,7 +62,7 @@ final class SendEmailAction
         EventDispatcherInterface $eventDispatcher,
         UserManagerInterface $userManager,
         TokenGeneratorInterface $tokenGenerator,
-        MailerInterface $mailer,
+        ResettingMailer $mailer,
         int $retryTtl
     ) {
         $this->router          = $router;

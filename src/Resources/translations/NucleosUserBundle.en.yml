@@ -42,7 +42,23 @@ form:
     username: Username
     email: Email
     current_password: 'Current password'
+    current_code: 'Current code'
     password: Password
     password_confirmation: 'Repeat password'
     new_password: 'New password'
     new_password_confirmation: 'Repeat new password'
+
+two_factor:
+  email:
+      subject: 'Confirm login'
+      message: |
+          Hello %username%!
+
+          we try to protect you account. Please visit %confirmationUrl% and confirm your login using the following code:
+
+          %code%
+
+          Regards,
+          the Team.
+  login:
+    submit: 'Login'

@@ -11,12 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Nucleos\UserBundle\Util;
+namespace Nucleos\UserBundle\Mailer;
 
-final class TokenGenerator implements TokenGeneratorInterface
+use Nucleos\UserBundle\Model\TrustedDeviceInterface;
+use Nucleos\UserBundle\Model\UserInterface;
+
+interface TwoFactorMailer
 {
-    public function generateToken(int $length = 32): string
-    {
-        return rtrim(strtr(base64_encode(random_bytes($length)), '+/', '-_'), '=');
-    }
+    public function sendTwoFactorMessage(UserInterface $user, TrustedDeviceInterface $token): void;
 }

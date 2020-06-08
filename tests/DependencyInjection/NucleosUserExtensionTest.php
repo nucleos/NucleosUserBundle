@@ -14,7 +14,9 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\DependencyInjection;
 
 use Nucleos\UserBundle\DependencyInjection\NucleosUserExtension;
+use Nucleos\UserBundle\Doctrine\TrustedDeviceManager;
 use Nucleos\UserBundle\EventListener\FlashListener;
+use Nucleos\UserBundle\Model\TrustedDeviceManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -124,6 +126,7 @@ final class NucleosUserExtensionTest extends TestCase
         $this->assertParameter('custom', 'nucleos_user.model_manager_name');
         $this->assertAlias('acme_my.user_manager', 'nucleos_user.user_manager');
         $this->assertAlias('nucleos_user.group_manager.default', 'nucleos_user.group_manager');
+        $this->assertAlias(TrustedDeviceManager::class, TrustedDeviceManagerInterface::class);
     }
 
     public function testUserLoadUtilServiceWithDefaults(): void
@@ -243,6 +246,14 @@ service:
     user_manager: acme_my.user_manager
 group:
     group_class: Acme\MyBundle\Entity\Group
+two_factor:
+    token_length:   4
+    token_ttl:      1800
+    retry_delay:    300
+    retry_limit:    5
+    cookie_name:    device_token
+    token_class:    Acme\MyBundle\Entity\Token
+    trusted_device_class:    Acme\MyBundle\Entity\DeviceToken
 EOF;
         $parser = new Parser();
 

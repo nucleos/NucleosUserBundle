@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\DependencyInjection;
 
 use Nucleos\UserBundle\Mailer\MailerInterface;
+use Nucleos\UserBundle\Mailer\ResettingMailer;
+use Nucleos\UserBundle\Mailer\TwoFactorMailer;
 use Nucleos\UserBundle\Model\GroupManagerInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\Util\TokenGeneratorInterface;
@@ -122,9 +124,15 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
             $this->loadGroups($config['group'], $container, $loader, $config['db_driver']);
         }
 
+        if (isset($config['two_factor'])) {
+            $this->loadTwoFactor($config['two_factor'], $container, $loader, $config['db_driver'], $config['from_email']);
+        }
+
         if ($this->mailerNeeded) {
             $container->setAlias('nucleos_user.mailer', new Alias($config['service']['mailer'], true));
             $container->setAlias(MailerInterface::class, new Alias($config['service']['mailer'], true));
+            $container->setAlias(ResettingMailer::class, new Alias($config['service']['mailer'], true));
+            $container->setAlias(TwoFactorMailer::class, new Alias($config['service']['mailer'], true));
         }
 
         if ($this->sessionNeeded) {
@@ -232,5 +240,34 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
                 'group_class' => 'nucleos_user.model.group.class',
             ],
         ]);
+    }
+
+    private function loadTwoFactor(array $config, ContainerBuilder $container, XmlFileLoader $loader, string $dbDriver, string $fromEmail): void
+    {
+        $this->mailerNeeded = true;
+
+        if ('custom' !== $dbDriver) {
+            if (isset(self::$doctrineDrivers[$dbDriver])) {
+                $loader->load('doctrine_two_factor.xml');
+            } else {
+                $loader->load(sprintf('%s_two_factor.xml', $dbDriver));
+            }
+        }
+
+        $loader->load('two_factor.xml');
+
+        $this->remapParametersNamespaces($config, $container, [
+            '' => [
+                'token_length'           => 'nucleos_user.two_factor.token_length',
+                'token_ttl'              => 'nucleos_user.two_factor.token_ttl',
+                'retry_delay'            => 'nucleos_user.two_factor.retry_delay',
+                'retry_limit'            => 'nucleos_user.two_factor.retry_limit',
+                'cookie_name'            => 'nucleos_user.two_factor.cookie_name',
+                'token_class'            => 'nucleos_user.model.token.class',
+                'trusted_device_class'   => 'nucleos_user.model.trusted_device.class',
+            ],
+        ]);
+
+        $container->setParameter('nucleos_user.two_factor.from_email', $fromEmail);
     }
 }

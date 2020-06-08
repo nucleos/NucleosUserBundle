@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the NucleosUserBundle package.
  *
@@ -13,9 +11,9 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Mailer;
 
-/**
- * @deprecated since 1.4.0, use ResettingMailer instead
- */
-interface MailerInterface extends ResettingMailer
+use Nucleos\UserBundle\Model\UserInterface;
+
+interface ResettingMailer
 {
+    public function sendResettingEmailMessage(UserInterface $user): void;
 }
