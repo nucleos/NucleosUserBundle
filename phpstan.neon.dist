@@ -7,3 +7,9 @@ parameters:
     paths:
         - src
         - tests
+
+    bootstrapFiles:
+        - vendor-bin/test/vendor/autoload.php
+
+    excludes_analyse:
+        - tests/bootstrap.php
