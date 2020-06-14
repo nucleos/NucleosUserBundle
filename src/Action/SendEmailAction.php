@@ -80,7 +80,7 @@ final class SendEmailAction
     {
         $username = $request->request->get('username');
 
-        $user = $this->userManager->findUserByUsernameOrEmail($username);
+        $user = null === $username ? null : $this->userManager->findUserByUsernameOrEmail($username);
 
         if (null !== $user) {
             $response = $this->process($request, $user);
