@@ -6,7 +6,7 @@ repository:
     homepage: https://docs.nucleos.rocks/projects/user-bundle/
     topics: symfony, symfony-bundle, bundle, user, management
 
-    default_branch: master
+    default_branch: main
     private: false
     allow_squash_merge: true
     allow_merge_commit: true
@@ -39,7 +39,7 @@ labels:
         color: cc317c
 
 branches:
-    -   name: master
+    -   name: main
         protection:
             enforce_admins: falser
             required_status_checks:
