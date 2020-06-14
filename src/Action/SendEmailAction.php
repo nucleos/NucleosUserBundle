@@ -57,9 +57,6 @@ final class SendEmailAction
      */
     private $retryTtl;
 
-    /**
-     * SendEmailAction constructor.
-     */
     public function __construct(
         RouterInterface $router,
         EventDispatcherInterface $eventDispatcher,

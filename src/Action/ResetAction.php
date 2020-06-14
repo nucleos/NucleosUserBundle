@@ -53,9 +53,6 @@ final class ResetAction
      */
     private $userManager;
 
-    /**
-     * ResetAction constructor.
-     */
     public function __construct(
         Environment $twig,
         RouterInterface $router,

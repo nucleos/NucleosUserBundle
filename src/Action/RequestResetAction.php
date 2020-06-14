@@ -21,9 +21,6 @@ final class RequestResetAction
      */
     private $twig;
 
-    /**
-     * RequestAction constructor.
-     */
     public function __construct(Environment $twig)
     {
         $this->twig = $twig;

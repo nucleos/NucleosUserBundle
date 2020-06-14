@@ -36,9 +36,6 @@ final class CheckEmailAction
      */
     private $retryTtl;
 
-    /**
-     * CheckEmailAction constructor.
-     */
     public function __construct(Environment $twig, RouterInterface $router, int $retryTtl)
     {
         $this->twig     = $twig;
