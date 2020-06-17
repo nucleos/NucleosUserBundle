@@ -41,7 +41,7 @@ labels:
 branches:
     -   name: main
         protection:
-            enforce_admins: falser
+            enforce_admins: false
             required_status_checks:
                 contexts:
                     - "Coding Standards (7.4)"
