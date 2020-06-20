@@ -1,65 +1,35 @@
 # These settings are synced to GitHub by https://probot.github.io/apps/settings/
 
+_extends: .github
+
 repository:
-    name: NucleosUserBundle
-    description: Lightweight user management for symfony.
-    homepage: https://docs.nucleos.rocks/projects/user-bundle/
-    topics: symfony, symfony-bundle, bundle, user, management
-
-    default_branch: main
-    private: false
-    allow_squash_merge: true
-    allow_merge_commit: true
-    allow_rebase_merge: true
-    has_issues: true
-    has_pages: false
-    has_projects: false
-    has_wiki: false
-
-labels:
-    -   name: automerge
-        color: ededed
-    -   name: bc break
-        color: ff0000
-    -   name: bugfix
-        color: fc2929
-    -   name: dependency
-        color: 5fb2d8
-    -   name: docs
-        color: fbca04
-    -   name: feature
-        color: 0e8a16
-    -   name: help wanted
-        color: 159818
-    -   name: invalid
-        color: e6e6e6
-    -   name: pedantic
-        color: DDDDDD
-    -   name: question
-        color: cc317c
+  name: NucleosUserBundle
+  description: 👤 Lightweight user management for symfony.
+  homepage: https://docs.nucleos.rocks/projects/user-bundle/
+  topics: symfony, symfony-bundle, bundle, user, management
 
 branches:
-    -   name: main
-        protection:
-            enforce_admins: false
-            required_status_checks:
-                contexts:
-                    - "Coding Standards (7.4)"
-                    - "Static Code Analysis (7.4)"
-                    - "Tests (7.3, lowest, ~4.4)"
-                    - "Tests (7.3, lowest, ~5.0)"
-                    - "Tests (7.3, highest, ~4.4)"
-                    - "Tests (7.3, highestf, ~5.0)"
-                    - "Tests (7.4, lowest, ~4.4)"
-                    - "Tests (7.4, lowest, ~5.0)"
-                    - "Tests (7.4, highest, ~4.4)"
-                    - "Tests (7.4, highest, ~5.0)"
-                    - "Code Coverage (7.4)"
-                    - "Mutation Tests (7.4)"
-                    - "Mutation Tests (7.4)"
-                    - "Build RST"
-                    - "DOCtor-RST"
-                strict: true
+  - name: main
+    protection:
+      enforce_admins: false
+      required_status_checks:
+        contexts:
+          - "Coding Standards (7.4)"
+          - "Static Code Analysis (7.4)"
+          - "Tests (7.3, lowest, ~4.4)"
+          - "Tests (7.3, lowest, ~5.0)"
+          - "Tests (7.3, highest, ~4.4)"
+          - "Tests (7.3, highestf, ~5.0)"
+          - "Tests (7.4, lowest, ~4.4)"
+          - "Tests (7.4, lowest, ~5.0)"
+          - "Tests (7.4, highest, ~4.4)"
+          - "Tests (7.4, highest, ~5.0)"
+          - "Code Coverage (7.4)"
+          - "Mutation Tests (7.4)"
+          - "Mutation Tests (7.4)"
+          - "Build RST"
+          - "DOCtor-RST"
+        strict: true
 
-            required_pull_request_reviews: null
-            restrictions: null
+      required_pull_request_reviews: null
+      restrictions: null
