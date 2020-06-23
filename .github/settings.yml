@@ -26,7 +26,7 @@ branches:
           - "Tests (7.4, highest, ~5.0)"
           - "Code Coverage (7.4)"
           - "Mutation Tests (7.4)"
-          - "Mutation Tests (7.4)"
+          - "BC Check"
           - "Build RST"
           - "DOCtor-RST"
         strict: true
