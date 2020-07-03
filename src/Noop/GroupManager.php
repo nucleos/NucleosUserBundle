@@ -15,7 +15,6 @@ namespace Nucleos\UserBundle\Noop;
 
 use Nucleos\UserBundle\Model\GroupInterface;
 use Nucleos\UserBundle\Model\GroupManager as BaseGroupManager;
-use Nucleos\UserBundle\Model\GroupTemplate;
 use Nucleos\UserBundle\Noop\Exception\NoDriverException;
 
 /**

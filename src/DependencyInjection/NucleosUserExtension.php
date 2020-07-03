@@ -19,10 +19,11 @@ use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Loader\FileLoader;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -59,14 +60,14 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
 
         $config = $processor->processConfiguration($configuration, $configs);
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         if ('custom' !== $config['db_driver']) {
             if (isset(self::$doctrineDrivers[$config['db_driver']])) {
-                $loader->load('doctrine.xml');
+                $loader->load('doctrine.php');
                 $container->setAlias('nucleos_user.doctrine_registry', new Alias(self::$doctrineDrivers[$config['db_driver']]['registry'], false));
             } else {
-                $loader->load(sprintf('%s.xml', $config['db_driver']));
+                $loader->load(sprintf('%s.php', $config['db_driver']));
             }
             $container->setParameter($this->getAlias().'.backend_type_'.$config['db_driver'], true);
         }
@@ -77,7 +78,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         }
 
         foreach (['validator', 'security', 'util', 'mailer', 'listeners', 'commands'] as $basename) {
-            $loader->load(sprintf('%s.xml', $basename));
+            $loader->load(sprintf('%s.php', $basename));
         }
 
         if (!$config['use_authentication_listener']) {
@@ -86,7 +87,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
 
         if ($config['use_flash_notifications']) {
             $this->sessionNeeded = true;
-            $loader->load('flash_notifications.xml');
+            $loader->load('flash_notifications.php');
         }
 
         $container->setAlias('nucleos_user.util.email_canonicalizer', new Alias($config['service']['email_canonicalizer'], true));
@@ -187,15 +188,15 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         }
     }
 
-    private function loadChangePassword(XmlFileLoader $loader): void
+    private function loadChangePassword(FileLoader $loader): void
     {
-        $loader->load('change_password.xml');
+        $loader->load('change_password.php');
     }
 
-    private function loadResetting(array $config, ContainerBuilder $container, XmlFileLoader $loader, string $fromEmail): void
+    private function loadResetting(array $config, ContainerBuilder $container, FileLoader $loader, string $fromEmail): void
     {
         $this->mailerNeeded = true;
-        $loader->load('resetting.xml');
+        $loader->load('resetting.php');
 
         if (isset($config['from_email'])) {
             // overwrite the global one
@@ -214,13 +215,13 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         ]);
     }
 
-    private function loadGroups(array $config, ContainerBuilder $container, XmlFileLoader $loader, string $dbDriver): void
+    private function loadGroups(array $config, ContainerBuilder $container, FileLoader $loader, string $dbDriver): void
     {
         if ('custom' !== $dbDriver) {
             if (isset(self::$doctrineDrivers[$dbDriver])) {
-                $loader->load('doctrine_group.xml');
+                $loader->load('doctrine_group.php');
             } else {
-                $loader->load(sprintf('%s_group.xml', $dbDriver));
+                $loader->load(sprintf('%s_group.php', $dbDriver));
             }
         }
 
