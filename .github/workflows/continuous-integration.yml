@@ -231,7 +231,6 @@ jobs:
     runs-on: "ubuntu-latest"
 
     needs:
-      - "webpack"
       - "coding-standards"
       - "static-code-analysis"
       - "tests"
