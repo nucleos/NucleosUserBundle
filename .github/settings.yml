@@ -27,8 +27,6 @@ branches:
           - "Code Coverage (7.4)"
           - "Mutation Tests (7.4)"
           - "Mutation Tests (7.4)"
-          - "Build RST"
-          - "DOCtor-RST"
         strict: true
 
       required_pull_request_reviews: null
