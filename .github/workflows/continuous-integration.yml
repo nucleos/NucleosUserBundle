@@ -192,11 +192,14 @@ jobs:
 
   mutation-tests:
     name: "Mutation Tests"
+
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         php-version:
           - 7.4
+
     steps:
       - name: "Checkout"
         uses: actions/checkout@v1
@@ -221,3 +224,40 @@ jobs:
 
       - name: "Run mutation tests with pcov and infection/infection"
         run: composer infection
+
+  merge:
+    name: "Merge"
+
+    runs-on: "ubuntu-latest"
+
+    needs:
+      - "webpack"
+      - "coding-standards"
+      - "static-code-analysis"
+      - "tests"
+      - "code-coverage"
+      - "mutation-tests"
+
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.draft == false && (
+        github.event.action == 'opened' ||
+        github.event.action == 'reopened' ||
+        github.event.action == 'synchronize'
+      ) && (
+        (github.actor == 'dependabot[bot]' && contains(github.event.pull_request.labels.*.name, 'pedantic'))
+      )
+    steps:
+      - name: "Merge pull request"
+        uses: "actions/github-script@v2"
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: |
+            const pullRequest = context.payload.pull_request
+            const repository = context.repo
+            await github.pulls.merge({
+              merge_method: "merge",
+              owner: repository.owner,
+              pull_number: pullRequest.number,
+              repo: repository.repo,
+            })
