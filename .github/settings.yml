@@ -19,7 +19,7 @@ branches:
           - "Tests (7.3, lowest, ~4.4)"
           - "Tests (7.3, lowest, ~5.0)"
           - "Tests (7.3, highest, ~4.4)"
-          - "Tests (7.3, highestf, ~5.0)"
+          - "Tests (7.3, highest, ~5.0)"
           - "Tests (7.4, lowest, ~4.4)"
           - "Tests (7.4, lowest, ~5.0)"
           - "Tests (7.4, highest, ~4.4)"
