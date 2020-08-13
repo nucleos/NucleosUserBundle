@@ -246,11 +246,61 @@ jobs:
       ) && (
         (github.actor == 'dependabot[bot]' && contains(github.event.pull_request.labels.*.name, 'pedantic'))
       )
+
     steps:
+      - name: "Request review from @nucleos-bot"
+        uses: "actions/github-script@v2"
+        with:
+          github-token: "${{ secrets.NUCLEOS_BOT_TOKEN }}"
+          script: |
+            const pullRequest = context.payload.pull_request
+            const repository = context.repo
+            const reviewers = [
+              "nucleos-bot",
+            ]
+            await github.pulls.createReviewRequest({
+              owner: repository.owner,
+              pull_number: pullRequest.number,
+              repo: repository.repo,
+              reviewers: reviewers,
+            })
+
+      - name: "Assign @nucleos-bot"
+        uses: "actions/github-script@v2"
+        with:
+          github-token: "${{ secrets.NUCLEOS_BOT_TOKEN }}"
+          script: |
+            const pullRequest = context.payload.pull_request
+            const repository = context.repo
+            const reviewers = [
+              "nucleos-bot",
+            ]
+            await github.issues.addAssignees({
+              assignees: reviewers,
+              issue_number: pullRequest.number,
+              owner: repository.owner,
+              repo: repository.repo,
+            })
+
+      - name: "Approve pull request"
+        uses: "actions/github-script@v2"
+        if: "github.actor != 'nucleos-bot'"
+        with:
+          github-token: "${{ secrets.NUCLEOS_BOT_TOKEN }}"
+          script: |
+            const pullRequest = context.payload.pull_request
+            const repository = context.repo
+            await github.pulls.createReview({
+              event: "APPROVE",
+              owner: repository.owner,
+              pull_number: pullRequest.number,
+              repo: repository.repo,
+            })
+
       - name: "Merge pull request"
         uses: "actions/github-script@v2"
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: "${{ secrets.NUCLEOS_BOT_TOKEN }}"
           script: |
             const pullRequest = context.payload.pull_request
             const repository = context.repo
