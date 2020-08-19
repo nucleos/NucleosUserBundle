@@ -4,6 +4,6 @@ coverage
 composer.lock
 phpunit.xml
 /build
-/vendor
-/vendor-bin/*/vendor
-!/vendor-bin/*/composer.json
+/vendor/
+!/vendor-bin/tools/composer.lock
+/vendor-bin/tools/vendor/

@@ -9,7 +9,7 @@ parameters:
         - tests
 
     autoload_files:
-        - vendor-bin/test/vendor/autoload.php
+        - vendor-bin/tools/vendor/autoload.php
 
     excludes_analyse:
         - tests/bootstrap.php
