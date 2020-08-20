@@ -244,7 +244,7 @@ jobs:
         github.event.action == 'reopened' ||
         github.event.action == 'synchronize'
       ) && (
-        (contains(github.event.pull_request.labels.*.name, 'pedantic'))
+        (contains(github.event.pull_request.labels.*.name, 'automerge'))
       )
 
     steps:
