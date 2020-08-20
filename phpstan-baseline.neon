@@ -281,36 +281,6 @@ parameters:
 			path: tests/DependencyInjection/NucleosUserExtensionTest.php
 
 		-
-			message: "#^Property Nucleos\\\\UserBundle\\\\Tests\\\\Mailer\\\\MailerTest\\:\\:\\$swiftMailer \\(Prophecy\\\\Prophecy\\\\ObjectProphecy&Symfony\\\\Component\\\\Mailer\\\\MailerInterface\\) does not accept Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Mailer\\\\MailerInterface\\>\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Property Nucleos\\\\UserBundle\\\\Tests\\\\Mailer\\\\MailerTest\\:\\:\\$translator \\(Prophecy\\\\Prophecy\\\\ObjectProphecy&Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface\\) does not accept Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface\\>\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Property Nucleos\\\\UserBundle\\\\Tests\\\\Mailer\\\\MailerTest\\:\\:\\$generator \\(Prophecy\\\\Prophecy\\\\ObjectProphecy&Symfony\\\\Component\\\\Routing\\\\Generator\\\\UrlGeneratorInterface\\) does not accept Prophecy\\\\Prophecy\\\\ObjectProphecy\\<Symfony\\\\Component\\\\Routing\\\\Generator\\\\UrlGeneratorInterface\\>\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$mailer of class Nucleos\\\\UserBundle\\\\Mailer\\\\Mailer constructor expects Symfony\\\\Component\\\\Mailer\\\\MailerInterface, object given\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$translator of class Nucleos\\\\UserBundle\\\\Mailer\\\\Mailer constructor expects Symfony\\\\Contracts\\\\Translation\\\\TranslatorInterface, object given\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
-			message: "#^Parameter \\#3 \\$router of class Nucleos\\\\UserBundle\\\\Mailer\\\\Mailer constructor expects Symfony\\\\Component\\\\Routing\\\\Generator\\\\UrlGeneratorInterface, object given\\.$#"
-			count: 1
-			path: tests/Mailer/MailerTest.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Model\\\\UserManagerTest\\:\\:getUserManager\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Model/UserManagerTest.php

@@ -8,7 +8,7 @@ parameters:
         - src
         - tests
 
-    autoload_files:
+    bootstrapFiles:
         - vendor-bin/tools/vendor/autoload.php
 
     excludes_analyse:

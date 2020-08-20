@@ -27,17 +27,17 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class MailerTest extends TestCase
 {
     /**
-     * @var SymfonyMailer&ObjectProphecy
+     * @var ObjectProphecy<SymfonyMailer>
      */
     private $swiftMailer;
 
     /**
-     * @var TranslatorInterface&ObjectProphecy
+     * @var ObjectProphecy<TranslatorInterface>
      */
     private $translator;
 
     /**
-     * @var UrlGeneratorInterface&ObjectProphecy
+     * @var ObjectProphecy<UrlGeneratorInterface>
      */
     private $generator;
 
