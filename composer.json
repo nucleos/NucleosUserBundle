@@ -96,7 +96,7 @@
             "@composer bin all install --ansi"
         ],
         "post-update-cmd": [
-            "@composer bin all update --ansi"
+            "@composer bin all install --ansi"
         ],
         "coverage": "vendor/bin/phpunit --colors=always --coverage-clover=build/logs/clover.xml",
         "cs": "PHP_CS_FIXER_IGNORE_ENV=1 && vendor/bin/php-cs-fixer fix --verbose",
