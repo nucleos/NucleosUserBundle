@@ -172,10 +172,16 @@ final class UserManagerTest extends TestCase
         $usernameThatLooksLikeEmail = 'bob@example.com';
         $user                       = $this->getUser();
 
-        $this->manager->expects(static::at(0))
+        $this->manager->expects(static::exactly(2))
             ->method('findUserBy')
-            ->with(static::equalTo(['emailCanonical' => $usernameThatLooksLikeEmail]))
-            ->willReturn(null)
+            ->withConsecutive(
+                [static::equalTo(['emailCanonical' => $usernameThatLooksLikeEmail])],
+                [static::equalTo(['usernameCanonical' => $usernameThatLooksLikeEmail])],
+            )
+            ->willReturn(
+                null,
+                $user,
+            )
         ;
         $this->fieldsUpdater->expects(static::once())
             ->method('canonicalizeEmail')
@@ -183,11 +189,6 @@ final class UserManagerTest extends TestCase
             ->willReturn($usernameThatLooksLikeEmail)
         ;
 
-        $this->manager->expects(static::at(1))
-            ->method('findUserBy')
-            ->with(static::equalTo(['usernameCanonical' => $usernameThatLooksLikeEmail]))
-            ->willReturn($user)
-        ;
         $this->fieldsUpdater->expects(static::once())
             ->method('canonicalizeUsername')
             ->with($usernameThatLooksLikeEmail)

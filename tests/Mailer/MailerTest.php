@@ -18,6 +18,7 @@ use Nucleos\UserBundle\Model\UserInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface as SymfonyMailer;
@@ -26,6 +27,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class MailerTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy<SymfonyMailer>
      */

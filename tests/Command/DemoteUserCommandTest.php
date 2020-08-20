@@ -35,7 +35,7 @@ final class DemoteUserCommandTest extends TestCase
         ]);
 
         static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertRegExp('/Role "role" has been removed from user "user"/', $commandTester->getDisplay());
+        static::assertMatchesRegularExpression('/Role "role" has been removed from user "user"/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper(): void
@@ -47,13 +47,12 @@ final class DemoteUserCommandTest extends TestCase
             ->getMock()
         ;
 
-        $helper->expects(static::at(0))
+        $helper->expects(static::exactly(2))
             ->method('ask')
-            ->willReturn('user')
-        ;
-        $helper->expects(static::at(1))
-            ->method('ask')
-            ->willReturn('role')
+            ->willReturn(
+                'user',
+                'role',
+            )
         ;
 
         $application->getHelperSet()->set($helper, 'question');
@@ -65,7 +64,7 @@ final class DemoteUserCommandTest extends TestCase
         ]);
 
         static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertRegExp('/Role "role" has been removed from user "user"/', $commandTester->getDisplay());
+        static::assertMatchesRegularExpression('/Role "role" has been removed from user "user"/', $commandTester->getDisplay());
     }
 
     private function createCommandTester(UserManipulator $manipulator, Application $application = null): CommandTester

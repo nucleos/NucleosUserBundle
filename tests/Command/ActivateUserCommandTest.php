@@ -34,7 +34,7 @@ final class ActivateUserCommandTest extends TestCase
         ]);
 
         static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertRegExp('/User "user" has been activated/', $commandTester->getDisplay());
+        static::assertMatchesRegularExpression('/User "user" has been activated/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper(): void
@@ -46,7 +46,7 @@ final class ActivateUserCommandTest extends TestCase
             ->getMock()
         ;
 
-        $helper->expects(static::at(0))
+        $helper->expects(static::once())
             ->method('ask')
             ->willReturn('user')
         ;
@@ -60,7 +60,7 @@ final class ActivateUserCommandTest extends TestCase
         ]);
 
         static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertRegExp('/User "user" has been activated/', $commandTester->getDisplay());
+        static::assertMatchesRegularExpression('/User "user" has been activated/', $commandTester->getDisplay());
     }
 
     private function createCommandTester(UserManipulator $manipulator, Application $application = null): CommandTester
