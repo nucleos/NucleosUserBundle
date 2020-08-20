@@ -35,7 +35,7 @@ final class ChangePasswordCommandTest extends TestCase
         ]);
 
         static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertRegExp('/Changed password for user user/', $commandTester->getDisplay());
+        static::assertMatchesRegularExpression('/Changed password for user user/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper(): void
@@ -47,13 +47,12 @@ final class ChangePasswordCommandTest extends TestCase
             ->getMock()
         ;
 
-        $helper->expects(static::at(0))
+        $helper->expects(static::exactly(2))
             ->method('ask')
-            ->willReturn('user')
-        ;
-        $helper->expects(static::at(1))
-            ->method('ask')
-            ->willReturn('pass')
+            ->willReturn(
+                'user',
+                'pass'
+            )
         ;
 
         $application->getHelperSet()->set($helper, 'question');
@@ -65,7 +64,7 @@ final class ChangePasswordCommandTest extends TestCase
         ]);
 
         static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertRegExp('/Changed password for user user/', $commandTester->getDisplay());
+        static::assertMatchesRegularExpression('/Changed password for user user/', $commandTester->getDisplay());
     }
 
     private function createCommandTester(UserManipulator $userManipulator, Application $application = null): CommandTester

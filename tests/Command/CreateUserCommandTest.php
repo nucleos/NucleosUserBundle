@@ -36,7 +36,7 @@ final class CreateUserCommandTest extends TestCase
         ]);
 
         static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertRegExp('/Created user user/', $commandTester->getDisplay());
+        static::assertMatchesRegularExpression('/Created user user/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper(): void
@@ -48,19 +48,13 @@ final class CreateUserCommandTest extends TestCase
             ->getMock()
         ;
 
-        $helper->expects(static::at(0))
+        $helper->expects(static::exactly(3))
             ->method('ask')
-            ->willReturn('user')
-        ;
-
-        $helper->expects(static::at(1))
-            ->method('ask')
-            ->willReturn('email')
-        ;
-
-        $helper->expects(static::at(2))
-            ->method('ask')
-            ->willReturn('pass')
+            ->willReturn(
+                'user',
+                'email',
+                'pass'
+            )
         ;
 
         $application->getHelperSet()->set($helper, 'question');
@@ -75,7 +69,7 @@ final class CreateUserCommandTest extends TestCase
         ]);
 
         static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertRegExp('/Created user user/', $commandTester->getDisplay());
+        static::assertMatchesRegularExpression('/Created user user/', $commandTester->getDisplay());
     }
 
     private function createCommandTester(UserManipulator $manipulator, Application $application = null): CommandTester
