@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.14.2@3538fe1955d47f6ee926c0769d71af6db08aa488">
+  <file src="src/Action/ChangePasswordAction.php">
+    <InvalidNullableReturnType occurrences="1">
+      <code>Response</code>
+    </InvalidNullableReturnType>
+    <NullableReturnStatement occurrences="1">
+      <code>$event-&gt;getResponse()</code>
+    </NullableReturnStatement>
+  </file>
+  <file src="src/Action/LoggedinAction.php">
+    <InvalidNullableReturnType occurrences="1">
+      <code>Response</code>
+    </InvalidNullableReturnType>
+    <NullableReturnStatement occurrences="1">
+      <code>$event-&gt;getResponse()</code>
+    </NullableReturnStatement>
+  </file>
+  <file src="src/Action/ResetAction.php">
+    <InvalidNullableReturnType occurrences="1">
+      <code>Response</code>
+    </InvalidNullableReturnType>
+    <NullableReturnStatement occurrences="1">
+      <code>$event-&gt;getResponse()</code>
+    </NullableReturnStatement>
+  </file>
+  <file src="src/Doctrine/GroupManager.php">
+    <InvalidDocblock occurrences="1">
+      <code>public function findGroups(): array</code>
+    </InvalidDocblock>
+  </file>
+  <file src="src/Model/GroupManagerInterface.php">
+    <InvalidDocblock occurrences="1">
+      <code>public function findGroups(): array;</code>
+    </InvalidDocblock>
+  </file>
+  <file src="src/NucleosUserBundle.php">
+    <InvalidScalarArgument occurrences="2">
+      <code>$mappings</code>
+      <code>$mappings</code>
+    </InvalidScalarArgument>
+  </file>
+</files>
