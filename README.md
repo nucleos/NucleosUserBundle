@@ -11,6 +11,7 @@ NucleosUserBundle
 
 [![Continuous Integration](https://github.com/nucleos/NucleosUserBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosUserBundle/actions)
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosUserBundle/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosUserBundle)
+[![Type Coverage](https://shepherd.dev/github/nucleos/NucleosUserBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosUserBundle)
 
 The NucleosUserBundle is a fork of [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle/) which adds a lightweight support for a database-backed user system in symfony.
 

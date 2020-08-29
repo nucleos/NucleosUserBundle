@@ -98,6 +98,9 @@ jobs:
       - name: "Run phpstan/phpstan"
         run: composer phpstan
 
+      - name: "Run psalm"
+        run: vendor/bin/psalm --config=psalm.xml --diff --diff-methods --shepherd --show-info=false --stats --threads=4
+
   tests:
     name: "Test (PHP ${{ matrix.php-version }}, symfony ${{ matrix.symfony }}, ${{ matrix.dependencies }})"
 
