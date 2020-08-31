@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8be7e9df2d467bef70dfed52148dcc12",
+    "content-hash": "e9abd5302c7f52dab5ee6ccb97fd2615",
     "packages": [],
     "packages-dev": [
         {
@@ -2711,16 +2711,16 @@
         },
         {
             "name": "psalm/plugin-phpunit",
-            "version": "0.11.0",
+            "version": "0.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-phpunit.git",
-                "reference": "d3f5c00e8ceac01ad85ae2a85865763e43f0d56d"
+                "reference": "fca9b223929cdfac2b6c0b72f52b9c9d63871ef1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-phpunit/zipball/d3f5c00e8ceac01ad85ae2a85865763e43f0d56d",
-                "reference": "d3f5c00e8ceac01ad85ae2a85865763e43f0d56d",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-phpunit/zipball/fca9b223929cdfac2b6c0b72f52b9c9d63871ef1",
+                "reference": "fca9b223929cdfac2b6c0b72f52b9c9d63871ef1",
                 "shasum": ""
             },
             "require": {
@@ -2729,7 +2729,7 @@
                 "ext-simplexml": "*",
                 "php": "^7.1.3",
                 "phpunit/phpunit": "^7.5 || ^8.0 || ^9.0",
-                "vimeo/psalm": "^3.6.2 || dev-master"
+                "vimeo/psalm": "^3.6.2 || dev-master || dev-4.x"
             },
             "require-dev": {
                 "codeception/codeception": "^4.0.3",
@@ -2759,7 +2759,7 @@
                 }
             ],
             "description": "Psalm plugin for PHPUnit",
-            "time": "2020-08-24T21:08:29+00:00"
+            "time": "2020-08-30T16:26:06+00:00"
         },
         {
             "name": "psalm/plugin-symfony",
