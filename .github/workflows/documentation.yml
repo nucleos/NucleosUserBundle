@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2.3.2
+        uses: actions/checkout@v2.3.3
 
       - name: "Set up Python 3.7"
         uses: actions/setup-python@v2.1.2
@@ -51,7 +51,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2.3.2
+        uses: actions/checkout@v2.3.3
 
       - name: "Run DOCtor-RST"
         uses: docker://oskarstark/doctor-rst
