@@ -95,7 +95,7 @@ final class ChangePasswordAction
             return $event->getResponse();
         }
 
-        $form = $this->formFactory->create(ChangePasswordFormType::class, new ChangePassword(), [
+        $form = $this->formFactory->create(ChangePasswordFormType::class, $formModel = new ChangePassword(), [
             'validation_groups' => ['ChangePassword', 'Default'],
         ]);
 
@@ -104,6 +104,8 @@ final class ChangePasswordAction
         if ($form->isSubmitted() && $form->isValid()) {
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch($event, NucleosUserEvents::CHANGE_PASSWORD_SUCCESS);
+
+            $user->setPlainPassword($formModel->getPlainPassword());
 
             $this->userManager->updateUser($user);
 

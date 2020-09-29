@@ -85,7 +85,7 @@ final class ResetAction
             return $event->getResponse();
         }
 
-        $form = $this->formFactory->create(ResettingFormType::class, new Resetting($user), [
+        $form = $this->formFactory->create(ResettingFormType::class, $formModel = new Resetting($user), [
             'validation_groups' => ['ResetPassword', 'Default'],
         ]);
 
@@ -94,6 +94,8 @@ final class ResetAction
         if ($form->isSubmitted() && $form->isValid()) {
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_RESET_SUCCESS);
+
+            $user->setPlainPassword($formModel->getPlainPassword());
 
             $this->userManager->updateUser($user);
 
