@@ -104,7 +104,9 @@ final class ChangePasswordAction
         if ($form->isSubmitted() && $form->isValid()) {
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch($event, NucleosUserEvents::CHANGE_PASSWORD_SUCCESS);
-
+            
+            $user->setPlainPassword($form->getData()->getPlainPassword());
+            
             $this->userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
