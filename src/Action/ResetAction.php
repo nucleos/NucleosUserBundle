@@ -95,6 +95,8 @@ final class ResetAction
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_RESET_SUCCESS);
 
+            $user->setPlainPassword($form->getData()->getPlainPassword());
+            
             $this->userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
