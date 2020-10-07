@@ -1,0 +1,28 @@
+nucleos_user:
+    username:
+        already_used: 'El nombre de usuario ya está en uso.'
+        blank: 'Por favor introduzca un nombre de usuario.'
+        short: 'El nombre de usuario es demasiado corto.'
+        long: 'El nombre de usuario es demasiado largo.'
+    email:
+        already_used: 'El correo electrónico ya está en uso.'
+        blank: 'Por favor introduzca un correo electrónico.'
+        short: 'El correo electrónico es demasiado corto.'
+        long: 'El correo electrónico es demasiado largo.'
+        invalid: 'El correo electrónico no es válido.'
+    password:
+        blank: 'Por favor introduzca una contraseña.'
+        short: 'La contraseña es demasiado corta.'
+        mismatch: 'Las contraseñas ingresadas no coinciden.'
+    new_password:
+        blank: 'Por favor introduzca una nueva contraseña.'
+        short: 'La nueva contraseña es demasiado corta.'
+    current_password:
+        invalid: 'La contraseña ingresada no es válida.'
+    group:
+        blank: 'Por favor introduzca un nombre.'
+        short: 'El nombre es demasiado corto.'
+        long: 'El nombre es demasiado largo.'
+nucleos_group:
+    name:
+        already_used: 'El nombre ya está en uso.'
