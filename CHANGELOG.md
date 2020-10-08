@@ -1,3 +1,18 @@
+# 1.4.0
+
+## Changes
+
+## 🚀 Features
+
+- Adding Spanish translations @anacona16 (#100)
+- Move configuration to PHP @core23 (#52)
+
+## 🐛 Bug Fixes
+
+- Add setPlainPassword() before update user @core23 (#92)
+- Remove deprecated mongo safe option @core23 (#50)
+- Catch possible null error @core23 (#49)
+
 # 1.3.1
 
 ## 🐛 Bug Fixes
