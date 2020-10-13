@@ -11,7 +11,7 @@ parameters:
 			path: src/Command/ActivateUserCommand.php
 
 		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$args of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string\\|null given\\.$#"
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string\\|null given\\.$#"
 			count: 1
 			path: src/Command/ActivateUserCommand.php
 
@@ -31,7 +31,7 @@ parameters:
 			path: src/Command/ChangePasswordCommand.php
 
 		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$args of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string\\|null given\\.$#"
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string\\|null given\\.$#"
 			count: 1
 			path: src/Command/ChangePasswordCommand.php
 
@@ -66,7 +66,7 @@ parameters:
 			path: src/Command/CreateUserCommand.php
 
 		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$args of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string\\|null given\\.$#"
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string\\|null given\\.$#"
 			count: 1
 			path: src/Command/CreateUserCommand.php
 
@@ -81,7 +81,7 @@ parameters:
 			path: src/Command/DeactivateUserCommand.php
 
 		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$args of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string\\|null given\\.$#"
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string\\|null given\\.$#"
 			count: 1
 			path: src/Command/DeactivateUserCommand.php
 
