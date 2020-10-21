@@ -32,7 +32,10 @@ class UserProvider implements UserProviderInterface
         $this->userManager = $userManager;
     }
 
-    public function loadUserByUsername(/* string */ $username): UserInterface
+    /**
+     * @param string $username
+     */
+    public function loadUserByUsername($username): UserInterface
     {
         $user = $this->findUser($username);
 
@@ -60,7 +63,10 @@ class UserProvider implements UserProviderInterface
         return $reloadedUser;
     }
 
-    public function supportsClass(/* string */ $class): bool
+    /**
+     * @param string $class
+     */
+    public function supportsClass($class): bool
     {
         $userClass = $this->userManager->getClass();
 

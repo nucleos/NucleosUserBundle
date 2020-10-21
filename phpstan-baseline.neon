@@ -181,34 +181,9 @@ parameters:
 			path: src/EventListener/LocaleEventListener.php
 
 		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\Group\\:\\:__construct\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/Group.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\Group\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/Group.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/GroupInterface.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\GroupManagerInterface\\:\\:findGroupBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/GroupManagerInterface.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\User\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/User.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/UserInterface.php
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\UserManagerInterface\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
@@ -224,16 +199,6 @@ parameters:
 			message: "#^Method Nucleos\\\\UserBundle\\\\Noop\\\\UserManager\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Noop/UserManager.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Security\\\\UserProvider\\:\\:loadUserByUsername\\(\\) has parameter \\$username with no typehint specified\\.$#"
-			count: 1
-			path: src/Security/UserProvider.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Security\\\\UserProvider\\:\\:supportsClass\\(\\) has parameter \\$class with no typehint specified\\.$#"
-			count: 1
-			path: src/Security/UserProvider.php
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\DependencyInjection\\\\NucleosUserExtensionTest\\:\\:getEmptyConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
