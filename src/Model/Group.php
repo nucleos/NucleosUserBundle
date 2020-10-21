@@ -30,6 +30,9 @@ abstract class Group implements GroupInterface
      */
     protected $roles;
 
+    /**
+     * @param string[] $roles
+     */
     public function __construct(string $name, array $roles = [])
     {
         $this->name  = $name;
