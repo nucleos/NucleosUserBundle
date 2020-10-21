@@ -19,9 +19,6 @@ namespace Nucleos\UserBundle\Model;
  */
 abstract class GroupManager implements GroupManagerInterface
 {
-    /**
-     * @return GroupTemplate
-     */
     public function createGroup(string $name): GroupInterface
     {
         $class = $this->getClass();
@@ -29,9 +26,6 @@ abstract class GroupManager implements GroupManagerInterface
         return new $class($name);
     }
 
-    /**
-     * @return GroupTemplate|null
-     */
     public function findGroupByName(string $name): ?GroupInterface
     {
         return $this->findGroupBy(['name' => $name]);

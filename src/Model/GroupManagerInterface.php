@@ -21,7 +21,7 @@ interface GroupManagerInterface
     /**
      * Returns an empty group instance.
      *
-     * @return GroupTemplate
+     * @phpstan-return GroupTemplate
      */
     public function createGroup(string $name): GroupInterface;
 
@@ -33,21 +33,21 @@ interface GroupManagerInterface
     /**
      * Finds one group by the given criteria.
      *
-     * @return GroupTemplate|null
+     * @phpstan-return GroupTemplate|null
      */
     public function findGroupBy(array $criteria): ?GroupInterface;
 
     /**
      * Finds a group by name.
      *
-     * @return GroupTemplate|null
+     * @phpstan-return GroupTemplate|null
      */
     public function findGroupByName(string $name): ?GroupInterface;
 
     /**
      * Returns a collection with all group instances.
      *
-     * @return UserInterface[]&GroupTemplate[]
+     * @phpstan-return UserInterface[]&GroupTemplate[]
      */
     public function findGroups(): array;
 
