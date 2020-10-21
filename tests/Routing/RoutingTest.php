@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\Routing;
 
+use Generator;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\XmlFileLoader;
@@ -22,6 +23,8 @@ final class RoutingTest extends TestCase
 {
     /**
      * @dataProvider loadRoutingProvider
+     *
+     * @param string[] $methods
      */
     public function testLoadRouting(string $routeName, string $path, array $methods): void
     {
@@ -42,19 +45,20 @@ final class RoutingTest extends TestCase
         static::assertSame($methods, $route->getMethods());
     }
 
-    public function loadRoutingProvider(): array
+    /**
+     * @phpstan-return Generator<array{string, string, string[]}>
+     */
+    public function loadRoutingProvider(): Generator
     {
-        return [
-            ['nucleos_user_change_password', '/change-password', ['GET', 'POST']],
+        yield ['nucleos_user_change_password', '/change-password', ['GET', 'POST']];
 
-            ['nucleos_user_resetting_request', '/resetting/request', ['GET']],
-            ['nucleos_user_resetting_send_email', '/resetting/send-email', ['POST']],
-            ['nucleos_user_resetting_check_email', '/resetting/check-email', ['GET']],
-            ['nucleos_user_resetting_reset', '/resetting/reset/{token}', ['GET', 'POST']],
+        yield ['nucleos_user_resetting_request', '/resetting/request', ['GET']];
+        yield ['nucleos_user_resetting_send_email', '/resetting/send-email', ['POST']];
+        yield ['nucleos_user_resetting_check_email', '/resetting/check-email', ['GET']];
+        yield ['nucleos_user_resetting_reset', '/resetting/reset/{token}', ['GET', 'POST']];
 
-            ['nucleos_user_security_login', '/login', ['GET', 'POST']],
-            ['nucleos_user_security_check', '/login_check', ['POST']],
-            ['nucleos_user_security_logout', '/logout', ['GET', 'POST']],
-        ];
+        yield ['nucleos_user_security_login', '/login', ['GET', 'POST']];
+        yield ['nucleos_user_security_check', '/login_check', ['POST']];
+        yield ['nucleos_user_security_logout', '/logout', ['GET', 'POST']];
     }
 }

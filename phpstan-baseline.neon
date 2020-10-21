@@ -236,16 +236,6 @@ parameters:
 			path: src/Security/UserProvider.php
 
 		-
-			message: "#^Offset 0 does not exist on array\\|string\\|null\\.$#"
-			count: 2
-			path: tests/DependencyInjection/NucleosUserExtensionTest.php
-
-		-
-			message: "#^Offset 1 does not exist on array\\|string\\|null\\.$#"
-			count: 1
-			path: tests/DependencyInjection/NucleosUserExtensionTest.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\DependencyInjection\\\\NucleosUserExtensionTest\\:\\:getEmptyConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/DependencyInjection/NucleosUserExtensionTest.php
@@ -259,14 +249,4 @@ parameters:
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Model\\\\UserManagerTest\\:\\:getUserManager\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Model/UserManagerTest.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Routing\\\\RoutingTest\\:\\:testLoadRouting\\(\\) has parameter \\$methods with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/Routing/RoutingTest.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Routing\\\\RoutingTest\\:\\:loadRoutingProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/Routing/RoutingTest.php
 
