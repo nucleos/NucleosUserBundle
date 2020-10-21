@@ -176,11 +176,6 @@ parameters:
 			path: src/Doctrine/GroupManager.php
 
 		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\GroupManager\\:\\:findGroups\\(\\) should return array\\<GroupTemplate of Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\>&array\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\> but returns array\\<object\\>\\.$#"
-			count: 1
-			path: src/Doctrine/GroupManager.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\UserManager\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Doctrine/UserManager.php

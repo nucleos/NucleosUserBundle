@@ -23,7 +23,7 @@ interface GroupableInterface
     /**
      * Gets the groups granted to the user.
      *
-     * @return Collection<int, GroupTemplate>
+     * @phpstan-return Collection<array-key, GroupTemplate>
      */
     public function getGroups(): Collection;
 
@@ -44,14 +44,14 @@ interface GroupableInterface
     /**
      * Add a group to the user groups.
      *
-     * @param GroupTemplate $group
+     * @phpstan-param GroupTemplate $group
      */
     public function addGroup(GroupInterface $group): void;
 
     /**
      * Remove a group from the user groups.
      *
-     * @param GroupTemplate $group
+     * @phpstan-param GroupTemplate $group
      */
     public function removeGroup(GroupInterface $group): void;
 }
