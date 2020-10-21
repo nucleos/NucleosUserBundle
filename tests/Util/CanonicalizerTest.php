@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\Util;
 
+use Generator;
 use Nucleos\UserBundle\Util\Canonicalizer;
 use PHPUnit\Framework\TestCase;
 
@@ -28,13 +29,11 @@ final class CanonicalizerTest extends TestCase
     }
 
     /**
-     * @return string[][]
+     * @phpstan-return Generator<array{string, string}>
      */
-    public function canonicalizeProvider(): array
+    public function canonicalizeProvider(): Generator
     {
-        return [
-            ['FOO', 'foo'],
-            [\chr(171), \PHP_VERSION_ID < 50600 ? \chr(171) : '?'],
-        ];
+        yield ['FOO', 'foo'];
+        yield [\chr(171), \PHP_VERSION_ID < 50600 ? \chr(171) : '?'];
     }
 }
