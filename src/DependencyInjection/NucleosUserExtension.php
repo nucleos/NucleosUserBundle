@@ -30,7 +30,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 final class NucleosUserExtension extends Extension implements PrependExtensionInterface
 {
     /**
-     * @var array
+     * @var array<string, array<string, string>>
      */
     private static $doctrineDrivers = [
         'orm' => [
