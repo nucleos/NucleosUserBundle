@@ -229,8 +229,11 @@ jobs:
       - name: "Install locked dependencies with composer"
         run: composer install --no-interaction --no-progress --no-suggest
 
+      - name: "Download infection"
+        run: wget -O infection https://github.com/infection/infection/releases/download/0.19.0/infection.phar && chmod +x infection
+
       - name: "Run mutation tests with pcov and infection/infection"
-        run: composer infection
+        run: ./infection
 
   merge:
     name: "Merge"
