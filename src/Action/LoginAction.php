@@ -17,6 +17,7 @@ use Nucleos\UserBundle\Event\GetResponseLoginEvent;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
@@ -62,7 +63,7 @@ final class LoginAction
             return $event->getResponse();
         }
 
-        $session = $request->hasSession() ? $request->getSession() : null;
+        $session = $this->getSession($request);
 
         $authErrorKey    = Security::AUTHENTICATION_ERROR;
         $lastUsernameKey = Security::LAST_USERNAME;
@@ -84,14 +85,20 @@ final class LoginAction
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
 
-        $csrfToken = null !== $this->tokenManager
-            ? $this->tokenManager->getToken('authenticate')->getValue()
-            : null;
-
         return new Response($this->twig->render('@NucleosUser/Security/login.html.twig', [
             'last_username' => $lastUsername,
             'error'         => $error,
-            'csrf_token'    => $csrfToken,
+            'csrf_token'    => $this->getCsrfToken(),
         ]));
+    }
+
+    private function getCsrfToken(): ?string
+    {
+        return null !== $this->tokenManager ? $this->tokenManager->getToken('authenticate')->getValue() : null;
+    }
+
+    private function getSession(Request $request): ?SessionInterface
+    {
+        return $request->hasSession() ? $request->getSession() : null;
     }
 }
