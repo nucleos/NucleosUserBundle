@@ -78,32 +78,48 @@ abstract class RoleCommand extends Command
         $questions = [];
 
         if (!$input->getArgument('username')) {
-            $question = new Question('Please choose a username:');
-            $question->setValidator(static function ($username) {
-                if ('' === trim($username)) {
-                    throw new RuntimeException('Username can not be empty');
-                }
-
-                return $username;
-            });
-            $questions['username'] = $question;
+            $questions['username'] = $this->createUsernameQuestion();
         }
 
         if ((true !== $input->getOption('super')) && !$input->getArgument('role')) {
-            $question = new Question('Please choose a role:');
-            $question->setValidator(static function ($role) {
-                if ('' === trim($role)) {
-                    throw new RuntimeException('Role can not be empty');
-                }
-
-                return $role;
-            });
-            $questions['role'] = $question;
+            $questions['role'] = $this->createRoleQuestion();
         }
 
         foreach ($questions as $name => $question) {
             $answer = $this->getHelper('question')->ask($input, $output, $question);
             $input->setArgument($name, $answer);
         }
+    }
+
+    private function createUsernameQuestion(): Question
+    {
+        $question = new Question('Please choose a username:');
+        $question->setValidator(
+            static function ($username) {
+                if ('' === trim($username)) {
+                    throw new RuntimeException('Username can not be empty');
+                }
+
+                return $username;
+            }
+        );
+
+        return $question;
+    }
+
+    private function createRoleQuestion(): Question
+    {
+        $question = new Question('Please choose a role:');
+        $question->setValidator(
+            static function ($role) {
+                if ('' === trim($role)) {
+                    throw new RuntimeException('Role can not be empty');
+                }
+
+                return $role;
+            }
+        );
+
+        return $question;
     }
 }

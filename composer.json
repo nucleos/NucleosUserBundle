@@ -107,6 +107,7 @@
             "find ./src \\( -name '*.xml' -or -name '*.xml.dist' -or -name '*.xlf' \\) -type f -exec xmllint --encode UTF-8 --output '{}' --format '{}' \\;",
             "find ./src \\( -name '*.yml' -or -name '*.yaml' \\) -not -path '*/vendor/*' | xargs yaml-lint"
         ],
+        "phpmd": "vendor/bin/phpmd src,tests ansi phpmd.xml",
         "phpstan": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/phpunit --colors=always"
     }
