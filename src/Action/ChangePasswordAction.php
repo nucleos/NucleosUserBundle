@@ -80,6 +80,9 @@ final class ChangePasswordAction
         $this->formFactory     = $formFactory;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     public function __invoke(Request $request): Response
     {
         $user = $this->security->getUser();

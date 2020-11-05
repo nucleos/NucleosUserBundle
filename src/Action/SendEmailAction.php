@@ -95,6 +95,9 @@ final class SendEmailAction
         ]));
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     private function process(Request $request, UserInterface $user): ?Response
     {
         $event = new GetResponseNullableUserEvent($user, $request);

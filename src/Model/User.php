@@ -434,6 +434,9 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
         return $this->timezone;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
     public function isEqualTo(BaseUserInterface $user): bool
     {
         if (!$user instanceof self) {

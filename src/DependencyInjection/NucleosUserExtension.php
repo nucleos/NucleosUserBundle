@@ -53,6 +53,11 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
      */
     private $sessionNeeded = false;
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $processor     = new Processor();
@@ -166,6 +171,9 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         }
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
     private function remapParametersNamespaces(array $config, ContainerBuilder $container, array $namespaces): void
     {
         foreach ($namespaces as $ns => $map) {

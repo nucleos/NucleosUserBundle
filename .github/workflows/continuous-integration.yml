@@ -102,6 +102,9 @@ jobs:
       - name: "Run psalm"
         run: vendor/bin/psalm --config=psalm.xml --diff --diff-methods --shepherd --show-info=false --stats --threads=4
 
+      - name: "Run phpmd"
+        run: composer phpmd
+
   tests:
     name: "Test (PHP ${{ matrix.php-version }}, symfony ${{ matrix.symfony }}, ${{ matrix.dependencies }})"
 

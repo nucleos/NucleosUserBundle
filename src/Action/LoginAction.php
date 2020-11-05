@@ -50,6 +50,9 @@ final class LoginAction
         $this->tokenManager    = $tokenManager;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     public function __invoke(Request $request): Response
     {
         $event = new GetResponseLoginEvent($request);
