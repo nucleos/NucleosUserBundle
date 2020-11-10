@@ -35,5 +35,8 @@ interface GroupInterface
 
     public function setName(string $name): void;
 
+    /**
+     * @param string[] $roles
+     */
     public function setRoles(array $roles): void;
 }

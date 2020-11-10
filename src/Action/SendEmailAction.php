@@ -95,6 +95,9 @@ final class SendEmailAction
         ]));
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     private function process(Request $request, UserInterface $user): ?Response
     {
         $event = new GetResponseNullableUserEvent($user, $request);
@@ -104,35 +107,37 @@ final class SendEmailAction
             return $event->getResponse();
         }
 
-        if (!$user->isPasswordRequestNonExpired($this->retryTtl)) {
-            $event = new GetResponseUserEvent($user, $request);
-            $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_RESET_REQUEST);
+        if ($user->isPasswordRequestNonExpired($this->retryTtl)) {
+            return null;
+        }
 
-            if (null !== $event->getResponse()) {
-                return $event->getResponse();
-            }
+        $event = new GetResponseUserEvent($user, $request);
+        $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_RESET_REQUEST);
 
-            if (null === $user->getConfirmationToken()) {
-                $user->setConfirmationToken($this->tokenGenerator->generateToken());
-            }
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
 
-            $event = new GetResponseUserEvent($user, $request);
-            $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_SEND_EMAIL_CONFIRM);
+        if (null === $user->getConfirmationToken()) {
+            $user->setConfirmationToken($this->tokenGenerator->generateToken());
+        }
 
-            if (null !== $event->getResponse()) {
-                return $event->getResponse();
-            }
+        $event = new GetResponseUserEvent($user, $request);
+        $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_SEND_EMAIL_CONFIRM);
 
-            $this->mailer->sendResettingEmailMessage($user);
-            $user->setPasswordRequestedAt(new DateTime());
-            $this->userManager->updateUser($user);
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
 
-            $event = new GetResponseUserEvent($user, $request);
-            $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_SEND_EMAIL_COMPLETED);
+        $this->mailer->sendResettingEmailMessage($user);
+        $user->setPasswordRequestedAt(new DateTime());
+        $this->userManager->updateUser($user);
 
-            if (null !== $event->getResponse()) {
-                return $event->getResponse();
-            }
+        $event = new GetResponseUserEvent($user, $request);
+        $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_SEND_EMAIL_COMPLETED);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
         }
 
         return null;

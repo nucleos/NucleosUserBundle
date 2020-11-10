@@ -133,6 +133,8 @@ interface UserInterface extends BaseUserInterface, EquatableInterface, Serializa
      * Sets the roles of the user.
      *
      * This overwrites any previous roles.
+     *
+     * @param string[] $roles
      */
     public function setRoles(array $roles): void;
 

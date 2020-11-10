@@ -17,7 +17,6 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
 use Nucleos\UserBundle\Model\GroupInterface;
 use Nucleos\UserBundle\Model\GroupManager as BaseGroupManager;
-use Nucleos\UserBundle\Model\UserInterface;
 
 /**
  * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
@@ -60,19 +59,14 @@ final class GroupManager extends BaseGroupManager
         return $this->class;
     }
 
-    /**
-     * @return GroupTemplate|null
-     */
     public function findGroupBy(array $criteria): ?GroupInterface
     {
         return $this->repository->findOneBy($criteria);
     }
 
-    /**
-     * @return UserInterface[]&GroupTemplate[]
-     */
     public function findGroups(): array
     {
+        // @phpstan-ignore-next-line
         return $this->repository->findAll();
     }
 

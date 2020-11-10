@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -25,9 +25,19 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode = $treeBuilder->getRootNode();
 
+        $this->addMainSection($rootNode);
+        $this->addResettingSection($rootNode);
+        $this->addGroupSection($rootNode);
+        $this->addServiceSection($rootNode);
+
+        return $treeBuilder;
+    }
+
+    private function addMainSection(NodeDefinition $node): void
+    {
         $supportedDrivers = ['noop', 'orm', 'mongodb', 'custom'];
 
-        $rootNode
+        $node
             ->children()
                 ->scalarNode('db_driver')
                     ->validate()
@@ -60,15 +70,9 @@ final class Configuration implements ConfigurationInterface
                 ->thenInvalid('You need to specify your own group manager service when using the "custom" driver.')
             ->end()
         ;
-
-        $this->addResettingSection($rootNode);
-        $this->addGroupSection($rootNode);
-        $this->addServiceSection($rootNode);
-
-        return $treeBuilder;
     }
 
-    private function addResettingSection(ArrayNodeDefinition $node): void
+    private function addResettingSection(NodeDefinition $node): void
     {
         $node
             ->children()
@@ -85,7 +89,7 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addServiceSection(ArrayNodeDefinition $node): void
+    private function addServiceSection(NodeDefinition $node): void
     {
         $node
             ->addDefaultsIfNotSet()
@@ -105,7 +109,7 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addGroupSection(ArrayNodeDefinition $node): void
+    private function addGroupSection(NodeDefinition $node): void
     {
         $node
             ->children()

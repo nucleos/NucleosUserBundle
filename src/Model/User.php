@@ -86,7 +86,7 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
     protected $passwordRequestedAt;
 
     /**
-     * @var Collection<int, GroupTemplate>
+     * @phpstan-var Collection<array-key, GroupTemplate>
      */
     protected $groups;
 
@@ -139,9 +139,6 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
         ]);
     }
 
-    /**
-     * @param string $serialized
-     */
     public function unserialize($serialized): void
     {
         $data = unserialize($serialized);
@@ -379,9 +376,6 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
         }
     }
 
-    /**
-     * @return Collection<int, GroupTemplate>
-     */
     public function getGroups(): Collection
     {
         if (null === $this->groups) {
@@ -440,6 +434,9 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
         return $this->timezone;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
     public function isEqualTo(BaseUserInterface $user): bool
     {
         if (!$user instanceof self) {

@@ -98,45 +98,69 @@ EOT
         $questions = [];
 
         if (!$input->getArgument('username')) {
-            $question = new Question('Please choose a username:');
-            $question->setValidator(static function ($username) {
-                if ('' === trim($username)) {
-                    throw new RuntimeException('Username can not be empty');
-                }
-
-                return $username;
-            });
-            $questions['username'] = $question;
+            $questions['username'] = $this->createUsernameQuestion();
         }
 
         if (!$input->getArgument('email')) {
-            $question = new Question('Please choose an email:');
-            $question->setValidator(static function ($email) {
-                if ('' === trim($email)) {
-                    throw new RuntimeException('Email can not be empty');
-                }
-
-                return $email;
-            });
-            $questions['email'] = $question;
+            $questions['email'] = $this->createEmailQuestion();
         }
 
         if (!$input->getArgument('password')) {
-            $question = new Question('Please choose a password:');
-            $question->setValidator(static function ($password) {
-                if ('' === trim($password)) {
-                    throw new RuntimeException('Password can not be empty');
-                }
-
-                return $password;
-            });
-            $question->setHidden(true);
-            $questions['password'] = $question;
+            $questions['password'] = $this->createPasswordQuestion();
         }
 
         foreach ($questions as $name => $question) {
             $answer = $this->getHelper('question')->ask($input, $output, $question);
             $input->setArgument($name, $answer);
         }
+    }
+
+    private function createUsernameQuestion(): Question
+    {
+        $question = new Question('Please choose a username:');
+        $question->setValidator(
+            static function ($username) {
+                if ('' === trim($username)) {
+                    throw new RuntimeException('Username can not be empty');
+                }
+
+                return $username;
+            }
+        );
+
+        return $question;
+    }
+
+    private function createPasswordQuestion(): Question
+    {
+        $question = new Question('Please choose a password:');
+        $question->setValidator(
+            static function ($password) {
+                if ('' === trim($password)) {
+                    throw new RuntimeException('Password can not be empty');
+                }
+
+                return $password;
+            }
+        );
+        $question->setHidden(true);
+
+        return $question;
+    }
+
+    private function createEmailQuestion(): Question
+    {
+        $question = new Question('Please choose an email:');
+        $question->setValidator(
+            static function ($email) {
+                if ('' === trim($email)) {
+                    throw new RuntimeException('Email can not be empty');
+                }
+
+                return $email;
+            }
+        );
+
+        return $question;
     }
 }

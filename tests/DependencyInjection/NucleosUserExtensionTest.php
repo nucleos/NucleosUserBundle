@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\DependencyInjection;
 
+use Generator;
 use Nucleos\UserBundle\DependencyInjection\NucleosUserExtension;
 use Nucleos\UserBundle\EventListener\FlashListener;
 use PHPUnit\Framework\TestCase;
@@ -21,6 +22,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Yaml\Parser;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 final class NucleosUserExtensionTest extends TestCase
 {
     /**
@@ -175,20 +179,19 @@ final class NucleosUserExtensionTest extends TestCase
 
         $factory = $definition->getFactory();
 
+        static::assertIsArray($factory);
         static::assertInstanceOf(Reference::class, $factory[0]);
         static::assertSame('nucleos_user.doctrine_registry', (string) $factory[0]);
         static::assertSame('getManager', $factory[1]);
     }
 
     /**
-     * @return string[][]
+     * @phpstan-return Generator<array{string, string}>
      */
-    public function userManagerSetFactoryProvider(): array
+    public function userManagerSetFactoryProvider(): Generator
     {
-        return [
-            ['orm', 'doctrine'],
-            ['mongodb', 'doctrine_mongodb'],
-        ];
+        yield ['orm', 'doctrine'];
+        yield ['mongodb', 'doctrine_mongodb'];
     }
 
     protected function createEmptyConfiguration(): void

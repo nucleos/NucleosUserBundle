@@ -29,26 +29,9 @@ final class UserChecker extends BaseUserChecker
             return;
         }
 
-        if (!$user->isAccountNonLocked()) {
-            $ex = new LockedException('User account is locked.');
-            $ex->setUser($user);
-
-            throw $ex;
-        }
-
-        if (!$user->isEnabled()) {
-            $ex = new DisabledException('User account is disabled.');
-            $ex->setUser($user);
-
-            throw $ex;
-        }
-
-        if (!$user->isAccountNonExpired()) {
-            $ex = new AccountExpiredException('User account has expired.');
-            $ex->setUser($user);
-
-            throw $ex;
-        }
+        $this->verifyAccountLocked($user);
+        $this->verifyAccountEnabled($user);
+        $this->verifyAccountExpired($user);
     }
 
     public function checkPostAuth(BaseUserInterface $user): void
@@ -57,6 +40,41 @@ final class UserChecker extends BaseUserChecker
             return;
         }
 
+        $this->verifyCredentialsExpired($user);
+    }
+
+    private function verifyAccountLocked(UserInterface $user): void
+    {
+        if (!$user->isAccountNonLocked()) {
+            $ex = new LockedException('User account is locked.');
+            $ex->setUser($user);
+
+            throw $ex;
+        }
+    }
+
+    private function verifyAccountEnabled(UserInterface $user): void
+    {
+        if (!$user->isEnabled()) {
+            $ex = new DisabledException('User account is disabled.');
+            $ex->setUser($user);
+
+            throw $ex;
+        }
+    }
+
+    private function verifyAccountExpired(UserInterface $user): void
+    {
+        if (!$user->isAccountNonExpired()) {
+            $ex = new AccountExpiredException('User account has expired.');
+            $ex->setUser($user);
+
+            throw $ex;
+        }
+    }
+
+    private function verifyCredentialsExpired(UserInterface $user): void
+    {
         if (!$user->isCredentialsNonExpired()) {
             $ex = new CredentialsExpiredException('User credentials have expired.');
             $ex->setUser($user);

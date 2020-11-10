@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="3.14.2@3538fe1955d47f6ee926c0769d71af6db08aa488">
+<files psalm-version="3.18.2@19aa905f7c3c7350569999a93c40ae91ae4e1626">
   <file src="src/Action/ChangePasswordAction.php">
     <InvalidNullableReturnType occurrences="1">
       <code>Response</code>
@@ -23,6 +23,14 @@
     <NullableReturnStatement occurrences="1">
       <code>$event-&gt;getResponse()</code>
     </NullableReturnStatement>
+  </file>
+  <file src="src/DependencyInjection/Configuration.php">
+    <UndefinedMethod occurrences="4">
+      <code>addDefaultsIfNotSet</code>
+      <code>children</code>
+      <code>children</code>
+      <code>children</code>
+    </UndefinedMethod>
   </file>
   <file src="src/Doctrine/GroupManager.php">
     <InvalidDocblock occurrences="1">
