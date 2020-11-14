@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Model;
 
 /**
- * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
+ * @phpstan-template GroupTemplate of GroupInterface
  */
 interface GroupManagerInterface
 {
@@ -53,6 +53,8 @@ interface GroupManagerInterface
 
     /**
      * Returns the group's fully qualified class name.
+     *
+     * @phpstan-return class-string<GroupTemplate>
      */
     public function getClass(): string;
 

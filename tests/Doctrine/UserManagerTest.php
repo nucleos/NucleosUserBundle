@@ -41,7 +41,7 @@ final class UserManagerTest extends TestCase
     private $om;
 
     /**
-     * @var MockObject&ObjectRepository
+     * @var MockObject&ObjectRepository<TestUser>
      */
     private $repository;
 
