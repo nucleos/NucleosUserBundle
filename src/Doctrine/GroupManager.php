@@ -31,14 +31,21 @@ final class GroupManager extends BaseGroupManager
 
     /**
      * @var string
+     *
+     * @phpstan-var class-string<GroupTemplate>
      */
     private $class;
 
     /**
      * @var ObjectRepository
+     *
+     * @phpstan-var ObjectRepository<GroupTemplate>
      */
     private $repository;
 
+    /**
+     * @phpstan-param class-string<GroupTemplate> $class
+     */
     public function __construct(ObjectManager $om, string $class)
     {
         $this->objectManager = $om;

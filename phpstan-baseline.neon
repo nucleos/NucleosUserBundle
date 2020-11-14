@@ -146,27 +146,22 @@ parameters:
 			path: src/DependencyInjection/NucleosUserExtension.php
 
 		-
+			message: "#^Property Nucleos\\\\UserBundle\\\\Doctrine\\\\GroupManager\\<GroupTemplate of Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\>\\:\\:\\$class \\(class\\-string\\<GroupTemplate of Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\>\\) does not accept string\\.$#"
+			count: 1
+			path: src/Doctrine/GroupManager.php
+
+		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\GroupManager\\:\\:findGroupBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Doctrine/GroupManager.php
 
 		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\GroupManager\\:\\:findGroupBy\\(\\) should return GroupTemplate of Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\|null but returns object\\|null\\.$#"
+			message: "#^Property Nucleos\\\\UserBundle\\\\Doctrine\\\\UserManager\\:\\:\\$class \\(class\\-string\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>\\) does not accept string\\.$#"
 			count: 1
-			path: src/Doctrine/GroupManager.php
+			path: src/Doctrine/UserManager.php
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\UserManager\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Doctrine/UserManager.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\UserManager\\:\\:findUserBy\\(\\) should return Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\|null but returns object\\|null\\.$#"
-			count: 1
-			path: src/Doctrine/UserManager.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\UserManager\\:\\:findUsers\\(\\) should return array\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\> but returns array\\<object\\>\\.$#"
 			count: 1
 			path: src/Doctrine/UserManager.php
 

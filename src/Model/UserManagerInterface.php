@@ -59,6 +59,8 @@ interface UserManagerInterface
 
     /**
      * Returns the user's fully qualified class name.
+     *
+     * @phpstan-return class-string<UserInterface>
      */
     public function getClass(): string;
 

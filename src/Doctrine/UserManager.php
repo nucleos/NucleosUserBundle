@@ -29,9 +29,14 @@ final class UserManager extends BaseUserManager
 
     /**
      * @var string
+     *
+     * @phpstan-var class-string<UserInterface>
      */
     private $class;
 
+    /**
+     * @phpstan-param class-string<UserInterface> $class
+     */
     public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater, ObjectManager $om, string $class)
     {
         parent::__construct($passwordUpdater, $canonicalFieldsUpdater);
@@ -82,6 +87,9 @@ final class UserManager extends BaseUserManager
         }
     }
 
+    /**
+     * @phpstan-return ObjectRepository<UserInterface>
+     */
     protected function getRepository(): ObjectRepository
     {
         return $this->objectManager->getRepository($this->getClass());
