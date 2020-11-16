@@ -934,20 +934,20 @@
         },
         {
             "name": "matthiasnoback/symfony-config-test",
-            "version": "4.2.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyTest/SymfonyConfigTest.git",
-                "reference": "32de23c14c31820626d65a06a3c11f60b487263d"
+                "reference": "8b1408d2d9c2530bbba550f272061c4736052c80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyTest/SymfonyConfigTest/zipball/32de23c14c31820626d65a06a3c11f60b487263d",
-                "reference": "32de23c14c31820626d65a06a3c11f60b487263d",
+                "url": "https://api.github.com/repos/SymfonyTest/SymfonyConfigTest/zipball/8b1408d2d9c2530bbba550f272061c4736052c80",
+                "reference": "8b1408d2d9c2530bbba550f272061c4736052c80",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1",
+                "php": "^7.1 || ^8.0",
                 "symfony/config": "^2.7 || ^3.4 || ^4.0 || ^5.0"
             },
             "conflict": {
@@ -985,25 +985,25 @@
                 "phpunit",
                 "symfony"
             ],
-            "time": "2020-05-08T07:24:53+00:00"
+            "time": "2020-11-15T15:13:34+00:00"
         },
         {
             "name": "matthiasnoback/symfony-dependency-injection-test",
-            "version": "4.2.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyTest/SymfonyDependencyInjectionTest.git",
-                "reference": "d650140039e2dfece269e44b28399fb792da064a"
+                "reference": "0eb7bfc9acd31ea1e2cdd88b51d62544c9b080d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyTest/SymfonyDependencyInjectionTest/zipball/d650140039e2dfece269e44b28399fb792da064a",
-                "reference": "d650140039e2dfece269e44b28399fb792da064a",
+                "url": "https://api.github.com/repos/SymfonyTest/SymfonyDependencyInjectionTest/zipball/0eb7bfc9acd31ea1e2cdd88b51d62544c9b080d5",
+                "reference": "0eb7bfc9acd31ea1e2cdd88b51d62544c9b080d5",
                 "shasum": ""
             },
             "require": {
                 "matthiasnoback/symfony-config-test": "^4.0.1",
-                "php": "^7.2",
+                "php": "^7.2 || ^8.0",
                 "symfony/config": "^3.4 || ^4.4 || ^5.0",
                 "symfony/dependency-injection": "^3.4 || ^4.4 || ^5.0",
                 "symfony/yaml": "^3.4 || ^4.4 || ^5.0"
@@ -1043,7 +1043,7 @@
                 "dependency injection",
                 "phpunit"
             ],
-            "time": "2020-10-08T15:50:06+00:00"
+            "time": "2020-11-15T15:30:25+00:00"
         },
         {
             "name": "myclabs/deep-copy",
