@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v2.3.4
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@2.7.0
+        uses: shivammathur/setup-php@2.8.0
         with:
           coverage: none
           extensions: "mbstring, json, mongo"
@@ -79,7 +79,7 @@ jobs:
         uses: actions/checkout@v2.3.4
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@2.7.0
+        uses: shivammathur/setup-php@2.8.0
         with:
           coverage: none
           extensions: "mbstring, json, mongo"
@@ -129,7 +129,7 @@ jobs:
         uses: actions/checkout@v2.3.4
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@2.7.0
+        uses: shivammathur/setup-php@2.8.0
         with:
           coverage: none
           extensions: "mbstring, json, mongo"
@@ -175,7 +175,7 @@ jobs:
         uses: actions/checkout@v2.3.4
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@2.7.0
+        uses: shivammathur/setup-php@2.8.0
         with:
           coverage: pcov
           extensions: "mbstring, json, mongo"
@@ -215,7 +215,7 @@ jobs:
         uses: actions/checkout@v2.3.4
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@2.7.0
+        uses: shivammathur/setup-php@2.8.0
         with:
           coverage: pcov
           extensions: "mbstring"
