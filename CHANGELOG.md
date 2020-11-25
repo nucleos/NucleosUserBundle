@@ -1,3 +1,17 @@
+# 1.5.0
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- Add more specific phpdoc @core23 (#120)
+- Add more specific phpdoc @core23 (#141)
+
+## 📦 Dependencies
+
+- Add doctrine/common 3 support @TorbenLundsgaard (#137)
+- Drop doctrine/mongodb-odm 1 @TorbenLundsgaard (#136)
+
 # 1.4.0
 
 ## Changes
