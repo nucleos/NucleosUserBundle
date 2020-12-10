@@ -27,7 +27,6 @@ return static function (ContainerConfigurator $container): void {
 
         ->set(ChangePasswordAction::class)
             ->public()
-            ->tag('form.type')
             ->args([
                 new Reference('twig'),
                 new Reference('router'),

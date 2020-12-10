@@ -363,8 +363,8 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
 
     public function isPasswordRequestNonExpired(int $ttl): bool
     {
-        return $this->getPasswordRequestedAt() instanceof DateTime &&
-               $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
+        return $this->getPasswordRequestedAt() instanceof DateTime
+               && $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
     }
 
     public function setRoles(array $roles): void
