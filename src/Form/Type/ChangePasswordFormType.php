@@ -16,6 +16,7 @@ namespace Nucleos\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
@@ -46,31 +47,35 @@ final class ChangePasswordFormType extends AbstractType
             $constraintsOptions['groups'] = [reset($options['validation_groups'])];
         }
 
-        $builder->add('current_password', PasswordType::class, [
-            'label'              => 'form.current_password',
-            'translation_domain' => 'NucleosUserBundle',
-            'mapped'             => false,
-            'constraints'        => [
-                new NotBlank(),
-                new UserPassword($constraintsOptions),
-            ],
-            'attr' => [
-                'autocomplete' => 'current-password',
-            ],
-        ]);
-
-        $builder->add('plainPassword', RepeatedType::class, [
-            'type'    => PasswordType::class,
-            'options' => [
+        $builder
+            ->add('current_password', PasswordType::class, [
+                'label'              => 'form.current_password',
                 'translation_domain' => 'NucleosUserBundle',
-                'attr'               => [
-                    'autocomplete' => 'new-password',
+                'mapped'             => false,
+                'constraints'        => [
+                    new NotBlank(),
+                    new UserPassword($constraintsOptions),
                 ],
-            ],
-            'first_options'   => ['label' => 'form.new_password'],
-            'second_options'  => ['label' => 'form.new_password_confirmation'],
-            'invalid_message' => 'nucleos_user.password.mismatch',
-        ]);
+                'attr' => [
+                    'autocomplete' => 'current-password',
+                ],
+            ])
+            ->add('plainPassword', RepeatedType::class, [
+                'type'    => PasswordType::class,
+                'options' => [
+                    'translation_domain' => 'NucleosUserBundle',
+                    'attr'               => [
+                        'autocomplete' => 'new-password',
+                    ],
+                ],
+                'first_options'   => ['label' => 'form.new_password'],
+                'second_options'  => ['label' => 'form.new_password_confirmation'],
+                'invalid_message' => 'nucleos_user.password.mismatch',
+            ])
+            ->add('save', SubmitType::class, [
+                'label'  => 'change_password.submit',
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
