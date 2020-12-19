@@ -11,7 +11,10 @@
 
 namespace Nucleos\UserBundle\Action;
 
+use Nucleos\UserBundle\Form\Type\RequestPasswordFormType;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 
 final class RequestResetAction
@@ -22,15 +25,31 @@ final class RequestResetAction
     private $twig;
 
     /**
-     * RequestAction constructor.
+     * @var FormFactoryInterface
      */
-    public function __construct(Environment $twig)
+    private $formFactory;
+
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
+    public function __construct(Environment $twig, FormFactoryInterface $formFactory, RouterInterface $router)
     {
-        $this->twig = $twig;
+        $this->twig        = $twig;
+        $this->formFactory = $formFactory;
+        $this->router      = $router;
     }
 
     public function __invoke(): Response
     {
-        return new Response($this->twig->render('@NucleosUser/Resetting/request.html.twig'));
+        $form = $this->formFactory->create(RequestPasswordFormType::class, null, [
+            'action' => $this->router->generate('nucleos_user_resetting_send_email'),
+            'method' => 'POST',
+        ]);
+
+        return new Response($this->twig->render('@NucleosUser/Resetting/request.html.twig', [
+            'form' => $form->createView(),
+        ]));
     }
 }

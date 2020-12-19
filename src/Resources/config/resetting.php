@@ -17,6 +17,7 @@ use Nucleos\UserBundle\Action\ResetAction;
 use Nucleos\UserBundle\Action\SendEmailAction;
 use Nucleos\UserBundle\EventListener\ResettingListener;
 use Nucleos\UserBundle\Form\Model\Resetting;
+use Nucleos\UserBundle\Form\Type\RequestPasswordFormType;
 use Nucleos\UserBundle\Form\Type\ResettingFormType;
 use Symfony\Component\DependencyInjection\Parameter;
 use Symfony\Component\DependencyInjection\Reference;
@@ -30,6 +31,9 @@ return static function (ContainerConfigurator $container): void {
                 Resetting::class,
             ])
 
+        ->set(RequestPasswordFormType::class)
+            ->tag('form.type')
+
         ->set(ResettingListener::class)
             ->tag('kernel.event_subscriber')
             ->args([
@@ -41,6 +45,8 @@ return static function (ContainerConfigurator $container): void {
             ->public()
             ->args([
                 new Reference('twig'),
+                new Reference('form.factory'),
+                new Reference('router'),
             ])
 
         ->set(ResetAction::class)
