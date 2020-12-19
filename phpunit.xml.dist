@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" bootstrap="tests/bootstrap.php">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" bootstrap="tests/bootstrap.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory suffix=".php">./src/</directory>
+    </include>
+  </coverage>
   <php>
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0"/>
   </php>
@@ -11,9 +16,4 @@
   <listeners>
     <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
   </listeners>
-  <filter>
-    <whitelist>
-      <directory suffix=".php">./src/</directory>
-    </whitelist>
-  </filter>
 </phpunit>
