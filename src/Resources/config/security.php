@@ -16,12 +16,12 @@ use Nucleos\UserBundle\Action\LoggedinAction;
 use Nucleos\UserBundle\Action\LoginAction;
 use Nucleos\UserBundle\Action\LogoutAction;
 use Nucleos\UserBundle\EventListener\LastLoginListener;
+use Nucleos\UserBundle\Form\Type\LoginFormType;
 use Nucleos\UserBundle\Security\EmailProvider;
 use Nucleos\UserBundle\Security\EmailUserProvider;
 use Nucleos\UserBundle\Security\LoginManager;
 use Nucleos\UserBundle\Security\LoginManagerInterface;
 use Nucleos\UserBundle\Security\UserProvider;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container): void {
@@ -59,12 +59,19 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('nucleos_user.user_manager'),
             ])
 
+        ->set(LoginFormType::class)
+            ->tag('form.type')
+            ->args([
+                new Reference('request_stack'),
+            ])
+
         ->set(LoginAction::class)
             ->public()
             ->args([
                 new Reference('twig'),
                 new Reference('event_dispatcher'),
-                new Reference('security.csrf.token_manager', ContainerInterface::NULL_ON_INVALID_REFERENCE),
+                new Reference('form.factory'),
+                new Reference('router'),
             ])
 
         ->set(LogoutAction::class)

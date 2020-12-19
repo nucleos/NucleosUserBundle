@@ -14,13 +14,15 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Action;
 
 use Nucleos\UserBundle\Event\GetResponseLoginEvent;
+use Nucleos\UserBundle\Form\Type\LoginFormType;
 use Nucleos\UserBundle\NucleosUserEvents;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 
@@ -37,18 +39,25 @@ final class LoginAction
     private $eventDispatcher;
 
     /**
-     * @var CsrfTokenManagerInterface|null
+     * @var FormFactoryInterface
      */
-    private $tokenManager;
+    private $formFactory;
+
+    /**
+     * @var RouterInterface
+     */
+    private $router;
 
     public function __construct(
         Environment $twig,
         EventDispatcherInterface $eventDispatcher,
-        CsrfTokenManagerInterface $tokenManager = null
+        FormFactoryInterface $formFactory,
+        RouterInterface $router
     ) {
         $this->twig            = $twig;
         $this->eventDispatcher = $eventDispatcher;
-        $this->tokenManager    = $tokenManager;
+        $this->formFactory     = $formFactory;
+        $this->router          = $router;
     }
 
     /**
@@ -82,19 +91,21 @@ final class LoginAction
             $error = null; // The value does not come from the security component.
         }
 
+        $form = $this->formFactory->create(LoginFormType::class, null, [
+            'action' => $this->router->generate('nucleos_user_security_check'),
+            'method' => 'POST',
+        ]);
+
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
 
         return new Response($this->twig->render('@NucleosUser/Security/login.html.twig', [
             'last_username' => $lastUsername,
-            'error'         => $error,
-            'csrf_token'    => $this->getCsrfToken(),
+            'form'          => $form->createView(),
+            // TODO: Remove this fields with the next major release
+            'error'         => null,
+            'csrf_token'    => '',
         ]));
-    }
-
-    private function getCsrfToken(): ?string
-    {
-        return null !== $this->tokenManager ? $this->tokenManager->getToken('authenticate')->getValue() : null;
     }
 
     private function getSession(Request $request): ?SessionInterface
