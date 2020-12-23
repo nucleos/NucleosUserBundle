@@ -141,13 +141,16 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
 
     public function prepend(ContainerBuilder $container): void
     {
-        if (!$container->hasParameter('nucleos_user.storage')) {
-            return;
+        $configs = $container->getExtensionConfig('nucleos_user');
+
+        $storage = null;
+        foreach ($configs as $config) {
+            if (isset($config['db_driver'])) {
+                $storage = $config['db_driver'];
+            }
         }
 
-        $storage = $container->getParameter('nucleos_user.storage');
-
-        if (!\in_array($storage, ['orm', 'mongodb'], true)) {
+        if (null === $storage || !isset(self::$doctrineDrivers[$storage])) {
             return;
         }
 
@@ -155,7 +158,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
             'validation' => [
                 'mapping' => [
                     'paths' => [
-                        __DIR__.'/../../Resources/config/storage-validation/'.$storage,
+                        __DIR__.'/../Resources/config/storage-validation/'.$storage,
                     ],
                 ],
             ],

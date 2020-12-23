@@ -4,36 +4,26 @@
     <property name="username">
       <constraint name="NotBlank">
         <option name="message">nucleos_user.username.blank</option>
-        <option name="groups">
-                </option>
       </constraint>
       <constraint name="Length">
         <option name="min">2</option>
         <option name="minMessage">nucleos_user.username.short</option>
         <option name="max">180</option>
         <option name="maxMessage">nucleos_user.username.long</option>
-        <option name="groups">
-                </option>
       </constraint>
     </property>
     <property name="email">
       <constraint name="NotBlank">
         <option name="message">nucleos_user.email.blank</option>
-        <option name="groups">
-                </option>
       </constraint>
       <constraint name="Length">
         <option name="min">2</option>
         <option name="minMessage">nucleos_user.email.short</option>
         <option name="max">180</option>
         <option name="maxMessage">nucleos_user.email.long</option>
-        <option name="groups">
-                </option>
       </constraint>
       <constraint name="Email">
         <option name="message">nucleos_user.email.invalid</option>
-        <option name="groups">
-                </option>
       </constraint>
     </property>
     <property name="plainPassword">
