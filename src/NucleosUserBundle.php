@@ -35,7 +35,7 @@ final class NucleosUserBundle extends Bundle
     private function addRegisterMappingsPass(ContainerBuilder $container): void
     {
         $mappings = [
-            realpath(__DIR__.'/Resources/config/doctrine-mapping') => 'Nucleos\UserBundle\Model',
+            (string) realpath(__DIR__.'/Resources/config/doctrine-mapping') => 'Nucleos\UserBundle\Model',
         ];
 
         if (class_exists(DoctrineOrmMappingsPass::class)) {
