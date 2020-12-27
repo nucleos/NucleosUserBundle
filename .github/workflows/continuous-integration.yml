@@ -112,6 +112,7 @@ jobs:
         php-version:
           - 7.3
           - 7.4
+          - 8.0
 
         dependencies:
           - lowest
@@ -131,6 +132,10 @@ jobs:
           coverage: none
           extensions: "mbstring, json, mongo"
           php-version: ${{ matrix.php-version }}
+
+      - name: "Configuration required for PHP 8.0"
+        if: matrix.php-version == '8.0'
+        run: composer config platform.php 7.4.99
 
       - name: 'Install Symfony Flex'
         run: composer global require --prefer-dist --no-progress --no-suggest --ansi symfony/flex
