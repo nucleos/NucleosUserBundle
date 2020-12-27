@@ -1,3 +1,22 @@
+# 1.6.0 
+
+## Changes
+
+- Move submit buttons to form definition @core23 (#164)
+
+## 🚀 Features
+
+- Replace hardcoded forms with symfony forms @core23 (#167)
+
+## 🐛 Bug Fixes
+
+- Fix `PreUpdateEventArgs` import for mongodb @core23 (#176)
+- Fix loading driver related validations @core23 (#173)
+
+## 📦 Dependencies
+
+- Add support for PHP 8 @core23 (#148)
+
 # 1.5.0
 
 ## Changes
