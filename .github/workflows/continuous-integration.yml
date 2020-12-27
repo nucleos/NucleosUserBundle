@@ -1,8 +1,5 @@
-# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
-
 on:
   pull_request:
-    types: [opened, synchronize, reopened, labeled, unlabeled]
   push:
     branches:
       - main
@@ -100,7 +97,7 @@ jobs:
         run: composer phpstan
 
       - name: "Run psalm"
-        run: vendor/bin/psalm --config=psalm.xml --diff --diff-methods --shepherd --show-info=false --stats --threads=4
+        run: vendor/bin/psalm --config=psalm.xml --diff --shepherd --show-info=false --stats --threads=4
 
       - name: "Run phpmd"
         run: composer phpmd
@@ -237,84 +234,3 @@ jobs:
 
       - name: "Run mutation tests with pcov and infection/infection"
         run: ./infection
-
-  merge:
-    name: "Merge"
-
-    runs-on: "ubuntu-latest"
-
-    needs:
-      - "coding-standards"
-      - "static-code-analysis"
-      - "tests"
-      - "code-coverage"
-      - "mutation-tests"
-
-    if: >
-      github.event_name == 'pull_request' &&
-      github.event.pull_request.draft == false &&
-      contains(github.event.pull_request.labels.*.name, 'automerge')
-
-    steps:
-      - name: "Request review from @nucleos-bot"
-        uses: "actions/github-script@v3"
-        with:
-          github-token: "${{ secrets.NUCLEOS_BOT_TOKEN }}"
-          script: |
-            const pullRequest = context.payload.pull_request
-            const repository = context.repo
-            const reviewers = [
-              "nucleos-bot",
-            ]
-            await github.pulls.requestReviewers({
-              owner: repository.owner,
-              pull_number: pullRequest.number,
-              repo: repository.repo,
-              reviewers: reviewers,
-            })
-
-      - name: "Assign @nucleos-bot"
-        uses: "actions/github-script@v3"
-        with:
-          github-token: "${{ secrets.NUCLEOS_BOT_TOKEN }}"
-          script: |
-            const pullRequest = context.payload.pull_request
-            const repository = context.repo
-            const reviewers = [
-              "nucleos-bot",
-            ]
-            await github.issues.addAssignees({
-              assignees: reviewers,
-              issue_number: pullRequest.number,
-              owner: repository.owner,
-              repo: repository.repo,
-            })
-
-      - name: "Approve pull request"
-        uses: "actions/github-script@v3"
-        if: "github.actor != 'nucleos-bot'"
-        with:
-          github-token: "${{ secrets.NUCLEOS_BOT_TOKEN }}"
-          script: |
-            const pullRequest = context.payload.pull_request
-            const repository = context.repo
-            await github.pulls.createReview({
-              event: "APPROVE",
-              owner: repository.owner,
-              pull_number: pullRequest.number,
-              repo: repository.repo,
-            })
-
-      - name: "Merge pull request"
-        uses: "actions/github-script@v3"
-        with:
-          github-token: "${{ secrets.NUCLEOS_BOT_TOKEN }}"
-          script: |
-            const pullRequest = context.payload.pull_request
-            const repository = context.repo
-            await github.pulls.merge({
-              merge_method: "merge",
-              owner: repository.owner,
-              pull_number: pullRequest.number,
-              repo: repository.repo,
-            })

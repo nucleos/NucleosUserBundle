@@ -1,14 +1,63 @@
-name: Release Drafter
-
 on:
   push:
     branches:
       - main
 
+name: "Draft Release"
+
 jobs:
-  update_release_draft:
+  draft-release:
+    name: "Update release notes"
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: toolmantim/release-drafter@v5.12.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  changelog-linker:
+    name: "Link changelog entries"
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version:
+          - 7.4
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2.3.4
+        with:
+          ref: "${{ github.head_ref }}"
+          token: ${{ secrets.NUCLEOS_BOT_TOKEN }}
+
+      - name: "Install PHP with extensions"
+        uses: shivammathur/setup-php@2.9.0
+        with:
+          coverage: none
+          extensions: "mbstring, json"
+          php-version: 7.4
+
+      - name: "Cache dependencies installed with composer"
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: ${{ matrix.php-version }}-composer-
+          restore-keys: |
+            ${{ matrix.php-version }}-composer-
+
+      - name: "Install locked dependencies with composer"
+        run: composer install --no-interaction --no-progress --no-suggest
+
+      - name: "Run changelog-linker"
+        run: vendor/bin/changelog-linker link
+
+      - name: "Commit changes"
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_user_name: "Nucleos Bot"
+          commit_user_email: "ci@nucleos.rocks"
+          commit_author: "Nucleos Bot <ci@nucleos.rocks>"
+          commit_message: "Link CHANGLOG users and PRs"
