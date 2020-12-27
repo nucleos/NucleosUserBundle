@@ -2,20 +2,20 @@
 
 ## Changes
 
-- Move submit buttons to form definition @core23 (#164)
+- Move submit buttons to form definition [@core23] ([#164])
 
 ## 🚀 Features
 
-- Replace hardcoded forms with symfony forms @core23 (#167)
+- Replace hardcoded forms with symfony forms [@core23] ([#167])
 
 ## 🐛 Bug Fixes
 
-- Fix `PreUpdateEventArgs` import for mongodb @core23 (#176)
-- Fix loading driver related validations @core23 (#173)
+- Fix `PreUpdateEventArgs` import for mongodb [@core23] ([#176])
+- Fix loading driver related validations [@core23] ([#173])
 
 ## 📦 Dependencies
 
-- Add support for PHP 8 @core23 (#148)
+- Add support for PHP 8 [@core23] ([#148])
 
 # 1.5.0
 
@@ -102,3 +102,8 @@
 [@core23]: https://github.com/core23
 [@anacona16]: https://github.com/anacona16
 [@TorbenLundsgaard]: https://github.com/TorbenLundsgaard
+[#176]: https://github.com/nucleos/NucleosUserBundle/pull/176
+[#173]: https://github.com/nucleos/NucleosUserBundle/pull/173
+[#167]: https://github.com/nucleos/NucleosUserBundle/pull/167
+[#164]: https://github.com/nucleos/NucleosUserBundle/pull/164
+[#148]: https://github.com/nucleos/NucleosUserBundle/pull/148
