@@ -50,7 +50,6 @@ final class ChangePasswordFormType extends AbstractType
         $builder
             ->add('current_password', PasswordType::class, [
                 'label'              => 'form.current_password',
-                'translation_domain' => 'NucleosUserBundle',
                 'mapped'             => false,
                 'constraints'        => [
                     new NotBlank(),
@@ -63,7 +62,6 @@ final class ChangePasswordFormType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
                 'type'    => PasswordType::class,
                 'options' => [
-                    'translation_domain' => 'NucleosUserBundle',
                     'attr'               => [
                         'autocomplete' => 'new-password',
                     ],
@@ -81,8 +79,9 @@ final class ChangePasswordFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class'    => $this->class,
-            'csrf_token_id' => 'change_password',
+            'data_class'         => $this->class,
+            'csrf_token_id'      => 'change_password',
+            'translation_domain' => 'NucleosUserBundle',
         ]);
     }
 }
