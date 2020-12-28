@@ -16,6 +16,7 @@ namespace Nucleos\UserBundle\Action;
 use Nucleos\UserBundle\Event\GetResponseLoginEvent;
 use Nucleos\UserBundle\Form\Type\LoginFormType;
 use Nucleos\UserBundle\NucleosUserEvents;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -87,14 +88,16 @@ final class LoginAction
             $error = null;
         }
 
-        if (!$error instanceof AuthenticationException) {
-            $error = null; // The value does not come from the security component.
-        }
-
         $form = $this->formFactory->create(LoginFormType::class, null, [
             'action' => $this->router->generate('nucleos_user_security_check'),
             'method' => 'POST',
         ]);
+
+        if (!$error instanceof AuthenticationException) {
+            $error = null; // The value does not come from the security component.
+        } else {
+            $form->addError(new FormError($error->getMessageKey(), null, $error->getMessageData()));
+        }
 
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
@@ -103,7 +106,7 @@ final class LoginAction
             'last_username' => $lastUsername,
             'form'          => $form->createView(),
             // TODO: Remove this fields with the next major release
-            'error'         => null,
+            'error'         => $error,
             'csrf_token'    => '',
         ]));
     }
