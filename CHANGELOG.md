@@ -4,7 +4,7 @@
 
 ## 🐛 Bug Fixes
 
-- Fix button translation @core23 (#180)
+- Fix button translation [@core23] ([#180])
 
 # 1.6.0
 
@@ -115,3 +115,4 @@
 [#167]: https://github.com/nucleos/NucleosUserBundle/pull/167
 [#164]: https://github.com/nucleos/NucleosUserBundle/pull/164
 [#148]: https://github.com/nucleos/NucleosUserBundle/pull/148
+[#180]: https://github.com/nucleos/NucleosUserBundle/pull/180
