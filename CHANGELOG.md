@@ -1,4 +1,12 @@
-# 1.6.0 
+# 1.6.1
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- Fix button translation @core23 (#180)
+
+# 1.6.0
 
 ## Changes
 
