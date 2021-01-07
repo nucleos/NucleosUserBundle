@@ -21,20 +21,19 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 final class LoginFormType extends AbstractType
 {
     /**
-     * @var RequestStack
+     * @var AuthenticationUtils
      */
-    private $requestStack;
+    private $authenticationUtils;
 
-    public function __construct(RequestStack $requestStack)
+    public function __construct(AuthenticationUtils $authenticationUtils)
     {
-        $this->requestStack = $requestStack;
+        $this->authenticationUtils = $authenticationUtils;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -63,27 +62,16 @@ final class LoginFormType extends AbstractType
             ])
         ;
 
-        $request = $this->requestStack->getCurrentRequest();
+        $authenticationUtils = $this->authenticationUtils;
 
-        $builder->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event) use ($request): void {
-            if (null === $request) {
-                return;
-            }
-
-            $error = null;
-
-            if ($request->attributes->has(Security::AUTHENTICATION_ERROR)) {
-                $error = $request->attributes->get(Security::AUTHENTICATION_ERROR);
-            } else {
-                $error = $request->getSession()->get(Security::AUTHENTICATION_ERROR);
-            }
-
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event) use ($authenticationUtils): void {
+            $error = $authenticationUtils->getLastAuthenticationError();
             if (null !== $error) {
                 $event->getForm()->addError(new FormError($error->getMessage()));
             }
 
             $event->setData(array_replace((array) $event->getData(), [
-                'username' => $request->getSession()->get(Security::LAST_USERNAME),
+                'username' => $authenticationUtils->getLastUsername(),
             ]));
         });
     }
@@ -92,6 +80,9 @@ final class LoginFormType extends AbstractType
     {
         $resolver->setDefaults([
             'translation_domain' => 'NucleosUserBundle',
+
+            'csrf_field_name' => '_csrf_token',
+            'csrf_token_id'   => 'authenticate',
         ]);
     }
 
