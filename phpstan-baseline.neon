@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to method Symfony\\\\Component\\\\HttpFoundation\\\\Request\\:\\:hasSession\\(\\) will always evaluate to true\\.$#"
+			message: "#^Call to an undefined method Symfony\Component\Form\FormError|Symfony\Component\Form\FormErrorIterator::getMessage()\\.$#"
 			count: 1
 			path: src/Action/LoginAction.php
 

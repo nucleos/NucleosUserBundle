@@ -84,7 +84,7 @@ final class LoginAction
 
         $error = null;
         if ($form->getErrors()->count() > 0) {
-            $error = $form->getErrors()->current()->getMessageTemplate();
+            $error = $form->getErrors()->current()->getMessage();
         }
 
         return new Response($this->twig->render('@NucleosUser/Security/login.html.twig', [
