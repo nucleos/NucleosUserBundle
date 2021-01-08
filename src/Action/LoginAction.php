@@ -16,14 +16,11 @@ namespace Nucleos\UserBundle\Action;
 use Nucleos\UserBundle\Event\GetResponseLoginEvent;
 use Nucleos\UserBundle\Form\Type\LoginFormType;
 use Nucleos\UserBundle\NucleosUserEvents;
-use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 
@@ -49,16 +46,23 @@ final class LoginAction
      */
     private $router;
 
+    /**
+     * @var CsrfTokenManagerInterface
+     */
+    private $csrfTokenManager;
+
     public function __construct(
         Environment $twig,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
-        RouterInterface $router
+        RouterInterface $router,
+        CsrfTokenManagerInterface $csrfTokenManager
     ) {
-        $this->twig            = $twig;
-        $this->eventDispatcher = $eventDispatcher;
-        $this->formFactory     = $formFactory;
-        $this->router          = $router;
+        $this->twig             = $twig;
+        $this->eventDispatcher  = $eventDispatcher;
+        $this->formFactory      = $formFactory;
+        $this->router           = $router;
+        $this->csrfTokenManager = $csrfTokenManager;
     }
 
     /**
@@ -73,46 +77,22 @@ final class LoginAction
             return $event->getResponse();
         }
 
-        $session = $this->getSession($request);
-
-        $authErrorKey    = Security::AUTHENTICATION_ERROR;
-        $lastUsernameKey = Security::LAST_USERNAME;
-
-        // get the error if any (works with forward and redirect -- see below)
-        if ($request->attributes->has($authErrorKey)) {
-            $error = $request->attributes->get($authErrorKey);
-        } elseif (null !== $session && $session->has($authErrorKey)) {
-            $error = $session->get($authErrorKey);
-            $session->remove($authErrorKey);
-        } else {
-            $error = null;
-        }
-
         $form = $this->formFactory->create(LoginFormType::class, null, [
             'action' => $this->router->generate('nucleos_user_security_check'),
             'method' => 'POST',
         ]);
 
-        if (!$error instanceof AuthenticationException) {
-            $error = null; // The value does not come from the security component.
-        } else {
-            $form->addError(new FormError($error->getMessageKey(), null, $error->getMessageData()));
+        $error = null;
+        if ($form->getErrors()->count() > 0) {
+            $error = $form->getErrors()->current()->getMessage();
         }
 
-        // last username entered by the user
-        $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
-
         return new Response($this->twig->render('@NucleosUser/Security/login.html.twig', [
-            'last_username' => $lastUsername,
             'form'          => $form->createView(),
             // TODO: Remove this fields with the next major release
+            'last_username' => $form->getData()['_username'],
             'error'         => $error,
-            'csrf_token'    => '',
+            'csrf_token'    => $this->csrfTokenManager->getToken('authenticate'),
         ]));
-    }
-
-    private function getSession(Request $request): ?SessionInterface
-    {
-        return $request->hasSession() ? $request->getSession() : null;
     }
 }

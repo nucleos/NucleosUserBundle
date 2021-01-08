@@ -62,7 +62,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(LoginFormType::class)
             ->tag('form.type')
             ->args([
-                new Reference('request_stack'),
+                new Reference('security.authentication_utils'),
             ])
 
         ->set(LoginAction::class)
@@ -72,6 +72,7 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('event_dispatcher'),
                 new Reference('form.factory'),
                 new Reference('router'),
+                new Reference('security.csrf.token_manager'),
             ])
 
         ->set(LogoutAction::class)
