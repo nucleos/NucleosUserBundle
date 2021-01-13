@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\EventDispatcher\Event;
 
-final class FormEvent extends Event
+class FormEvent extends Event
 {
     /**
      * @var FormInterface
