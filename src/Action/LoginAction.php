@@ -16,6 +16,7 @@ namespace Nucleos\UserBundle\Action;
 use Nucleos\UserBundle\Event\GetResponseLoginEvent;
 use Nucleos\UserBundle\Form\Type\LoginFormType;
 use Nucleos\UserBundle\NucleosUserEvents;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -77,10 +78,15 @@ final class LoginAction
             return $event->getResponse();
         }
 
-        $form = $this->formFactory->create(LoginFormType::class, null, [
-            'action' => $this->router->generate('nucleos_user_security_check'),
-            'method' => 'POST',
-        ]);
+        $form = $this->formFactory
+            ->create(LoginFormType::class, null, [
+                'action' => $this->router->generate('nucleos_user_security_check'),
+                'method' => 'POST',
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'security.login.submit',
+            ])
+        ;
 
         $error = null;
         if ($form->getErrors()->count() > 0) {

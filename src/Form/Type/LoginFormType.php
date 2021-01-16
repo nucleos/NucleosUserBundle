@@ -15,7 +15,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormError;
@@ -57,9 +56,6 @@ final class LoginFormType extends AbstractType
                 'value'    => 'on',
             ])
             ->add('_target_path', HiddenType::class)
-            ->add('save', SubmitType::class, [
-                'label' => 'security.login.submit',
-            ])
         ;
 
         $authenticationUtils = $this->authenticationUtils;
