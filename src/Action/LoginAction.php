@@ -18,6 +18,7 @@ use Nucleos\UserBundle\Form\Type\LoginFormType;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
@@ -96,9 +97,16 @@ final class LoginAction
         return new Response($this->twig->render('@NucleosUser/Security/login.html.twig', [
             'form'          => $form->createView(),
             // TODO: Remove this fields with the next major release
-            'last_username' => $form->getData()['_username'],
+            'last_username' => $this->getLastUsername($form),
             'error'         => $error,
             'csrf_token'    => $this->csrfTokenManager->getToken('authenticate'),
         ]));
+    }
+
+    private function getLastUsername(FormInterface $form): ?string
+    {
+        $data = $form->getData();
+
+        return $data['_username'] ?? null;
     }
 }
