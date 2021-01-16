@@ -1,3 +1,15 @@
+# 1.7.0
+
+## Changes
+
+- Make `FormEvent` non-final @fkrauthan (#200)
+- Move buttons to action @core23 (#207)
+
+## 🐛 Bug Fixes
+
+- Fix login error @fkrauthan (#190)
+- Fix passing error to login form @core23 (#182)
+
 # 1.6.1
 
 ## Changes
