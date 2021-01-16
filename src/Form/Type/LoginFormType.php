@@ -76,9 +76,8 @@ final class LoginFormType extends AbstractType
     {
         $resolver->setDefaults([
             'translation_domain' => 'NucleosUserBundle',
-
-            'csrf_field_name' => '_csrf_token',
-            'csrf_token_id'   => 'authenticate',
+            'csrf_field_name'    => '_csrf_token',
+            'csrf_token_id'      => 'authenticate',
         ]);
     }
 
