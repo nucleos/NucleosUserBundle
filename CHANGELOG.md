@@ -2,13 +2,13 @@
 
 ## Changes
 
-- Make `FormEvent` non-final @fkrauthan (#200)
-- Move buttons to action @core23 (#207)
+- Make `FormEvent` non-final [@fkrauthan] ([#200])
+- Move buttons to action [@core23] ([#207])
 
 ## 🐛 Bug Fixes
 
-- Fix login error @fkrauthan (#190)
-- Fix passing error to login form @core23 (#182)
+- Fix login error [@fkrauthan] ([#190])
+- Fix passing error to login form [@core23] ([#182])
 
 # 1.6.1
 
@@ -128,3 +128,8 @@
 [#164]: https://github.com/nucleos/NucleosUserBundle/pull/164
 [#148]: https://github.com/nucleos/NucleosUserBundle/pull/148
 [#180]: https://github.com/nucleos/NucleosUserBundle/pull/180
+[#207]: https://github.com/nucleos/NucleosUserBundle/pull/207
+[#200]: https://github.com/nucleos/NucleosUserBundle/pull/200
+[#190]: https://github.com/nucleos/NucleosUserBundle/pull/190
+[#182]: https://github.com/nucleos/NucleosUserBundle/pull/182
+[@fkrauthan]: https://github.com/fkrauthan
