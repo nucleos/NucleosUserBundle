@@ -10,6 +10,6 @@
     <default key="_controller">Nucleos\UserBundle\Action\LoggedinAction</default>
   </route>
   <route id="nucleos_user_security_logout" path="/logout" methods="GET POST">
-    <default key="_controller">nNucleos\UserBundle\Action\LogoutAction</default>
+    <default key="_controller">Nucleos\UserBundle\Action\LogoutAction</default>
   </route>
 </routes>
