@@ -1,3 +1,11 @@
+# 1.7.1
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- Fixing typo in routing @KhorneHoly (#227)
+
 # 1.7.0
 
 ## Changes
