@@ -4,7 +4,7 @@
 
 ## 🐛 Bug Fixes
 
-- Fixing typo in routing @KhorneHoly (#227)
+- Fixing typo in routing [@KhorneHoly] ([#227])
 
 # 1.7.0
 
@@ -141,3 +141,5 @@
 [#190]: https://github.com/nucleos/NucleosUserBundle/pull/190
 [#182]: https://github.com/nucleos/NucleosUserBundle/pull/182
 [@fkrauthan]: https://github.com/fkrauthan
+[#227]: https://github.com/nucleos/NucleosUserBundle/pull/227
+[@KhorneHoly]: https://github.com/KhorneHoly
