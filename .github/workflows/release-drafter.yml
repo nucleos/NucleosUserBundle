@@ -41,7 +41,7 @@ jobs:
           php-version: 7.4
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: ~/.composer/cache
           key: ${{ matrix.php-version }}-composer-
