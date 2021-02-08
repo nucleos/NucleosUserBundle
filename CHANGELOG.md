@@ -1,112 +1,139 @@
-# 1.7.1
+# Changelog
 
-## Changes
+All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 🐛 Bug Fixes
+## 1.8.0 - TBD
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+
+## 1.7.1
+
+### Changes
+
+### 🐛 Bug Fixes
 
 - Fixing typo in routing [@KhorneHoly] ([#227])
 
-# 1.7.0
+## 1.7.0
 
-## Changes
+### Changes
 
 - Make `FormEvent` non-final [@fkrauthan] ([#200])
 - Move buttons to action [@core23] ([#207])
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Fix login error [@fkrauthan] ([#190])
 - Fix passing error to login form [@core23] ([#182])
 
-# 1.6.1
+## 1.6.1
 
-## Changes
+### Changes
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Fix button translation [@core23] ([#180])
 
-# 1.6.0
+## 1.6.0
 
-## Changes
+### Changes
 
 - Move submit buttons to form definition [@core23] ([#164])
 
-## 🚀 Features
+### 🚀 Features
 
 - Replace hardcoded forms with symfony forms [@core23] ([#167])
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Fix `PreUpdateEventArgs` import for mongodb [@core23] ([#176])
 - Fix loading driver related validations [@core23] ([#173])
 
-## 📦 Dependencies
+### 📦 Dependencies
 
 - Add support for PHP 8 [@core23] ([#148])
 
-# 1.5.0
+## 1.5.0
 
-## Changes
+### Changes
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Add more specific phpdoc [@core23] ([#120])
 - Add more specific phpdoc [@core23] ([#141])
 
-## 📦 Dependencies
+### 📦 Dependencies
 
 - Add doctrine/common 3 support [@TorbenLundsgaard] ([#137])
 - Drop doctrine/mongodb-odm 1 [@TorbenLundsgaard] ([#136])
 
-# 1.4.0
+## 1.4.0
 
-## Changes
+### Changes
 
-## 🚀 Features
+### 🚀 Features
 
 - Adding Spanish translations [@anacona16] ([#100])
 - Move configuration to PHP [@core23] ([#52])
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Add setPlainPassword() before update user [@core23] ([#92])
 - Remove deprecated mongo safe option [@core23] ([#50])
 - Catch possible null error [@core23] ([#49])
 
-# 1.3.1
+## 1.3.1
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Disable setting twig timezone [@core23] ([#40])
 
-# 1.3.0
+## 1.3.0
 
-## Changes
+### Changes
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Find methods could return null [@core23] ([#38])
 
-# 1.2.0
+## 1.2.0
 
-## Changes
+### Changes
 
-## 🚀 Features
+### 🚀 Features
 
 - Use bootstrap 3 layout as default form theme [@core23] ([#36])
 
-# 1.1.0
+## 1.1.0
 
-## Changes
+### Changes
 
-## 🚀 Features
+### 🚀 Features
 
 - Add noop driver to allow flex recipe [@core23] ([#34])
 - Add missing toString method to Group model [@core23] ([#32])
 - Make service aliases public [@core23] ([#30])
 
-## 🐛 Bug Fixes
+### 🐛 Bug Fixes
 
 - Prefix generics with [@phpstan] [@core23] ([#31])
 

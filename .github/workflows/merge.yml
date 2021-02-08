@@ -20,7 +20,7 @@ jobs:
       - name: "Request review from @nucleos-bot"
         uses: "actions/github-script@v3"
         with:
-          github-token: ${{ secrets.NUCLEOS_BOT_TOKEN }}
+          github-token: ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
           script: |
             const pullRequest = context.payload.pull_request
             const repository = context.repo
@@ -37,7 +37,7 @@ jobs:
       - name: "Assign @nucleos-bot"
         uses: "actions/github-script@v3"
         with:
-          github-token: ${{ secrets.NUCLEOS_BOT_TOKEN }}
+          github-token: ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
           script: |
             const pullRequest = context.payload.pull_request
             const repository = context.repo
@@ -55,7 +55,7 @@ jobs:
         uses: "actions/github-script@v3"
         if: "github.actor != 'nucleos-bot'"
         with:
-          github-token: ${{ secrets.NUCLEOS_BOT_TOKEN }}
+          github-token: ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
           script: |
             const pullRequest = context.payload.pull_request
             const repository = context.repo
@@ -69,7 +69,7 @@ jobs:
       - name: "Merge pull request"
         uses: "actions/github-script@v3"
         with:
-          github-token: ${{ secrets.NUCLEOS_BOT_TOKEN }}
+          github-token: ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
           script: |
             const pullRequest = context.payload.pull_request
             const repository = context.repo
