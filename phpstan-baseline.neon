@@ -106,6 +106,21 @@ parameters:
 			path: src/Command/RoleCommand.php
 
 		-
+			message: "#^Binary operation \"\\.\" between 'security…' and array\\|bool\\|float\\|int\\|string\\|null results in an error\\.$#"
+			count: 4
+			path: src/DependencyInjection/Compiler/InjectRememberMeServicesPass.php
+
+		-
+			message: "#^Binary operation \"\\.\" between 'security\\.user…' and array\\|bool\\|float\\|int\\|string\\|null results in an error\\.$#"
+			count: 2
+			path: src/DependencyInjection/Compiler/InjectUserCheckerPass.php
+
+		-
+			message: "#^Call to method Symfony\\\\Component\\\\DependencyInjection\\\\ContainerBuilder\\:\\:has\\(\\) with mixed will always evaluate to true\\.$#"
+			count: 1
+			path: src/DependencyInjection/Compiler/InjectUserCheckerPass.php
+
+		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:children\\(\\)\\.$#"
 			count: 3
 			path: src/DependencyInjection/Configuration.php
