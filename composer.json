@@ -72,11 +72,6 @@
     "config": {
         "sort-packages": true
     },
-    "extra": {
-        "branch-alias": {
-            "dev-main": "1.x-dev"
-        }
-    },
     "autoload": {
         "psr-4": {
             "Nucleos\\UserBundle\\": "src/"
