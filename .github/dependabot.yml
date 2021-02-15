@@ -20,7 +20,6 @@ updates:
     time: '03:00'
   open-pull-requests-limit: 10
   labels:
-  - pedantic
   - automerge
 - package-ecosystem: github-actions
   directory: "/"
@@ -29,5 +28,4 @@ updates:
     time: '03:00'
   open-pull-requests-limit: 10
   labels:
-  - pedantic
   - automerge

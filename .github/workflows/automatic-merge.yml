@@ -1,0 +1,17 @@
+---
+name: "Automatic Merge"
+
+on:
+  schedule:
+    - cron:  '0 * * * *'
+
+jobs:
+  merge:
+    name: "Merge Pull Requests"
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Merge"
+      uses: "nucleos/auto-merge-action@1.0.0-alpha2"
+      env:
+        "GITHUB_TOKEN": ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
