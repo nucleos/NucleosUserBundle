@@ -1,12 +1,13 @@
+name: 'Continuous Integration'
+
 on:
+  create:
   pull_request:
   push:
     branches:
       - "*.x"
     tags:
       - "**"
-
-name: "Continuous Integration"
 
 jobs:
   coding-standards:
