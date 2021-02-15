@@ -1,13 +1,11 @@
-on:
-    push:
-        paths:
-            - 'docs/**'
-
-    pull_request:
-        paths:
-            - 'docs/**'
-
 name: 'Documentation'
+
+on:
+  create:
+  push:
+  pull_request:
+    paths:
+      - 'docs/**'
 
 jobs:
   build:
