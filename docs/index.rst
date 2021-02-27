@@ -25,5 +25,6 @@ The following documents are available:
     canonicalizer
     custom_storage_layer
     routing
+    security
     configuration_reference
     migrate_from_fos
