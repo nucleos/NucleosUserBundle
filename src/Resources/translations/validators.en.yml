@@ -23,6 +23,11 @@ nucleos_user:
         blank: 'Please enter a name.'
         short: 'The name is too short.'
         long: 'The name is too long.'
+    pattern:
+        requires_upper: 'The text should contain {{ count }} uppercase characters.'
+        requires_lower: 'The text should contain {{ count }} lowercase characters.'
+        requires_numeric: 'The text should contain {{ count }} numeric characters.'
+        requires_special: 'The text should contain {{ count }} special characters ({{ chars }}).'
 nucleos_group:
     name:
         already_used: 'The name is already used.'
