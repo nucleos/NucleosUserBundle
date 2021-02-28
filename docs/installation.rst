@@ -190,6 +190,7 @@ in your application:
         firewalls:
             main:
                 pattern: ^/
+                user_checker: Nucleos\UserBundle\Security\UserChecker
                 form_login:
                     provider: nucleos_userbundle
                     csrf_token_generator: security.csrf.token_manager

@@ -21,6 +21,7 @@ use Nucleos\UserBundle\Security\EmailProvider;
 use Nucleos\UserBundle\Security\EmailUserProvider;
 use Nucleos\UserBundle\Security\LoginManager;
 use Nucleos\UserBundle\Security\LoginManagerInterface;
+use Nucleos\UserBundle\Security\UserChecker;
 use Nucleos\UserBundle\Security\UserProvider;
 use Symfony\Component\DependencyInjection\Reference;
 
@@ -88,6 +89,8 @@ return static function (ContainerConfigurator $container): void {
 
         ->set(CheckLoginAction::class)
             ->public()
+
+        ->set(UserChecker::class)
 
     ;
 };

@@ -18,10 +18,10 @@ use Symfony\Component\Security\Core\Exception\AccountExpiredException;
 use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
 use Symfony\Component\Security\Core\Exception\DisabledException;
 use Symfony\Component\Security\Core\Exception\LockedException;
-use Symfony\Component\Security\Core\User\UserChecker as BaseUserChecker;
+use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
-final class UserChecker extends BaseUserChecker
+final class UserChecker implements UserCheckerInterface
 {
     public function checkPreAuth(BaseUserInterface $user): void
     {
