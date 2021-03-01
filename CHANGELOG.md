@@ -2,28 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.8.0 - TBD
+## 1.8.0 - 2021-03-01
 
-### Added
 
-- Nothing.
 
-### Changed
+-----
 
-- Nothing.
+### Release Notes for [1.8.0](https://github.com/nucleos/NucleosUserBundle/milestone/1)
 
-### Deprecated
 
-- Nothing.
 
-### Removed
+### 1.8.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Fixed
+#### Bug
 
-- Nothing.
+ - [273: Fix registering user checker](https://github.com/nucleos/NucleosUserBundle/pull/273) thanks to @core23
 
+#### Enhancement
+
+ - [272: Add pattern validator](https://github.com/nucleos/NucleosUserBundle/pull/272) thanks to @core23
 
 ## 1.7.1
 
