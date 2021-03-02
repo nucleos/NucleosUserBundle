@@ -1,0 +1,51 @@
+security:
+    login:
+        title: 'Connexion'
+        username: 'Nom d''utilisateur'
+        password: 'Mot de passe'
+        remember_me: 'Se souvenir de moi'
+        submit: 'Connexion'
+    forgotten_password: 'Mot de passe oublié ?'
+change_password:
+    submit: 'Modifier le mot de passe'
+    flash:
+        success: 'Le mot de passe a été modifié.'
+resetting:
+    check_email: |
+        Un courriel vous a été envoyé. Il contient un lien sur lequel vous devez
+        cliquer to réinitialiser votre mot de passe.
+        Notez que vous ne pouvez demander un nouveau mot de passe qu'une fois
+        toutes les %tokenLifetime% heures.
+
+        Si vous n'avez reçu le courriel, vérifiez vos spams ou réessayez.
+    request:
+        username: 'Nom d''utilisateur ou adresse de courriel'
+        submit: 'Réinitialiser le mot de passe'
+    reset:
+        submit: 'Changer de mot de passe'
+    flash:
+        success: 'Le mot de passe a été réinitialisé avec succès.'
+    email:
+        subject: 'Réinitialisation du mot de passe'
+        message: |
+            Bonjour %username%!
+
+            Pour modifier votre mot de passe, veuillez visiter la page %confirmationUrl%
+
+            Cordialement,
+
+            l'équipe.
+
+# Global strings
+layout:
+    logout: 'Déconnexion'
+    login: 'Connexion'
+    logged_in_as: 'Connecté en tant que %username%'
+form:
+    username: 'Nom d''utilisateur'
+    email: 'Adresse de courriel'
+    current_password: 'Mot de passe actuel'
+    password: 'Mot de passe'
+    password_confirmation: 'Répéter le mot de passe'
+    new_password: 'Nouveau mot de passe'
+    new_password_confirmation: 'Répéter le nouveau mot de passe'
