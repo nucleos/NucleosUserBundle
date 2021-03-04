@@ -2678,16 +2678,16 @@
         },
         {
             "name": "psalm/plugin-symfony",
-            "version": "v2.2.0",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-symfony.git",
-                "reference": "a56f44a3f4fdca8c96726aea602b54a7b6f92a8c"
+                "reference": "69bc80d00d9cb484c0f3795775bcbbd70a853f2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-symfony/zipball/a56f44a3f4fdca8c96726aea602b54a7b6f92a8c",
-                "reference": "a56f44a3f4fdca8c96726aea602b54a7b6f92a8c",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-symfony/zipball/69bc80d00d9cb484c0f3795775bcbbd70a853f2d",
+                "reference": "69bc80d00d9cb484c0f3795775bcbbd70a853f2d",
                 "shasum": ""
             },
             "require": {
@@ -2736,9 +2736,9 @@
             "description": "Psalm Plugin for Symfony",
             "support": {
                 "issues": "https://github.com/psalm/psalm-plugin-symfony/issues",
-                "source": "https://github.com/psalm/psalm-plugin-symfony/tree/v2.2.0"
+                "source": "https://github.com/psalm/psalm-plugin-symfony/tree/v2.2.1"
             },
-            "time": "2021-03-01T06:17:04+00:00"
+            "time": "2021-03-03T06:31:41+00:00"
         },
         {
             "name": "psr/cache",
