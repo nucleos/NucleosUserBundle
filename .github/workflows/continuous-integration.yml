@@ -221,7 +221,7 @@ jobs:
         uses: shivammathur/setup-php@2.10.0
         with:
           coverage: pcov
-          extensions: "mbstring"
+          extensions: "mbstring, json, mongo"
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
