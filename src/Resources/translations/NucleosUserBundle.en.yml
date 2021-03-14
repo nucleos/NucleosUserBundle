@@ -46,3 +46,9 @@ form:
     password_confirmation: 'Repeat password'
     new_password: 'New password'
     new_password_confirmation: 'Repeat new password'
+    confirm_deletion: 'Delete my account'
+
+deletion:
+    success: 'Your account was successfully deleted.'
+    confirmation: 'Do you really want to delete your account?'
+    submit: 'Delete account'

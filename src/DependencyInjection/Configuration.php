@@ -27,6 +27,7 @@ final class Configuration implements ConfigurationInterface
 
         $this->addMainSection($rootNode);
         $this->addResettingSection($rootNode);
+        $this->addDeletionSection($rootNode);
         $this->addGroupSection($rootNode);
         $this->addServiceSection($rootNode);
 
@@ -84,6 +85,18 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('token_ttl')->defaultValue(86400)->end()
                         ->scalarNode('from_email')->end()
                     ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addDeletionSection(NodeDefinition $node): void
+    {
+        $node
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('deletion')
+                    ->canBeEnabled()
                 ->end()
             ->end()
         ;

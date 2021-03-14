@@ -14,8 +14,10 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\DependencyInjection;
 
 use Generator;
+use Nucleos\UserBundle\Action\AccountDeletionAction;
 use Nucleos\UserBundle\DependencyInjection\NucleosUserExtension;
 use Nucleos\UserBundle\EventListener\FlashListener;
+use Nucleos\UserBundle\Form\Type\AccountDeletionFormType;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -162,6 +164,22 @@ final class NucleosUserExtensionTest extends TestCase
         $this->assertNotHasDefinition(FlashListener::class);
     }
 
+    public function testUserLoadDeletionSrviceWithDefaults(): void
+    {
+        $this->createEmptyConfiguration();
+
+        $this->assertNotHasDefinition(AccountDeletionAction::class);
+        $this->assertNotHasDefinition(AccountDeletionFormType::class);
+    }
+
+    public function testUserLoadDeletionSrvice(): void
+    {
+        $this->createFullConfiguration();
+
+        $this->assertHasDefinition(AccountDeletionAction::class);
+        $this->assertHasDefinition(AccountDeletionFormType::class);
+    }
+
     /**
      * @dataProvider userManagerSetFactoryProvider
      */
@@ -246,6 +264,8 @@ service:
     user_manager: acme_my.user_manager
 group:
     group_class: Acme\MyBundle\Entity\Group
+deletion:
+    enabled: true
 EOF;
         $parser = new Parser();
 

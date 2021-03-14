@@ -46,3 +46,9 @@ form:
     password_confirmation: 'Passwort bestätigen'
     new_password: 'Neues Passwort'
     new_password_confirmation: 'Neues Passwort bestätigen'
+    confirm_deletion: 'Mein Konto soll gelöscht werden'
+
+deletion:
+    success: 'Das Konto wurde erfolgreich gelöscht.'
+    confirmation: 'Möchten Sie Ihr Konto wirklich löschen?'
+    submit: 'Konto löschen'
