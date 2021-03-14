@@ -213,4 +213,31 @@ final class NucleosUserEvents
      * @Event("Nucleos\UserBundle\Event\GetResponseUserEvent")
      */
     public const RESETTING_SEND_EMAIL_COMPLETED = 'nucleos_user.resetting.send_email.completed';
+
+    /**
+     * The ACCOUNT_DELETION_INITIALIZE event occurs when the account deletion is initialized.
+     *
+     * This event allows you to modify the default values of the deletion request before binding the form.
+     *
+     * @Event("Nucleos\UserBundle\Event\GetResponseAccountDeletionEvent")
+     */
+    public const ACCOUNT_DELETION_INITIALIZE = 'nucleos_user.account_deletion.initialize';
+
+    /**
+     * The ACCOUNT_DELETION event occurs when the account deletion is processed.
+     *
+     * This event allows you to process the user deletion request.
+     *
+     * @Event("Nucleos\UserBundle\Event\AccountDeletionEvent")
+     */
+    public const ACCOUNT_DELETION = 'nucleos_user.account_deletion';
+
+    /**
+     * The ACCOUNT_DELETION_SUCCESS event occurs when the account was deleted successfully.
+     *
+     * This event allows you to set the response instead of using the default one.
+     *
+     * @Event("Nucleos\UserBundle\Event\AccountDeletionResponseEvent")
+     */
+    public const ACCOUNT_DELETION_SUCCESS = 'nucleos_user.account_deletion.success';
 }

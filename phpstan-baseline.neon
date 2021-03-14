@@ -127,7 +127,7 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:addDefaultsIfNotSet\\(\\)\\.$#"
-			count: 1
+			count: 2
 			path: src/DependencyInjection/Configuration.php
 
 		-
@@ -147,6 +147,11 @@ parameters:
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\DependencyInjection\\\\NucleosUserExtension\\:\\:remapParametersNamespaces\\(\\) has parameter \\$namespaces with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DependencyInjection/NucleosUserExtension.php
+
+		-
+			message: "#^Method Nucleos\\\\UserBundle\\\\DependencyInjection\\\\NucleosUserExtension\\:\\:loadDeletion\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/DependencyInjection/NucleosUserExtension.php
 

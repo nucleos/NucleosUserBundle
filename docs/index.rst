@@ -26,5 +26,6 @@ The following documents are available:
     custom_storage_layer
     routing
     security
+    deletion
     configuration_reference
     migrate_from_fos
