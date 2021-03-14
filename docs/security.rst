@@ -14,7 +14,7 @@ There is a pattern constraint that can be used to create stronger user passwords
     Nucleos\UserBundle\Form\Model\ChangePassword:
         properties:
             plainPassword:
-                - Urvent\StaffBundle\Validator\Constraints\Pattern:
+                - Nucleos\UserBundle\Validator\Constraints\Pattern:
                     minUpper: 1
                     minLower: 1
                     minNumeric: 1
