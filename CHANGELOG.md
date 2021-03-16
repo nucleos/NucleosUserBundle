@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.9.0 - TBD
+## 1.9.0 - 2021-03-16
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.9.0](https://github.com/nucleos/NucleosUserBundle/milestone/3)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.9.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
+ - [292: Show form errors](https://github.com/nucleos/NucleosUserBundle/pull/292) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [291: Add account deletion](https://github.com/nucleos/NucleosUserBundle/pull/291) thanks to @core23
 
 ## 1.8.0 - 2021-03-01
 
