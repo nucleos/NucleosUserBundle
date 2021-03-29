@@ -41,7 +41,6 @@ final class ResettingFormType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
                 'type'    => PasswordType::class,
                 'options' => [
-                    'translation_domain' => 'NucleosUserBundle',
                     'attr'               => [
                         'autocomplete' => 'new-password',
                     ],
@@ -59,8 +58,9 @@ final class ResettingFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class'    => $this->class,
-            'csrf_token_id' => 'resetting',
+            'data_class'         => $this->class,
+            'csrf_token_id'      => 'resetting',
+            'translation_domain' => 'NucleosUserBundle',
         ]);
     }
 }
