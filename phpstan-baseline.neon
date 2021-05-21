@@ -116,11 +116,6 @@ parameters:
 			path: src/DependencyInjection/Compiler/InjectUserCheckerPass.php
 
 		-
-			message: "#^Call to method Symfony\\\\Component\\\\DependencyInjection\\\\ContainerBuilder\\:\\:has\\(\\) with mixed will always evaluate to true\\.$#"
-			count: 1
-			path: src/DependencyInjection/Compiler/InjectUserCheckerPass.php
-
-		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeDefinition\\:\\:children\\(\\)\\.$#"
 			count: 3
 			path: src/DependencyInjection/Configuration.php
@@ -166,19 +161,9 @@ parameters:
 			path: src/DependencyInjection/NucleosUserExtension.php
 
 		-
-			message: "#^Property Nucleos\\\\UserBundle\\\\Doctrine\\\\GroupManager\\<GroupTemplate of Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\>\\:\\:\\$class \\(class\\-string\\<GroupTemplate of Nucleos\\\\UserBundle\\\\Model\\\\GroupInterface\\>\\) does not accept string\\.$#"
-			count: 1
-			path: src/Doctrine/GroupManager.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\GroupManager\\:\\:findGroupBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Doctrine/GroupManager.php
-
-		-
-			message: "#^Property Nucleos\\\\UserBundle\\\\Doctrine\\\\UserManager\\:\\:\\$class \\(class\\-string\\<Nucleos\\\\UserBundle\\\\Model\\\\UserInterface\\>\\) does not accept string\\.$#"
-			count: 1
-			path: src/Doctrine/UserManager.php
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\UserManager\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
