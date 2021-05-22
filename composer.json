@@ -91,7 +91,7 @@
         ],
         "coverage": "vendor/bin/phpunit --colors=always --coverage-clover=build/logs/clover.xml",
         "cs": "PHP_CS_FIXER_IGNORE_ENV=1 && vendor/bin/php-cs-fixer fix --verbose",
-        "cs-diff": "PHP_CS_FIXER_IGNORE_ENV=1 && vendor/bin/php-cs-fixer fix  --verbose --diff --diff-format=udiff --dry-run",
+        "cs-diff": "PHP_CS_FIXER_IGNORE_ENV=1 && vendor/bin/php-cs-fixer fix  --verbose --diff --dry-run",
         "deps": "vendor/bin/composer-require-checker check --config-file composer-require.json composer.json",
         "infection": "vendor/bin/infection",
         "lint": [
