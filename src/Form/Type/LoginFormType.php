@@ -22,6 +22,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class LoginFormType extends AbstractType
 {
@@ -30,9 +31,15 @@ final class LoginFormType extends AbstractType
      */
     private $authenticationUtils;
 
-    public function __construct(AuthenticationUtils $authenticationUtils)
+    /**
+     * @var TranslatorInterface|null
+     */
+    private $translator;
+
+    public function __construct(AuthenticationUtils $authenticationUtils, ?TranslatorInterface $translator = null)
     {
         $this->authenticationUtils = $authenticationUtils;
+        $this->translator          = $translator;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -60,10 +67,14 @@ final class LoginFormType extends AbstractType
 
         $authenticationUtils = $this->authenticationUtils;
 
-        $builder->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event) use ($authenticationUtils): void {
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($authenticationUtils): void {
             $error = $authenticationUtils->getLastAuthenticationError();
             if (null !== $error) {
-                $event->getForm()->addError(new FormError($error->getMessage()));
+                $message = $error->getMessage();
+                if (null !== $this->translator) {
+                    $message = $this->translator->trans($message, [], 'NucleosUserBundle');
+                }
+                $event->getForm()->addError(new FormError($message));
             }
 
             $event->setData(array_replace((array) $event->getData(), [

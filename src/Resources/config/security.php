@@ -64,6 +64,7 @@ return static function (ContainerConfigurator $container): void {
             ->tag('form.type')
             ->args([
                 new Reference('security.authentication_utils'),
+                new Reference('translator'),
             ])
 
         ->set(LoginAction::class)
