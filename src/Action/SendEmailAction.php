@@ -78,9 +78,9 @@ final class SendEmailAction
 
     public function __invoke(Request $request): Response
     {
-        $username = $request->request->get('username');
+        $username = (string) $request->request->get('username', '');
 
-        $user = null === $username ? null : $this->userManager->findUserByUsernameOrEmail($username);
+        $user = '' === $username ? null : $this->userManager->findUserByUsernameOrEmail($username);
 
         if (null !== $user) {
             $response = $this->process($request, $user);
