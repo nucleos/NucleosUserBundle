@@ -15,7 +15,7 @@
         "phpstan/phpstan-strict-rules": "^0.12",
         "phpstan/phpstan-symfony": "^0.12",
         "phpunit/phpunit": "^8.5 || ^9.0",
-        "psalm/plugin-phpunit": "^0.15",
+        "psalm/plugin-phpunit": "^0.16",
         "psalm/plugin-symfony": "^2.1",
         "symfony/phpunit-bridge": "^5.1",
         "vimeo/psalm": "^4.3.1"
