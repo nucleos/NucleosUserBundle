@@ -52,3 +52,5 @@ deletion:
     success: 'Das Konto wurde erfolgreich gelöscht.'
     confirmation: 'Möchten Sie Ihr Konto wirklich löschen?'
     submit: 'Konto löschen'
+
+Bad credentials.: 'Ungültige E-Mail-Adresse oder falsches Passwort.'

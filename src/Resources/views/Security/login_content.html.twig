@@ -6,7 +6,7 @@
     <fieldset>
         <legend><i class="fa fa-lock" aria-hidden="true"></i> {{ 'security.login.title'|trans }}</legend>
 
-        {{ form_widget(form) }}
+        {{ form_rest(form) }}
 
         <div>
             <a href="{{ path('nucleos_user_resetting_request') }}">
