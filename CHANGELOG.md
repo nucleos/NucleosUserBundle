@@ -2,27 +2,31 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.10.0 - TBD
+## 1.10.0 - 2021-06-12
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.10.0](https://github.com/nucleos/NucleosUserBundle/milestone/6)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.10.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **5**
+- Total contributors: **2**
 
-### Removed
+#### Bug
 
-- Nothing.
+ - [363: Fix showing form errors twice](https://github.com/nucleos/NucleosUserBundle/pull/363) thanks to @core23
+ - [361: Missing translation of login errors](https://github.com/nucleos/NucleosUserBundle/pull/361) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [362: Use default form theme](https://github.com/nucleos/NucleosUserBundle/pull/362) thanks to @core23
+ - [359: Force string typecast when reading username from request](https://github.com/nucleos/NucleosUserBundle/pull/359) thanks to @core23
+ - [302: Declare translation&#95;domain in configureOptions.](https://github.com/nucleos/NucleosUserBundle/pull/302) thanks to @alexsegura
 
 ## 1.9.0 - 2021-03-16
 
