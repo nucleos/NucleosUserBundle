@@ -1,0 +1,57 @@
+security:
+    login:
+        title: 'Авторизоваться'
+        username: 'Имя пользователя'
+        password: 'Пароль'
+        remember_me: 'Запомнить меня'
+        submit: 'Войти'
+    forgotten_password: 'Забыли пароль?'
+change_password:
+    submit: 'Изменить пароль'
+    flash:
+        success: 'Пароль изменен.'
+resetting:
+    check_email: |
+        Письмо отправлено. Оно содержит ссылку, при переходе по которой ваш пароль будет сброшен.
+        Заметьте, вы сможете запросить новый пароль только через %tokenLifetime% часов.
+
+        Если вы не получили письмо, проверьте папку Спам или попробуйте снова.
+
+    request:
+        username: 'Имя пользователя или электронная почта'
+        submit: 'Сбросить пароль'
+    reset:
+        submit: 'Изменить пароль'
+    flash:
+        success: 'Пароль успешно сброшен.'
+    email:
+        subject: 'Сброс пароля'
+        message: |
+            Приветствуем, %username%!
+
+            Для сброса пароля, пожалуйста, пройдите по ссылке %confirmationUrl%
+
+            С наилучшими пожеланиями,
+            команда сайта.
+
+# Global strings
+layout:
+    logout: 'Выход'
+    login: 'Вход'
+    logged_in_as: 'Вы вошли как %username%'
+form:
+    username: 'Имя пользователя'
+    email: 'Электронная почта'
+    current_password: 'Текущий пароль'
+    password: 'Пароль'
+    password_confirmation: 'Повторите пароль'
+    new_password: 'Новый пароль'
+    new_password_confirmation: 'Повторите новый пароль'
+    confirm_deletion: 'Удалить мой аккаунт'
+
+deletion:
+    success: 'Ваша учетная запись была успешно удалена.'
+    confirmation: 'Вы действительно хотите удалить свою учетную запись?'
+    submit: 'Удалить аккаунт'
+
+Bad credentials.: 'Некорректный email или пароль'
