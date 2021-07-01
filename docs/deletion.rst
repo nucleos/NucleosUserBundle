@@ -14,7 +14,7 @@ The feature is disabled by default. You can enable it by using the following con
     nucleos_user:
         # ...
         deletion:
-            enable: true
+            enabled: true
 
 Add the routing config:
 
