@@ -2,27 +2,25 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.11.0 - TBD
+## 1.11.0 - 2021-07-02
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.11.0](https://github.com/nucleos/NucleosUserBundle/milestone/8)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.11.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **2**
 
-### Removed
+#### Enhancement
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [376: Add support for html mails](https://github.com/nucleos/NucleosUserBundle/pull/376) thanks to @core23
+ - [372: add Russian translate](https://github.com/nucleos/NucleosUserBundle/pull/372) thanks to @a1812
 
 ## 1.10.0 - 2021-06-12
 
