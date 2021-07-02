@@ -33,6 +33,13 @@ resetting:
 
             Mit besten Grüßen,
             das Team.
+        html: |
+            <p>Hallo %username%!</p>
+
+            <p>Besuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: <a href="%confirmationUrl%">%confirmationUrl%</a></p>
+
+            <p>Mit besten Grüßen,</p>
+            <p>das Team.</p>
 
 layout:
     logout: Abmelden

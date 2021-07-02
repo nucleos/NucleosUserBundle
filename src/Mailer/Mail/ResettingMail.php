@@ -32,7 +32,8 @@ final class ResettingMail extends TemplatedEmail
     {
         parent::__construct($headers, $body);
 
-        $this->htmlTemplate('@NucleosUser/Resetting/email.txt.twig');
+        $this->textTemplate('@NucleosUser/Resetting/email.txt.twig');
+        $this->htmlTemplate('@NucleosUser/Resetting/email.html.twig');
     }
 
     public function setConfirmationUrl(string $confirmationUrl): self
