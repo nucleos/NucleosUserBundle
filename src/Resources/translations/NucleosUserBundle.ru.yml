@@ -33,6 +33,13 @@ resetting:
 
             С наилучшими пожеланиями,
             команда сайта.
+        html: |
+            <p>Приветствуем, %username%!</p>
+
+            <p>Для сброса пароля, пожалуйста, пройдите по ссылке <a href="%confirmationUrl%">%confirmationUrl%</a></p>
+
+            <p>С наилучшими пожеланиями,</p>
+            <p>команда сайта.</p>
 
 # Global strings
 layout:

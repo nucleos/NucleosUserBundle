@@ -1,6 +1,6 @@
 {% trans_default_domain 'NucleosUserBundle' %}
 
-{{ 'resetting.email.message'|trans({
+{{ 'resetting.email.html'|trans({
     '%username%': user.username,
     '%confirmationUrl%': confirmationUrl
-})|raw }}
+}) }}

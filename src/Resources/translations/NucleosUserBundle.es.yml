@@ -32,6 +32,13 @@ resetting:
 
             Atentamente,
             el Equipo.
+        html: |
+            <p>¡Hola %username%!</p>
+
+            <p>Para restablecer tu contraseña, por favor visita <a href="%confirmationUrl%">%confirmationUrl%</a></p>
+
+            <p>Atentamente,</p>
+            <p>el Equipo.</p>
 
 # Global strings
 layout:
