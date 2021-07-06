@@ -176,11 +176,6 @@ parameters:
 			path: src/EventListener/FlashListener.php
 
 		-
-			message: "#^Call to method Symfony\\\\Component\\\\HttpFoundation\\\\Request\\:\\:hasSession\\(\\) will always evaluate to true\\.$#"
-			count: 2
-			path: src/EventListener/LocaleEventListener.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\GroupManagerInterface\\:\\:findGroupBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Model/GroupManagerInterface.php
