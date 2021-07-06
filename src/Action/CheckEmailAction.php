@@ -50,6 +50,8 @@ final class CheckEmailAction
     {
         $username = $request->query->get('username', '');
 
+        \assert(\is_string($username));
+
         if ('' === trim($username)) {
             // the user does not come from the sendEmail action
             return new RedirectResponse($this->router->generate('nucleos_user_resetting_request'));
