@@ -25,7 +25,11 @@ final class PatternValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, Pattern::class);
         }
 
-        if (null === $value || !\is_string($value)) {
+        if (null === $value) {
+            return;
+        }
+
+        if (!\is_string($value)) {
             throw new UnexpectedTypeException($value, 'string');
         }
 
