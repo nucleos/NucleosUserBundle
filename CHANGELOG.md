@@ -24,6 +24,29 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+## 1.11.1 - 2021-08-04
+
+
+-----
+
+### Release Notes for [1.11.1](https://github.com/nucleos/NucleosUserBundle/milestone/9)
+
+1.11.x bugfix release (patch)
+
+### 1.11.1
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **2**
+
+ - [398: Remove test deprecations](https://github.com/nucleos/NucleosUserBundle/pull/398) thanks to @core23
+
+#### Bug
+
+ - [397: PatternValidator ignores null values and does not throw an exception anymore](https://github.com/nucleos/NucleosUserBundle/pull/397) thanks to @AubreyHewes
+=======
+
+
 ## 1.11.0 - 2021-07-02
 
 
