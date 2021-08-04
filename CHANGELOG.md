@@ -44,7 +44,7 @@ All notable changes to this project will be documented in this file, in reverse 
 #### Bug
 
  - [397: PatternValidator ignores null values and does not throw an exception anymore](https://github.com/nucleos/NucleosUserBundle/pull/397) thanks to @AubreyHewes
-=======
+
 
 
 ## 1.11.0 - 2021-07-02
