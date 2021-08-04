@@ -56,7 +56,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
             $this->assertNoViolation();
         } else {
             $this->buildViolation($constraint->minLowerMessage)
-                ->setParameter('{{ count }}', $constraint->minLower)
+                ->setParameter('{{ count }}', (string) $constraint->minLower)
                 ->assertRaised()
             ;
         }
@@ -76,7 +76,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
             $this->assertNoViolation();
         } else {
             $this->buildViolation($constraint->minUpperMessage)
-                ->setParameter('{{ count }}', $constraint->minUpper)
+                ->setParameter('{{ count }}', (string) $constraint->minUpper)
                 ->assertRaised()
             ;
         }
@@ -96,7 +96,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
             $this->assertNoViolation();
         } else {
             $this->buildViolation($constraint->minNumericMessage)
-                ->setParameter('{{ count }}', $constraint->minNumeric)
+                ->setParameter('{{ count }}', (string) $constraint->minNumeric)
                 ->assertRaised()
             ;
         }
@@ -116,7 +116,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
             $this->assertNoViolation();
         } else {
             $this->buildViolation($constraint->minSpecialMessage)
-                ->setParameter('{{ count }}', $constraint->minSpecial)
+                ->setParameter('{{ count }}', (string) $constraint->minSpecial)
                 ->setParameter('{{ chars }}', $constraint->specialChars)
                 ->assertRaised()
             ;
