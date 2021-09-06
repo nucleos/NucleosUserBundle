@@ -14,12 +14,12 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\Util;
 
 use Nucleos\UserBundle\Tests\App\Entity\TestUser;
-use Nucleos\UserBundle\Tests\Fixtures\SelfSaltedEncoder;
+use Nucleos\UserBundle\Tests\Fixtures\SaltedPasswordHasher;
 use Nucleos\UserBundle\Util\PasswordUpdater;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
+use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
 final class PasswordUpdaterTest extends TestCase
 {
@@ -28,62 +28,62 @@ final class PasswordUpdaterTest extends TestCase
      */
     private $updater;
     /**
-     * @var MockObject&EncoderFactoryInterface
+     * @var MockObject&PasswordHasherFactoryInterface
      */
-    private $encoderFactory;
+    private $passwordHasherFactory;
 
     protected function setUp(): void
     {
-        $this->encoderFactory = $this->getMockBuilder(EncoderFactoryInterface::class)->getMock();
+        $this->passwordHasherFactory = $this->getMockBuilder(PasswordHasherFactoryInterface::class)->getMock();
 
-        $this->updater = new PasswordUpdater($this->encoderFactory);
+        $this->updater = new PasswordUpdater($this->passwordHasherFactory);
     }
 
     public function testUpdatePassword(): void
     {
-        $encoder = $this->getMockPasswordEncoder();
-        $user    = new TestUser();
+        $passwordHasher = $this->createMock(SaltedPasswordHasher::class);
+        $user           = new TestUser();
         $user->setPlainPassword('password');
 
-        $this->encoderFactory->expects(static::once())
-            ->method('getEncoder')
+        $this->passwordHasherFactory->expects(static::once())
+            ->method('getPasswordHasher')
             ->with($user)
-            ->willReturn($encoder)
+            ->willReturn($passwordHasher)
         ;
 
-        $encoder->expects(static::once())
-            ->method('encodePassword')
+        $passwordHasher->expects(static::once())
+            ->method('hash')
             ->with('password', static::isType('string'))
-            ->willReturn('encodedPassword')
+            ->willReturn('hashedPassword')
         ;
 
         $this->updater->hashPassword($user);
-        static::assertSame('encodedPassword', $user->getPassword(), '->updatePassword() sets encoded password');
+        static::assertSame('hashedPassword', $user->getPassword(), '->updatePassword() sets hashed password');
         static::assertNotNull($user->getSalt());
         static::assertNull($user->getPlainPassword(), '->updatePassword() erases credentials');
     }
 
-    public function testUpdatePasswordSelfSaltedEncoder(): void
+    public function testUpdatePasswordSelfSaltedPasswordHasher(): void
     {
-        $encoder = $this->createMock(SelfSaltedEncoder::class);
-        $user    = new TestUser();
+        $passwordHasher = $this->getMockPasswordHasher();
+        $user           = new TestUser();
         $user->setPlainPassword('password');
         $user->setSalt('old_salt');
 
-        $this->encoderFactory->expects(static::once())
-            ->method('getEncoder')
+        $this->passwordHasherFactory->expects(static::once())
+            ->method('getPasswordHasher')
             ->with($user)
-            ->willReturn($encoder)
+            ->willReturn($passwordHasher)
         ;
 
-        $encoder->expects(static::once())
-            ->method('encodePassword')
-            ->with('password', static::isNull())
-            ->willReturn('encodedPassword')
+        $passwordHasher->expects(static::once())
+            ->method('hash')
+            ->with('password')
+            ->willReturn('hashedPassword')
         ;
 
         $this->updater->hashPassword($user);
-        static::assertSame('encodedPassword', $user->getPassword(), '->updatePassword() sets encoded password');
+        static::assertSame('hashedPassword', $user->getPassword(), '->updatePassword() sets hashed password');
         static::assertNull($user->getSalt());
         static::assertNull($user->getPlainPassword(), '->updatePassword() erases credentials');
     }
@@ -100,10 +100,10 @@ final class PasswordUpdaterTest extends TestCase
     }
 
     /**
-     * @return MockObject&PasswordEncoderInterface
+     * @return MockObject&PasswordHasherInterface
      */
-    private function getMockPasswordEncoder(): MockObject
+    private function getMockPasswordHasher(): MockObject
     {
-        return $this->getMockBuilder(PasswordEncoderInterface::class)->getMock();
+        return $this->getMockBuilder(PasswordHasherInterface::class)->getMock();
     }
 }

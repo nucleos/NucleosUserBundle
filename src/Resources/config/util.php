@@ -39,7 +39,7 @@ return static function (ContainerConfigurator $container): void {
 
         ->set('nucleos_user.util.password_updater', PasswordUpdater::class)
             ->args([
-                new Reference('security.encoder_factory'),
+                new Reference('security.password_hasher_factory'),
             ])
 
         ->alias(PasswordUpdaterInterface::class, 'nucleos_user.util.password_updater')

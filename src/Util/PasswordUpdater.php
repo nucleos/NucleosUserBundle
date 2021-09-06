@@ -14,19 +14,19 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Util;
 
 use Nucleos\UserBundle\Model\UserInterface;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
-use Symfony\Component\Security\Core\Encoder\SelfSaltingEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
+use Symfony\Component\PasswordHasher\LegacyPasswordHasherInterface;
 
 final class PasswordUpdater implements PasswordUpdaterInterface
 {
     /**
-     * @var EncoderFactoryInterface
+     * @var PasswordHasherFactoryInterface
      */
-    private $encoderFactory;
+    private $passwordHasherFactory;
 
-    public function __construct(EncoderFactoryInterface $encoderFactory)
+    public function __construct(PasswordHasherFactoryInterface $passwordHasherFactory)
     {
-        $this->encoderFactory = $encoderFactory;
+        $this->passwordHasherFactory = $passwordHasherFactory;
     }
 
     public function hashPassword(UserInterface $user): void
@@ -37,16 +37,17 @@ final class PasswordUpdater implements PasswordUpdaterInterface
             return;
         }
 
-        $encoder = $this->encoderFactory->getEncoder($user);
+        $passwordHasher = $this->passwordHasherFactory->getPasswordHasher($user);
 
-        if ($encoder instanceof SelfSaltingEncoderInterface) {
-            $user->setSalt(null);
-        } else {
+        if ($passwordHasher instanceof LegacyPasswordHasherInterface) {
             $salt = rtrim(str_replace('+', '.', base64_encode(random_bytes(32))), '=');
             $user->setSalt($salt);
+            $hashedPassword = $passwordHasher->hash($plainPassword, $salt);
+        } else {
+            $user->setSalt(null);
+            $hashedPassword = $passwordHasher->hash($plainPassword);
         }
 
-        $hashedPassword = $encoder->encodePassword($plainPassword, $user->getSalt());
         $user->setPassword($hashedPassword);
         $user->eraseCredentials();
     }
