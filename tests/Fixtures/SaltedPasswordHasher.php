@@ -13,9 +13,8 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\Fixtures;
 
-use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
-use Symfony\Component\Security\Core\Encoder\SelfSaltingEncoderInterface;
+use Symfony\Component\PasswordHasher\LegacyPasswordHasherInterface;
 
-interface SelfSaltedEncoder extends PasswordEncoderInterface, SelfSaltingEncoderInterface
+interface SaltedPasswordHasher extends LegacyPasswordHasherInterface
 {
 }
