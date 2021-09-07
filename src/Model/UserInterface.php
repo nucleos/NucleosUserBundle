@@ -32,6 +32,12 @@ interface UserInterface extends BaseUserInterface, EquatableInterface, Serializa
     public function getId();
 
     /**
+     * Gets the username. This is no longer provided by the parent interface
+     * (replaced by getUserIdentifier()) but users still have usernames.
+     */
+    public function getUsername(): string;
+
+    /**
      * Sets the username.
      */
     public function setUsername(string $username): void;
