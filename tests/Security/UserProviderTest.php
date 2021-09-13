@@ -31,10 +31,7 @@ final class UserProviderTest extends TestCase
      */
     private $userManager;
 
-    /**
-     * @var UserProvider
-     */
-    private $userProvider;
+    private UserProvider $userProvider;
 
     protected function setUp(): void
     {

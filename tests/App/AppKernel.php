@@ -60,7 +60,7 @@ final class AppKernel extends Kernel
         $routes->import(__DIR__.'/../../src/Resources/config/routing/all.xml');
     }
 
-    protected function configureContainer(ContainerBuilder $containerBuilder, LoaderInterface $loader): void
+    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $loader->load(__DIR__.'/config/config.yaml');
         $loader->load(__DIR__.'/config/security.yaml');

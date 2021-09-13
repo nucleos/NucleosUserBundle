@@ -30,10 +30,7 @@ final class UserManagerTest extends TestCase
      */
     private const USER_CLASS = TestUser::class;
 
-    /**
-     * @var UserManager
-     */
-    private $userManager;
+    private UserManager $userManager;
 
     /**
      * @var MockObject&ObjectManager

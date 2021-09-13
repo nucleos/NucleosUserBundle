@@ -13,10 +13,11 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\App\Entity;
 
+use Nucleos\UserBundle\Model\GroupInterface;
 use Nucleos\UserBundle\Model\User;
 
 /**
- * @phpstan-extends User<\Nucleos\UserBundle\Model\GroupInterface>
+ * @phpstan-extends User<GroupInterface>
  */
 class TestUser extends User
 {

@@ -409,11 +409,9 @@ final class UserManipulatorTest extends TestCase
     }
 
     /**
-     * @param bool $once
-     *
      * @return MockObject&RequestStack
      */
-    protected function getRequestStackMock($once = true): MockObject
+    protected function getRequestStackMock(bool $once = true): MockObject
     {
         $requestStackMock = $this->getMockBuilder(RequestStack::class)->getMock();
 
