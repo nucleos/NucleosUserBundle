@@ -21,7 +21,7 @@ use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
  * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
- * @phpstan-implements \Nucleos\UserBundle\Model\GroupableInterface<GroupTemplate>
+ * @phpstan-implements GroupableInterface<GroupTemplate>
  */
 abstract class User implements UserInterface, GroupableInterface, LocaleAwareInterface
 {
