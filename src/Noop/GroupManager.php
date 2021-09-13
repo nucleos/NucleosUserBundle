@@ -19,7 +19,7 @@ use Nucleos\UserBundle\Noop\Exception\NoDriverException;
 
 /**
  * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
- * @phpstan-extends \Nucleos\UserBundle\Model\GroupManager<GroupTemplate>
+ * @phpstan-extends GroupManager<GroupTemplate>
  */
 final class GroupManager extends BaseGroupManager
 {

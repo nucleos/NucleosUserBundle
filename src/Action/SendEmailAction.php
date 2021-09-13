@@ -136,10 +136,6 @@ final class SendEmailAction
         $event = new GetResponseUserEvent($user, $request);
         $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_SEND_EMAIL_COMPLETED);
 
-        if (null !== $event->getResponse()) {
-            return $event->getResponse();
-        }
-
-        return null;
+        return $event->getResponse();
     }
 }

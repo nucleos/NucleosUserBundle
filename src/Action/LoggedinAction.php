@@ -56,11 +56,7 @@ final class LoggedinAction
         $event = new GetResponseUserEvent($user, $request);
         $this->eventDispatcher->dispatch($event, NucleosUserEvents::SECURITY_LOGIN_COMPLETED);
 
-        if (null !== $event->getResponse()) {
-            return $event->getResponse();
-        }
-
-        return new Response($this->twig->render('@NucleosUser/Security/loggedin.html.twig'));
+        return $event->getResponse() ?? new Response($this->twig->render('@NucleosUser/Security/loggedin.html.twig'));
     }
 
     private function getUser(): ?UserInterface
