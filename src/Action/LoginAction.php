@@ -18,11 +18,11 @@ use Nucleos\UserBundle\Form\Type\LoginFormType;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 
@@ -53,18 +53,25 @@ final class LoginAction
      */
     private $csrfTokenManager;
 
+    /**
+     * @var AuthenticationUtils
+     */
+    private $authenticationUtils;
+
     public function __construct(
         Environment $twig,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
         RouterInterface $router,
-        CsrfTokenManagerInterface $csrfTokenManager
+        CsrfTokenManagerInterface $csrfTokenManager,
+        AuthenticationUtils $authenticationUtils
     ) {
-        $this->twig             = $twig;
-        $this->eventDispatcher  = $eventDispatcher;
-        $this->formFactory      = $formFactory;
-        $this->router           = $router;
-        $this->csrfTokenManager = $csrfTokenManager;
+        $this->twig                = $twig;
+        $this->eventDispatcher     = $eventDispatcher;
+        $this->formFactory         = $formFactory;
+        $this->router              = $router;
+        $this->csrfTokenManager    = $csrfTokenManager;
+        $this->authenticationUtils = $authenticationUtils;
     }
 
     /**
@@ -89,24 +96,11 @@ final class LoginAction
             ])
         ;
 
-        $error = null;
-        if ($form->getErrors()->count() > 0) {
-            $error = $form->getErrors()->current()->getMessage();
-        }
-
         return new Response($this->twig->render('@NucleosUser/Security/login.html.twig', [
             'form'          => $form->createView(),
-            // TODO: Remove this fields with the next major release
-            'last_username' => $this->getLastUsername($form),
-            'error'         => $error,
+            'last_username' => $this->authenticationUtils->getLastUsername(),
+            'error'         => $this->authenticationUtils->getLastAuthenticationError(),
             'csrf_token'    => $this->csrfTokenManager->getToken('authenticate'),
         ]));
-    }
-
-    private function getLastUsername(FormInterface $form): ?string
-    {
-        $data = $form->getData();
-
-        return $data['_username'] ?? null;
     }
 }
