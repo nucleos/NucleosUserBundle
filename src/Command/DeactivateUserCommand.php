@@ -28,10 +28,7 @@ final class DeactivateUserCommand extends Command
      */
     protected static $defaultName = 'nucleos:user:deactivate';
 
-    /**
-     * @var UserManipulator
-     */
-    private $userManipulator;
+    private UserManipulator $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
     {

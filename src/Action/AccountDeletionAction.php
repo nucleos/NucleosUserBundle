@@ -34,35 +34,17 @@ use Twig\Environment;
 
 final class AccountDeletionAction
 {
-    /**
-     * @var Environment
-     */
-    private $twig;
+    private Environment $twig;
 
-    /**
-     * @var RouterInterface
-     */
-    private $router;
+    private RouterInterface $router;
 
-    /**
-     * @var UserManagerInterface
-     */
-    private $userManager;
+    private UserManagerInterface $userManager;
 
-    /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
+    private TokenStorageInterface $tokenStorage;
 
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
+    private FormFactoryInterface $formFactory;
 
-    /**
-     * @var EventDispatcherInterface
-     */
-    private $eventDispatcher;
+    private EventDispatcherInterface $eventDispatcher;
 
     public function __construct(
         Environment $twig,

@@ -27,35 +27,17 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final class SendEmailAction
 {
-    /**
-     * @var RouterInterface
-     */
-    private $router;
+    private RouterInterface $router;
 
-    /**
-     * @var EventDispatcherInterface
-     */
-    private $eventDispatcher;
+    private EventDispatcherInterface $eventDispatcher;
 
-    /**
-     * @var UserManagerInterface
-     */
-    private $userManager;
+    private UserManagerInterface $userManager;
 
-    /**
-     * @var TokenGeneratorInterface
-     */
-    private $tokenGenerator;
+    private TokenGeneratorInterface $tokenGenerator;
 
-    /**
-     * @var MailerInterface
-     */
-    private $mailer;
+    private MailerInterface $mailer;
 
-    /**
-     * @var int
-     */
-    private $retryTtl;
+    private int $retryTtl;
 
     /**
      * SendEmailAction constructor.

@@ -19,10 +19,7 @@ use Symfony\Component\PasswordHasher\LegacyPasswordHasherInterface;
 
 final class PasswordUpdater implements PasswordUpdaterInterface
 {
-    /**
-     * @var PasswordHasherFactoryInterface
-     */
-    private $passwordHasherFactory;
+    private PasswordHasherFactoryInterface $passwordHasherFactory;
 
     public function __construct(PasswordHasherFactoryInterface $passwordHasherFactory)
     {

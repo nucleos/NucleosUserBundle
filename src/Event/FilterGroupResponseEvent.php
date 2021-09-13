@@ -19,10 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class FilterGroupResponseEvent extends GroupEvent
 {
-    /**
-     * @var Response|null
-     */
-    private $response;
+    private ?Response $response;
 
     public function __construct(GroupInterface $group, Request $request, Response $response)
     {

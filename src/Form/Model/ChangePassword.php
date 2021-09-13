@@ -13,10 +13,7 @@ namespace Nucleos\UserBundle\Form\Model;
 
 final class ChangePassword
 {
-    /**
-     * @var string|null
-     */
-    private $plainPassword;
+    private ?string $plainPassword = null;
 
     public function getPlainPassword(): ?string
     {

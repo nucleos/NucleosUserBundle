@@ -18,14 +18,9 @@ use Nucleos\UserBundle\Util\PasswordUpdaterInterface;
 
 abstract class UserManager implements UserManagerInterface
 {
-    /**
-     * @var PasswordUpdaterInterface
-     */
-    private $passwordUpdater;
-    /**
-     * @var CanonicalFieldsUpdater
-     */
-    private $canonicalFieldsUpdater;
+    private PasswordUpdaterInterface $passwordUpdater;
+
+    private CanonicalFieldsUpdater $canonicalFieldsUpdater;
 
     public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater)
     {

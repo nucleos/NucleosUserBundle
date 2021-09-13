@@ -25,21 +25,15 @@ final class FlashListener implements EventSubscriberInterface
     /**
      * @var string[]
      */
-    private static $successMessages = [
+    private static array $successMessages = [
         NucleosUserEvents::CHANGE_PASSWORD_COMPLETED => 'change_password.flash.success',
         NucleosUserEvents::RESETTING_RESET_COMPLETED => 'resetting.flash.success',
         NucleosUserEvents::ACCOUNT_DELETION_SUCCESS  => 'deletion.success',
     ];
 
-    /**
-     * @var FlashBagInterface
-     */
-    private $flashBag;
+    private FlashBagInterface $flashBag;
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
     public function __construct(FlashBagInterface $flashBag, TranslatorInterface $translator)
     {

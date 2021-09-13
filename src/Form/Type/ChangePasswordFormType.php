@@ -24,10 +24,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 final class ChangePasswordFormType extends AbstractType
 {
-    /**
-     * @var string
-     */
-    private $class;
+    private string $class;
 
     /**
      * @param string $class The User class name

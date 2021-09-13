@@ -22,10 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ResettingFormType extends AbstractType
 {
-    /**
-     * @var string
-     */
-    private $class;
+    private string $class;
 
     /**
      * @param string $class The User class name

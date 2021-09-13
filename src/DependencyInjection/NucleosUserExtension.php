@@ -43,15 +43,9 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         ],
     ];
 
-    /**
-     * @var bool
-     */
-    private $mailerNeeded  = false;
+    private bool $mailerNeeded  = false;
 
-    /**
-     * @var bool
-     */
-    private $sessionNeeded = false;
+    private bool $sessionNeeded = false;
 
     /**
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
