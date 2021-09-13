@@ -21,10 +21,7 @@ use PHPUnit\Framework\TestCase;
 
 final class CanonicalFieldsUpdaterTest extends TestCase
 {
-    /**
-     * @var CanonicalFieldsUpdater
-     */
-    private $updater;
+    private CanonicalFieldsUpdater $updater;
 
     /**
      * @var CanonicalizerInterface&MockObject

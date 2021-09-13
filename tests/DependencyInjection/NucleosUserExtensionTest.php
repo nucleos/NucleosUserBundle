@@ -29,10 +29,7 @@ use Symfony\Component\Yaml\Parser;
  */
 final class NucleosUserExtensionTest extends TestCase
 {
-    /**
-     * @var ContainerBuilder
-     */
-    protected $configuration;
+    protected ContainerBuilder $configuration;
 
     public function testUserLoadThrowsExceptionUnlessDatabaseDriverIsValid(): void
     {

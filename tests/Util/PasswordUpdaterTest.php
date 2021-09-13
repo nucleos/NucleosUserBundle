@@ -23,10 +23,7 @@ use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
 final class PasswordUpdaterTest extends TestCase
 {
-    /**
-     * @var PasswordUpdater
-     */
-    private $updater;
+    private PasswordUpdater $updater;
     /**
      * @var MockObject&PasswordHasherFactoryInterface
      */
