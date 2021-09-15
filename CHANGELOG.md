@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.11.2 - TBD
+## 1.11.2 - 2021-09-15
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.11.2](https://github.com/nucleos/NucleosUserBundle/milestone/11)
 
-- Nothing.
+1.11.x bugfix release (patch)
 
-### Deprecated
+### 1.11.2
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [433: Fix html for resetting mail](https://github.com/nucleos/NucleosUserBundle/pull/433) thanks to @core23
 
 ## 1.11.1 - 2021-08-04
 
