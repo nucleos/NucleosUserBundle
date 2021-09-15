@@ -24,6 +24,27 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+
+## 1.11.2 - 2021-09-15
+
+
+-----
+
+### Release Notes for [1.11.2](https://github.com/nucleos/NucleosUserBundle/milestone/11)
+
+1.11.x bugfix release (patch)
+
+### 1.11.2
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Bug
+
+ - [433: Fix html for resetting mail](https://github.com/nucleos/NucleosUserBundle/pull/433) thanks to @core23
+
+
 ## 1.11.1 - 2021-08-04
 
 
@@ -44,8 +65,6 @@ All notable changes to this project will be documented in this file, in reverse 
 #### Bug
 
  - [397: PatternValidator ignores null values and does not throw an exception anymore](https://github.com/nucleos/NucleosUserBundle/pull/397) thanks to @AubreyHewes
-=======
-
 
 ## 1.11.0 - 2021-07-02
 
