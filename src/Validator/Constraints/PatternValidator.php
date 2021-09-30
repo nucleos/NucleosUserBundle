@@ -105,6 +105,6 @@ final class PatternValidator extends ConstraintValidator
     {
         $result = preg_match_all($pattern, $text);
 
-        return false === $result ? 0 : $result;
+        return \is_int($result) ? $result : 0;
     }
 }
