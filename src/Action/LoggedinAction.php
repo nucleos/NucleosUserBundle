@@ -23,20 +23,11 @@ use Twig\Environment;
 
 final class LoggedinAction
 {
-    /**
-     * @var Environment
-     */
-    private $twig;
+    private Environment $twig;
 
-    /**
-     * @var EventDispatcherInterface
-     */
-    private $eventDispatcher;
+    private EventDispatcherInterface $eventDispatcher;
 
-    /**
-     * @var Security
-     */
-    private $security;
+    private Security $security;
 
     public function __construct(Environment $twig, EventDispatcherInterface $eventDispatcher, Security $security)
     {

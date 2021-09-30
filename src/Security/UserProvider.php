@@ -22,10 +22,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class UserProvider implements UserProviderInterface
 {
-    /**
-     * @var UserManagerInterface
-     */
-    protected $userManager;
+    protected UserManagerInterface $userManager;
 
     public function __construct(UserManagerInterface $userManager)
     {
@@ -64,7 +61,7 @@ class UserProvider implements UserProviderInterface
     }
 
     /**
-     * @param string $class
+     * @param mixed $class
      */
     public function supportsClass($class): bool
     {

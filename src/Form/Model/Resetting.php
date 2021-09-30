@@ -15,15 +15,9 @@ use Nucleos\UserBundle\Model\UserInterface;
 
 final class Resetting
 {
-    /**
-     * @var string|null
-     */
-    private $plainPassword;
+    private ?string $plainPassword = null;
 
-    /**
-     * @var UserInterface
-     */
-    private $user;
+    private UserInterface $user;
 
     public function __construct(UserInterface $user)
     {

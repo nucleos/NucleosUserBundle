@@ -19,14 +19,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class FilterUserResponseEvent extends UserEvent
 {
-    /**
-     * @var Response|null
-     */
-    private $response;
+    private ?Response $response;
 
     public function __construct(UserInterface $user, Request $request, Response $response)
     {
         parent::__construct($user, $request);
+
         $this->response = $response;
     }
 
@@ -35,7 +33,7 @@ final class FilterUserResponseEvent extends UserEvent
         return $this->response;
     }
 
-    public function setResponse(Response $response): void
+    public function setResponse(?Response $response): void
     {
         $this->response = $response;
     }

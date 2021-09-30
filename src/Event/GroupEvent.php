@@ -19,15 +19,9 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class GroupEvent extends Event
 {
-    /**
-     * @var GroupInterface
-     */
-    private $group;
+    private GroupInterface $group;
 
-    /**
-     * @var Request
-     */
-    private $request;
+    private Request $request;
 
     public function __construct(GroupInterface $group, Request $request)
     {

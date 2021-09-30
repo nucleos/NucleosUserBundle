@@ -17,12 +17,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class GetResponseAccountDeletionEvent extends AccountDeletionEvent
 {
-    /**
-     * @var Response|null
-     */
-    private $response;
+    private ?Response $response = null;
 
-    public function setResponse(Response $response): void
+    public function setResponse(?Response $response): void
     {
         $this->response = $response;
     }

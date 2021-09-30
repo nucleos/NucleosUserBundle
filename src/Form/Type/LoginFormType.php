@@ -26,17 +26,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class LoginFormType extends AbstractType
 {
-    /**
-     * @var AuthenticationUtils
-     */
-    private $authenticationUtils;
+    private AuthenticationUtils $authenticationUtils;
 
-    /**
-     * @var TranslatorInterface|null
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
-    public function __construct(AuthenticationUtils $authenticationUtils, ?TranslatorInterface $translator = null)
+    public function __construct(AuthenticationUtils $authenticationUtils, TranslatorInterface $translator)
     {
         $this->authenticationUtils = $authenticationUtils;
         $this->translator          = $translator;
@@ -70,10 +64,8 @@ final class LoginFormType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($authenticationUtils): void {
             $error = $authenticationUtils->getLastAuthenticationError();
             if (null !== $error) {
-                $message = $error->getMessage();
-                if (null !== $this->translator) {
-                    $message = $this->translator->trans($message, [], 'NucleosUserBundle');
-                }
+                $message = $this->translator->trans($error->getMessage(), [], 'NucleosUserBundle');
+
                 $event->getForm()->addError(new FormError($message));
             }
 
