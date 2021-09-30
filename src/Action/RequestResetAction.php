@@ -12,6 +12,7 @@
 namespace Nucleos\UserBundle\Action;
 
 use Nucleos\UserBundle\Form\Type\RequestPasswordFormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
@@ -43,10 +44,15 @@ final class RequestResetAction
 
     public function __invoke(): Response
     {
-        $form = $this->formFactory->create(RequestPasswordFormType::class, null, [
-            'action' => $this->router->generate('nucleos_user_resetting_send_email'),
-            'method' => 'POST',
-        ]);
+        $form = $this->formFactory
+            ->create(RequestPasswordFormType::class, null, [
+                'action' => $this->router->generate('nucleos_user_resetting_send_email'),
+                'method' => 'POST',
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'resetting.request.submit',
+            ])
+        ;
 
         return new Response($this->twig->render('@NucleosUser/Resetting/request.html.twig', [
             'form' => $form->createView(),

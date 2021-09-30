@@ -18,6 +18,7 @@ use Nucleos\UserBundle\Form\Model\Resetting;
 use Nucleos\UserBundle\Form\Type\ResettingFormType;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\NucleosUserEvents;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -85,9 +86,14 @@ final class ResetAction
             return $event->getResponse();
         }
 
-        $form = $this->formFactory->create(ResettingFormType::class, $formModel = new Resetting($user), [
-            'validation_groups' => ['ResetPassword', 'Default'],
-        ]);
+        $form = $this->formFactory
+            ->create(ResettingFormType::class, $formModel = new Resetting($user), [
+                'validation_groups' => ['ResetPassword', 'Default'],
+            ])
+            ->add('save', SubmitType::class, [
+                'label'  => 'resetting.reset.submit',
+            ])
+        ;
 
         $form->handleRequest($request);
 

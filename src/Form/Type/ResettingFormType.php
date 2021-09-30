@@ -16,7 +16,6 @@ namespace Nucleos\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -48,9 +47,6 @@ final class ResettingFormType extends AbstractType
                 'first_options'   => ['label' => 'form.new_password'],
                 'second_options'  => ['label' => 'form.new_password_confirmation'],
                 'invalid_message' => 'nucleos_user.password.mismatch',
-            ])
-            ->add('save', SubmitType::class, [
-                'label'  => 'resetting.reset.submit',
             ])
         ;
     }
