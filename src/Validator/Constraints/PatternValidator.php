@@ -19,6 +19,9 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 final class PatternValidator extends ConstraintValidator
 {
+    /**
+     * @param mixed $value
+     */
     public function validate($value, Constraint $constraint): void
     {
         if (!$constraint instanceof Pattern) {
