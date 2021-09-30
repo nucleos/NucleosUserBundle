@@ -40,7 +40,7 @@ final class Pattern extends Constraint
 
     public string $specialChars = '.,:;!?:+-*#\\/|(){}[]';
 
-    public function getTargets()
+    public function getTargets(): string
     {
         return self::PROPERTY_CONSTRAINT;
     }
