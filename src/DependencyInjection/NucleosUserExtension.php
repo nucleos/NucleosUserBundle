@@ -49,11 +49,6 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
     private $mailerNeeded  = false;
 
     /**
-     * @var bool
-     */
-    private $sessionNeeded = false;
-
-    /**
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
@@ -91,7 +86,6 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         }
 
         if ($config['use_flash_notifications']) {
-            $this->sessionNeeded = true;
             $loader->load('flash_notifications.php');
         }
 
@@ -132,11 +126,6 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         if ($this->mailerNeeded) {
             $container->setAlias('nucleos_user.mailer', new Alias($config['service']['mailer'], true));
             $container->setAlias(MailerInterface::class, new Alias($config['service']['mailer'], true));
-        }
-
-        if ($this->sessionNeeded) {
-            // Use a private alias rather than a parameter, to avoid leaking it at runtime (the private alias will be removed)
-            $container->setAlias('nucleos_user.session', new Alias('session', false));
         }
     }
 
