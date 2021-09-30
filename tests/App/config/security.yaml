@@ -1,8 +1,17 @@
 security:
+    role_hierarchy: null
+
+    access_decision_manager:
+        strategy: unanimous
+
+    access_control:
+        - {path: ^/admin/$, role: ROLE_USER}
+
     enable_authenticator_manager: true
 
     password_hashers:
-        Nucleos\UserBundle\Model\UserInterface: sha512
+        Nucleos\UserBundle\Model\UserInterface:
+            algorithm: plaintext
 
     providers:
         nucleos_userbundle:
@@ -10,18 +19,19 @@ security:
 
     firewalls:
         main:
+            pattern: /(.*)
             switch_user:  true
-            pattern:      .*
-            context:      user
+            provider: nucleos_userbundle
+            context: user
             form_login:
-                provider:       nucleos_userbundle
-                login_path:     /login
-                use_forward:    false
-                check_path:     /login_check
-                failure_path:   null
-            logout:       true
-
-    access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+                provider:  nucleos_userbundle
+                login_path: nucleos_user_security_login
+                check_path: nucleos_user_security_check
+            logout:
+                path: nucleos_user_security_logout
+                target: nucleos_user_security_login
+            remember_me:
+                secret: secret
+                lifetime: 2629746
+                path: /
+            lazy: true
