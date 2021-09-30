@@ -30,85 +30,45 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
      */
     protected $id;
 
-    /**
-     * @var string|null
-     */
-    protected $username;
+    protected ?string $username = null;
 
-    /**
-     * @var string|null
-     */
-    protected $usernameCanonical;
+    protected ?string $usernameCanonical = null;
 
-    /**
-     * @var string|null
-     */
-    protected $email;
+    protected ?string $email = null;
 
-    /**
-     * @var string|null
-     */
-    protected $emailCanonical;
+    protected ?string $emailCanonical = null;
 
-    /**
-     * @var bool
-     */
-    protected $enabled;
+    protected bool $enabled = false;
 
-    /**
-     * @var string|null
-     */
-    protected $salt;
+    protected ?string $salt = null;
 
-    /**
-     * @var string|null
-     */
-    protected $password;
+    protected ?string $password = null;
 
-    /**
-     * @var string|null
-     */
-    protected $plainPassword;
+    protected ?string $plainPassword = null;
 
-    /**
-     * @var DateTime|null
-     */
-    protected $lastLogin;
+    protected ?DateTime $lastLogin = null;
 
-    /**
-     * @var string|null
-     */
-    protected $confirmationToken;
+    protected ?string $confirmationToken = null;
 
-    /**
-     * @var DateTime|null
-     */
-    protected $passwordRequestedAt;
+    protected ?DateTime $passwordRequestedAt = null;
 
     /**
      * @phpstan-var Collection<array-key, GroupTemplate>
      */
-    protected $groups;
+    protected Collection $groups;
 
     /**
      * @var string[]
      */
-    protected $roles;
+    protected array $roles = [];
 
-    /**
-     * @var string|null
-     */
-    protected $locale;
+    protected ?string $locale = null;
 
-    /**
-     * @var string|null
-     */
-    protected $timezone;
+    protected ?string $timezone = null;
 
     public function __construct()
     {
-        $this->enabled = false;
-        $this->roles   = [];
+        $this->groups = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -378,10 +338,6 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
 
     public function getGroups(): Collection
     {
-        if (null === $this->groups) {
-            $this->groups = new ArrayCollection();
-        }
-
         return $this->groups;
     }
 

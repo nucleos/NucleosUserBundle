@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Form\Type;
 
+use Nucleos\UserBundle\Form\Model\Resetting;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -22,12 +23,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 final class ResettingFormType extends AbstractType
 {
     /**
-     * @var string
+     * @phpstan-var class-string<Resetting>
      */
-    private $class;
+    private string $class;
 
     /**
-     * @param string $class The User class name
+     * @phpstan-param class-string<Resetting> $class
      */
     public function __construct(string $class)
     {

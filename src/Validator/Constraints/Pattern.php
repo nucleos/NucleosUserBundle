@@ -22,50 +22,23 @@ use Symfony\Component\Validator\Constraint;
  */
 final class Pattern extends Constraint
 {
-    /**
-     * @var string
-     */
-    public $minUpperMessage = 'nucleos_user.pattern.requires_upper';
+    public string $minUpperMessage = 'nucleos_user.pattern.requires_upper';
 
-    /**
-     * @var string
-     */
-    public $minLowerMessage = 'nucleos_user.pattern.requires_lower';
+    public string $minLowerMessage = 'nucleos_user.pattern.requires_lower';
 
-    /**
-     * @var string
-     */
-    public $minNumericMessage = 'nucleos_user.pattern.requires_numeric';
+    public string $minNumericMessage = 'nucleos_user.pattern.requires_numeric';
 
-    /**
-     * @var string
-     */
-    public $minSpecialMessage = 'nucleos_user.pattern.requires_special';
+    public string $minSpecialMessage = 'nucleos_user.pattern.requires_special';
 
-    /**
-     * @var int
-     */
-    public $minUpper = 0;
+    public int $minUpper = 0;
 
-    /**
-     * @var int
-     */
-    public $minLower = 0;
+    public int $minLower = 0;
 
-    /**
-     * @var int
-     */
-    public $minNumeric = 0;
+    public int $minNumeric = 0;
 
-    /**
-     * @var int
-     */
-    public $minSpecial = 0;
+    public int $minSpecial = 0;
 
-    /**
-     * @var string
-     */
-    public $specialChars = '.,:;!?:+-*#\\/|(){}[]';
+    public string $specialChars = '.,:;!?:+-*#\\/|(){}[]';
 
     public function getTargets()
     {

@@ -21,24 +21,12 @@ use Twig\Environment;
 
 final class CheckEmailAction
 {
-    /**
-     * @var Environment
-     */
-    private $twig;
+    private Environment $twig;
 
-    /**
-     * @var RouterInterface
-     */
-    private $router;
+    private RouterInterface $router;
 
-    /**
-     * @var int
-     */
-    private $retryTtl;
+    private int $retryTtl;
 
-    /**
-     * CheckEmailAction constructor.
-     */
     public function __construct(Environment $twig, RouterInterface $router, int $retryTtl)
     {
         $this->twig     = $twig;

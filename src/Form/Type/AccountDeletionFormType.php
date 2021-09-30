@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Form\Type;
 
+use Nucleos\UserBundle\Form\Model\AccountDeletion;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -24,14 +25,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 final class AccountDeletionFormType extends AbstractType
 {
     /**
-     * @var string
-     *
-     * @phpstan-var class-string
+     * @phpstan-var class-string<AccountDeletion>
      */
-    private $class;
+    private string $class;
 
     /**
-     * @phpstan-param class-string $class
+     * @phpstan-param class-string<AccountDeletion> $class
      */
     public function __construct(string $class)
     {
