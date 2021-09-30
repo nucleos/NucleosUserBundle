@@ -126,6 +126,11 @@ parameters:
 			path: src/Noop/UserManager.php
 
 		-
+			message: "#^Parameter \\#2 \\$encodings of function mb_detect_encoding expects array\\|string\\|null, array\\|bool given\\.$#"
+			count: 1
+			path: src/Util/Canonicalizer.php
+
+		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\DependencyInjection\\\\NucleosUserExtensionTest\\:\\:getEmptyConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/DependencyInjection/NucleosUserExtensionTest.php
