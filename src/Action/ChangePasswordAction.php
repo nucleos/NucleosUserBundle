@@ -21,6 +21,7 @@ use Nucleos\UserBundle\Form\Type\ChangePasswordFormType;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\NucleosUserEvents;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -98,9 +99,14 @@ final class ChangePasswordAction
             return $event->getResponse();
         }
 
-        $form = $this->formFactory->create(ChangePasswordFormType::class, $formModel = new ChangePassword(), [
-            'validation_groups' => ['ChangePassword', 'Default'],
-        ]);
+        $form = $this->formFactory
+            ->create(ChangePasswordFormType::class, $formModel = new ChangePassword(), [
+                'validation_groups' => ['ChangePassword', 'Default'],
+            ])
+            ->add('save', SubmitType::class, [
+                'label'  => 'change_password.submit',
+            ])
+        ;
 
         $form->handleRequest($request);
 
