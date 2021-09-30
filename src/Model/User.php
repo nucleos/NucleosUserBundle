@@ -144,6 +144,11 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
         return $this->username;
     }
 
+    public function getUserIdentifier(): string
+    {
+        return $this->getUsername();
+    }
+
     public function getUsernameCanonical(): string
     {
         if (null === $this->usernameCanonical) {

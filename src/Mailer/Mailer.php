@@ -49,7 +49,7 @@ final class Mailer implements MailerInterface
         ], UrlGeneratorInterface::ABSOLUTE_URL);
 
         $mail = (new ResettingMail())
-            ->from(Address::fromString($this->fromEmail))
+            ->from(Address::create($this->fromEmail))
             ->to(new Address($user->getEmail()))
             ->subject($this->translator->trans('resetting.email.subject', [
                 '%username%' => $user->getUsername(),
