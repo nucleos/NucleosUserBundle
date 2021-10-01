@@ -102,5 +102,23 @@
         "phpmd": "vendor/bin/phpmd src,tests ansi phpmd.xml",
         "phpstan": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/phpunit --colors=always"
-    }
+    },
+        "funding": [
+            {
+                "type": "github",
+                "url": "https://github.com/sponsors/core23"
+            },
+            {
+                "type": "opencollective",
+                "url": "https://opencollective.com/core23"
+            },
+            {
+                "type": "ko-fi",
+                "url": "https://ko-fi.com/core23"
+            },
+            {
+                "type": "other",
+                "url": "https://donate.core23.de"
+            }
+        ]
 }
