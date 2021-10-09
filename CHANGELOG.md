@@ -2,28 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.12.0 - TBD
+## 1.12.0 - 2021-10-09
 
-### Added
 
-- Nothing.
 
-### Changed
+-----
 
-- Nothing.
+### Release Notes for [1.12.0](https://github.com/nucleos/NucleosUserBundle/milestone/10)
 
-### Deprecated
+Feature release (minor)
 
-- Nothing.
+### 1.12.0
 
-### Removed
+- Total issues resolved: **0**
+- Total pull requests resolved: **3**
+- Total contributors: **2**
 
-- Nothing.
+#### Enhancement
 
-### Fixed
+ - [453: Allow overriding loggedin route](https://github.com/nucleos/NucleosUserBundle/pull/453) thanks to @core23
+ - [421: Adapt phpstan config for the new getArgument() return type](https://github.com/nucleos/NucleosUserBundle/pull/421) thanks to @lgeorget
 
-- Nothing.
+#### dependency
 
+ - [445: Remove egulias/email-validator dependency](https://github.com/nucleos/NucleosUserBundle/pull/445) thanks to @core23
 
 ## 1.11.2 - 2021-09-15
 
