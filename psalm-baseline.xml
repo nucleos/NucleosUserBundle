@@ -25,7 +25,9 @@
     </NullableReturnStatement>
   </file>
   <file src="src/DependencyInjection/Configuration.php">
-    <UndefinedMethod occurrences="5">
+    <UndefinedMethod occurrences="6">
+      <code>addDefaultsIfNotSet</code>
+      <code>addDefaultsIfNotSet</code>
       <code>addDefaultsIfNotSet</code>
       <code>addDefaultsIfNotSet</code>
       <code>children</code>

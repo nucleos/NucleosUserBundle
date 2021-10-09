@@ -27,3 +27,5 @@ All available configuration options are listed below with their default values.
         group:
             group_class:    ~ # Required when using groups
             group_manager:  nucleos_user.group_manager.default
+        loggedin:
+            route: 'nucleos_user_security_loggedin' # Required with 2.0 release
