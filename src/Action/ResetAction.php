@@ -54,20 +54,24 @@ final class ResetAction
     private $userManager;
 
     /**
-     * ResetAction constructor.
+     * @var string
      */
+    private $loggedinRoute;
+
     public function __construct(
         Environment $twig,
         RouterInterface $router,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
-        UserManagerInterface $userManager
+        UserManagerInterface $userManager,
+        string $loggedinRoute
     ) {
         $this->twig            = $twig;
         $this->router          = $router;
         $this->eventDispatcher = $eventDispatcher;
         $this->formFactory     = $formFactory;
         $this->userManager     = $userManager;
+        $this->loggedinRoute   = $loggedinRoute;
     }
 
     public function __invoke(Request $request, string $token): Response
@@ -100,8 +104,7 @@ final class ResetAction
             $this->userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url      = $this->router->generate('nucleos_user_security_loggedin');
-                $response = new RedirectResponse($url);
+                $response = new RedirectResponse($this->router->generate($this->loggedinRoute));
             }
 
             $this->eventDispatcher->dispatch(

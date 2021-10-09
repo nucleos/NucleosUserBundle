@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.7.3@38c452ae584467e939d55377aaf83b5a26f19dd1">
+<files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
   <file src="src/Action/ChangePasswordAction.php">
     <InvalidNullableReturnType occurrences="1">
       <code>Response</code>
@@ -7,11 +7,6 @@
     <NullableReturnStatement occurrences="1">
       <code>$event-&gt;getResponse()</code>
     </NullableReturnStatement>
-  </file>
-  <file src="src/Action/CheckEmailAction.php">
-    <InvalidArgument occurrences="1">
-      <code>$username</code>
-    </InvalidArgument>
   </file>
   <file src="src/Action/LoggedinAction.php">
     <InvalidNullableReturnType occurrences="1">
@@ -30,7 +25,9 @@
     </NullableReturnStatement>
   </file>
   <file src="src/DependencyInjection/Configuration.php">
-    <UndefinedMethod occurrences="5">
+    <UndefinedMethod occurrences="6">
+      <code>addDefaultsIfNotSet</code>
+      <code>addDefaultsIfNotSet</code>
       <code>addDefaultsIfNotSet</code>
       <code>children</code>
       <code>children</code>
