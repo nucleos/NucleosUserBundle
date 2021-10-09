@@ -18,6 +18,8 @@ branches:
           - "Static Code Analysis (8)"
           - "Test (PHP 8, symfony 5.4, lowest)"
           - "Test (PHP 8, symfony 5.4, highest)"
+          - "Test (PHP 8.1, symfony 5.4, lowest)"
+          - "Test (PHP 8.1, symfony 5.4, highest)"
           - "Code Coverage (8)"
           - "Mutation Tests (8)"
           - "Mutation Tests (8)"
