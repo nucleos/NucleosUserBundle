@@ -21,6 +21,9 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 
+/**
+ * @deprecated since 1.12.0.
+ */
 final class LoggedinAction
 {
     /**

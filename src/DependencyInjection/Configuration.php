@@ -30,6 +30,7 @@ final class Configuration implements ConfigurationInterface
         $this->addDeletionSection($rootNode);
         $this->addGroupSection($rootNode);
         $this->addServiceSection($rootNode);
+        $this->addLoggedinSection($rootNode);
 
         return $treeBuilder;
     }
@@ -131,6 +132,21 @@ final class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('group_class')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('group_manager')->defaultValue('nucleos_user.group_manager.default')->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addLoggedinSection(NodeDefinition $node): void
+    {
+        $node
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('loggedin')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('route')->defaultValue('nucleos_user_security_loggedin')->cannotBeEmpty()->end()
                     ->end()
                 ->end()
             ->end()

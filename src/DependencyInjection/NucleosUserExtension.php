@@ -124,6 +124,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         $this->loadChangePassword($loader);
         $this->loadDeletion($config['deletion'], $loader);
         $this->loadResetting($config['resetting'], $container, $loader, $config['from_email']);
+        $this->loadLoggedin($config['loggedin'], $container);
 
         if (isset($config['group'])) {
             $this->loadGroups($config['group'], $container, $loader, $config['db_driver']);
@@ -254,5 +255,10 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
                 'group_class' => 'nucleos_user.model.group.class',
             ],
         ]);
+    }
+
+    private function loadLoggedin(array $config, ContainerBuilder $container): void
+    {
+        $container->setParameter('nucleos_user.loggedin.route', $config['route']);
     }
 }
