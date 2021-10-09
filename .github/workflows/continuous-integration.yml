@@ -28,7 +28,7 @@ jobs:
         uses: shivammathur/setup-php@2.15.0
         with:
           coverage: none
-          extensions: "mbstring, json, mongodb-1.9.0"
+          extensions: "mbstring, json, mongodb"
           php-version: ${{ matrix.php-version }}
 
       - name: "Validate composer.json and composer.lock"
@@ -80,7 +80,7 @@ jobs:
         uses: shivammathur/setup-php@2.15.0
         with:
           coverage: none
-          extensions: "mbstring, json, mongodb-1.9.0"
+          extensions: "mbstring, json, mongodb"
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
@@ -113,6 +113,7 @@ jobs:
         php-version:
           - 7.4
           - 8.0
+          - 8.1
 
         dependencies:
           - lowest
@@ -129,7 +130,7 @@ jobs:
         uses: shivammathur/setup-php@2.15.0
         with:
           coverage: none
-          extensions: "mbstring, json, mongodb-1.9.0"
+          extensions: "mbstring, json, mongodb"
           php-version: ${{ matrix.php-version }}
 
       - name: 'Install Symfony Flex'
@@ -175,7 +176,7 @@ jobs:
         uses: shivammathur/setup-php@2.15.0
         with:
           coverage: pcov
-          extensions: "mbstring, json, mongodb-1.9.0"
+          extensions: "mbstring, json, mongodb"
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
@@ -215,7 +216,7 @@ jobs:
         uses: shivammathur/setup-php@2.15.0
         with:
           coverage: pcov
-          extensions: "mbstring, json, mongodb-1.9.0"
+          extensions: "mbstring, json, mongodb"
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
