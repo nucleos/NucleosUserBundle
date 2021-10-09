@@ -51,6 +51,11 @@ final class ChangePasswordAction
      */
     private $loggedinRoute;
 
+    /**
+     * @var string
+     */
+    private $loggedinRoute;
+
     public function __construct(
         Environment $twig,
         RouterInterface $router,
