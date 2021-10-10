@@ -46,13 +46,19 @@ final class ChangePasswordAction
 
     private UserManagerInterface $userManager;
 
+    /**
+     * @var string
+     */
+    private $loggedinRoute;
+
     public function __construct(
         Environment $twig,
         RouterInterface $router,
         Security $security,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
-        UserManagerInterface $userManager
+        UserManagerInterface $userManager,
+        string $loggedinRoute
     ) {
         $this->twig            = $twig;
         $this->router          = $router;
@@ -61,6 +67,7 @@ final class ChangePasswordAction
 
         $this->eventDispatcher = $eventDispatcher;
         $this->formFactory     = $formFactory;
+        $this->loggedinRoute   = $loggedinRoute;
     }
 
     /**
@@ -101,7 +108,7 @@ final class ChangePasswordAction
             $this->userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url      = $this->router->generate('nucleos_user_security_loggedin');
+                $url      = $this->router->generate($this->loggedinRoute);
                 $response = new RedirectResponse($url);
             }
 

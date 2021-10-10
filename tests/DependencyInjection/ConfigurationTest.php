@@ -52,6 +52,9 @@ final class ConfigurationTest extends TestCase
                 'username_canonicalizer' => 'nucleos_user.util.canonicalizer.default',
                 'user_manager'           => 'nucleos_user.user_manager.default',
             ],
+            'loggedin' => [
+                'route' => 'nucleos_user_security_loggedin',
+            ],
         ];
 
         static::assertSame($expected, $config);

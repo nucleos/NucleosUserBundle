@@ -57,6 +57,7 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('event_dispatcher'),
                 new Reference('form.factory'),
                 new Reference('nucleos_user.user_manager'),
+                '%nucleos_user.loggedin.route%',
             ])
 
         ->set(SendEmailAction::class)
