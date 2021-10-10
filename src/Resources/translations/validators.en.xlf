@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="nucleos_user.username.already_used">
+        <source>nucleos_user.username.already_used</source>
+        <target>The username is already used.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.username.blank">
+        <source>nucleos_user.username.blank</source>
+        <target>Please enter a username.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.username.short">
+        <source>nucleos_user.username.short</source>
+        <target>The username is too short.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.username.long">
+        <source>nucleos_user.username.long</source>
+        <target>The username is too long.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.already_used">
+        <source>nucleos_user.email.already_used</source>
+        <target>The email is already used.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.blank">
+        <source>nucleos_user.email.blank</source>
+        <target>Please enter an email.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.short">
+        <source>nucleos_user.email.short</source>
+        <target>The email is too short.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.long">
+        <source>nucleos_user.email.long</source>
+        <target>The email is too long.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.invalid">
+        <source>nucleos_user.email.invalid</source>
+        <target>The email is not valid.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.password.blank">
+        <source>nucleos_user.password.blank</source>
+        <target>Please enter a password.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.password.short">
+        <source>nucleos_user.password.short</source>
+        <target>The password is too short.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.password.mismatch">
+        <source>nucleos_user.password.mismatch</source>
+        <target>The entered passwords don't match.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.new_password.blank">
+        <source>nucleos_user.new_password.blank</source>
+        <target>Please enter a new password.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.new_password.short">
+        <source>nucleos_user.new_password.short</source>
+        <target>The new password is too short.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.current_password.invalid">
+        <source>nucleos_user.current_password.invalid</source>
+        <target>The entered password is invalid.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.group.blank">
+        <source>nucleos_user.group.blank</source>
+        <target>Please enter a name.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.group.short">
+        <source>nucleos_user.group.short</source>
+        <target>The name is too short.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.group.long">
+        <source>nucleos_user.group.long</source>
+        <target>The name is too long.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_upper">
+        <source>nucleos_user.pattern.requires_upper</source>
+        <target>The text should contain {{ count }} uppercase characters.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_lower">
+        <source>nucleos_user.pattern.requires_lower</source>
+        <target>The text should contain {{ count }} lowercase characters.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_numeric">
+        <source>nucleos_user.pattern.requires_numeric</source>
+        <target>The text should contain {{ count }} numeric characters.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_special">
+        <source>nucleos_user.pattern.requires_special</source>
+        <target>The text should contain {{ count }} special characters ({{ chars }}).</target>
+      </trans-unit>
+      <trans-unit id="nucleos_group.name.already_used">
+        <source>nucleos_group.name.already_used</source>
+        <target>The name is already used.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

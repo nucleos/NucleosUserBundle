@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="security.login.title">
+        <source>security.login.title</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="security.login.username">
+        <source>security.login.username</source>
+        <target>Nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="security.login.password">
+        <source>security.login.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="security.login.remember_me">
+        <source>security.login.remember_me</source>
+        <target>Se souvenir de moi</target>
+      </trans-unit>
+      <trans-unit id="security.login.submit">
+        <source>security.login.submit</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="security.forgotten_password">
+        <source>security.forgotten_password</source>
+        <target>Mot de passe oublié ?</target>
+      </trans-unit>
+      <trans-unit id="change_password.submit">
+        <source>change_password.submit</source>
+        <target>Modifier le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="change_password.flash.success">
+        <source>change_password.flash.success</source>
+        <target>Le mot de passe a été modifié.</target>
+      </trans-unit>
+      <trans-unit id="resetting.check_email">
+        <source>resetting.check_email</source>
+        <target><![CDATA[Un courriel vous a été envoyé. Il contient un lien sur lequel vous devez
+cliquer to réinitialiser votre mot de passe.
+Notez que vous ne pouvez demander un nouveau mot de passe qu'une fois
+toutes les %tokenLifetime% heures.
+
+Si vous n'avez reçu le courriel, vérifiez vos spams ou réessayez.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.request.username">
+        <source>resetting.request.username</source>
+        <target>Nom d'utilisateur ou adresse de courriel</target>
+      </trans-unit>
+      <trans-unit id="resetting.request.submit">
+        <source>resetting.request.submit</source>
+        <target>Réinitialiser le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="resetting.reset.submit">
+        <source>resetting.reset.submit</source>
+        <target>Changer de mot de passe</target>
+      </trans-unit>
+      <trans-unit id="resetting.flash.success">
+        <source>resetting.flash.success</source>
+        <target>Le mot de passe a été réinitialisé avec succès.</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.subject">
+        <source>resetting.email.subject</source>
+        <target>Réinitialisation du mot de passe</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.message">
+        <source>resetting.email.message</source>
+        <target><![CDATA[Bonjour %username%!
+
+Pour modifier votre mot de passe, veuillez visiter la page %confirmationUrl%
+
+Cordialement,
+
+l'équipe.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.email.html">
+        <source>resetting.email.html</source>
+        <target><![CDATA[
+          <p>Bonjour %username%!</p>
+          <p>Pour modifier votre mot de passe, veuillez visiter la page <a href="%confirmationUrl%">%confirmationUrl%</a></p>
+          <p>Cordialement,</p>
+          <p>l'équipe.</p>
+        ]]></target>
+      </trans-unit>
+      <trans-unit id="layout.logout">
+        <source>layout.logout</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+      <trans-unit id="layout.login">
+        <source>layout.login</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="layout.logged_in_as">
+        <source>layout.logged_in_as</source>
+        <target>Connecté en tant que %username%</target>
+      </trans-unit>
+      <trans-unit id="form.username">
+        <source>form.username</source>
+        <target>Nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="form.email">
+        <source>form.email</source>
+        <target>Adresse de courriel</target>
+      </trans-unit>
+      <trans-unit id="form.current_password">
+        <source>form.current_password</source>
+        <target>Mot de passe actuel</target>
+      </trans-unit>
+      <trans-unit id="form.password">
+        <source>form.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="form.password_confirmation">
+        <source>form.password_confirmation</source>
+        <target>Répéter le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="form.new_password">
+        <source>form.new_password</source>
+        <target>Nouveau mot de passe</target>
+      </trans-unit>
+      <trans-unit id="form.new_password_confirmation">
+        <source>form.new_password_confirmation</source>
+        <target>Répéter le nouveau mot de passe</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

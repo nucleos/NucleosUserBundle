@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="nucleos_user.username.already_used">
+        <source>nucleos_user.username.already_used</source>
+        <target>Dieser Benutzername wird bereits verwendet.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.username.blank">
+        <source>nucleos_user.username.blank</source>
+        <target>Bitte geben Sie einen Benutzernamen an.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.username.short">
+        <source>nucleos_user.username.short</source>
+        <target>Dieser Benutzername ist zu kurz.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.username.long">
+        <source>nucleos_user.username.long</source>
+        <target>Dieser Benutzername ist zu lang.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.already_used">
+        <source>nucleos_user.email.already_used</source>
+        <target>Diese E-Mail-Adresse wird bereits verwendet.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.blank">
+        <source>nucleos_user.email.blank</source>
+        <target>Bitte geben Sie eine E-Mail-Adresse an.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.short">
+        <source>nucleos_user.email.short</source>
+        <target>Diese E-Mail-Adresse ist zu kurz.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.long">
+        <source>nucleos_user.email.long</source>
+        <target>Diese E-Mail-Adresse ist zu lang.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.invalid">
+        <source>nucleos_user.email.invalid</source>
+        <target>Diese E-Mail-Adresse ist ungültig.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.password.blank">
+        <source>nucleos_user.password.blank</source>
+        <target>Bitte geben Sie ein Passwort an.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.password.short">
+        <source>nucleos_user.password.short</source>
+        <target>Das Passwort ist zu kurz.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.password.mismatch">
+        <source>nucleos_user.password.mismatch</source>
+        <target>Die Passwörter stimmen nicht überein.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.new_password.blank">
+        <source>nucleos_user.new_password.blank</source>
+        <target>Bitte geben Sie ein neues Passwort an.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.new_password.short">
+        <source>nucleos_user.new_password.short</source>
+        <target>Das neue Passwort ist zu kurz.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.current_password.invalid">
+        <source>nucleos_user.current_password.invalid</source>
+        <target>Das angegebene Passwort ist ungültig.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.group.blank">
+        <source>nucleos_user.group.blank</source>
+        <target>Bitte geben Sie einen Namen an.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.group.short">
+        <source>nucleos_user.group.short</source>
+        <target>Dieser Name ist zu kurz.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.group.long">
+        <source>nucleos_user.group.long</source>
+        <target>Dieser Name ist zu lang.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_upper">
+        <source>nucleos_user.pattern.requires_upper</source>
+        <target>Die Zeichenkette muss {{ count }} Großbuchstaben enthalten.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_lower">
+        <source>nucleos_user.pattern.requires_lower</source>
+        <target>Die Zeichenkette muss {{ count }} Kleinbuchstaben enthalten.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_numeric">
+        <source>nucleos_user.pattern.requires_numeric</source>
+        <target>Die Zeichenkette muss {{ count }} Zahlen enthalten.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_special">
+        <source>nucleos_user.pattern.requires_special</source>
+        <target>Die Zeichenkette muss {{ count }} Sonderzeichen ({{ chars }}) enthalten.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_group.name.already_used">
+        <source>nucleos_group.name.already_used</source>
+        <target>Dieser Name wird bereits verwendet.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

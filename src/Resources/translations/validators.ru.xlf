@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="nucleos_user.username.already_used">
+        <source>nucleos_user.username.already_used</source>
+        <target>Данное имя уже используется.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.username.blank">
+        <source>nucleos_user.username.blank</source>
+        <target>Пожалуйста введите имя пользователя.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.username.short">
+        <source>nucleos_user.username.short</source>
+        <target>Имя пользователя слишком короткое.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.username.long">
+        <source>nucleos_user.username.long</source>
+        <target>Имя пользователя слишком длинное.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.already_used">
+        <source>nucleos_user.email.already_used</source>
+        <target>Электронная почта уже используется.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.blank">
+        <source>nucleos_user.email.blank</source>
+        <target>Пожалуйста, введите адрес электронной почты.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.short">
+        <source>nucleos_user.email.short</source>
+        <target>Электронная почта слишком короткая.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.long">
+        <source>nucleos_user.email.long</source>
+        <target>Электронная почта слишком длинная.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.email.invalid">
+        <source>nucleos_user.email.invalid</source>
+        <target>Электронная почта недействительна.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.password.blank">
+        <source>nucleos_user.password.blank</source>
+        <target>Пожалуйста, введите пароль.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.password.short">
+        <source>nucleos_user.password.short</source>
+        <target>Пароль слишком короткий.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.password.mismatch">
+        <source>nucleos_user.password.mismatch</source>
+        <target>Введенные пароли не совпадают.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.new_password.blank">
+        <source>nucleos_user.new_password.blank</source>
+        <target>Пожалуйста, введите новый пароль.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.new_password.short">
+        <source>nucleos_user.new_password.short</source>
+        <target>Новый пароль слишком короткий.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.current_password.invalid">
+        <source>nucleos_user.current_password.invalid</source>
+        <target>Введенный пароль недействителен.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.group.blank">
+        <source>nucleos_user.group.blank</source>
+        <target>Пожалуйста, введите имя.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.group.short">
+        <source>nucleos_user.group.short</source>
+        <target>Имя слишком короткое.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.group.long">
+        <source>nucleos_user.group.long</source>
+        <target>Имя слишком длинное.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_upper">
+        <source>nucleos_user.pattern.requires_upper</source>
+        <target>Текст должен содержать {{ count }} заглавных букв.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_lower">
+        <source>nucleos_user.pattern.requires_lower</source>
+        <target>Текст должен содержать {{ count }} строчных букв.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_numeric">
+        <source>nucleos_user.pattern.requires_numeric</source>
+        <target>Текст должен содержать {{ count }} числовых символов.</target>
+      </trans-unit>
+      <trans-unit id="nucleos_user.pattern.requires_special">
+        <source>nucleos_user.pattern.requires_special</source>
+        <target>Текст должен содержать {{ count }} специальных символов ({{ chars }}).</target>
+      </trans-unit>
+      <trans-unit id="nucleos_group.name.already_used">
+        <source>nucleos_group.name.already_used</source>
+        <target>Данное имя уже используется.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

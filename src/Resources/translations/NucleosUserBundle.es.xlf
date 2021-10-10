@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="security.login.title">
+        <source>security.login.title</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="security.login.username">
+        <source>security.login.username</source>
+        <target>Nombre de usuario</target>
+      </trans-unit>
+      <trans-unit id="security.login.password">
+        <source>security.login.password</source>
+        <target>Contraseña</target>
+      </trans-unit>
+      <trans-unit id="security.login.remember_me">
+        <source>security.login.remember_me</source>
+        <target>Recordar</target>
+      </trans-unit>
+      <trans-unit id="security.login.submit">
+        <source>security.login.submit</source>
+        <target>Entrar</target>
+      </trans-unit>
+      <trans-unit id="security.forgotten_password">
+        <source>security.forgotten_password</source>
+        <target>¿Contraseña olvidada?</target>
+      </trans-unit>
+      <trans-unit id="change_password.submit">
+        <source>change_password.submit</source>
+        <target>Cambiar contraseña</target>
+      </trans-unit>
+      <trans-unit id="change_password.flash.success">
+        <source>change_password.flash.success</source>
+        <target>La contraseña se ha cambiado con éxito.</target>
+      </trans-unit>
+      <trans-unit id="resetting.check_email">
+        <source>resetting.check_email</source>
+        <target><![CDATA[Un correo electronico ha sido enviado. Contiene un enlace en el que debe hacer clic para restablecer su contraseña.
+Nota: Solo se puede solicitar una nueva contraseña cada %tokenLifetime% horas.
+
+Si no recibes un correo electrónico, comprueba tu carpeta de correo no deseado o inténtalo de nuevo.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.request.username">
+        <source>resetting.request.username</source>
+        <target>Nombre de usuario o correo electrónico</target>
+      </trans-unit>
+      <trans-unit id="resetting.request.submit">
+        <source>resetting.request.submit</source>
+        <target>Restablecer contraseña</target>
+      </trans-unit>
+      <trans-unit id="resetting.reset.submit">
+        <source>resetting.reset.submit</source>
+        <target>Cambiar contraseña</target>
+      </trans-unit>
+      <trans-unit id="resetting.flash.success">
+        <source>resetting.flash.success</source>
+        <target>La contraseña se ha cambiado con éxito.</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.subject">
+        <source>resetting.email.subject</source>
+        <target>Restablecer Contraseña</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.message">
+        <source>resetting.email.message</source>
+        <target><![CDATA[¡Hola %username%!
+
+Para restablecer tu contraseña, por favor visita %confirmationUrl%
+
+Atentamente,
+el Equipo.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.email.html">
+        <source>resetting.email.html</source>
+        <target><![CDATA[
+          <p>¡Hola %username%!</p>
+          <p>Para restablecer tu contraseña, por favor visita <a href="%confirmationUrl%">%confirmationUrl%</a></p>
+          <p>Atentamente,</p>
+          <p>el Equipo.</p>
+      ]]></target>
+      </trans-unit>
+      <trans-unit id="layout.logout">
+        <source>layout.logout</source>
+        <target>Salir</target>
+      </trans-unit>
+      <trans-unit id="layout.login">
+        <source>layout.login</source>
+        <target>Entrar</target>
+      </trans-unit>
+      <trans-unit id="layout.logged_in_as">
+        <source>layout.logged_in_as</source>
+        <target>Identificado como %username%</target>
+      </trans-unit>
+      <trans-unit id="form.username">
+        <source>form.username</source>
+        <target>Nombre de usuario</target>
+      </trans-unit>
+      <trans-unit id="form.email">
+        <source>form.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="form.current_password">
+        <source>form.current_password</source>
+        <target>Contraseña actual</target>
+      </trans-unit>
+      <trans-unit id="form.password">
+        <source>form.password</source>
+        <target>Contraseña</target>
+      </trans-unit>
+      <trans-unit id="form.password_confirmation">
+        <source>form.password_confirmation</source>
+        <target>Repita la contraseña</target>
+      </trans-unit>
+      <trans-unit id="form.new_password">
+        <source>form.new_password</source>
+        <target>Nueva contraseña</target>
+      </trans-unit>
+      <trans-unit id="form.new_password_confirmation">
+        <source>form.new_password_confirmation</source>
+        <target>Repita la contraseña</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
