@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="security.login.title">
+        <source>security.login.title</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="security.login.username">
+        <source>security.login.username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="security.login.password">
+        <source>security.login.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="security.login.remember_me">
+        <source>security.login.remember_me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="security.login.submit">
+        <source>security.login.submit</source>
+        <target>Log in</target>
+      </trans-unit>
+      <trans-unit id="security.forgotten_password">
+        <source>security.forgotten_password</source>
+        <target>Forgotten password?</target>
+      </trans-unit>
+      <trans-unit id="change_password.submit">
+        <source>change_password.submit</source>
+        <target>Change password</target>
+      </trans-unit>
+      <trans-unit id="change_password.flash.success">
+        <source>change_password.flash.success</source>
+        <target>The password has been changed.</target>
+      </trans-unit>
+      <trans-unit id="resetting.check_email">
+        <source>resetting.check_email</source>
+        <target><![CDATA[An email has been sent. It contains a link you must click to reset your password.
+Note: You can only request a new password once within %tokenLifetime% hours.
+
+If you don't get an email check your spam folder or try again.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.request.username">
+        <source>resetting.request.username</source>
+        <target>Username or email address</target>
+      </trans-unit>
+      <trans-unit id="resetting.request.submit">
+        <source>resetting.request.submit</source>
+        <target>Reset password</target>
+      </trans-unit>
+      <trans-unit id="resetting.reset.submit">
+        <source>resetting.reset.submit</source>
+        <target>Change password</target>
+      </trans-unit>
+      <trans-unit id="resetting.flash.success">
+        <source>resetting.flash.success</source>
+        <target>The password has been reset successfully.</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.subject">
+        <source>resetting.email.subject</source>
+        <target>Reset Password</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.message">
+        <source>resetting.email.message</source>
+        <target><![CDATA[Hello %username%!
+
+To reset your password - please visit %confirmationUrl%
+
+Regards,
+the Team.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.email.html">
+        <source>resetting.email.html</source>
+        <target><![CDATA[
+          <p>Hello %username%!</p>
+          <p>To reset your password - please visit <a href="%confirmationUrl%">%confirmationUrl%</a></p>
+          <p>Regards,</p>
+          <p>the Team.</p>
+        ]]></target>
+      </trans-unit>
+      <trans-unit id="layout.logout">
+        <source>layout.logout</source>
+        <target>Log out</target>
+      </trans-unit>
+      <trans-unit id="layout.login">
+        <source>layout.login</source>
+        <target>Log in</target>
+      </trans-unit>
+      <trans-unit id="layout.logged_in_as">
+        <source>layout.logged_in_as</source>
+        <target>Logged in as %username%</target>
+      </trans-unit>
+      <trans-unit id="form.username">
+        <source>form.username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="form.email">
+        <source>form.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="form.current_password">
+        <source>form.current_password</source>
+        <target>Current password</target>
+      </trans-unit>
+      <trans-unit id="form.password">
+        <source>form.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="form.password_confirmation">
+        <source>form.password_confirmation</source>
+        <target>Repeat password</target>
+      </trans-unit>
+      <trans-unit id="form.new_password">
+        <source>form.new_password</source>
+        <target>New password</target>
+      </trans-unit>
+      <trans-unit id="form.new_password_confirmation">
+        <source>form.new_password_confirmation</source>
+        <target>Repeat new password</target>
+      </trans-unit>
+      <trans-unit id="form.confirm_deletion">
+        <source>form.confirm_deletion</source>
+        <target>Delete my account</target>
+      </trans-unit>
+      <trans-unit id="deletion.success">
+        <source>deletion.success</source>
+        <target>Your account was successfully deleted.</target>
+      </trans-unit>
+      <trans-unit id="deletion.confirmation">
+        <source>deletion.confirmation</source>
+        <target>Do you really want to delete your account?</target>
+      </trans-unit>
+      <trans-unit id="deletion.submit">
+        <source>deletion.submit</source>
+        <target>Delete account</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

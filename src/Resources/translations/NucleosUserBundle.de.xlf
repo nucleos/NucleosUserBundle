@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="security.login.title">
+        <source>security.login.title</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="security.login.username">
+        <source>security.login.username</source>
+        <target>Benutzername</target>
+      </trans-unit>
+      <trans-unit id="security.login.password">
+        <source>security.login.password</source>
+        <target>Passwort</target>
+      </trans-unit>
+      <trans-unit id="security.login.remember_me">
+        <source>security.login.remember_me</source>
+        <target>An mich erinnern</target>
+      </trans-unit>
+      <trans-unit id="security.login.submit">
+        <source>security.login.submit</source>
+        <target>Anmelden</target>
+      </trans-unit>
+      <trans-unit id="security.forgotten_password">
+        <source>security.forgotten_password</source>
+        <target>Passwort vergessen?</target>
+      </trans-unit>
+      <trans-unit id="change_password.submit">
+        <source>change_password.submit</source>
+        <target>Passwort ändern</target>
+      </trans-unit>
+      <trans-unit id="change_password.flash.success">
+        <source>change_password.flash.success</source>
+        <target>Das Passwort wurde geändert.</target>
+      </trans-unit>
+      <trans-unit id="resetting.check_email">
+        <source>resetting.check_email</source>
+        <target><![CDATA[Eine E-Mail wurde verschickt. Sie beinhaltet einen Link zum Zurücksetzen des Passwortes.
+Hinweis: Ein neues Passwort kann nur alle %tokenLifetime% Stunden beantragt werden.
+
+Eventuell wurde diese E-Mail als Spam markiert, wenn sie nicht angekommen ist.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.request.username">
+        <source>resetting.request.username</source>
+        <target>Benutzername oder E-Mail-Adresse</target>
+      </trans-unit>
+      <trans-unit id="resetting.request.submit">
+        <source>resetting.request.submit</source>
+        <target>Passwort zurücksetzen</target>
+      </trans-unit>
+      <trans-unit id="resetting.reset.submit">
+        <source>resetting.reset.submit</source>
+        <target>Passwort ändern</target>
+      </trans-unit>
+      <trans-unit id="resetting.flash.success">
+        <source>resetting.flash.success</source>
+        <target>Das Passwort wurde erfolgreich zurückgesetzt.</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.subject">
+        <source>resetting.email.subject</source>
+        <target>Passwort zurücksetzen</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.message">
+        <source>resetting.email.message</source>
+        <target><![CDATA[Hallo %username%!
+
+Besuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: %confirmationUrl%
+
+Mit besten Grüßen,
+das Team.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.email.html">
+        <source>resetting.email.html</source>
+        <target><![CDATA[
+          <p>Hallo %username%!</p>
+          <p>Besuchen Sie bitte folgende Seite, um Ihr Passwort zurückzusetzen: <a href="%confirmationUrl%">%confirmationUrl%</a></p>
+          <p>Mit besten Grüßen,</p>
+          <p>das Team.</p>
+          ]]></target>
+      </trans-unit>
+      <trans-unit id="layout.logout">
+        <source>layout.logout</source>
+        <target>Abmelden</target>
+      </trans-unit>
+      <trans-unit id="layout.login">
+        <source>layout.login</source>
+        <target>Anmelden</target>
+      </trans-unit>
+      <trans-unit id="layout.logged_in_as">
+        <source>layout.logged_in_as</source>
+        <target>Angemeldet als %username%</target>
+      </trans-unit>
+      <trans-unit id="form.username">
+        <source>form.username</source>
+        <target>Benutzername</target>
+      </trans-unit>
+      <trans-unit id="form.email">
+        <source>form.email</source>
+        <target>E-Mail-Adresse</target>
+      </trans-unit>
+      <trans-unit id="form.current_password">
+        <source>form.current_password</source>
+        <target>Derzeitiges Passwort</target>
+      </trans-unit>
+      <trans-unit id="form.password">
+        <source>form.password</source>
+        <target>Passwort</target>
+      </trans-unit>
+      <trans-unit id="form.password_confirmation">
+        <source>form.password_confirmation</source>
+        <target>Passwort bestätigen</target>
+      </trans-unit>
+      <trans-unit id="form.new_password">
+        <source>form.new_password</source>
+        <target>Neues Passwort</target>
+      </trans-unit>
+      <trans-unit id="form.new_password_confirmation">
+        <source>form.new_password_confirmation</source>
+        <target>Neues Passwort bestätigen</target>
+      </trans-unit>
+      <trans-unit id="form.confirm_deletion">
+        <source>form.confirm_deletion</source>
+        <target>Mein Konto soll gelöscht werden</target>
+      </trans-unit>
+      <trans-unit id="deletion.success">
+        <source>deletion.success</source>
+        <target>Das Konto wurde erfolgreich gelöscht.</target>
+      </trans-unit>
+      <trans-unit id="deletion.confirmation">
+        <source>deletion.confirmation</source>
+        <target>Möchten Sie Ihr Konto wirklich löschen?</target>
+      </trans-unit>
+      <trans-unit id="deletion.submit">
+        <source>deletion.submit</source>
+        <target>Konto löschen</target>
+      </trans-unit>
+      <trans-unit id="Bad credentials.">
+        <source>Bad credentials.</source>
+        <target>Ungültige E-Mail-Adresse oder falsches Passwort.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

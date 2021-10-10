@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="security.login.title">
+        <source>security.login.title</source>
+        <target>Авторизоваться</target>
+      </trans-unit>
+      <trans-unit id="security.login.username">
+        <source>security.login.username</source>
+        <target>Имя пользователя</target>
+      </trans-unit>
+      <trans-unit id="security.login.password">
+        <source>security.login.password</source>
+        <target>Пароль</target>
+      </trans-unit>
+      <trans-unit id="security.login.remember_me">
+        <source>security.login.remember_me</source>
+        <target>Запомнить меня</target>
+      </trans-unit>
+      <trans-unit id="security.login.submit">
+        <source>security.login.submit</source>
+        <target>Войти</target>
+      </trans-unit>
+      <trans-unit id="security.forgotten_password">
+        <source>security.forgotten_password</source>
+        <target>Забыли пароль?</target>
+      </trans-unit>
+      <trans-unit id="change_password.submit">
+        <source>change_password.submit</source>
+        <target>Изменить пароль</target>
+      </trans-unit>
+      <trans-unit id="change_password.flash.success">
+        <source>change_password.flash.success</source>
+        <target>Пароль изменен.</target>
+      </trans-unit>
+      <trans-unit id="resetting.check_email">
+        <source>resetting.check_email</source>
+        <target><![CDATA[Письмо отправлено. Оно содержит ссылку, при переходе по которой ваш пароль будет сброшен.
+Заметьте, вы сможете запросить новый пароль только через %tokenLifetime% часов.
+
+Если вы не получили письмо, проверьте папку Спам или попробуйте снова.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.request.username">
+        <source>resetting.request.username</source>
+        <target>Имя пользователя или электронная почта</target>
+      </trans-unit>
+      <trans-unit id="resetting.request.submit">
+        <source>resetting.request.submit</source>
+        <target>Сбросить пароль</target>
+      </trans-unit>
+      <trans-unit id="resetting.reset.submit">
+        <source>resetting.reset.submit</source>
+        <target>Изменить пароль</target>
+      </trans-unit>
+      <trans-unit id="resetting.flash.success">
+        <source>resetting.flash.success</source>
+        <target>Пароль успешно сброшен.</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.subject">
+        <source>resetting.email.subject</source>
+        <target>Сброс пароля</target>
+      </trans-unit>
+      <trans-unit id="resetting.email.message">
+        <source>resetting.email.message</source>
+        <target><![CDATA[Приветствуем, %username%!
+
+Для сброса пароля, пожалуйста, пройдите по ссылке %confirmationUrl%
+
+С наилучшими пожеланиями,
+команда сайта.]]></target>
+      </trans-unit>
+      <trans-unit id="resetting.email.html">
+        <source>resetting.email.html</source>
+        <target><![CDATA[
+          <p>Приветствуем, %username%!</p>
+          <p>Для сброса пароля, пожалуйста, пройдите по ссылке <a href="%confirmationUrl%">%confirmationUrl%</a></p>
+          <p>С наилучшими пожеланиями,</p>
+          <p>команда сайта.</p>
+          ]]></target>
+      </trans-unit>
+      <trans-unit id="layout.logout">
+        <source>layout.logout</source>
+        <target>Выход</target>
+      </trans-unit>
+      <trans-unit id="layout.login">
+        <source>layout.login</source>
+        <target>Вход</target>
+      </trans-unit>
+      <trans-unit id="layout.logged_in_as">
+        <source>layout.logged_in_as</source>
+        <target>Вы вошли как %username%</target>
+      </trans-unit>
+      <trans-unit id="form.username">
+        <source>form.username</source>
+        <target>Имя пользователя</target>
+      </trans-unit>
+      <trans-unit id="form.email">
+        <source>form.email</source>
+        <target>Электронная почта</target>
+      </trans-unit>
+      <trans-unit id="form.current_password">
+        <source>form.current_password</source>
+        <target>Текущий пароль</target>
+      </trans-unit>
+      <trans-unit id="form.password">
+        <source>form.password</source>
+        <target>Пароль</target>
+      </trans-unit>
+      <trans-unit id="form.password_confirmation">
+        <source>form.password_confirmation</source>
+        <target>Повторите пароль</target>
+      </trans-unit>
+      <trans-unit id="form.new_password">
+        <source>form.new_password</source>
+        <target>Новый пароль</target>
+      </trans-unit>
+      <trans-unit id="form.new_password_confirmation">
+        <source>form.new_password_confirmation</source>
+        <target>Повторите новый пароль</target>
+      </trans-unit>
+      <trans-unit id="form.confirm_deletion">
+        <source>form.confirm_deletion</source>
+        <target>Удалить мой аккаунт</target>
+      </trans-unit>
+      <trans-unit id="deletion.success">
+        <source>deletion.success</source>
+        <target>Ваша учетная запись была успешно удалена.</target>
+      </trans-unit>
+      <trans-unit id="deletion.confirmation">
+        <source>deletion.confirmation</source>
+        <target>Вы действительно хотите удалить свою учетную запись?</target>
+      </trans-unit>
+      <trans-unit id="deletion.submit">
+        <source>deletion.submit</source>
+        <target>Удалить аккаунт</target>
+      </trans-unit>
+      <trans-unit id="Bad credentials.">
+        <source>Bad credentials.</source>
+        <target>Некорректный email или пароль</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
