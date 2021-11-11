@@ -911,16 +911,16 @@
         },
         {
             "name": "maglnet/composer-require-checker",
-            "version": "3.4.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maglnet/ComposerRequireChecker.git",
-                "reference": "b503714613f5a287c92cac02735ee49f5ec705ec"
+                "reference": "f1a5905265b9464d57a7e26ae80b05b7c1411830"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/b503714613f5a287c92cac02735ee49f5ec705ec",
-                "reference": "b503714613f5a287c92cac02735ee49f5ec705ec",
+                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/f1a5905265b9464d57a7e26ae80b05b7c1411830",
+                "reference": "f1a5905265b9464d57a7e26ae80b05b7c1411830",
                 "shasum": ""
             },
             "require": {
@@ -937,9 +937,10 @@
                 "doctrine/coding-standard": "^9.0.0",
                 "ext-zend-opcache": "*",
                 "mikey179/vfsstream": "^1.6.10",
-                "phpstan/phpstan": "^0.12.99",
+                "phing/phing": "^2.17.0",
+                "phpstan/phpstan": "^1.1.1",
                 "phpunit/phpunit": "^9.5.10",
-                "vimeo/psalm": "^4.11.2"
+                "vimeo/psalm": "^4.12.0"
             },
             "bin": [
                 "bin/composer-require-checker"
@@ -984,9 +985,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maglnet/ComposerRequireChecker/issues",
-                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/3.4.0"
+                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/3.5.1"
             },
-            "time": "2021-11-08T10:11:58+00:00"
+            "time": "2021-11-10T12:04:31+00:00"
         },
         {
             "name": "matthiasnoback/symfony-config-test",
