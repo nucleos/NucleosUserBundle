@@ -21,7 +21,13 @@ final class Canonicalizer implements CanonicalizerInterface
             return '';
         }
 
-        $encoding = mb_detect_encoding($string, mb_detect_order(), true);
+        $encodings = mb_detect_order();
+
+        if (!\is_array($encodings)) {
+            return $string;
+        }
+
+        $encoding  = mb_detect_encoding($string, $encodings, true);
 
         if (false !== $encoding) {
             return mb_convert_case($string, MB_CASE_LOWER, $encoding);
