@@ -15,7 +15,7 @@
     ],
     "homepage": "https://nucleos.rocks",
     "require": {
-        "php": "^7.3 || ^8.0",
+        "php": "^8.0",
         "ext-json": "*",
         "ext-mbstring": "*",
         "doctrine/collections": "^1.6",
