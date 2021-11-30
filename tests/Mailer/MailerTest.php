@@ -17,9 +17,6 @@ use Nucleos\UserBundle\Mailer\Mailer;
 use Nucleos\UserBundle\Model\UserInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface as SymfonyMailer;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -27,44 +24,41 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class MailerTest extends TestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy<SymfonyMailer>
+     * @var SymfonyMailer&MockObject
      */
     private $swiftMailer;
 
     /**
-     * @var ObjectProphecy<TranslatorInterface>
+     * @var TranslatorInterface&MockObject
      */
     private $translator;
 
     /**
-     * @var ObjectProphecy<UrlGeneratorInterface>
+     * @var UrlGeneratorInterface&MockObject
      */
     private $generator;
 
     protected function setUp(): void
     {
-        $this->swiftMailer = $this->prophesize(SymfonyMailer::class);
-        $this->translator  = $this->prophesize(TranslatorInterface::class);
-        $this->generator   = $this->prophesize(UrlGeneratorInterface::class);
+        $this->swiftMailer = $this->createMock(SymfonyMailer::class);
+        $this->translator  = $this->createMock(TranslatorInterface::class);
+        $this->generator   = $this->createMock(UrlGeneratorInterface::class);
     }
 
     public function testSendResettingEmail(): void
     {
         $mailer = $this->getMailer();
 
-        $this->translator->trans(Argument::any(), Argument::any(), Argument::any())
+        $this->translator->method('trans')->with(static::anything(), static::anything(), static::anything())
             ->willReturnArgument(0)
         ;
 
-        $this->generator->generate(Argument::any(), Argument::any(), Argument::any())
+        $this->generator->method('generate')->with(static::anything(), static::anything(), static::anything())
             ->willReturn('http://something.local')
         ;
 
-        $this->swiftMailer->send(Argument::type(TemplatedEmail::class))
-            ->shouldBeCalled()
+        $this->swiftMailer->expects(static::once())->method('send')->with(static::isInstanceOf(TemplatedEmail::class))
         ;
 
         $mailer->sendResettingEmailMessage($this->getUser());
@@ -73,9 +67,9 @@ final class MailerTest extends TestCase
     private function getMailer(): Mailer
     {
         return new Mailer(
-            $this->swiftMailer->reveal(),
-            $this->translator->reveal(),
-            $this->generator->reveal(),
+            $this->swiftMailer,
+            $this->translator,
+            $this->generator,
             'foo@example.com'
         );
     }
