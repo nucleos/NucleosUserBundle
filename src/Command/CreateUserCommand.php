@@ -24,9 +24,6 @@ use Symfony\Component\Console\Question\Question;
 
 final class CreateUserCommand extends Command
 {
-    /**
-     * @var string
-     */
     protected static $defaultName = 'nucleos:user:create';
 
     private UserManipulator $userManipulator;

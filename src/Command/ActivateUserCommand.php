@@ -23,9 +23,6 @@ use Symfony\Component\Console\Question\Question;
 
 final class ActivateUserCommand extends Command
 {
-    /**
-     * @var string
-     */
     protected static $defaultName = 'nucleos:user:activate';
 
     private UserManipulator $userManipulator;

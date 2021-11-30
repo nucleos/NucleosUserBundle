@@ -18,9 +18,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class DemoteUserCommand extends RoleCommand
 {
-    /**
-     * @var string
-     */
     protected static $defaultName = 'nucleos:user:demote';
 
     protected function configure(): void

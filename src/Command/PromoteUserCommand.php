@@ -18,9 +18,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class PromoteUserCommand extends RoleCommand
 {
-    /**
-     * @var string
-     */
     protected static $defaultName = 'nucleos:user:promote';
 
     protected function configure(): void
