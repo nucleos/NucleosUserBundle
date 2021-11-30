@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
-use Symfony\Component\Security\Http\RememberMe\RememberMeServicesInterface;
+use Symfony\Component\Security\Http\RememberMe\RememberMeHandlerInterface;
 use Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterface;
 
 final class LoginManagerTest extends TestCase
@@ -59,7 +59,8 @@ final class LoginManagerTest extends TestCase
             ->with(static::isInstanceOf(UserInterface::class))
         ;
 
-        $request = $this->getMockBuilder(Request::class)->getMock();
+        $request = new Request();
+        $request->request->set('_remember_me', 'on');
 
         $sessionStrategy = $this->getMockBuilder(SessionAuthenticationStrategyInterface::class)->getMock();
         $sessionStrategy
@@ -77,11 +78,11 @@ final class LoginManagerTest extends TestCase
 
         $rememberMe = null;
         if (null !== $response) {
-            $rememberMe = $this->getMockBuilder(RememberMeServicesInterface::class)->getMock();
+            $rememberMe = $this->createMock(RememberMeHandlerInterface::class);
             $rememberMe
                 ->expects(static::once())
-                ->method('loginSuccess')
-                ->with($request, $response, static::isInstanceOf(TokenInterface::class))
+                ->method('createRememberMeCookie')
+                ->with(static::isInstanceOf(UserInterface::class))
             ;
         }
 

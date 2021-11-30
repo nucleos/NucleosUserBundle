@@ -24,10 +24,10 @@ final class InjectRememberMeServicesPass implements CompilerPassInterface
         $firewallName = $container->getParameter('nucleos_user.firewall_name');
         $loginManager = $container->getDefinition('nucleos_user.security.login_manager');
 
-        if ($container->hasDefinition('security.authentication.rememberme.services.persistent.'.$firewallName)) {
-            $loginManager->replaceArgument(4, new Reference('security.authentication.rememberme.services.persistent.'.$firewallName));
-        } elseif ($container->hasDefinition('security.authentication.rememberme.services.simplehash.'.$firewallName)) {
-            $loginManager->replaceArgument(4, new Reference('security.authentication.rememberme.services.simplehash.'.$firewallName));
+        if ($container->hasDefinition('security.authenticator.persistent_remember_me_handler')) {
+            $loginManager->replaceArgument(4, new Reference('security.authenticator.persistent_remember_me_handler'));
+        } elseif ($container->hasDefinition('security.authenticator.signature_remember_me_handler')) {
+            $loginManager->replaceArgument(4, new Reference('security.authenticator.signature_remember_me_handler'));
         }
     }
 }

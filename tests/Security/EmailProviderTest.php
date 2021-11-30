@@ -20,8 +20,8 @@ use Nucleos\UserBundle\Security\EmailProvider;
 use Nucleos\UserBundle\Tests\App\Entity\TestUser;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 
 final class EmailProviderTest extends TestCase
@@ -53,7 +53,7 @@ final class EmailProviderTest extends TestCase
 
     public function testLoadUserByInvalidUsername(): void
     {
-        $this->expectException(UsernameNotFoundException::class);
+        $this->expectException(AuthenticationException::class);
 
         $this->userManager->expects(static::once())
             ->method('findUserByEmail')
@@ -93,7 +93,7 @@ final class EmailProviderTest extends TestCase
 
     public function testRefreshDeleted(): void
     {
-        $this->expectException(UsernameNotFoundException::class);
+        $this->expectException(AuthenticationException::class);
 
         $user = $this->getMockForAbstractClass(User::class);
         $this->userManager->expects(static::once())
