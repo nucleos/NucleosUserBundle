@@ -68,6 +68,6 @@ final class LoginManager implements LoginManagerInterface
 
     private function createToken(string $firewall, UserInterface $user): UsernamePasswordToken
     {
-        return new UsernamePasswordToken($user, null, $firewall, $user->getRoles());
+        return new UsernamePasswordToken($user, $firewall, $user->getRoles());
     }
 }
