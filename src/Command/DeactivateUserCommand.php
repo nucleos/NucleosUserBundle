@@ -23,9 +23,6 @@ use Symfony\Component\Console\Question\Question;
 
 final class DeactivateUserCommand extends Command
 {
-    /**
-     * @var string
-     */
     protected static $defaultName = 'nucleos:user:deactivate';
 
     private UserManipulator $userManipulator;

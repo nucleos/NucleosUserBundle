@@ -23,9 +23,6 @@ use Symfony\Component\Console\Question\Question;
 
 final class ChangePasswordCommand extends Command
 {
-    /**
-     * @var string
-     */
     protected static $defaultName = 'nucleos:user:change-password';
 
     private UserManipulator $userManipulator;
