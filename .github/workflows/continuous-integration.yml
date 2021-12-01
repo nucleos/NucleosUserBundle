@@ -31,9 +31,6 @@ jobs:
           extensions: "mbstring, json, mongodb"
           php-version: ${{ matrix.php-version }}
 
-      - name: "Validate composer.json and composer.lock"
-        run: composer validate --strict
-
       - name: "Cache dependencies installed with composer"
         uses: actions/cache@v2.1.7
         with:
@@ -45,8 +42,8 @@ jobs:
       - name: "Install locked dependencies with composer"
         run: composer install --no-interaction --no-progress --no-suggest
 
-      - name: "Run localheinz/composer-normalize"
-        run: composer normalize --dry-run
+      - name: "Run composer lint"
+        run: make lint-composer
 
       - name: "Create cache directory for friendsofphp/php-cs-fixer"
         run: mkdir -p .build/php-cs-fixer
@@ -60,7 +57,9 @@ jobs:
             php${{ matrix.php-version }}-php-cs-fixer-
 
       - name: "Run friendsofphp/php-cs-fixer"
-        run: composer cs-diff
+        env:
+            PHP_CS_FIXER_IGNORE_ENV: 1
+        run: make cs
 
   static-code-analysis:
     name: "Static Code Analysis"
@@ -95,13 +94,13 @@ jobs:
         run: composer install --no-interaction --no-progress --no-suggest
 
       - name: "Run phpstan/phpstan"
-        run: composer phpstan
+        run: make phpstan
 
       - name: "Run psalm"
-        run: vendor/bin/psalm --config=psalm.xml --diff --shepherd --show-info=false --stats --threads=4 --php-version=7.4
+        run: make psalm
 
       - name: "Run phpmd"
-        run: composer phpmd
+        run: make phpmd
 
   tests:
     name: "Test (PHP ${{ matrix.php-version }}, symfony ${{ matrix.symfony }}, ${{ matrix.dependencies }})"
@@ -132,7 +131,8 @@ jobs:
           php-version: ${{ matrix.php-version }}
 
       - name: 'Install Symfony Flex'
-        run: composer global require --prefer-dist --no-progress --no-suggest --ansi symfony/flex
+        run: |
+          composer global require --prefer-dist --no-progress --no-suggest --ansi symfony/flex
 
       - name: "Cache dependencies installed with composer"
         uses: actions/cache@v2.1.7
@@ -154,7 +154,7 @@ jobs:
         run: composer update --no-interaction --no-progress --no-suggest
 
       - name: "Run tests with phpunit/phpunit"
-        run: composer test
+        run: make test
 
   code-coverage:
     name: "Code Coverage"
@@ -189,7 +189,7 @@ jobs:
         run: composer install --no-interaction --no-progress --no-suggest
 
       - name: "Collect code coverage with pcov and phpunit/phpunit"
-        run: composer coverage
+        run: make coverage
 
       - name: "Send code coverage report to Codecov.io"
         env:
@@ -228,8 +228,5 @@ jobs:
       - name: "Install locked dependencies with composer"
         run: composer install --no-interaction --no-progress --no-suggest
 
-      - name: "Download infection"
-        run: wget -O infection https://github.com/infection/infection/releases/download/0.19.0/infection.phar && chmod +x infection
-
       - name: "Run mutation tests with pcov and infection/infection"
-        run: ./infection
+        run: make infection
