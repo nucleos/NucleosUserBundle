@@ -842,16 +842,16 @@
         },
         {
             "name": "maglnet/composer-require-checker",
-            "version": "3.6.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maglnet/ComposerRequireChecker.git",
-                "reference": "e73c0bb75522d861aef3e8d58991d50bf0125a0b"
+                "reference": "42860bac4d5ddb5b9167a1b631b4327165104c62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/e73c0bb75522d861aef3e8d58991d50bf0125a0b",
-                "reference": "e73c0bb75522d861aef3e8d58991d50bf0125a0b",
+                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/42860bac4d5ddb5b9167a1b631b4327165104c62",
+                "reference": "42860bac4d5ddb5b9167a1b631b4327165104c62",
                 "shasum": ""
             },
             "require": {
@@ -916,9 +916,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maglnet/ComposerRequireChecker/issues",
-                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/3.6.0"
+                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/3.7.0"
             },
-            "time": "2021-12-03T08:44:02+00:00"
+            "time": "2021-12-06T00:54:23+00:00"
         },
         {
             "name": "matthiasnoback/symfony-config-test",
