@@ -1,7 +1,7 @@
 {
     "name": "nucleos/dev-tools",
-    "type": "project",
     "description": "Development tools that do not conflict the project dependencies",
+    "type": "project",
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
         "jangregor/phpstan-prophecy": "^0.8",
@@ -21,6 +21,7 @@
         "vimeo/psalm": "^4.3.1"
     },
     "config": {
+        "bin-dir": "../../vendor/bin",
         "platform": {
             "php": "7.4"
         }
