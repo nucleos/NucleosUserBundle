@@ -1,9 +1,11 @@
 .php-cs-fixer.cache
+.php-cs-fixer.php
 .phpunit.result.cache
 coverage
 composer.lock
 phpunit.xml
-/build
+/build/
 /vendor/
 !/vendor-bin/tools/composer.lock
 /vendor-bin/tools/vendor/
+/vendor-bin/tools/bin/
