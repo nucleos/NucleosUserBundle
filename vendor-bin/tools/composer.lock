@@ -842,16 +842,16 @@
         },
         {
             "name": "maglnet/composer-require-checker",
-            "version": "3.7.0",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maglnet/ComposerRequireChecker.git",
-                "reference": "42860bac4d5ddb5b9167a1b631b4327165104c62"
+                "reference": "537138b833ab0f9ad72b667a72bece2a765e88ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/42860bac4d5ddb5b9167a1b631b4327165104c62",
-                "reference": "42860bac4d5ddb5b9167a1b631b4327165104c62",
+                "url": "https://api.github.com/repos/maglnet/ComposerRequireChecker/zipball/537138b833ab0f9ad72b667a72bece2a765e88ab",
+                "reference": "537138b833ab0f9ad72b667a72bece2a765e88ab",
                 "shasum": ""
             },
             "require": {
@@ -871,7 +871,7 @@
                 "phing/phing": "^2.17.0",
                 "phpstan/phpstan": "^1.2.0",
                 "phpunit/phpunit": "^9.5.10",
-                "vimeo/psalm": "^4.13.1"
+                "vimeo/psalm": "^4.14.0"
             },
             "bin": [
                 "bin/composer-require-checker"
@@ -916,9 +916,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maglnet/ComposerRequireChecker/issues",
-                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/3.7.0"
+                "source": "https://github.com/maglnet/ComposerRequireChecker/tree/3.8.0"
             },
-            "time": "2021-12-06T00:54:23+00:00"
+            "time": "2021-12-07T14:25:47+00:00"
         },
         {
             "name": "matthiasnoback/symfony-config-test",
