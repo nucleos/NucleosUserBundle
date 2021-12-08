@@ -20,6 +20,8 @@ use DomainException;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ *
  * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
  * @phpstan-implements \Nucleos\UserBundle\Model\GroupableInterface<GroupTemplate>
  */
@@ -76,18 +78,12 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
         return $this->getUsername();
     }
 
-    public function addRole(string $role): void
+    /**
+     * @return mixed[]
+     */
+    public function __serialize(): array
     {
-        $role = strtoupper($role);
-
-        if (!\in_array($role, $this->roles, true)) {
-            $this->roles[] = $role;
-        }
-    }
-
-    public function serialize(): string
-    {
-        return serialize([
+        return [
             $this->password,
             $this->salt,
             $this->usernameCanonical,
@@ -96,23 +92,14 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
             $this->id,
             $this->email,
             $this->emailCanonical,
-        ]);
+        ];
     }
 
-    public function unserialize($serialized): void
+    /**
+     * @param mixed[] $data
+     */
+    public function __unserialize(array $data): void
     {
-        $data = unserialize($serialized);
-
-        if (13 === \count($data)) {
-            // Unserializing a User object from 1.3.x
-            unset($data[4], $data[5], $data[6], $data[9], $data[10]);
-            $data = array_values($data);
-        } elseif (11 === \count($data)) {
-            // Unserializing a User from a dev version somewhere between 2.0-alpha3 and 2.0-beta1
-            unset($data[4], $data[7], $data[8]);
-            $data = array_values($data);
-        }
-
         [
             $this->password,
             $this->salt,
@@ -123,6 +110,25 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
             $this->email,
             $this->emailCanonical
         ] = $data;
+    }
+
+    public function serialize(): string
+    {
+        return serialize($this->__serialize());
+    }
+
+    public function unserialize($data): void
+    {
+        $this->__unserialize(unserialize($data));
+    }
+
+    public function addRole(string $role): void
+    {
+        $role = strtoupper($role);
+
+        if (!\in_array($role, $this->roles, true)) {
+            $this->roles[] = $role;
+        }
     }
 
     public function eraseCredentials(): void
