@@ -54,6 +54,7 @@ final class Pattern extends Constraint
      * @param array<string, mixed> $options
      */
     public function __construct(
+        array $options = [],
         int $minUpper = null,
         int $minLower = null,
         int $minNumeric = null,
@@ -65,8 +66,7 @@ final class Pattern extends Constraint
         string $minSpecialMessage = null,
         callable $normalizer = null,
         array $groups = null,
-        mixed $payload = null,
-        array $options = []
+        mixed $payload = null
     ) {
         parent::__construct($options, $groups, $payload);
 
