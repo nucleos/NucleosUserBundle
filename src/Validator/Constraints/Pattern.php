@@ -13,13 +13,16 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Validator\Constraints;
 
+use Attribute;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Exception\InvalidArgumentException;
 
 /**
  * @Annotation
  *
  * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  */
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
 final class Pattern extends Constraint
 {
     public string $minUpperMessage = 'nucleos_user.pattern.requires_upper';
@@ -40,8 +43,46 @@ final class Pattern extends Constraint
 
     public string $specialChars = '.,:;!?:+-*#\\/|(){}[]';
 
-    public function getTargets(): string
-    {
-        return self::PROPERTY_CONSTRAINT;
+    /**
+     * @var callable|null
+     */
+    public $normalizer;
+
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     *
+     * @param array<string, mixed> $options
+     */
+    public function __construct(
+        int $minUpper = null,
+        int $minLower = null,
+        int $minNumeric = null,
+        int $minSpecial = null,
+        string $specialChars = null,
+        string $minUpperMessage = null,
+        string $minLowerMessage = null,
+        string $minNumericMessage = null,
+        string $minSpecialMessage = null,
+        callable $normalizer = null,
+        array $groups = null,
+        mixed $payload = null,
+        array $options = []
+    ) {
+        parent::__construct($options, $groups, $payload);
+
+        $this->minUpper          = $minUpper                   ?? $this->minUpper;
+        $this->minLower          = $minLower                   ?? $this->minLower;
+        $this->minNumeric        = $minNumeric                 ?? $this->minNumeric;
+        $this->minSpecial        = $minSpecial                 ?? $this->minSpecial;
+        $this->minUpperMessage   = $minUpperMessage            ?? $this->minUpperMessage;
+        $this->minLowerMessage   = $minLowerMessage            ?? $this->minLowerMessage;
+        $this->minNumericMessage = $minNumericMessage          ?? $this->minNumericMessage;
+        $this->minSpecialMessage = $minSpecialMessage          ?? $this->minSpecialMessage;
+        $this->specialChars      = $specialChars               ?? $this->specialChars;
+        $this->normalizer        = $normalizer                 ?? $this->normalizer;
+
+        if (null !== $this->normalizer && !\is_callable($this->normalizer)) {
+            throw new InvalidArgumentException(sprintf('The "normalizer" option must be a valid callable ("%s" given).', get_debug_type($this->normalizer)));
+        }
     }
 }
