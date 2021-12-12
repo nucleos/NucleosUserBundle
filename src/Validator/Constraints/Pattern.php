@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Validator\Constraints;
 
+use Attribute;
 use Symfony\Component\Validator\Constraint;
 
 /**
@@ -20,6 +21,7 @@ use Symfony\Component\Validator\Constraint;
  *
  * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  */
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
 final class Pattern extends Constraint
 {
     /**
@@ -67,8 +69,35 @@ final class Pattern extends Constraint
      */
     public $specialChars = '.,:;!?:+-*#\\/|(){}[]';
 
-    public function getTargets()
-    {
-        return self::PROPERTY_CONSTRAINT;
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     *
+     * @param array<string, mixed> $options
+     */
+    public function __construct(
+        mixed $options = null,
+        int $minUpper = null,
+        int $minLower = null,
+        int $minNumeric = null,
+        int $minSpecial = null,
+        string $specialChars = null,
+        string $minUpperMessage = null,
+        string $minLowerMessage = null,
+        string $minNumericMessage = null,
+        string $minSpecialMessage = null,
+        array $groups = null,
+        mixed $payload = null
+    ) {
+        parent::__construct($options, $groups, $payload);
+
+        $this->minUpper          = $minUpper                   ?? $this->minUpper;
+        $this->minLower          = $minLower                   ?? $this->minLower;
+        $this->minNumeric        = $minNumeric                 ?? $this->minNumeric;
+        $this->minSpecial        = $minSpecial                 ?? $this->minSpecial;
+        $this->minUpperMessage   = $minUpperMessage            ?? $this->minUpperMessage;
+        $this->minLowerMessage   = $minLowerMessage            ?? $this->minLowerMessage;
+        $this->minNumericMessage = $minNumericMessage          ?? $this->minNumericMessage;
+        $this->minSpecialMessage = $minSpecialMessage          ?? $this->minSpecialMessage;
+        $this->specialChars      = $specialChars               ?? $this->specialChars;
     }
 }
