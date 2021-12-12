@@ -15,7 +15,6 @@ namespace Nucleos\UserBundle\Validator\Constraints;
 
 use Attribute;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Exception\InvalidArgumentException;
 
 /**
  * @Annotation
@@ -44,17 +43,12 @@ final class Pattern extends Constraint
     public string $specialChars = '.,:;!?:+-*#\\/|(){}[]';
 
     /**
-     * @var callable|null
-     */
-    public $normalizer;
-
-    /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      *
      * @param array<string, mixed> $options
      */
     public function __construct(
-        array $options = [],
+        mixed $options = null,
         int $minUpper = null,
         int $minLower = null,
         int $minNumeric = null,
@@ -64,7 +58,6 @@ final class Pattern extends Constraint
         string $minLowerMessage = null,
         string $minNumericMessage = null,
         string $minSpecialMessage = null,
-        callable $normalizer = null,
         array $groups = null,
         mixed $payload = null
     ) {
@@ -79,10 +72,5 @@ final class Pattern extends Constraint
         $this->minNumericMessage = $minNumericMessage          ?? $this->minNumericMessage;
         $this->minSpecialMessage = $minSpecialMessage          ?? $this->minSpecialMessage;
         $this->specialChars      = $specialChars               ?? $this->specialChars;
-        $this->normalizer        = $normalizer                 ?? $this->normalizer;
-
-        if (null !== $this->normalizer && !\is_callable($this->normalizer)) {
-            throw new InvalidArgumentException(sprintf('The "normalizer" option must be a valid callable ("%s" given).', get_debug_type($this->normalizer)));
-        }
     }
 }
