@@ -18,10 +18,9 @@ use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel;
-use Symfony\Component\Routing\RouteCollectionBuilder;
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 final class AppKernel extends Kernel
 {
@@ -55,18 +54,20 @@ final class AppKernel extends Kernel
         return __DIR__;
     }
 
-    protected function configureRoutes(RouteCollectionBuilder $routes): void
+    protected function configureRoutes(RoutingConfigurator $routes): void
     {
-        $routes->import(__DIR__.'/../../src/Resources/config/routing/security.php');
-        $routes->import(__DIR__.'/../../src/Resources/config/routing/change_password.php');
-        $routes->import(__DIR__.'/../../src/Resources/config/routing/resetting.php', '/resetting');
-        $routes->import(__DIR__.'/../../src/Resources/config/routing/deletion.php');
+        $routes->import('@NucleosUserBundle/Resources/config/routing/security.php');
+        $routes->import('@NucleosUserBundle/Resources/config/routing/change_password.php');
+        $routes->import('@NucleosUserBundle/Resources/config/routing/resetting.php')
+            ->prefix('/resetting')
+        ;
+        $routes->import('@NucleosUserBundle/Resources/config/routing/deletion.php');
     }
 
-    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
+    protected function configureContainer(ContainerConfigurator $container): void
     {
-        $loader->load(__DIR__.'/config/config.yaml');
-        $loader->load(__DIR__.'/config/security.yaml');
+        $container->import(__DIR__.'/config/config.yaml');
+        $container->import(__DIR__.'/config/security.yaml');
     }
 
     private function getBaseDir(): string

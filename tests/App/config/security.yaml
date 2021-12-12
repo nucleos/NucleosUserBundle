@@ -1,5 +1,7 @@
 security:
-    encoders:
+    enable_authenticator_manager: true
+
+    password_hashers:
         Nucleos\UserBundle\Model\UserInterface: sha512
 
     providers:
@@ -18,7 +20,6 @@ security:
                 check_path:     /login_check
                 failure_path:   null
             logout:       true
-            anonymous:    true
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -20,7 +20,7 @@ return static function (ContainerConfigurator $container): void {
         ->set(FlashListener::class)
             ->tag('kernel.event_subscriber')
             ->args([
-                new Reference('session.flash_bag'),
+                new Reference('request_stack'),
                 new Reference('translator'),
             ])
 
