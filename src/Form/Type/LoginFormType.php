@@ -12,7 +12,6 @@
 namespace Nucleos\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -50,11 +49,6 @@ final class LoginFormType extends AbstractType
                 'attr'  => [
                     'autocomplete' => 'password',
                 ],
-            ])
-            ->add('_remember_me', CheckboxType::class, [
-                'label'    => 'security.login.remember_me',
-                'required' => false,
-                'value'    => 'on',
             ])
             ->add('_target_path', HiddenType::class)
         ;

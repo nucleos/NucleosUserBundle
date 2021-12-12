@@ -17,10 +17,6 @@
         <source>security.login.password</source>
         <target>Contraseña</target>
       </trans-unit>
-      <trans-unit id="security.login.remember_me">
-        <source>security.login.remember_me</source>
-        <target>Recordar</target>
-      </trans-unit>
       <trans-unit id="security.login.submit">
         <source>security.login.submit</source>
         <target>Entrar</target>

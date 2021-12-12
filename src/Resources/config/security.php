@@ -40,7 +40,6 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('security.user_checker'),
                 new Reference('security.authentication.session_strategy'),
                 new Reference('request_stack'),
-                null,
             ])
 
         ->alias(LoginManagerInterface::class, 'nucleos_user.security.login_manager')
