@@ -40,7 +40,7 @@ jobs:
             php${{ matrix.php-version }}-composer-
 
       - name: "Install locked dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
       - name: "Run composer lint"
         run: make lint-composer
@@ -91,7 +91,7 @@ jobs:
             ${{ matrix.php-version }}-composer-
 
       - name: "Install locked dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
       - name: "Run phpstan/phpstan"
         run: make phpstan
@@ -133,7 +133,7 @@ jobs:
 
       - name: 'Install Symfony Flex'
         run: |
-          composer global require --prefer-dist --no-progress --no-suggest --ansi symfony/flex
+          composer global require --prefer-dist --no-progress --ansi symfony/flex
 
       - name: "Cache dependencies installed with composer"
         uses: actions/cache@v2.1.7
@@ -148,11 +148,11 @@ jobs:
 
       - name: "Install lowest dependencies with composer"
         if: matrix.dependencies == 'lowest'
-        run: composer update --no-interaction --no-progress --no-suggest --prefer-lowest
+        run: composer update --no-interaction --no-progress --prefer-lowest
 
       - name: "Install highest dependencies with composer"
         if: matrix.dependencies == 'highest'
-        run: composer update --no-interaction --no-progress --no-suggest
+        run: composer update --no-interaction --no-progress
 
       - name: "Run tests with phpunit/phpunit"
         run: make test
@@ -187,7 +187,7 @@ jobs:
             php${{ matrix.php-version }}-composer-
 
       - name: "Install locked dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
       - name: "Collect code coverage with pcov and phpunit/phpunit"
         run: make coverage
@@ -227,7 +227,7 @@ jobs:
             php${{ matrix.php-version }}-composer-
 
       - name: "Install locked dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
       - name: "Run mutation tests with pcov and infection/infection"
         run: make infection
