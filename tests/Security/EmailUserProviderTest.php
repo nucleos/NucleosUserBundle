@@ -65,13 +65,10 @@ final class EmailUserProviderTest extends TestCase
 
     public function testRefreshUserBy(): void
     {
-        $user = $this->getMockBuilder(User::class)
-                    ->setMethods(['getId'])
-                    ->getMock()
-        ;
+        $user = $this->getMockBuilder(User::class)->getMock();
 
         $user->expects(static::once())
-            ->method('getId')
+            ->method('getUserIdentifier')
             ->willReturn('123')
         ;
 

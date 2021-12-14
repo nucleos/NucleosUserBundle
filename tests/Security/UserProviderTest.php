@@ -66,13 +66,10 @@ final class UserProviderTest extends TestCase
 
     public function testRefreshUserBy(): void
     {
-        $user = $this->getMockBuilder(User::class)
-                    ->setMethods(['getId'])
-                    ->getMock()
-        ;
+        $user = $this->createUser();
 
         $user->expects(static::once())
-            ->method('getId')
+            ->method('getUserIdentifier')
             ->willReturn('123')
         ;
 
@@ -95,7 +92,7 @@ final class UserProviderTest extends TestCase
     {
         $this->expectException(AuthenticationException::class);
 
-        $user = $this->getMockForAbstractClass(User::class);
+        $user = $this->createUser();
         $this->userManager->expects(static::once())
             ->method('findUserBy')
             ->willReturn(null)
@@ -135,5 +132,16 @@ final class UserProviderTest extends TestCase
         ;
 
         $this->userProvider->refreshUser($providedUser);
+    }
+
+    /**
+     * @return UserInterface&MockObject
+     */
+    private function createUser(): UserInterface
+    {
+        $user = $this->createMock(UserInterface::class);
+        $user->method('getUserIdentifier')->willReturn('123');
+
+        return $user;
     }
 }
