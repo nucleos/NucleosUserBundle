@@ -17,6 +17,7 @@ use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
@@ -32,7 +33,20 @@ class UserProvider implements UserProviderInterface
         $this->userManager = $userManager;
     }
 
+    public function loadUserByIdentifier(string $identifier): SecurityUserInterface
+    {
+        $user =  $this->userManager->findUserByUsername($identifier);
+
+        if (null === $user) {
+            throw new UserNotFoundException(sprintf('The user "%s" does not exist.', $identifier));
+        }
+
+        return $user;
+    }
+
     /**
+     * @deprecated since 1.13.0
+     *
      * @param string $username
      */
     public function loadUserByUsername($username): UserInterface
@@ -73,8 +87,8 @@ class UserProvider implements UserProviderInterface
         return $userClass === $class || is_subclass_of($class, $userClass);
     }
 
-    protected function findUser(string $username): ?UserInterface
+    protected function findUser(string $identifier): ?UserInterface
     {
-        return $this->userManager->findUserByUsername($username);
+        return $this->userManager->findUserByUsername($identifier);
     }
 }

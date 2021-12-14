@@ -42,6 +42,8 @@ interface UserManagerInterface
 
     /**
      * Finds a user by its username or email.
+     *
+     * @deprecated since 1.13.0
      */
     public function findUserByUsernameOrEmail(string $usernameOrEmail): ?UserInterface;
 
