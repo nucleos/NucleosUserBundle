@@ -4,7 +4,7 @@
     "type": "project",
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.3",
-        "maglnet/composer-require-checker": "^3.5",
+        "maglnet/composer-require-checker": "^4.0",
         "matthiasnoback/symfony-dependency-injection-test": "^4.3",
         "phpmd/phpmd": "^2.10",
         "phpstan/extension-installer": "^1.0",
