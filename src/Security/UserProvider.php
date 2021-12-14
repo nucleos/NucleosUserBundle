@@ -73,8 +73,8 @@ class UserProvider implements UserProviderInterface
         return $userClass === $class || is_subclass_of($class, $userClass);
     }
 
-    protected function findUser(string $username): ?UserInterface
+    protected function findUser(string $identifier): ?UserInterface
     {
-        return $this->userManager->findUserByUsername($username);
+        return $this->userManager->findUserByUsername($identifier);
     }
 }
