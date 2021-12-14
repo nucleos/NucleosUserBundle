@@ -32,7 +32,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: ~/.composer/cache
           key: php${{ matrix.php-version }}-composer-
@@ -49,7 +49,7 @@ jobs:
         run: mkdir -p .build/php-cs-fixer
 
       - name: "Cache cache directory for friendsofphp/php-cs-fixer"
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: .build/php-cs-fixer
           key: php${{ matrix.php-version }}-php-cs-fixer-
@@ -83,7 +83,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: ~/.composer/cache
           key: ${{ matrix.php-version }}-composer-
@@ -137,7 +137,7 @@ jobs:
           composer global require --prefer-dist --no-progress --ansi symfony/flex
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: ~/.composer/cache
           key: php${{ matrix.php-version }}-composer-
@@ -180,7 +180,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: ~/.composer/cache
           key: php${{ matrix.php-version }}-composer-
@@ -220,7 +220,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: ~/.composer/cache
           key: php${{ matrix.php-version }}-composer-
