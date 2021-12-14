@@ -17,8 +17,8 @@ use Nucleos\UserBundle\Model\UserInterface;
 
 final class EmailProvider extends UserProvider
 {
-    protected function findUser(string $username): ?UserInterface
+    protected function findUser(string $identifier): ?UserInterface
     {
-        return $this->userManager->findUserByEmail($username);
+        return $this->userManager->findUserByEmail($identifier);
     }
 }
