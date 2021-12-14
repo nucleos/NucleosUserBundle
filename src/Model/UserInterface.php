@@ -53,8 +53,6 @@ interface UserInterface extends PasswordAuthenticatedUserInterface, BaseUserInte
      */
     public function setUsernameCanonical(string $usernameCanonical): void;
 
-    public function setSalt(?string $salt): void;
-
     public function getEmail(): string;
 
     /**
