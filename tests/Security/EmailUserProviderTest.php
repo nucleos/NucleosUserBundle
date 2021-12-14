@@ -45,7 +45,7 @@ final class EmailUserProviderTest extends TestCase
     {
         $user = $this->getMockBuilder(UserInterface::class)->getMock();
         $this->userManager->expects(static::once())
-            ->method('findUserByUsernameOrEmail')
+            ->method('findUserByUsername')
             ->with('foobar')
             ->willReturn($user)
         ;
@@ -58,7 +58,7 @@ final class EmailUserProviderTest extends TestCase
         $this->expectException(UsernameNotFoundException::class);
 
         $this->userManager->expects(static::once())
-            ->method('findUserByUsernameOrEmail')
+            ->method('findUserByUsername')
             ->with('foobar')
             ->willReturn(null)
         ;
