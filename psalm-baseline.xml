@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
+<files psalm-version="v4.15.0@a1b5e489e6fcebe40cb804793d964e99fc347820">
   <file src="src/Action/ChangePasswordAction.php">
     <InvalidNullableReturnType occurrences="1">
       <code>Response</code>
@@ -38,5 +38,13 @@
     <InvalidDocblock occurrences="1">
       <code>public function findGroups(): array;</code>
     </InvalidDocblock>
+  </file>
+  <file src="src/Security/LoginManager.php">
+    <InvalidArgument occurrences="1">
+      <code>$firewall</code>
+    </InvalidArgument>
+    <TooManyArguments occurrences="1">
+      <code>new UsernamePasswordToken($user, null, $firewall, $user-&gt;getRoles())</code>
+    </TooManyArguments>
   </file>
 </files>

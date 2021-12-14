@@ -136,6 +136,11 @@ parameters:
 			path: src/Noop/UserManager.php
 
 		-
+			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Core\\\\Authentication\\\\Token\\\\UsernamePasswordToken constructor expects array\\<string\\>, string given\\.$#"
+			count: 1
+			path: src/Security/LoginManager.php
+
+		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\DependencyInjection\\\\NucleosUserExtensionTest\\:\\:getEmptyConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/DependencyInjection/NucleosUserExtensionTest.php
