@@ -16,6 +16,10 @@ The following classes were removed in favor of symfony components:
 
 - `Nucleos\UserBundle\Util\PasswordUpdaterInterface`
 
+## Remove user id
+
+The `id` property was removed from the `User` class in favor of `UserInterface::getUserIdentifier`.
+
 ## Deprecations
 
 All the deprecated code introduced on 1.x is removed on 2.0.

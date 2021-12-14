@@ -21,8 +21,4 @@ use Nucleos\UserBundle\Model\User;
  */
 class TestUser extends User
 {
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
 }

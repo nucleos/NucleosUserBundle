@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\Security;
 
-use Nucleos\UserBundle\Model\User;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\Security\EmailProvider;
@@ -66,15 +65,7 @@ final class EmailProviderTest extends TestCase
 
     public function testRefreshUserBy(): void
     {
-        $user = $this->getMockBuilder(User::class)
-                    ->setMethods(['getId'])
-                    ->getMock()
-        ;
-
-        $user->expects(static::once())
-            ->method('getId')
-            ->willReturn('123')
-        ;
+        $user = $this->createUser();
 
         $refreshedUser = $this->getMockBuilder(UserInterface::class)->getMock();
         $this->userManager->expects(static::once())
@@ -95,7 +86,7 @@ final class EmailProviderTest extends TestCase
     {
         $this->expectException(AuthenticationException::class);
 
-        $user = $this->getMockForAbstractClass(User::class);
+        $user = $this->createUser();
         $this->userManager->expects(static::once())
             ->method('findUserBy')
             ->willReturn(null)
@@ -126,7 +117,7 @@ final class EmailProviderTest extends TestCase
     {
         $this->expectException(UnsupportedUserException::class);
 
-        $user         = $this->getMockBuilder(User::class)->getMock();
+        $user         = $this->createUser();
         $providedUser = $this->getMockBuilder(TestUser::class)->getMock();
 
         $this->userManager->expects(static::atLeastOnce())
@@ -135,5 +126,16 @@ final class EmailProviderTest extends TestCase
         ;
 
         $this->userProvider->refreshUser($providedUser);
+    }
+
+    /**
+     * @return UserInterface&MockObject
+     */
+    private function createUser(): UserInterface
+    {
+        $user = $this->createMock(UserInterface::class);
+        $user->method('getUserIdentifier')->willReturn('123');
+
+        return $user;
     }
 }

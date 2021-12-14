@@ -26,11 +26,9 @@ interface UserInterface extends PasswordAuthenticatedUserInterface, BaseUserInte
     public const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
 
     /**
-     * Returns the user unique id.
-     *
-     * @return mixed
+     * Returns the identifier for this user (e.g. its username or email address).
      */
-    public function getId();
+    public function getUserIdentifier(): string;
 
     /**
      * Gets the username. This is no longer provided by the parent interface

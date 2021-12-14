@@ -29,11 +29,6 @@ use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
  */
 abstract class User implements UserInterface, GroupableInterface, LocaleAwareInterface
 {
-    /**
-     * @var mixed
-     */
-    protected $id;
-
     protected ?string $username = null;
 
     protected ?string $usernameCanonical = null;
@@ -91,7 +86,6 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
             $this->usernameCanonical,
             $this->username,
             $this->enabled,
-            $this->id,
             $this->email,
             $this->emailCanonical,
         ];
@@ -108,7 +102,6 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
             $this->usernameCanonical,
             $this->username,
             $this->enabled,
-            $this->id,
             $this->email,
             $this->emailCanonical
         ] = $data;
@@ -136,11 +129,6 @@ abstract class User implements UserInterface, GroupableInterface, LocaleAwareInt
     public function eraseCredentials(): void
     {
         $this->plainPassword = null;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function getUsername(): string
