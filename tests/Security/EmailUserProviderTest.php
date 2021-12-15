@@ -28,7 +28,7 @@ final class EmailUserProviderTest extends TestCase
     /**
      * @var MockObject
      */
-    private $userManager;
+    private MockObject|UserManagerInterface $userManager;
 
     private EmailUserProvider $userProvider;
 

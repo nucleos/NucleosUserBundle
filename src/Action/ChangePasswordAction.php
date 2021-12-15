@@ -46,15 +46,7 @@ final class ChangePasswordAction
 
     private UserManagerInterface $userManager;
 
-    /**
-     * @var string
-     */
-    private $loggedinRoute;
-
-    /**
-     * @var string
-     */
-    private $loggedinRoute;
+    private string $loggedinRoute;
 
     public function __construct(
         Environment $twig,
