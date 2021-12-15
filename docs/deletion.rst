@@ -22,4 +22,4 @@ Add the routing config:
 
     # config/routes/nucleos_user.yaml
     nucleos_user_deletion:
-        resource: "@NucleosUserBundle/Resources/config/routing/deletion.xml"
+        resource: "@NucleosUserBundle/Resources/config/routing/deletion.php"

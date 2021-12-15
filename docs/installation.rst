@@ -289,8 +289,20 @@ logging in, creating users, etc.
 .. code-block:: yaml
 
     # config/routes/nucleos_user.yaml
-    nucleos_user:
-        resource: "@NucleosUserBundle/Resources/config/routing/all.xml"
+    nucleos_user_security:
+        resource: "@NucleosUserBundle/Resources/config/routing/security.php"
+
+    nucleos_user_resetting:
+        resource: "@NucleosUserBundle/Resources/config/routing/resetting.php"
+        prefix: /resetting
+
+    nucleos_user_change_password:
+        resource: "@NucleosUserBundle/Resources/config/routing/change_password.php"
+        prefix: /security
+
+    nucleos_user_deletion:
+        resource: "@NucleosUserBundle/Resources/config/routing/deletion.php"
+        prefix: /deletetion
 
 Step 7: Update your database schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
