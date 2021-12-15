@@ -24,30 +24,34 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
-## 1.12.1 - TBD
 
-### Added
+-----
 
-- Nothing.
 
-### Changed
+### Release Notes for [1.13.0](https://github.com/nucleos/NucleosUserBundle/milestone/14)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.13.0
 
-- Nothing.
+- Total issues resolved: **1**
+- Total pull requests resolved: **9**
+- Total contributors: **1**
 
-### Removed
+#### Enhancement
 
-- Nothing.
+ - [526: Add PHP routing files](https://github.com/nucleos/NucleosUserBundle/pull/526) thanks to @core23
+ - [525: Deprecate `nucleos.user.session`](https://github.com/nucleos/NucleosUserBundle/pull/525) thanks to @core23
+ - [524: Add type hints](https://github.com/nucleos/NucleosUserBundle/pull/524) thanks to @core23
+ - [522: Migrate tests](https://github.com/nucleos/NucleosUserBundle/pull/522) thanks to @core23
+ - [521: Deprecate UserManagerInterface::findUserByUsernameOrEmail](https://github.com/nucleos/NucleosUserBundle/pull/521) thanks to @core23
+ - [520: Fix Serializable deprecations](https://github.com/nucleos/NucleosUserBundle/pull/520) thanks to @core23
+ - [519: Update build tools](https://github.com/nucleos/NucleosUserBundle/pull/519) thanks to @core23
+ - [518: Add attribute to pattern validator](https://github.com/nucleos/NucleosUserBundle/pull/518) thanks to @core23
 
-### Fixed
+#### dependency
 
-- Nothing.
-
-## 1.12.0 - 2021-10-09
-
+ - [517: Drop PHP 7 support](https://github.com/nucleos/NucleosUserBundle/pull/517) thanks to @core23
 
 
 -----
