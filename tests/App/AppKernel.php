@@ -57,7 +57,10 @@ final class AppKernel extends Kernel
 
     protected function configureRoutes(RouteCollectionBuilder $routes): void
     {
-        $routes->import(__DIR__.'/../../src/Resources/config/routing/all.xml');
+        $routes->import(__DIR__.'/../../src/Resources/config/routing/security.php');
+        $routes->import(__DIR__.'/../../src/Resources/config/routing/change_password.php');
+        $routes->import(__DIR__.'/../../src/Resources/config/routing/resetting.php', '/resetting');
+        $routes->import(__DIR__.'/../../src/Resources/config/routing/deletion.php');
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
