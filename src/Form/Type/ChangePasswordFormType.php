@@ -25,12 +25,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 final class ChangePasswordFormType extends AbstractType
 {
     /**
-     * @var string
+     * @phpstan-var class-string
      */
-    private $class;
+    private string $class;
 
     /**
-     * @param string $class The User class name
+     * @phpstan-param class-string $class
      */
     public function __construct(string $class)
     {

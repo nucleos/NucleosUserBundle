@@ -19,10 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class LoginActionIntegrationTest extends WebTestCase
 {
-    /**
-     * @var KernelBrowser
-     */
-    private $client;
+    private KernelBrowser $client;
 
     protected function setUp(): void
     {

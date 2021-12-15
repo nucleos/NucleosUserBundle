@@ -20,20 +20,11 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class FormEvent extends Event
 {
-    /**
-     * @var FormInterface
-     */
-    private $form;
+    private FormInterface $form;
 
-    /**
-     * @var Request
-     */
-    private $request;
+    private Request $request;
 
-    /**
-     * @var Response|null
-     */
-    private $response;
+    private ?Response $response = null;
 
     public function __construct(FormInterface $form, Request $request)
     {

@@ -23,15 +23,9 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class ResettingListener implements EventSubscriberInterface
 {
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $router;
+    private UrlGeneratorInterface $router;
 
-    /**
-     * @var int
-     */
-    private $tokenTtl;
+    private int $tokenTtl;
 
     public function __construct(UrlGeneratorInterface $router, int $tokenTtl)
     {

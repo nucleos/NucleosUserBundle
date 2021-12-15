@@ -22,17 +22,12 @@ use Nucleos\UserBundle\Util\PasswordUpdaterInterface;
 
 final class UserManager extends BaseUserManager
 {
-    /**
-     * @var ObjectManager
-     */
-    private $objectManager;
+    private ObjectManager $objectManager;
 
     /**
-     * @var string
-     *
      * @phpstan-var class-string<UserInterface>
      */
-    private $class;
+    private string $class;
 
     /**
      * @phpstan-param class-string<UserInterface> $class

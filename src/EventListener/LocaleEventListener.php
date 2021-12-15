@@ -28,15 +28,9 @@ use Twig\Extension\CoreExtension;
 
 final class LocaleEventListener implements EventSubscriberInterface
 {
-    /**
-     * @var LocaleAwareTranslator
-     */
-    private $translator;
+    private LocaleAwareTranslator $translator;
 
-    /**
-     * @var Environment
-     */
-    private $twig;
+    private Environment $twig;
 
     public function __construct(LocaleAwareTranslator $translator, Environment $twig)
     {

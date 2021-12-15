@@ -15,10 +15,7 @@ namespace Nucleos\UserBundle\Form\Model;
 
 final class AccountDeletion
 {
-    /**
-     * @var bool
-     */
-    private $confirm = false;
+    private bool $confirm = false;
 
     public function isConfirm(): bool
     {

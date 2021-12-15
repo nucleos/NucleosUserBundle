@@ -17,10 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class GetResponseUserEvent extends UserEvent
 {
-    /**
-     * @var Response|null
-     */
-    private $response;
+    private ?Response $response;
 
     public function setResponse(Response $response): void
     {

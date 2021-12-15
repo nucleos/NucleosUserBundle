@@ -28,10 +28,7 @@ final class ChangePasswordCommand extends Command
      */
     protected static $defaultName = 'nucleos:user:change-password';
 
-    /**
-     * @var UserManipulator
-     */
-    private $userManipulator;
+    private UserManipulator $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
     {

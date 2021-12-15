@@ -17,15 +17,9 @@ use Nucleos\UserBundle\Model\UserInterface;
 
 class CanonicalFieldsUpdater
 {
-    /**
-     * @var CanonicalizerInterface
-     */
-    private $usernameCanonicalizer;
+    private CanonicalizerInterface $usernameCanonicalizer;
 
-    /**
-     * @var CanonicalizerInterface
-     */
-    private $emailCanonicalizer;
+    private CanonicalizerInterface $emailCanonicalizer;
 
     public function __construct(CanonicalizerInterface $usernameCanonicalizer, CanonicalizerInterface $emailCanonicalizer)
     {

@@ -24,11 +24,9 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 final class AccountDeletionFormType extends AbstractType
 {
     /**
-     * @var string
-     *
      * @phpstan-var class-string
      */
-    private $class;
+    private string $class;
 
     /**
      * @phpstan-param class-string $class

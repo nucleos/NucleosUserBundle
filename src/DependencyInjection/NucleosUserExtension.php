@@ -32,7 +32,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
     /**
      * @var array<string, array<string, string>>
      */
-    private static $doctrineDrivers = [
+    private static array $doctrineDrivers = [
         'orm' => [
             'registry' => 'doctrine',
             'tag'      => 'doctrine.event_subscriber',
@@ -43,15 +43,9 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         ],
     ];
 
-    /**
-     * @var bool
-     */
-    private $mailerNeeded  = false;
+    private bool $mailerNeeded  = false;
 
-    /**
-     * @var bool
-     */
-    private $sessionNeeded = false;
+    private bool $sessionNeeded = false;
 
     /**
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)

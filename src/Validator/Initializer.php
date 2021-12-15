@@ -19,10 +19,7 @@ use Symfony\Component\Validator\ObjectInitializerInterface;
 
 final class Initializer implements ObjectInitializerInterface
 {
-    /**
-     * @var CanonicalFieldsUpdater
-     */
-    private $canonicalFieldsUpdater;
+    private CanonicalFieldsUpdater $canonicalFieldsUpdater;
 
     public function __construct(CanonicalFieldsUpdater $canonicalFieldsUpdater)
     {
