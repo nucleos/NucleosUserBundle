@@ -32,7 +32,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
     /**
      * @var array<string, array<string, string>>
      */
-    private static $doctrineDrivers = [
+    private static array $doctrineDrivers = [
         'orm' => [
             'registry' => 'doctrine',
             'tag'      => 'doctrine.event_subscriber',
