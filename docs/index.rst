@@ -24,7 +24,6 @@ The following documents are available:
     doctrine
     canonicalizer
     custom_storage_layer
-    routing
     security
     deletion
     configuration_reference
