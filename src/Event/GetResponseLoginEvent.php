@@ -17,15 +17,9 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 final class GetResponseLoginEvent extends Event
 {
-    /**
-     * @var Request|null
-     */
-    private $request;
+    private ?Request $request;
 
-    /**
-     * @var Response|null
-     */
-    private $response;
+    private ?Response $response = null;
 
     public function __construct(Request $request = null)
     {

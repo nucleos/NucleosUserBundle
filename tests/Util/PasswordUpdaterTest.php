@@ -23,10 +23,7 @@ use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 final class PasswordUpdaterTest extends TestCase
 {
-    /**
-     * @var PasswordUpdater
-     */
-    private $updater;
+    private PasswordUpdater $updater;
     /**
      * @var MockObject&EncoderFactoryInterface
      */

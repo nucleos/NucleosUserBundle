@@ -23,25 +23,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class Mailer implements MailerInterface
 {
-    /**
-     * @var SymfonyMailer
-     */
-    private $mailer;
+    private SymfonyMailer $mailer;
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private TranslatorInterface $translator;
 
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $router;
+    private UrlGeneratorInterface $router;
 
-    /**
-     * @var string
-     */
-    private $fromEmail;
+    private string $fromEmail;
 
     public function __construct(SymfonyMailer $mailer, TranslatorInterface $translator, UrlGeneratorInterface $router, string $fromEmail)
     {

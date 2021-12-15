@@ -26,15 +26,9 @@ use Nucleos\UserBundle\Util\PasswordUpdaterInterface;
 
 final class UserListener implements EventSubscriber
 {
-    /**
-     * @var PasswordUpdaterInterface
-     */
-    private $passwordUpdater;
+    private PasswordUpdaterInterface $passwordUpdater;
 
-    /**
-     * @var CanonicalFieldsUpdater
-     */
-    private $canonicalFieldsUpdater;
+    private CanonicalFieldsUpdater $canonicalFieldsUpdater;
 
     public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater)
     {

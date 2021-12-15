@@ -29,12 +29,9 @@ final class EmailProviderTest extends TestCase
     /**
      * @var MockObject
      */
-    private $userManager;
+    private MockObject|UserManagerInterface $userManager;
 
-    /**
-     * @var EmailProvider
-     */
-    private $userProvider;
+    private EmailProvider $userProvider;
 
     protected function setUp(): void
     {
