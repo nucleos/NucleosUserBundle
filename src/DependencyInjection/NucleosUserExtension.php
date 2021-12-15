@@ -131,7 +131,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
 
         if ($this->sessionNeeded) {
             // Use a private alias rather than a parameter, to avoid leaking it at runtime (the private alias will be removed)
-            $container->setAlias('nucleos_user.session', new Alias('session', false));
+            $container->setAlias('nucleos_user.session', new Alias('session', false))->setDeprecated();
         }
     }
 
