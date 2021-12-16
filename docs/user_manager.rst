@@ -54,7 +54,6 @@ users.
 
 - ``findUserByUsername($username)``
 - ``findUserByEmail($email)``
-- ``findUserByUsernameOrEmail($value)``  (check if the value looks like an email to choose)
 - ``findUserByConfirmationToken($token)``
 - ``findUserBy(['id'=>$id])``
 - ``findUsers()``

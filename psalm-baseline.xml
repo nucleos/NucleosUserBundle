@@ -8,14 +8,6 @@
       <code>$event-&gt;getResponse()</code>
     </NullableReturnStatement>
   </file>
-  <file src="src/Action/LoggedinAction.php">
-    <InvalidNullableReturnType occurrences="1">
-      <code>Response</code>
-    </InvalidNullableReturnType>
-    <NullableReturnStatement occurrences="1">
-      <code>$event-&gt;getResponse()</code>
-    </NullableReturnStatement>
-  </file>
   <file src="src/Action/ResetAction.php">
     <InvalidNullableReturnType occurrences="1">
       <code>Response</code>

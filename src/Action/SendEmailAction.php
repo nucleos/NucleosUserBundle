@@ -23,6 +23,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final class SendEmailAction
@@ -39,11 +41,14 @@ final class SendEmailAction
 
     private int $retryTtl;
 
+    private UserProviderInterface $userProvider;
+
     public function __construct(
         RouterInterface $router,
         EventDispatcherInterface $eventDispatcher,
         UserManagerInterface $userManager,
         TokenGeneratorInterface $tokenGenerator,
+        UserProviderInterface $userProvider,
         MailerInterface $mailer,
         int $retryTtl
     ) {
@@ -51,6 +56,7 @@ final class SendEmailAction
         $this->eventDispatcher = $eventDispatcher;
         $this->userManager     = $userManager;
         $this->tokenGenerator  = $tokenGenerator;
+        $this->userProvider    = $userProvider;
         $this->mailer          = $mailer;
         $this->retryTtl        = $retryTtl;
     }
@@ -59,9 +65,14 @@ final class SendEmailAction
     {
         $username = (string) $request->request->get('username', '');
 
-        $user = '' === $username ? null : $this->userManager->findUserByUsernameOrEmail($username);
+        $user = null;
 
-        if (null !== $user) {
+        try {
+            $user = '' === $username ? null : $this->userProvider->loadUserByIdentifier($username);
+        } catch (UserNotFoundException) {
+        }
+
+        if ($user instanceof UserInterface) {
             $response = $this->process($request, $user);
 
             if (null !== $response) {

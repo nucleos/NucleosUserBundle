@@ -24,3 +24,5 @@ nucleos_user:
 
     group:
         group_class: 'Nucleos\UserBundle\Tests\App\Entity\Group'
+    loggedin:
+        route: 'home'

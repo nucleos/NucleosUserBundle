@@ -33,6 +33,9 @@ final class ConfigurationTest extends TestCase
                 'group_class'   => Group::class,
                 'group_manager' => 'nucleos_user.group_manager.default',
             ],
+            'loggedin' => [
+                'route' => 'custom_loggedin',
+            ],
             'db_driver'                   => 'noop',
             'model_manager_name'          => null,
             'use_authentication_listener' => true,
@@ -52,9 +55,6 @@ final class ConfigurationTest extends TestCase
                 'username_canonicalizer' => 'nucleos_user.util.canonicalizer.default',
                 'user_manager'           => 'nucleos_user.user_manager.default',
             ],
-            'loggedin' => [
-                'route' => 'nucleos_user_security_loggedin',
-            ],
         ];
 
         static::assertSame($expected, $config);
@@ -71,6 +71,9 @@ final class ConfigurationTest extends TestCase
             'user_class'    => User::class,
             'group'         => [
                 'group_class' => Group::class,
+            ],
+            'loggedin' => [
+                'route' => 'custom_loggedin',
             ],
         ];
     }

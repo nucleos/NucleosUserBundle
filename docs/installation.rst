@@ -261,7 +261,7 @@ of datastore you are using.
         user_class: App\Entity\User
         from_email:   "%mailer_user%"
         loggedin:
-            route: 'nucleos_user_security_loggedin' # Redirect route after login
+            route: 'home' # Redirect route after login
 
 
 Only four configuration's nodes are required to use the bundle:
