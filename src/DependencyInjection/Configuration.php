@@ -146,7 +146,7 @@ final class Configuration implements ConfigurationInterface
                 ->arrayNode('loggedin')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('route')->defaultValue('nucleos_user_security_loggedin')->cannotBeEmpty()->end()
+                        ->scalarNode('route')->isRequired()->cannotBeEmpty()->end()
                     ->end()
                 ->end()
             ->end()

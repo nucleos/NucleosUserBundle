@@ -12,7 +12,6 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Nucleos\UserBundle\Action\CheckLoginAction;
-use Nucleos\UserBundle\Action\LoggedinAction;
 use Nucleos\UserBundle\Action\LoginAction;
 use Nucleos\UserBundle\Action\LogoutAction;
 use Nucleos\UserBundle\EventListener\LastLoginListener;
@@ -79,14 +78,6 @@ return static function (ContainerConfigurator $container): void {
 
         ->set(LogoutAction::class)
             ->public()
-
-        ->set(LoggedinAction::class)
-            ->public()
-            ->args([
-                new Reference('twig'),
-                new Reference('event_dispatcher'),
-                new Reference('security.helper'),
-            ])
 
         ->set(CheckLoginAction::class)
             ->public()

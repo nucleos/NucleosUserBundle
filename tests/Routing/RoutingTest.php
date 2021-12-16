@@ -16,7 +16,7 @@ namespace Nucleos\UserBundle\Tests\Routing;
 use Generator;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Routing\Loader\XmlFileLoader;
+use Symfony\Component\Routing\Loader\PhpFileLoader;
 use Symfony\Component\Routing\RouteCollection;
 
 final class RoutingTest extends TestCase
@@ -29,15 +29,15 @@ final class RoutingTest extends TestCase
     public function testLoadRouting(string $routeName, string $path, array $methods): void
     {
         $locator = new FileLocator();
-        $loader  = new XmlFileLoader($locator);
+        $loader  = new PhpFileLoader($locator);
 
         $collection = new RouteCollection();
-        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/change_password.xml'));
+        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/change_password.php'));
 
-        $subCollection = $loader->load(__DIR__.'/../../src/Resources/config/routing/resetting.xml');
+        $subCollection = $loader->load(__DIR__.'/../../src/Resources/config/routing/resetting.php');
         $subCollection->addPrefix('/resetting');
         $collection->addCollection($subCollection);
-        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/security.xml'));
+        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/security.php'));
 
         $route = $collection->get($routeName);
         static::assertNotNull($route, sprintf('The route "%s" should exists', $routeName));
