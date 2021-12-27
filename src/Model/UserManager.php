@@ -14,17 +14,13 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Model;
 
 use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
-use Nucleos\UserBundle\Util\PasswordUpdaterInterface;
 
 abstract class UserManager implements UserManagerInterface
 {
-    private PasswordUpdaterInterface $passwordUpdater;
-
     private CanonicalFieldsUpdater $canonicalFieldsUpdater;
 
-    public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater)
+    public function __construct(CanonicalFieldsUpdater $canonicalFieldsUpdater)
     {
-        $this->passwordUpdater        = $passwordUpdater;
         $this->canonicalFieldsUpdater = $canonicalFieldsUpdater;
     }
 
@@ -53,16 +49,6 @@ abstract class UserManager implements UserManagerInterface
     public function updateCanonicalFields(UserInterface $user): void
     {
         $this->canonicalFieldsUpdater->updateCanonicalFields($user);
-    }
-
-    public function updatePassword(UserInterface $user): void
-    {
-        $this->passwordUpdater->hashPassword($user);
-    }
-
-    protected function getPasswordUpdater(): PasswordUpdaterInterface
-    {
-        return $this->passwordUpdater;
     }
 
     protected function getCanonicalFieldsUpdater(): CanonicalFieldsUpdater

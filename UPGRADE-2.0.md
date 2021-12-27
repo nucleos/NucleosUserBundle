@@ -10,6 +10,12 @@ The `@NucleosUserBundle/Resources/config/routing/all.xml` routing configuration 
 The `LoggedinAction` action and `nucleos_user_security_loggedin` route no longer exist.
 You have to define a default loggedin route.
 
+## Use symfony components where possible
+
+The following classes were removed in favor of symfony components:
+
+- `Nucleos\UserBundle\Util\PasswordUpdaterInterface`
+
 ## Deprecations
 
 All the deprecated code introduced on 1.x is removed on 2.0.
