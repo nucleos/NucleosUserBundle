@@ -20,7 +20,6 @@ return static function (ContainerConfigurator $container): void {
 
         ->set('nucleos_user.user_manager.default', UserManager::class)
             ->args([
-                new Reference('nucleos_user.util.password_updater'),
                 new Reference('nucleos_user.util.canonical_fields_updater'),
             ])
 

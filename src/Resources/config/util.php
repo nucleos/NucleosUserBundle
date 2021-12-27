@@ -14,8 +14,6 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Nucleos\UserBundle\Model\UserManagerInterface;
 use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
 use Nucleos\UserBundle\Util\Canonicalizer;
-use Nucleos\UserBundle\Util\PasswordUpdater;
-use Nucleos\UserBundle\Util\PasswordUpdaterInterface;
 use Nucleos\UserBundle\Util\TokenGenerator;
 use Nucleos\UserBundle\Util\TokenGeneratorInterface;
 use Nucleos\UserBundle\Util\UserManipulator;
@@ -36,13 +34,6 @@ return static function (ContainerConfigurator $container): void {
         ->set('nucleos_user.util.token_generator.default', TokenGenerator::class)
 
         ->alias(TokenGeneratorInterface::class, 'nucleos_user.util.token_generator')
-
-        ->set('nucleos_user.util.password_updater', PasswordUpdater::class)
-            ->args([
-                new Reference('security.password_hasher_factory'),
-            ])
-
-        ->alias(PasswordUpdaterInterface::class, 'nucleos_user.util.password_updater')
 
         ->set('nucleos_user.util.canonical_fields_updater', CanonicalFieldsUpdater::class)
             ->args([

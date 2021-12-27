@@ -17,7 +17,6 @@ use Nucleos\UserBundle\Model\GroupInterface;
 use Nucleos\UserBundle\Model\User;
 use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
-use Nucleos\UserBundle\Util\PasswordUpdaterInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -29,25 +28,18 @@ final class UserManagerTest extends TestCase
     private $manager;
 
     /**
-     * @var MockObject&PasswordUpdaterInterface
-     */
-    private $passwordUpdater;
-
-    /**
      * @var MockObject&CanonicalFieldsUpdater
      */
     private $fieldsUpdater;
 
     protected function setUp(): void
     {
-        $this->passwordUpdater = $this->getMockBuilder(PasswordUpdaterInterface::class)->getMock();
         $this->fieldsUpdater   = $this->getMockBuilder(CanonicalFieldsUpdater::class)
             ->disableOriginalConstructor()
             ->getMock()
         ;
 
         $this->manager = $this->getUserManager([
-            $this->passwordUpdater,
             $this->fieldsUpdater,
         ]);
     }
@@ -62,18 +54,6 @@ final class UserManagerTest extends TestCase
         ;
 
         $this->manager->updateCanonicalFields($user);
-    }
-
-    public function testUpdatePassword(): void
-    {
-        $user = $this->getUser();
-
-        $this->passwordUpdater->expects(static::once())
-            ->method('hashPassword')
-            ->with(static::identicalTo($user))
-        ;
-
-        $this->manager->updatePassword($user);
     }
 
     public function testFindUserByUsername(): void

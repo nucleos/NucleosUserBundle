@@ -18,7 +18,6 @@ use Doctrine\Persistence\ObjectRepository;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManager as BaseUserManager;
 use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
-use Nucleos\UserBundle\Util\PasswordUpdaterInterface;
 
 final class UserManager extends BaseUserManager
 {
@@ -32,9 +31,9 @@ final class UserManager extends BaseUserManager
     /**
      * @phpstan-param class-string<UserInterface> $class
      */
-    public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater, ObjectManager $om, string $class)
+    public function __construct(CanonicalFieldsUpdater $canonicalFieldsUpdater, ObjectManager $om, string $class)
     {
-        parent::__construct($passwordUpdater, $canonicalFieldsUpdater);
+        parent::__construct($canonicalFieldsUpdater);
 
         $this->objectManager = $om;
         $this->class         = $class;
@@ -74,7 +73,6 @@ final class UserManager extends BaseUserManager
     public function updateUser(UserInterface $user, bool $andFlush = true): void
     {
         $this->updateCanonicalFields($user);
-        $this->updatePassword($user);
 
         $this->objectManager->persist($user);
         if ($andFlush) {
