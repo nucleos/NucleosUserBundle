@@ -41,7 +41,8 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('request_stack'),
             ])
 
-        ->alias('nucleos_user.security.login_manager.default', 'nucleos_user.security.login_manager.simple')
+        ->alias('nucleos_user.security.login_manager', 'nucleos_user.security.login_manager.simple')
+
         ->alias(LoginManager::class, 'nucleos_user.security.login_manager')
 
         ->set('nucleos_user.user_provider.username', UserProvider::class)
