@@ -27,17 +27,4 @@
       <code>children</code>
     </UndefinedMethod>
   </file>
-  <file src="src/Model/GroupManagerInterface.php">
-    <InvalidDocblock occurrences="1">
-      <code>public function findGroups(): array;</code>
-    </InvalidDocblock>
-  </file>
-  <file src="src/Security/LoginManager.php">
-    <InvalidArgument occurrences="1">
-      <code>$firewall</code>
-    </InvalidArgument>
-    <TooManyArguments occurrences="1">
-      <code>new UsernamePasswordToken($user, null, $firewall, $user-&gt;getRoles())</code>
-    </TooManyArguments>
-  </file>
 </files>

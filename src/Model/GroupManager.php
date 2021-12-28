@@ -33,6 +33,8 @@ interface GroupManager
     /**
      * Finds one group by the given criteria.
      *
+     * @param array<string, mixed> $criteria
+     *
      * @phpstan-return GroupTemplate|null
      */
     public function findGroupBy(array $criteria): ?GroupInterface;

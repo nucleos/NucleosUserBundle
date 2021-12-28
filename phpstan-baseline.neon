@@ -91,39 +91,9 @@ parameters:
 			path: src/DependencyInjection/NucleosUserExtension.php
 
 		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\GroupManager\\:\\:findGroupBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Doctrine/GroupManager.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Doctrine\\\\UserManager\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Doctrine/UserManager.php
-
-		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\EventListener\\\\FlashListener\\:\\:trans\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/EventListener/FlashListener.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\GroupManagerInterface\\:\\:findGroupBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/GroupManagerInterface.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\UserManagerInterface\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Model/UserManagerInterface.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Noop\\\\GroupManager\\:\\:findGroupBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Noop/GroupManager.php
-
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Noop\\\\UserManager\\:\\:findUserBy\\(\\) has parameter \\$criteria with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Noop/UserManager.php
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\DependencyInjection\\\\NucleosUserExtensionTest\\:\\:getEmptyConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -136,7 +106,7 @@ parameters:
 			path: tests/DependencyInjection/NucleosUserExtensionTest.php
 
 		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Model\\\\UserManagerTest\\:\\:getUserManager\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Model\\\\BaseUserManagerTest\\:\\:getUserManager\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: tests/Model/UserManagerTest.php
+			path: tests/Model/BaseUserManagerTest.php
 

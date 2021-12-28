@@ -27,6 +27,8 @@ interface UserManager
 
     /**
      * Finds one user by the given criteria.
+     *
+     * @param array<string, mixed> $criteria
      */
     public function findUserBy(array $criteria): ?UserInterface;
 
