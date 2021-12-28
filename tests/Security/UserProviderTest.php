@@ -75,8 +75,8 @@ final class UserProviderTest extends TestCase
 
         $refreshedUser = $this->getMockBuilder(UserInterface::class)->getMock();
         $this->userManager->expects(static::once())
-            ->method('findUserBy')
-            ->with(['id' => '123'])
+            ->method('findUserByUsername')
+            ->with('123')
             ->willReturn($refreshedUser)
         ;
 
@@ -94,7 +94,7 @@ final class UserProviderTest extends TestCase
 
         $user = $this->createUser();
         $this->userManager->expects(static::once())
-            ->method('findUserBy')
+            ->method('findUserByUsername')
             ->willReturn(null)
         ;
 
