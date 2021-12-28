@@ -73,46 +73,6 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
         return $this->getUsername();
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function __serialize(): array
-    {
-        return [
-            $this->password,
-            $this->usernameCanonical,
-            $this->username,
-            $this->enabled,
-            $this->email,
-            $this->emailCanonical,
-        ];
-    }
-
-    /**
-     * @param mixed[] $data
-     */
-    public function __unserialize(array $data): void
-    {
-        [
-            $this->password,
-            $this->usernameCanonical,
-            $this->username,
-            $this->enabled,
-            $this->email,
-            $this->emailCanonical
-        ] = $data;
-    }
-
-    public function serialize(): string
-    {
-        return serialize($this->__serialize());
-    }
-
-    public function unserialize($data): void
-    {
-        $this->__unserialize(unserialize($data));
-    }
-
     public function addRole(string $role): void
     {
         $role = strtoupper($role);
