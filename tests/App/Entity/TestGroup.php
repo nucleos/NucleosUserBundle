@@ -17,8 +17,4 @@ use Nucleos\UserBundle\Model\Group;
 
 class TestGroup extends Group
 {
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
 }
