@@ -15,7 +15,7 @@ namespace Nucleos\UserBundle\Tests\Security;
 
 use Nucleos\UserBundle\Model\User;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\Security\UserProvider;
 use Nucleos\UserBundle\Tests\App\Entity\TestUser;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -27,15 +27,15 @@ use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 final class UserProviderTest extends TestCase
 {
     /**
-     * @var MockObject
+     * @var MockObject&UserManager
      */
-    private MockObject|UserManagerInterface $userManager;
+    private UserManager $userManager;
 
     private UserProvider $userProvider;
 
     protected function setUp(): void
     {
-        $this->userManager  = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $this->userManager  = $this->getMockBuilder(UserManager::class)->getMock();
         $this->userProvider = new UserProvider($this->userManager);
     }
 

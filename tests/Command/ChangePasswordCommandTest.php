@@ -67,7 +67,7 @@ final class ChangePasswordCommandTest extends TestCase
         static::assertMatchesRegularExpression('/Changed password for user user/', $commandTester->getDisplay());
     }
 
-    private function createCommandTester(UserManipulator $userManipulator, Application $application = null): CommandTester
+    private function createCommandTester(UserManipulator $manipulator, Application $application = null): CommandTester
     {
         if (null === $application) {
             $application = new Application();
@@ -75,7 +75,7 @@ final class ChangePasswordCommandTest extends TestCase
 
         $application->setAutoExit(false);
 
-        $command = new ChangePasswordCommand($userManipulator);
+        $command = new ChangePasswordCommand($manipulator);
 
         $application->add($command);
 
@@ -87,11 +87,7 @@ final class ChangePasswordCommandTest extends TestCase
      */
     private function getManipulator(string $username, string $password): MockObject
     {
-        $manipulator = $this->getMockBuilder(UserManipulator::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
-
+        $manipulator = $this->createMock(UserManipulator::class);
         $manipulator
             ->expects(static::once())
             ->method('changePassword')

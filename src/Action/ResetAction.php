@@ -16,7 +16,7 @@ use Nucleos\UserBundle\Event\FormEvent;
 use Nucleos\UserBundle\Event\GetResponseUserEvent;
 use Nucleos\UserBundle\Form\Model\Resetting;
 use Nucleos\UserBundle\Form\Type\ResettingFormType;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -37,7 +37,7 @@ final class ResetAction
 
     private FormFactoryInterface $formFactory;
 
-    private UserManagerInterface $userManager;
+    private UserManager $userManager;
 
     private string $loggedinRoute;
 
@@ -46,7 +46,7 @@ final class ResetAction
         RouterInterface $router,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
-        UserManagerInterface $userManager,
+        UserManager $userManager,
         string $loggedinRoute
     ) {
         $this->twig            = $twig;

@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\EventListener;
 
 use Nucleos\UserBundle\Event\UserEvent;
-use Nucleos\UserBundle\Model\LocaleAwareInterface;
+use Nucleos\UserBundle\Model\LocaleAwareUser;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,7 +53,7 @@ final class LocaleEventListener implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        if (!$user instanceof LocaleAwareInterface || null === $event->getRequest()) {
+        if (!$user instanceof LocaleAwareUser || null === $event->getRequest()) {
             return;
         }
 
@@ -65,7 +65,7 @@ final class LocaleEventListener implements EventSubscriberInterface
     {
         $user = $event->getAuthenticationToken()->getUser();
 
-        if (!$user instanceof LocaleAwareInterface) {
+        if (!$user instanceof LocaleAwareUser) {
             return;
         }
 
@@ -97,7 +97,7 @@ final class LocaleEventListener implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        if ($user instanceof LocaleAwareInterface && null !== $event->getRequest()) {
+        if ($user instanceof LocaleAwareUser && null !== $event->getRequest()) {
             $this->setTimezone($event->getRequest(), $user);
         }
     }
@@ -106,12 +106,12 @@ final class LocaleEventListener implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        if ($user instanceof LocaleAwareInterface && null !== $event->getRequest()) {
+        if ($user instanceof LocaleAwareUser && null !== $event->getRequest()) {
             $this->setLocale($event->getRequest(), $user);
         }
     }
 
-    private function setLocale(Request $request, LocaleAwareInterface $user): void
+    private function setLocale(Request $request, LocaleAwareUser $user): void
     {
         if (!$request->hasSession()) {
             return;
@@ -130,7 +130,7 @@ final class LocaleEventListener implements EventSubscriberInterface
         $session->set('_locale', $locale);
     }
 
-    private function setTimezone(Request $request, LocaleAwareInterface $user): void
+    private function setTimezone(Request $request, LocaleAwareUser $user): void
     {
         if (!$request->hasSession()) {
             return;

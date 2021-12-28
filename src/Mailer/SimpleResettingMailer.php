@@ -21,7 +21,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class Mailer implements MailerInterface
+final class SimpleResettingMailer implements ResettingMailer
 {
     private SymfonyMailer $mailer;
 
@@ -42,7 +42,7 @@ final class Mailer implements MailerInterface
     /**
      * @throws TransportExceptionInterface
      */
-    public function sendResettingEmailMessage(UserInterface $user): void
+    public function send(UserInterface $user): void
     {
         $url  = $this->router->generate('nucleos_user_resetting_reset', [
             'token' => $user->getConfirmationToken(),

@@ -11,9 +11,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Nucleos\UserBundle\Util;
+namespace Nucleos\UserBundle\Mailer;
 
-interface TokenGeneratorInterface
+use Nucleos\UserBundle\Model\UserInterface;
+
+final class NoopResettingMailer implements ResettingMailer
 {
-    public function generateToken(): string;
+    public function send(UserInterface $user): void
+    {
+    }
 }

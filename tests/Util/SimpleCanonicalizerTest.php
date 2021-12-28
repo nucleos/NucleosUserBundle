@@ -14,17 +14,17 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\Util;
 
 use Generator;
-use Nucleos\UserBundle\Util\Canonicalizer;
+use Nucleos\UserBundle\Util\SimpleCanonicalizer;
 use PHPUnit\Framework\TestCase;
 
-final class CanonicalizerTest extends TestCase
+final class SimpleCanonicalizerTest extends TestCase
 {
     /**
      * @dataProvider canonicalizeProvider
      */
     public function testCanonicalize(string $source, string $expectedResult): void
     {
-        $canonicalizer = new Canonicalizer();
+        $canonicalizer = new SimpleCanonicalizer();
         static::assertSame($expectedResult, $canonicalizer->canonicalize($source));
     }
 

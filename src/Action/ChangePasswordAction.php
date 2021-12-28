@@ -19,7 +19,7 @@ use Nucleos\UserBundle\Event\GetResponseUserEvent;
 use Nucleos\UserBundle\Form\Model\ChangePassword;
 use Nucleos\UserBundle\Form\Type\ChangePasswordFormType;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -44,7 +44,7 @@ final class ChangePasswordAction
 
     private FormFactoryInterface $formFactory;
 
-    private UserManagerInterface $userManager;
+    private UserManager $userManager;
 
     private string $loggedinRoute;
 
@@ -54,7 +54,7 @@ final class ChangePasswordAction
         Security $security,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
-        UserManagerInterface $userManager,
+        UserManager $userManager,
         string $loggedinRoute
     ) {
         $this->twig            = $twig;

@@ -22,12 +22,12 @@ use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 /**
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  *
- * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
- * @phpstan-implements \Nucleos\UserBundle\Model\GroupableInterface<GroupTemplate>
+ * @phpstan-template GroupTemplate of GroupInterface
+ * @phpstan-implements GroupAwareUser<GroupTemplate>
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-abstract class User implements UserInterface, GroupableInterface, LocaleAwareInterface
+abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 {
     protected ?string $username = null;
 

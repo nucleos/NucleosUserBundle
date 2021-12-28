@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Noop;
 
+use Nucleos\UserBundle\Model\BaseUserManager as BaseUserManager;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManager as BaseUserManager;
 use Nucleos\UserBundle\Noop\Exception\NoDriverException;
 
 final class UserManager extends BaseUserManager

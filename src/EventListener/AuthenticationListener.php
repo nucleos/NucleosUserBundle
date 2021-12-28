@@ -16,18 +16,18 @@ namespace Nucleos\UserBundle\EventListener;
 use Nucleos\UserBundle\Event\FilterUserResponseEvent;
 use Nucleos\UserBundle\Event\UserEvent;
 use Nucleos\UserBundle\NucleosUserEvents;
-use Nucleos\UserBundle\Security\LoginManagerInterface;
+use Nucleos\UserBundle\Security\LoginManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Exception\AccountStatusException;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final class AuthenticationListener implements EventSubscriberInterface
 {
-    private LoginManagerInterface $loginManager;
+    private LoginManager $loginManager;
 
     private string $firewallName;
 
-    public function __construct(LoginManagerInterface $loginManager, string $firewallName)
+    public function __construct(LoginManager $loginManager, string $firewallName)
     {
         $this->loginManager = $loginManager;
         $this->firewallName = $firewallName;

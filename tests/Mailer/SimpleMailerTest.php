@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\Mailer;
 
-use Nucleos\UserBundle\Mailer\Mailer;
+use Nucleos\UserBundle\Mailer\SimpleResettingMailer;
 use Nucleos\UserBundle\Model\UserInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -22,7 +22,7 @@ use Symfony\Component\Mailer\MailerInterface as SymfonyMailer;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class MailerTest extends TestCase
+final class SimpleMailerTest extends TestCase
 {
     /**
      * @var SymfonyMailer&MockObject
@@ -61,12 +61,12 @@ final class MailerTest extends TestCase
         $this->swiftMailer->expects(static::once())->method('send')->with(static::isInstanceOf(TemplatedEmail::class))
         ;
 
-        $mailer->sendResettingEmailMessage($this->getUser());
+        $mailer->send($this->getUser());
     }
 
-    private function getMailer(): Mailer
+    private function getMailer(): SimpleResettingMailer
     {
-        return new Mailer(
+        return new SimpleResettingMailer(
             $this->swiftMailer,
             $this->translator,
             $this->generator,

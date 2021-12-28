@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\Security;
 
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Security\LoginManager;
+use Nucleos\UserBundle\Security\SimpleLoginManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterface;
 
-final class LoginManagerTest extends TestCase
+final class SimpleLoginManagerTest extends TestCase
 {
     public function testLogInUserWithRequestStack(): void
     {
@@ -41,7 +41,7 @@ final class LoginManagerTest extends TestCase
         $loginManager->logInUser('main', $this->mockUser(), $response);
     }
 
-    private function createLoginManager(Response $response = null): LoginManager
+    private function createLoginManager(Response $response = null): SimpleLoginManager
     {
         $tokenStorage = $this->getMockBuilder(TokenStorageInterface::class)->getMock();
 
@@ -74,7 +74,7 @@ final class LoginManagerTest extends TestCase
             ->willReturn($request)
         ;
 
-        return new LoginManager($tokenStorage, $userChecker, $sessionStrategy, $requestStack);
+        return new SimpleLoginManager($tokenStorage, $userChecker, $sessionStrategy, $requestStack);
     }
 
     /**

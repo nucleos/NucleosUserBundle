@@ -11,9 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Nucleos\UserBundle\Util;
+namespace Nucleos\UserBundle\Mailer;
 
-interface CanonicalizerInterface
+use Nucleos\UserBundle\Model\UserInterface;
+
+interface ResettingMailer
 {
-    public function canonicalize(?string $string): string;
+    public function send(UserInterface $user): void;
 }

@@ -92,11 +92,7 @@ final class CreateUserCommandTest extends TestCase
      */
     private function getManipulator(string $username, string $password, string $email, bool $active, bool $superadmin): MockObject
     {
-        $manipulator = $this->getMockBuilder(UserManipulator::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
-
+        $manipulator = $this->createMock(UserManipulator::class);
         $manipulator
             ->expects(static::once())
             ->method('create')

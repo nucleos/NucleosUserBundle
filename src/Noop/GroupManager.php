@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Noop;
 
+use Nucleos\UserBundle\Model\BaseGroupManager as BaseGroupManager;
 use Nucleos\UserBundle\Model\GroupInterface;
-use Nucleos\UserBundle\Model\GroupManager as BaseGroupManager;
 use Nucleos\UserBundle\Noop\Exception\NoDriverException;
 
 /**
  * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
- * @phpstan-extends \Nucleos\UserBundle\Model\GroupManager<GroupTemplate>
+ * @phpstan-extends BaseGroupManager<GroupTemplate>
  */
 final class GroupManager extends BaseGroupManager
 {

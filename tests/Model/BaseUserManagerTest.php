@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\Model;
 
+use Nucleos\UserBundle\Model\BaseUserManager;
 use Nucleos\UserBundle\Model\GroupInterface;
 use Nucleos\UserBundle\Model\User;
-use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-final class UserManagerTest extends TestCase
+final class BaseUserManagerTest extends TestCase
 {
     /**
-     * @var MockObject&UserManager
+     * @var MockObject&BaseUserManager
      */
     private $manager;
 
@@ -34,10 +34,7 @@ final class UserManagerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->fieldsUpdater   = $this->getMockBuilder(CanonicalFieldsUpdater::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
+        $this->fieldsUpdater = $this->createMock(CanonicalFieldsUpdater::class);
 
         $this->manager = $this->getUserManager([
             $this->fieldsUpdater,
@@ -127,11 +124,11 @@ final class UserManagerTest extends TestCase
     }
 
     /**
-     * @return MockObject&UserManager
+     * @return MockObject&BaseUserManager
      */
     private function getUserManager(array $args): MockObject
     {
-        return $this->getMockBuilder(UserManager::class)
+        return $this->getMockBuilder(BaseUserManager::class)
             ->setConstructorArgs($args)
             ->getMockForAbstractClass()
         ;

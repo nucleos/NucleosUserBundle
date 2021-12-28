@@ -87,11 +87,7 @@ final class PromoteUserCommandTest extends TestCase
      */
     private function getManipulator(string $username, string $role, bool $super): MockObject
     {
-        $manipulator = $this->getMockBuilder(UserManipulator::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
-
+        $manipulator = $this->createMock(UserManipulator::class);
         if ($super) {
             $manipulator
                 ->expects(static::once())

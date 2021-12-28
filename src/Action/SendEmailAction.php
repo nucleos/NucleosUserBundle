@@ -14,11 +14,11 @@ namespace Nucleos\UserBundle\Action;
 use DateTime;
 use Nucleos\UserBundle\Event\GetResponseNullableUserEvent;
 use Nucleos\UserBundle\Event\GetResponseUserEvent;
-use Nucleos\UserBundle\Mailer\MailerInterface;
+use Nucleos\UserBundle\Mailer\ResettingMailer;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
-use Nucleos\UserBundle\Util\TokenGeneratorInterface;
+use Nucleos\UserBundle\Util\TokenGenerator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,11 +33,11 @@ final class SendEmailAction
 
     private EventDispatcherInterface $eventDispatcher;
 
-    private UserManagerInterface $userManager;
+    private UserManager $userManager;
 
-    private TokenGeneratorInterface $tokenGenerator;
+    private TokenGenerator $tokenGenerator;
 
-    private MailerInterface $mailer;
+    private ResettingMailer $mailer;
 
     private int $retryTtl;
 
@@ -46,10 +46,10 @@ final class SendEmailAction
     public function __construct(
         RouterInterface $router,
         EventDispatcherInterface $eventDispatcher,
-        UserManagerInterface $userManager,
-        TokenGeneratorInterface $tokenGenerator,
+        UserManager $userManager,
+        TokenGenerator $tokenGenerator,
         UserProviderInterface $userProvider,
-        MailerInterface $mailer,
+        ResettingMailer $mailer,
         int $retryTtl
     ) {
         $this->router          = $router;
@@ -119,7 +119,7 @@ final class SendEmailAction
             return $event->getResponse();
         }
 
-        $this->mailer->sendResettingEmailMessage($user);
+        $this->mailer->send($user);
         $user->setPasswordRequestedAt(new DateTime());
         $this->userManager->updateUser($user);
 

@@ -44,4 +44,4 @@ to use the same logic.
 
 .. note::
 
-    The default implementation has the id ``nucleos_user.util.canonicalizer.default``.
+    The default implementation has the id ``nucleos_user.util.canonicalizer.simple``.

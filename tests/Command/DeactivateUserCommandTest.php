@@ -83,11 +83,7 @@ final class DeactivateUserCommandTest extends TestCase
      */
     private function getManipulator(string $username): MockObject
     {
-        $manipulator = $this->getMockBuilder(UserManipulator::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
-
+        $manipulator = $this->createMock(UserManipulator::class);
         $manipulator
             ->expects(static::once())
             ->method('deactivate')

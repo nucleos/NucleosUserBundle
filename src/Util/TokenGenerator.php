@@ -13,10 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Util;
 
-final class TokenGenerator implements TokenGeneratorInterface
+interface TokenGenerator
 {
-    public function generateToken(): string
-    {
-        return rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
-    }
+    public function generateToken(): string;
 }

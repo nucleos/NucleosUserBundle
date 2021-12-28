@@ -14,10 +14,10 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\Util;
 
 use InvalidArgumentException;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Nucleos\UserBundle\Tests\App\Entity\TestUser;
-use Nucleos\UserBundle\Util\UserManipulator;
+use Nucleos\UserBundle\Util\SimpleUserManipulator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -26,11 +26,11 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 /**
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-final class UserManipulatorTest extends TestCase
+final class SimpleUserManipulatorTest extends TestCase
 {
     public function testCreate(): void
     {
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $user            = new TestUser();
 
         $username   = 'test_username';
@@ -51,7 +51,7 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(true);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->create($username, $password, $email, true, false);
 
         static::assertSame($username, $user->getUsername());
@@ -63,7 +63,7 @@ final class UserManipulatorTest extends TestCase
 
     public function testActivateWithValidUsername(): void
     {
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $username        = 'test_username';
 
         $user = new TestUser();
@@ -85,7 +85,7 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(true);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->activate($username);
 
         static::assertSame($username, $user->getUsername());
@@ -96,7 +96,7 @@ final class UserManipulatorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $invalidusername = 'invalid_username';
 
         $userManagerMock->expects(static::once())
@@ -113,13 +113,13 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(false);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->activate($invalidusername);
     }
 
     public function testDeactivateWithValidUsername(): void
     {
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $username        = 'test_username';
 
         $user = new TestUser();
@@ -141,7 +141,7 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(true);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->deactivate($username);
 
         static::assertSame($username, $user->getUsername());
@@ -152,7 +152,7 @@ final class UserManipulatorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $invalidusername = 'invalid_username';
 
         $userManagerMock->expects(static::once())
@@ -169,13 +169,13 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(false);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->deactivate($invalidusername);
     }
 
     public function testPromoteWithValidUsername(): void
     {
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $username        = 'test_username';
 
         $user = new TestUser();
@@ -197,7 +197,7 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(true);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->promote($username);
 
         static::assertSame($username, $user->getUsername());
@@ -208,7 +208,7 @@ final class UserManipulatorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $invalidusername = 'invalid_username';
 
         $userManagerMock->expects(static::once())
@@ -225,13 +225,13 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(false);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->promote($invalidusername);
     }
 
     public function testDemoteWithValidUsername(): void
     {
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $username        = 'test_username';
 
         $user = new TestUser();
@@ -253,7 +253,7 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(true);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->demote($username);
 
         static::assertSame($username, $user->getUsername());
@@ -264,7 +264,7 @@ final class UserManipulatorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $invalidusername = 'invalid_username';
 
         $userManagerMock->expects(static::once())
@@ -281,13 +281,13 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(false);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->demote($invalidusername);
     }
 
     public function testChangePasswordWithValidUsername(): void
     {
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
 
         $user        = new TestUser();
         $username    = 'test_username';
@@ -312,7 +312,7 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(true);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->changePassword($username, $password);
 
         static::assertSame($username, $user->getUsername());
@@ -323,7 +323,7 @@ final class UserManipulatorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
 
         $invalidusername = 'invalid_username';
         $password        = 'test_password';
@@ -342,13 +342,13 @@ final class UserManipulatorTest extends TestCase
 
         $requestStackMock = $this->getRequestStackMock(false);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->changePassword($invalidusername, $password);
     }
 
     public function testAddRole(): void
     {
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $username        = 'test_username';
         $userRole        = 'test_role';
         $user            = new TestUser();
@@ -362,7 +362,7 @@ final class UserManipulatorTest extends TestCase
         $eventDispatcherMock = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $requestStackMock    = $this->getRequestStackMock(false);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
 
         static::assertTrue($manipulator->addRole($username, $userRole));
         static::assertFalse($manipulator->addRole($username, $userRole));
@@ -371,7 +371,7 @@ final class UserManipulatorTest extends TestCase
 
     public function testRemoveRole(): void
     {
-        $userManagerMock = $this->getMockBuilder(UserManagerInterface::class)->getMock();
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $username        = 'test_username';
         $userRole        = 'test_role';
         $user            = new TestUser();
@@ -386,7 +386,7 @@ final class UserManipulatorTest extends TestCase
         $eventDispatcherMock = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
         $requestStackMock    = $this->getRequestStackMock(false);
 
-        $manipulator = new UserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
 
         static::assertTrue($manipulator->removeRole($username, $userRole));
         static::assertFalse($user->hasRole($userRole));

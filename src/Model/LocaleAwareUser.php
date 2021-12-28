@@ -11,7 +11,7 @@
 
 namespace Nucleos\UserBundle\Model;
 
-interface LocaleAwareInterface
+interface LocaleAwareUser
 {
     public function setLocale(?string $locale): void;
 
