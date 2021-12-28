@@ -74,8 +74,8 @@ final class EmailUserProviderTest extends TestCase
 
         $refreshedUser = $this->getMockBuilder(UserInterface::class)->getMock();
         $this->userManager->expects(static::once())
-            ->method('findUserBy')
-            ->with(['id' => '123'])
+            ->method('findUserByUsername')
+            ->with('123')
             ->willReturn($refreshedUser)
         ;
 
