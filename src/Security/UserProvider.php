@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Security;
 
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
@@ -23,9 +23,9 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class UserProvider implements UserProviderInterface
 {
-    protected UserManagerInterface $userManager;
+    protected UserManager $userManager;
 
-    public function __construct(UserManagerInterface $userManager)
+    public function __construct(UserManager $userManager)
     {
         $this->userManager = $userManager;
     }

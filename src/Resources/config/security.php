@@ -19,7 +19,7 @@ use Nucleos\UserBundle\Form\Type\LoginFormType;
 use Nucleos\UserBundle\Security\EmailProvider;
 use Nucleos\UserBundle\Security\EmailUserProvider;
 use Nucleos\UserBundle\Security\LoginManager;
-use Nucleos\UserBundle\Security\LoginManagerInterface;
+use Nucleos\UserBundle\Security\SimpleLoginManager;
 use Nucleos\UserBundle\Security\UserChecker;
 use Nucleos\UserBundle\Security\UserProvider;
 use Symfony\Component\DependencyInjection\Reference;
@@ -33,7 +33,7 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('nucleos_user.user_manager'),
             ])
 
-        ->set('nucleos_user.security.login_manager', LoginManager::class)
+        ->set('nucleos_user.security.login_manager.simple', SimpleLoginManager::class)
             ->args([
                 new Reference('security.token_storage'),
                 new Reference('security.user_checker'),
@@ -41,7 +41,8 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('request_stack'),
             ])
 
-        ->alias(LoginManagerInterface::class, 'nucleos_user.security.login_manager')
+        ->alias('nucleos_user.security.login_manager.default', 'nucleos_user.security.login_manager.simple')
+        ->alias(LoginManager::class, 'nucleos_user.security.login_manager')
 
         ->set('nucleos_user.user_provider.username', UserProvider::class)
             ->args([

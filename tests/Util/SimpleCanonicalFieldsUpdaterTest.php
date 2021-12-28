@@ -14,22 +14,22 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\Util;
 
 use Nucleos\UserBundle\Tests\App\Entity\TestUser;
-use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
-use Nucleos\UserBundle\Util\CanonicalizerInterface;
+use Nucleos\UserBundle\Util\Canonicalizer;
+use Nucleos\UserBundle\Util\SimpleCanonicalFieldsUpdater;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-final class CanonicalFieldsUpdaterTest extends TestCase
+final class SimpleCanonicalFieldsUpdaterTest extends TestCase
 {
-    private CanonicalFieldsUpdater $updater;
+    private SimpleCanonicalFieldsUpdater $fieldsUpdater;
 
     /**
-     * @var CanonicalizerInterface&MockObject
+     * @var Canonicalizer&MockObject
      */
     private $usernameCanonicalizer;
 
     /**
-     * @var CanonicalizerInterface&MockObject
+     * @var Canonicalizer&MockObject
      */
     private $emailCanonicalizer;
 
@@ -38,7 +38,7 @@ final class CanonicalFieldsUpdaterTest extends TestCase
         $this->usernameCanonicalizer = $this->getMockCanonicalizer();
         $this->emailCanonicalizer    = $this->getMockCanonicalizer();
 
-        $this->updater = new CanonicalFieldsUpdater($this->usernameCanonicalizer, $this->emailCanonicalizer);
+        $this->fieldsUpdater = new SimpleCanonicalFieldsUpdater($this->usernameCanonicalizer, $this->emailCanonicalizer);
     }
 
     public function testUpdateCanonicalFields(): void
@@ -59,16 +59,16 @@ final class CanonicalFieldsUpdaterTest extends TestCase
             ->willReturnCallback('strtolower')
         ;
 
-        $this->updater->updateCanonicalFields($user);
+        $this->fieldsUpdater->updateCanonicalFields($user);
         static::assertSame('username', $user->getUsernameCanonical());
         static::assertSame('user@example.com', $user->getEmailCanonical());
     }
 
     /**
-     * @return MockObject&CanonicalizerInterface
+     * @return MockObject&Canonicalizer
      */
     private function getMockCanonicalizer(): MockObject
     {
-        return $this->getMockBuilder(CanonicalizerInterface::class)->getMock();
+        return $this->getMockBuilder(Canonicalizer::class)->getMock();
     }
 }

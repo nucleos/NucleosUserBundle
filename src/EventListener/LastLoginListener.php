@@ -16,7 +16,7 @@ namespace Nucleos\UserBundle\EventListener;
 use DateTime;
 use Nucleos\UserBundle\Event\UserEvent;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
@@ -24,9 +24,9 @@ use Symfony\Component\Security\Http\SecurityEvents;
 
 final class LastLoginListener implements EventSubscriberInterface
 {
-    private UserManagerInterface $userManager;
+    private UserManager $userManager;
 
-    public function __construct(UserManagerInterface $userManager)
+    public function __construct(UserManager $userManager)
     {
         $this->userManager = $userManager;
     }

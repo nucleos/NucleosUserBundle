@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\DependencyInjection;
 
-use Nucleos\UserBundle\Mailer\MailerInterface;
-use Nucleos\UserBundle\Model\GroupManagerInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
-use Nucleos\UserBundle\Util\TokenGeneratorInterface;
+use Nucleos\UserBundle\Mailer\ResettingMailer;
+use Nucleos\UserBundle\Model\GroupManager;
+use Nucleos\UserBundle\Model\UserManager;
+use Nucleos\UserBundle\Util\TokenGenerator;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\FileLoader;
@@ -90,10 +90,10 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         $container->setAlias('nucleos_user.util.username_canonicalizer', new Alias($config['service']['username_canonicalizer'], true));
 
         $container->setAlias('nucleos_user.util.token_generator', new Alias($config['service']['token_generator'], true));
-        $container->setAlias(TokenGeneratorInterface::class, new Alias($config['service']['token_generator'], true));
+        $container->setAlias(TokenGenerator::class, new Alias($config['service']['token_generator'], true));
 
         $container->setAlias('nucleos_user.user_manager', new Alias($config['service']['user_manager'], true));
-        $container->setAlias(UserManagerInterface::class, new Alias($config['service']['user_manager'], true));
+        $container->setAlias(UserManager::class, new Alias($config['service']['user_manager'], true));
 
         if ($config['use_listener'] && isset(self::$doctrineDrivers[$config['db_driver']])) {
             $listenerDefinition = $container->getDefinition('nucleos_user.user_listener');
@@ -123,7 +123,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
 
         if ($this->mailerNeeded) {
             $container->setAlias('nucleos_user.mailer', new Alias($config['service']['mailer'], true));
-            $container->setAlias(MailerInterface::class, new Alias($config['service']['mailer'], true));
+            $container->setAlias(ResettingMailer::class, new Alias($config['service']['mailer'], true));
         }
     }
 
@@ -234,7 +234,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         }
 
         $container->setAlias('nucleos_user.group_manager', new Alias($config['group_manager'], true));
-        $container->setAlias(GroupManagerInterface::class, new Alias('nucleos_user.group_manager', true));
+        $container->setAlias(GroupManager::class, new Alias('nucleos_user.group_manager', true));
 
         $this->remapParametersNamespaces($config, $container, [
             '' => [

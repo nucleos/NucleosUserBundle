@@ -136,7 +136,11 @@ das Team.]]></target>
       </trans-unit>
       <trans-unit id="Bad credentials.">
         <source>Bad credentials.</source>
-        <target>Ungültige E-Mail-Adresse oder falsches Passwort.</target>
+        <target>Ungültige Anmeldedaten oder falsches Passwort.</target>
+      </trans-unit>
+      <trans-unit id="The presented password is invalid.">
+        <source>The presented password is invalid.</source>
+        <target>Ungültige Anmeldedaten oder falsches Passwort.</target>
       </trans-unit>
     </body>
   </file>

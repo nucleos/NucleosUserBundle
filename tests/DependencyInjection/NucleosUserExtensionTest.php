@@ -134,9 +134,9 @@ final class NucleosUserExtensionTest extends TestCase
         $this->createEmptyConfiguration();
 
         $this->assertParameter('custom_loggedin', 'nucleos_user.loggedin.route');
-        $this->assertAlias('nucleos_user.mailer.default', 'nucleos_user.mailer');
-        $this->assertAlias('nucleos_user.util.canonicalizer.default', 'nucleos_user.util.email_canonicalizer');
-        $this->assertAlias('nucleos_user.util.canonicalizer.default', 'nucleos_user.util.username_canonicalizer');
+        $this->assertAlias('nucleos_user.mailer.simple', 'nucleos_user.mailer');
+        $this->assertAlias('nucleos_user.util.canonicalizer.simple', 'nucleos_user.util.email_canonicalizer');
+        $this->assertAlias('nucleos_user.util.canonicalizer.simple', 'nucleos_user.util.username_canonicalizer');
     }
 
     public function testUserLoadUtilService(): void

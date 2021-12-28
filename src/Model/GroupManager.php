@@ -14,20 +14,52 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Model;
 
 /**
- * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
- * @phpstan-implements GroupManagerInterface<GroupTemplate>
+ * @phpstan-template GroupTemplate of GroupInterface
  */
-abstract class GroupManager implements GroupManagerInterface
+interface GroupManager
 {
-    public function createGroup(string $name): GroupInterface
-    {
-        $class = $this->getClass();
+    /**
+     * Returns an empty group instance.
+     *
+     * @phpstan-return GroupTemplate
+     */
+    public function createGroup(string $name): GroupInterface;
 
-        return new $class($name);
-    }
+    /**
+     * Deletes a group.
+     */
+    public function deleteGroup(GroupInterface $group): void;
 
-    public function findGroupByName(string $name): ?GroupInterface
-    {
-        return $this->findGroupBy(['name' => $name]);
-    }
+    /**
+     * Finds one group by the given criteria.
+     *
+     * @phpstan-return GroupTemplate|null
+     */
+    public function findGroupBy(array $criteria): ?GroupInterface;
+
+    /**
+     * Finds a group by name.
+     *
+     * @phpstan-return GroupTemplate|null
+     */
+    public function findGroupByName(string $name): ?GroupInterface;
+
+    /**
+     * Returns a collection with all group instances.
+     *
+     * @phpstan-return UserInterface[]&GroupTemplate[]
+     */
+    public function findGroups(): array;
+
+    /**
+     * Returns the group's fully qualified class name.
+     *
+     * @phpstan-return class-string<GroupTemplate>
+     */
+    public function getClass(): string;
+
+    /**
+     * Updates a group.
+     */
+    public function updateGroup(GroupInterface $group, bool $andFlush = true): void;
 }

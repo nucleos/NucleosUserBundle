@@ -21,7 +21,7 @@ Default Mailer Implementations
 The bundle comes with three mailer implementations. They are listed below
 by service id:
 
-- ``nucleos_user.mailer.default`` is the default implementation, and uses symfony mailer to send emails.
+- ``nucleos_user.mailer.simple`` is the default implementation, and uses symfony mailer to send emails.
 - ``nucleos_user.mailer.noop`` is a mailer implementation which performs no operation, so no emails are sent.
 
 Configuring the Sender Email Address

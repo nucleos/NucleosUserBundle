@@ -18,7 +18,7 @@ use Doctrine\Common\Collections\Collection;
 /**
  * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
  */
-interface GroupableInterface
+interface GroupAwareUser
 {
     /**
      * Gets the groups granted to the user.

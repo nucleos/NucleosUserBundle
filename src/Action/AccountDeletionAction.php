@@ -19,7 +19,7 @@ use Nucleos\UserBundle\Event\GetResponseAccountDeletionEvent;
 use Nucleos\UserBundle\Form\Model\AccountDeletion;
 use Nucleos\UserBundle\Form\Type\AccountDeletionFormType;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -38,7 +38,7 @@ final class AccountDeletionAction
 
     private RouterInterface $router;
 
-    private UserManagerInterface $userManager;
+    private UserManager $userManager;
 
     private TokenStorageInterface $tokenStorage;
 
@@ -49,7 +49,7 @@ final class AccountDeletionAction
     public function __construct(
         Environment $twig,
         RouterInterface $router,
-        UserManagerInterface $userManager,
+        UserManager $userManager,
         TokenStorageInterface $tokenStorage,
         FormFactoryInterface $formFactory,
         EventDispatcherInterface $eventDispatcher

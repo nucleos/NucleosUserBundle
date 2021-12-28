@@ -16,7 +16,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Nucleos\UserBundle\Action\AccountDeletionAction;
 use Nucleos\UserBundle\Form\Model\AccountDeletion;
 use Nucleos\UserBundle\Form\Type\AccountDeletionFormType;
-use Nucleos\UserBundle\Model\UserManagerInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
@@ -28,7 +28,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->args([
             new Reference('twig'),
             new Reference('router'),
-            new Reference(UserManagerInterface::class),
+            new Reference(UserManager::class),
             new Reference('security.token_storage'),
             new Reference('form.factory'),
             new Reference(EventDispatcherInterface::class),

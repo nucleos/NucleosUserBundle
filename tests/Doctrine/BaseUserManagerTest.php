@@ -22,7 +22,7 @@ use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-final class UserManagerTest extends TestCase
+final class BaseUserManagerTest extends TestCase
 {
     /**
      * @var string
@@ -43,10 +43,7 @@ final class UserManagerTest extends TestCase
 
     protected function setUp(): void
     {
-        $fieldsUpdater   = $this->getMockBuilder(CanonicalFieldsUpdater::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
+        $fieldsUpdater    = $this->createMock(CanonicalFieldsUpdater::class);
         $class            = $this->getMockBuilder(ClassMetadata::class)->getMock();
         $this->om         = $this->getMockBuilder(ObjectManager::class)->getMock();
         $this->repository = $this->getMockBuilder(ObjectRepository::class)->getMock();
