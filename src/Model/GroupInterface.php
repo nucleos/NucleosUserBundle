@@ -17,11 +17,6 @@ interface GroupInterface
 {
     public function addRole(string $role): void;
 
-    /**
-     * @return mixed
-     */
-    public function getId();
-
     public function getName(): string;
 
     public function hasRole(string $role): bool;

@@ -16,9 +16,10 @@ The following classes were removed in favor of symfony components:
 
 - `Nucleos\UserBundle\Util\PasswordUpdaterInterface`
 
-## Remove user id
+## Remove user and group id
 
 The `id` property was removed from the `User` class in favor of `UserInterface::getUserIdentifier`.
+The `id` property was removed from the `Group` class.
 
 ## Deprecations
 
