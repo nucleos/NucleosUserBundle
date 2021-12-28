@@ -6,7 +6,6 @@
     <field name="email" column="email" type="string" length="180"/>
     <field name="emailCanonical" column="email_canonical" type="string" length="180" unique="true"/>
     <field name="enabled" column="enabled" type="boolean"/>
-    <field name="salt" column="salt" type="string" nullable="true"/>
     <field name="password" column="password" type="string"/>
     <field name="lastLogin" column="last_login" type="datetime" nullable="true"/>
     <field name="confirmationToken" column="confirmation_token" type="string" length="180" unique="true" nullable="true"/>

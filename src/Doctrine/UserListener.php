@@ -69,7 +69,9 @@ final class UserListener implements EventSubscriber
             return;
         }
 
-        $this->userPasswordHasher->hashPassword($user, $user->getPlainPassword());
+        $user->setPassword(
+            $this->userPasswordHasher->hashPassword($user, $user->getPlainPassword())
+        );
     }
 
     private function recomputeChangeSet(ObjectManager $om, UserInterface $user): void

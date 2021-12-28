@@ -6,7 +6,6 @@
     <field name="email" type="string"/>
     <field name="emailCanonical" type="string"/>
     <field name="enabled" type="boolean"/>
-    <field name="salt" type="string"/>
     <field name="password" type="string"/>
     <field name="lastLogin" type="date"/>
     <field name="confirmationToken" type="string"/>

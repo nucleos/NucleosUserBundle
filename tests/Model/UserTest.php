@@ -94,7 +94,6 @@ final class UserTest extends TestCase
 
         $user3 = $this->getUser();
         $user3->setPassword('secret');
-        $user3->setSalt('pepper');
         static::assertFalse($user->isEqualTo($user3));
 
         $user4 = $this->getUser();
