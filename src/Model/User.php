@@ -39,8 +39,6 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 
     protected bool $enabled = false;
 
-    protected ?string $salt = null;
-
     protected ?string $password = null;
 
     protected ?string $plainPassword = null;
@@ -82,7 +80,6 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
     {
         return [
             $this->password,
-            $this->salt,
             $this->usernameCanonical,
             $this->username,
             $this->enabled,
@@ -98,7 +95,6 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
     {
         [
             $this->password,
-            $this->salt,
             $this->usernameCanonical,
             $this->username,
             $this->enabled,
@@ -152,11 +148,6 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
         }
 
         return $this->usernameCanonical;
-    }
-
-    public function getSalt(): ?string
-    {
-        return $this->salt;
     }
 
     public function getEmail(): string
@@ -261,11 +252,6 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
     public function setUsernameCanonical(string $usernameCanonical): void
     {
         $this->usernameCanonical = $usernameCanonical;
-    }
-
-    public function setSalt(?string $salt): void
-    {
-        $this->salt = $salt;
     }
 
     public function setEmail(string $email): void
@@ -392,6 +378,16 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
     }
 
     /**
+     * @deprecated since symfony 5.4
+     *
+     * @return string|null
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     public function isEqualTo(BaseUserInterface $user): bool
@@ -401,10 +397,6 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
         }
 
         if ($this->password !== $user->getPassword()) {
-            return false;
-        }
-
-        if ($this->salt !== $user->getSalt()) {
             return false;
         }
 
