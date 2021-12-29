@@ -2,27 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.0.0 - TBD
-
-### Added
-
-- Nothing.
-
-### Changed
-
-- Nothing.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
+## 2.0.0 - 2021-12-29
 
 -----
 
@@ -73,6 +53,73 @@ Feature release (minor)
 #### dependency
 
  - [445: Remove egulias/email-validator dependency](https://github.com/nucleos/NucleosUserBundle/pull/445) thanks to @core23
+
+
+-----
+
+### Release Notes for [2.0.0](https://github.com/nucleos/NucleosUserBundle/milestone/4)
+
+Backwards incompatible release (major)
+
+### 2.0.0
+
+- Total issues resolved: **3**
+- Total pull requests resolved: **36**
+- Total contributors: **2**
+
+#### Documentation
+
+ - [547: Fix typo in docs](https://github.com/nucleos/NucleosUserBundle/pull/547) thanks to @core23
+ - [544: Add upgrade information for removed salt](https://github.com/nucleos/NucleosUserBundle/pull/544) thanks to @core23
+
+#### Enhancement
+
+ - [546: Revert sendResettingEmailMessage method renaming](https://github.com/nucleos/NucleosUserBundle/pull/546) thanks to @core23
+ - [537: Remove symfony deprecations](https://github.com/nucleos/NucleosUserBundle/pull/537) thanks to @core23
+ - [500: Add attribute to pattern validator](https://github.com/nucleos/NucleosUserBundle/pull/500) thanks to @core23
+ - [499: Remove composer-bin plugin](https://github.com/nucleos/NucleosUserBundle/pull/499) thanks to @core23
+ - [493: Update build tools](https://github.com/nucleos/NucleosUserBundle/pull/493) thanks to @core23
+ - [485: Run tests against PHP 8.1](https://github.com/nucleos/NucleosUserBundle/pull/485) thanks to @core23
+ - [483: Bump symfony 5.4](https://github.com/nucleos/NucleosUserBundle/pull/483) thanks to @core23
+ - [481: Remove deprecations](https://github.com/nucleos/NucleosUserBundle/pull/481) thanks to @core23
+ - [455: Migrate YML translations to XLIFF](https://github.com/nucleos/NucleosUserBundle/pull/455) thanks to @core23
+ - [446: Remove `nucleos&#95;user.session` alias](https://github.com/nucleos/NucleosUserBundle/pull/446) thanks to @core23
+ - [444: Add property type hints](https://github.com/nucleos/NucleosUserBundle/pull/444) thanks to @core23
+ - [443: Move form buttons to actions](https://github.com/nucleos/NucleosUserBundle/pull/443) thanks to @core23
+ - [442: Fix stan errors](https://github.com/nucleos/NucleosUserBundle/pull/442) thanks to @core23
+ - [438: Minor code refactoring](https://github.com/nucleos/NucleosUserBundle/pull/438) thanks to @core23
+ - [437: Add type hints to test classes](https://github.com/nucleos/NucleosUserBundle/pull/437) thanks to @core23
+ - [431: Add type hints](https://github.com/nucleos/NucleosUserBundle/pull/431) thanks to @core23
+ - [426: Use AuthenticationUtils to access login data](https://github.com/nucleos/NucleosUserBundle/pull/426) thanks to @core23
+
+#### Bug
+
+ - [545: Several fixes](https://github.com/nucleos/NucleosUserBundle/pull/545) thanks to @core23
+ - [541: Fix broken service alias](https://github.com/nucleos/NucleosUserBundle/pull/541) thanks to @core23
+ - [539: Fix refreshing user](https://github.com/nucleos/NucleosUserBundle/pull/539) thanks to @core23
+ - [501: Fix `Pattern` constraint](https://github.com/nucleos/NucleosUserBundle/pull/501) thanks to @core23
+ - [496: Fix user serialization](https://github.com/nucleos/NucleosUserBundle/pull/496) thanks to @core23
+
+#### BC Break
+
+ - [543: Remove Serializable interface from user](https://github.com/nucleos/NucleosUserBundle/pull/543) thanks to @core23
+ - [542: Remove salt from user](https://github.com/nucleos/NucleosUserBundle/pull/542) thanks to @core23
+ - [540: Remove Interface suffix and use specific prefix form default implementation](https://github.com/nucleos/NucleosUserBundle/pull/540) thanks to @core23
+ - [538: Remove id from group](https://github.com/nucleos/NucleosUserBundle/pull/538) thanks to @core23
+ - [536: Remove PasswordUpdater](https://github.com/nucleos/NucleosUserBundle/pull/536) thanks to @core23
+ - [529: Remove deprecated code](https://github.com/nucleos/NucleosUserBundle/pull/529) thanks to @core23
+ - [498: Remove remember me functionality](https://github.com/nucleos/NucleosUserBundle/pull/498) thanks to @core23
+
+#### dependency
+
+ - [497: Add support for symfony 6](https://github.com/nucleos/NucleosUserBundle/pull/497) thanks to @core23
+ - [476: Drop PHP 7 support](https://github.com/nucleos/NucleosUserBundle/pull/476) thanks to @core23
+ - [427: Drop support for PHP 7.3](https://github.com/nucleos/NucleosUserBundle/pull/427) thanks to @core23
+ - [423: Update composer.json for version 2.x (Symfony 5.3+)](https://github.com/nucleos/NucleosUserBundle/pull/423) thanks to @lgeorget
+
+#### BC Break,Enhancement
+
+ - [420: Replace the legacy password encoder security component](https://github.com/nucleos/NucleosUserBundle/pull/420) thanks to @lgeorget
 
 ## 1.11.2 - 2021-09-15
 
