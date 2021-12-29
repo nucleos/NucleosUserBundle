@@ -61,7 +61,7 @@ final class SimpleMailerTest extends TestCase
         $this->swiftMailer->expects(static::once())->method('send')->with(static::isInstanceOf(TemplatedEmail::class))
         ;
 
-        $mailer->send($this->getUser());
+        $mailer->sendResettingEmailMessage($this->getUser());
     }
 
     private function getMailer(): SimpleResettingMailer

@@ -119,7 +119,7 @@ final class SendEmailAction
             return $event->getResponse();
         }
 
-        $this->mailer->send($user);
+        $this->mailer->sendResettingEmailMessage($user);
         $user->setPasswordRequestedAt(new DateTime());
         $this->userManager->updateUser($user);
 

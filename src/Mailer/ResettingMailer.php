@@ -17,5 +17,5 @@ use Nucleos\UserBundle\Model\UserInterface;
 
 interface ResettingMailer
 {
-    public function send(UserInterface $user): void;
+    public function sendResettingEmailMessage(UserInterface $user): void;
 }
