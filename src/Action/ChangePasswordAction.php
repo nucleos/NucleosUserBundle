@@ -26,6 +26,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Security;
@@ -46,6 +47,8 @@ final class ChangePasswordAction
 
     private UserManager $userManager;
 
+    private UserPasswordHasherInterface $passwordHasher;
+
     private string $loggedinRoute;
 
     public function __construct(
@@ -55,15 +58,16 @@ final class ChangePasswordAction
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
         UserManager $userManager,
+        UserPasswordHasherInterface $passwordHasher,
         string $loggedinRoute
     ) {
         $this->twig            = $twig;
         $this->router          = $router;
         $this->security        = $security;
-        $this->userManager     = $userManager;
-
         $this->eventDispatcher = $eventDispatcher;
         $this->formFactory     = $formFactory;
+        $this->userManager     = $userManager;
+        $this->passwordHasher  = $passwordHasher;
         $this->loggedinRoute   = $loggedinRoute;
     }
 
@@ -100,7 +104,11 @@ final class ChangePasswordAction
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch($event, NucleosUserEvents::CHANGE_PASSWORD_SUCCESS);
 
-            $user->setPlainPassword($formModel->getPlainPassword());
+            if (null !== $formModel->getPlainPassword()) {
+                $user->setPassword(
+                    $this->passwordHasher->hashPassword($user, $formModel->getPlainPassword())
+                );
+            }
 
             $this->userManager->updateUser($user);
 
