@@ -42,7 +42,7 @@ final class SimpleResettingMailer implements ResettingMailer
     /**
      * @throws TransportExceptionInterface
      */
-    public function send(UserInterface $user): void
+    public function sendResettingEmailMessage(UserInterface $user): void
     {
         $url  = $this->router->generate('nucleos_user_resetting_reset', [
             'token' => $user->getConfirmationToken(),
