@@ -23,6 +23,7 @@ use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -89,28 +90,14 @@ final class ChangePasswordAction
             return $event->getResponse();
         }
 
-        $form = $this->formFactory
-            ->create(ChangePasswordFormType::class, $formModel = new ChangePassword(), [
-                'validation_groups' => ['ChangePassword', 'Default'],
-            ])
-            ->add('save', SubmitType::class, [
-                'label'  => 'change_password.submit',
-            ])
-        ;
-
+        $form = $this->createForm($formModel = new ChangePassword());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch($event, NucleosUserEvents::CHANGE_PASSWORD_SUCCESS);
 
-            if (null !== $formModel->getPlainPassword()) {
-                $user->setPassword(
-                    $this->passwordHasher->hashPassword($user, $formModel->getPlainPassword())
-                );
-            }
-
-            $this->userManager->updateUser($user);
+            $this->updatePassword($user, $formModel);
 
             if (null === $response = $event->getResponse()) {
                 $url      = $this->router->generate($this->loggedinRoute);
@@ -125,5 +112,30 @@ final class ChangePasswordAction
         return new Response($this->twig->render('@NucleosUser/ChangePassword/change_password.html.twig', [
             'form' => $form->createView(),
         ]));
+    }
+
+    private function createForm(ChangePassword $model): FormInterface
+    {
+        return $this->formFactory
+            ->create(ChangePasswordFormType::class, $model, [
+                'validation_groups' => ['ChangePassword', 'Default'],
+            ])
+            ->add('save', SubmitType::class, [
+                'label'  => 'change_password.submit',
+            ])
+        ;
+    }
+
+    private function updatePassword(UserInterface $user, ChangePassword $model): void
+    {
+        if (null === $model->getPlainPassword()) {
+            return;
+        }
+
+        $user->setPassword(
+            $this->passwordHasher->hashPassword($user, $model->getPlainPassword())
+        );
+
+        $this->userManager->updateUser($user);
     }
 }
