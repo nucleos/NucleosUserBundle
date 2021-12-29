@@ -47,6 +47,36 @@ Only two interface keep the suffix to stay consinstent with the parent symfony i
 - `Nucleos\UserBundle\Model\UserInterface`
 - `Nucleos\UserBundle\Model\GroupInterface`
 
+## Removed salt from `User`
+
+The salt was removed from the `User` class.
+If you want to use this bundle for an existing user basis, you should add the `LegacyPasswordAuthenticatedUserInterface` interface to your user Entity:
+
+```php
+namespace App\Entity;
+
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+use Nucleos\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Security\Core\User\LegacyPasswordAuthenticatedUserInterface;
+
+#[ORM\Entity]
+class User extends BaseUser implements LegacyPasswordAuthenticatedUserInterface
+{
+    // ...
+
+    #[ORM\Column(type: Types::STRING)]
+    protected ?string $salt = null;
+
+    public function getSalt(): ?string
+    {
+        return $this->salt;
+    }
+
+}
+```
+
 ## Deprecations
 
 All the deprecated code introduced on 1.x is removed on 2.0.
