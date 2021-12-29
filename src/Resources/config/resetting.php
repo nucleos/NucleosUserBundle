@@ -19,7 +19,6 @@ use Nucleos\UserBundle\EventListener\ResettingListener;
 use Nucleos\UserBundle\Form\Model\Resetting;
 use Nucleos\UserBundle\Form\Type\RequestPasswordFormType;
 use Nucleos\UserBundle\Form\Type\ResettingFormType;
-use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\Parameter;
 use Symfony\Component\DependencyInjection\Reference;
 
@@ -68,8 +67,8 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('event_dispatcher'),
                 new Reference('nucleos_user.user_manager'),
                 new Reference('nucleos_user.util.token_generator'),
+                new Reference('security.user_providers'),
                 new Reference('nucleos_user.mailer'),
-                new ChildDefinition('security.user.provider.chain'),
                 new Parameter('nucleos_user.resetting.retry_ttl'),
             ])
 
