@@ -5,9 +5,8 @@ on:
   pull_request:
   push:
     branches:
-      - "*.x"
-    tags:
-      - "**"
+      - '[0-9]+.[0-9]+.x'
+      - 'refs/pull/*'
 
 jobs:
   coding-standards:
