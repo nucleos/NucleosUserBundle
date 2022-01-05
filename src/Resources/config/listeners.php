@@ -30,7 +30,6 @@ return static function (ContainerConfigurator $container): void {
             ->tag('kernel.event_subscriber')
             ->args([
                 new Reference('translator'),
-                new Reference('twig'),
             ])
 
     ;
