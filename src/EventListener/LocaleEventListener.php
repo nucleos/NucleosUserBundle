@@ -23,19 +23,14 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
 use Symfony\Contracts\Translation\LocaleAwareInterface as LocaleAwareTranslator;
-use Twig\Environment;
-use Twig\Extension\CoreExtension;
 
 final class LocaleEventListener implements EventSubscriberInterface
 {
     private LocaleAwareTranslator $translator;
 
-    private Environment $twig;
-
-    public function __construct(LocaleAwareTranslator $translator, Environment $twig)
+    public function __construct(LocaleAwareTranslator $translator)
     {
         $this->translator = $translator;
-        $this->twig       = $twig;
     }
 
     public static function getSubscribedEvents(): array
@@ -86,10 +81,6 @@ final class LocaleEventListener implements EventSubscriberInterface
         if (null !== $locale = $session->get('_locale')) {
             $this->translator->setLocale($locale);
             $request->setLocale($locale);
-        }
-
-        if (null !== $timezone = $session->get('_timezone')) {
-            $this->setTwigTimezone($timezone);
         }
     }
 
@@ -142,21 +133,7 @@ final class LocaleEventListener implements EventSubscriberInterface
             return;
         }
 
-        $this->setTwigTimezone($timezone);
-
         $session = $request->getSession();
         $session->set('_timezone', $timezone);
-    }
-
-    private function setTwigTimezone(string $timezone): void
-    {
-        $extension = $this->twig->getExtension(CoreExtension::class);
-
-        if (!$extension instanceof CoreExtension) {
-            return;
-        }
-
-        // TODO: Find a way to manipulate all DateTimes for a user
-//        $extension->setTimezone($timezone);
     }
 }
