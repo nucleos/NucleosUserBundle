@@ -5,12 +5,31 @@ default: lint
 fix: cs-fix lint-fix
 
 .PHONY: lint
-lint: lint-composer
+lint: lint-composer lint-symfony
 
 .PHONY: lint-composer
 lint-composer:
 	composer validate --strict
 	composer normalize --dry-run
+
+.PHONY: lint-symfony
+lint-symfony: lint-symfony-container lint-symfony-twig lint-symfony-xliff lint-symfony-yaml
+
+.PHONY: lint-symfony-container
+lint-symfony-container:
+	tools/console lint:container
+
+.PHONY: lint-symfony-twig
+lint-symfony-twig:
+	tools/console lint:twig src tests
+
+.PHONY: lint-symfony-xliff
+lint-symfony-xliff:
+	tools/console lint:xliff src tests
+
+.PHONY: lint-symfony-yaml
+lint-symfony-yaml:
+	tools/console lint:yaml src tests
 
 .PHONY: test
 test: vendor-bin/tools/vendor

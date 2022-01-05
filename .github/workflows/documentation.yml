@@ -14,14 +14,14 @@ jobs:
   build:
     name: 'Build RST'
 
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2.4.0
+        uses: "actions/checkout@v2"
 
       - name: "Set up Python 3.7"
-        uses: actions/setup-python@v2.3.1
+        uses: "actions/setup-python@v2"
         with:
           python-version: '3.7'
 
@@ -29,30 +29,29 @@ jobs:
         run: python -c "import sys; print(sys.version)"
 
       - name: "Cache pip"
-        uses: actions/cache@v2.1.7
+        uses: "actions/cache@v2"
         with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('docs/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          path: "~/.cache/pip"
+          key: "${{ runner.os }}-pip-${{ hashFiles('docs/requirements.txt') }}"
+          restore-keys: "${{ runner.os }}-pip-${{ hashFiles('docs/requirements.txt') }}"
 
       - name: "Install custom requirements via pip"
-        run: pip install -r docs/requirements.txt
+        run: "pip install -r docs/requirements.txt"
 
       - name: "Build documentation"
-        run: sphinx-build -W -b html -d _build/doctrees docs _build/html
+        run: "sphinx-build -W -b html -d _build/doctrees docs _build/html"
 
   doctor-rst:
     name: 'DOCtor-RST'
 
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2.4.0
+        uses: "actions/checkout@v2"
 
       - name: "Run DOCtor-RST"
-        uses: docker://oskarstark/doctor-rst
+        uses: "docker://oskarstark/doctor-rst"
         with:
           args: --short
         env:

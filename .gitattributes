@@ -6,6 +6,7 @@ phpstan-baseline.neon   export-ignore
 psalm-baseline.xml      export-ignore
 psalm.xml               export-ignore
 phpunit.xml.dist        export-ignore
+/tools                  export-ignore
 /docs                   export-ignore
 /tests                  export-ignore
 /vendor-bin             export-ignore
