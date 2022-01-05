@@ -66,7 +66,6 @@ final class GroupManager extends BaseGroupManager
 
     public function findGroups(): array
     {
-        // @phpstan-ignore-next-line
         return $this->repository->findAll();
     }
 

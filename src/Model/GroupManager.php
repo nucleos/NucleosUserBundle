@@ -49,7 +49,7 @@ interface GroupManager
     /**
      * Returns a collection with all group instances.
      *
-     * @phpstan-return UserInterface[]&GroupTemplate[]
+     * @phpstan-return GroupTemplate[]
      */
     public function findGroups(): array;
 
