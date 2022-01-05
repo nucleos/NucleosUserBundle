@@ -7,26 +7,3 @@ repository:
   description: 👤 Lightweight user management for symfony.
   homepage: https://docs.nucleos.rocks/projects/user-bundle/
   topics: hacktoberfest, symfony, symfony-bundle, bundle, user, management
-
-branches:
-  - name: main
-    protection:
-      enforce_admins: false
-      required_status_checks:
-        contexts:
-          - "Coding Standards (8.1)"
-          - "Static Code Analysis (8.1)"
-          - "Test (PHP 8, symfony 5.4, lowest)"
-          - "Test (PHP 8, symfony 5.4, highest)"
-          - "Test (PHP 8, symfony 6, lowest)"
-          - "Test (PHP 8, symfony 6, highest)"
-          - "Test (PHP 8.1, symfony 5.4, lowest)"
-          - "Test (PHP 8.1, symfony 5.4, highest)"
-          - "Test (PHP 8.1, symfony 6, lowest)"
-          - "Test (PHP 8.1, symfony 6, highest)"
-          - "Code Coverage (8.1)"
-          - "Mutation Tests (8.1)"
-        strict: true
-
-      required_pull_request_reviews: null
-      restrictions: null
