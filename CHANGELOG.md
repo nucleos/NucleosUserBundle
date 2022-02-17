@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.1.0 - TBD
+## 2.1.0 - 2022-02-17
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [2.1.0](https://github.com/nucleos/NucleosUserBundle/milestone/19)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 2.1.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **5**
+- Total contributors: **1**
 
-### Removed
+#### Enhancement
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [592: Do not throw exception on null values](https://github.com/nucleos/NucleosUserBundle/pull/592) thanks to @core23
+ - [558: Use shared symfony console for build](https://github.com/nucleos/NucleosUserBundle/pull/558) thanks to @core23
+ - [556: Use shared pipeline](https://github.com/nucleos/NucleosUserBundle/pull/556) thanks to @core23
+ - [555: Add lint build jobs](https://github.com/nucleos/NucleosUserBundle/pull/555) thanks to @core23
+ - [551: Rework build triggers](https://github.com/nucleos/NucleosUserBundle/pull/551) thanks to @core23
 
 ## 2.0.1 - 2022-02-17
 
