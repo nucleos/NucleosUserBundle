@@ -138,6 +138,22 @@ das Team.]]></target>
         <source>Bad credentials.</source>
         <target>Ungültige Anmeldedaten oder falsches Passwort.</target>
       </trans-unit>
+      <trans-unit id="User account is locked.">
+        <source>User account is locked.</source>
+        <target>Der Account ist gesperrt.</target>
+      </trans-unit>
+      <trans-unit id="User account is disabled.">
+        <source>User account is disabled.</source>
+        <target>Der Account ist deaktiviert.</target>
+      </trans-unit>
+      <trans-unit id="User account has expired.">
+        <source>User account has expired.</source>
+        <target>Der Account ist abgelaufen.</target>
+      </trans-unit>
+      <trans-unit id="User credentials have expired.">
+        <source>User credentials have expired.</source>
+        <target>Die Zugangsdaten sind abgelaufen.</target>
+      </trans-unit>
       <trans-unit id="The presented password is invalid.">
         <source>The presented password is invalid.</source>
         <target>Ungültige Anmeldedaten oder falsches Passwort.</target>
