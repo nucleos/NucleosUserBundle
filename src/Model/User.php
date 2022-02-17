@@ -264,6 +264,10 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 
     public function getGroups(): Collection
     {
+        if (!isset($this->groups)) {
+            return new ArrayCollection();
+        }
+
         return $this->groups;
     }
 
