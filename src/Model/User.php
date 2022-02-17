@@ -16,7 +16,6 @@ namespace Nucleos\UserBundle\Model;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use DomainException;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
@@ -89,11 +88,7 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 
     public function getUsername(): string
     {
-        if (null === $this->username) {
-            throw new DomainException('Username cannot be null');
-        }
-
-        return $this->username;
+        return $this->username ?? '';
     }
 
     public function getUserIdentifier(): string
@@ -103,38 +98,22 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 
     public function getUsernameCanonical(): string
     {
-        if (null === $this->usernameCanonical) {
-            throw new DomainException('Username cannot be null');
-        }
-
-        return $this->usernameCanonical;
+        return $this->usernameCanonical ?? '';
     }
 
     public function getEmail(): string
     {
-        if (null === $this->email) {
-            throw new DomainException('Email cannot be null');
-        }
-
-        return $this->email;
+        return $this->email ?? '';
     }
 
     public function getEmailCanonical(): string
     {
-        if (null === $this->emailCanonical) {
-            throw new DomainException('Email cannot be null');
-        }
-
-        return $this->emailCanonical;
+        return $this->emailCanonical ?? '';
     }
 
     public function getPassword(): string
     {
-        if (null === $this->password) {
-            throw new DomainException('Password cannot be null');
-        }
-
-        return $this->password;
+        return $this->password ?? '';
     }
 
     public function getPlainPassword(): ?string
