@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.0.1 - TBD
+## 2.0.1 - 2022-02-17
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [2.0.1](https://github.com/nucleos/NucleosUserBundle/milestone/18)
 
-- Nothing.
+2.0.x bugfix release (patch)
 
-### Deprecated
+### 2.0.1
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### Enhancement
 
-- Nothing.
+ - [593: Add missing German translation keys](https://github.com/nucleos/NucleosUserBundle/pull/593) thanks to @core23
 
-### Fixed
+#### Bug
 
-- Nothing.
+ - [591: Check for uninitialized group](https://github.com/nucleos/NucleosUserBundle/pull/591) thanks to @core23
 
 ## 2.0.0 - 2021-12-29
 
