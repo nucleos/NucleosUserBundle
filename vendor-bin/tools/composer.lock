@@ -1911,16 +1911,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.5.4",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "bbf68cae24f6dc023c607ea0f87da55dd9d55c2b"
+                "reference": "509b3d6da631de31494dc21adedb30d73970e5aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/bbf68cae24f6dc023c607ea0f87da55dd9d55c2b",
-                "reference": "bbf68cae24f6dc023c607ea0f87da55dd9d55c2b",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/509b3d6da631de31494dc21adedb30d73970e5aa",
+                "reference": "509b3d6da631de31494dc21adedb30d73970e5aa",
                 "shasum": ""
             },
             "require": {
@@ -1946,7 +1946,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.5.4"
+                "source": "https://github.com/phpstan/phpstan/tree/1.7.0"
             },
             "funding": [
                 {
@@ -1966,25 +1966,25 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-03T12:39:00+00:00"
+            "time": "2022-05-23T15:11:29+00:00"
         },
         {
             "name": "phpstan/phpstan-doctrine",
-            "version": "1.3.2",
+            "version": "1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-doctrine.git",
-                "reference": "802cc5683a681666b0422aa13340646bda3a408c"
+                "reference": "73979203c9cb56efd2dfcce1c795254f3b55ce39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-doctrine/zipball/802cc5683a681666b0422aa13340646bda3a408c",
-                "reference": "802cc5683a681666b0422aa13340646bda3a408c",
+                "url": "https://api.github.com/repos/phpstan/phpstan-doctrine/zipball/73979203c9cb56efd2dfcce1c795254f3b55ce39",
+                "reference": "73979203c9cb56efd2dfcce1c795254f3b55ce39",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0",
-                "phpstan/phpstan": "^1.5"
+                "phpstan/phpstan": "^1.7.0"
             },
             "conflict": {
                 "doctrine/collections": "<1.0",
@@ -2032,9 +2032,9 @@
             "description": "Doctrine extensions for PHPStan",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-doctrine/issues",
-                "source": "https://github.com/phpstan/phpstan-doctrine/tree/1.3.2"
+                "source": "https://github.com/phpstan/phpstan-doctrine/tree/1.3.5"
             },
-            "time": "2022-04-05T08:55:26+00:00"
+            "time": "2022-05-23T13:09:30+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
@@ -6689,5 +6689,5 @@
     "platform-overrides": {
         "php": "8.0.2"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
