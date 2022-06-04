@@ -1,0 +1,25 @@
+{
+    "extends": [
+        "config:base",
+        ":preserveSemverRanges"
+    ],
+    "packageRules": [
+        {
+            "matchDepTypes": [
+                "dependency"
+            ],
+            "automerge": true,
+            "addLabels": [
+                "dependency"
+            ]
+        },
+        {
+            "matchDepTypes": [
+                "devDependencies",
+                "optionalDependencies"
+            ],
+            "automerge": true,
+            "addLabels": []
+        }
+    ]
+}
