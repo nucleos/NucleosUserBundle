@@ -22,6 +22,9 @@ use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
+/**
+ * @extends ConstraintValidatorTestCase<PatternValidator>
+ */
 final class PatternValidatorTest extends ConstraintValidatorTestCase
 {
     public function testValidateInvalidConstraint(): void

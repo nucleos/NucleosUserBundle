@@ -17,6 +17,7 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\ClassMetadata as MongoClassMetadata;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadata as ORMClassMetadata;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Doctrine\Persistence\ObjectManager;
@@ -44,6 +45,9 @@ final class UserListener implements EventSubscriber
         ];
     }
 
+    /**
+     * @psalm-param LifecycleEventArgs<EntityManagerInterface> $args
+     */
     public function prePersist(LifecycleEventArgs $args): void
     {
         $object = $args->getObject();
@@ -52,6 +56,9 @@ final class UserListener implements EventSubscriber
         }
     }
 
+    /**
+     * @psalm-param LifecycleEventArgs<EntityManagerInterface> $args
+     */
     public function preUpdate(LifecycleEventArgs $args): void
     {
         $object = $args->getObject();
