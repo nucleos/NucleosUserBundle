@@ -302,7 +302,7 @@ logging in, creating users, etc.
 
     nucleos_user_deletion:
         resource: "@NucleosUserBundle/Resources/config/routing/deletion.php"
-        prefix: /deletetion
+        prefix: /deletion
 
 Step 7: Update your database schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
