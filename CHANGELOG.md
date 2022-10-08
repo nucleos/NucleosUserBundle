@@ -2,27 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.2.0 - TBD
+## 2.2.0 - 2022-10-08
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [2.2.0](https://github.com/nucleos/NucleosUserBundle/milestone/23)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 2.2.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **3**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [666: Update dependency doctrine/collections to ^1.8 || ^2.0](https://github.com/nucleos/NucleosUserBundle/pull/666) thanks to @core23
+ - [658: Update dependency doctrine/persistence to ^1.3 || ^2.1 || ^3.0](https://github.com/nucleos/NucleosUserBundle/pull/658) thanks to @renovate[bot]
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [653: Add type hints](https://github.com/nucleos/NucleosUserBundle/pull/653) thanks to @core23
 
 ## 2.1.0 - 2022-02-17
 
