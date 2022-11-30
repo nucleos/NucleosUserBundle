@@ -17,7 +17,7 @@
         "psalm/plugin-phpunit": "^0.18",
         "psalm/plugin-symfony": "^4.0",
         "symfony/phpunit-bridge": "^6.0",
-        "vimeo/psalm": "^4.13"
+        "vimeo/psalm": "^5.0"
     },
     "config": {
         "allow-plugins": {
