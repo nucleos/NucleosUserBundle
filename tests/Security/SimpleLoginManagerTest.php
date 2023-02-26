@@ -78,7 +78,7 @@ final class SimpleLoginManagerTest extends TestCase
     }
 
     /**
-     * @return UserInterface&MockObject
+     * @return MockObject&UserInterface
      */
     private function mockUser(): MockObject
     {

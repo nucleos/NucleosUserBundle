@@ -62,7 +62,7 @@ final class XliffTest extends TestCase
 
     private function validateXliff(string $file): void
     {
-        [,$locale, ] = explode('.', $file);
+        [,$locale] = explode('.', $file);
 
         try {
             $catalogue = $this->loader->load($file, $locale);

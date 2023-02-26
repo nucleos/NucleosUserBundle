@@ -23,12 +23,12 @@ use PHPUnit\Framework\TestCase;
 final class BaseUserManagerTest extends TestCase
 {
     /**
-     * @var MockObject&BaseUserManager
+     * @var BaseUserManager&MockObject
      */
     private $manager;
 
     /**
-     * @var MockObject&CanonicalFieldsUpdater
+     * @var CanonicalFieldsUpdater&MockObject
      */
     private $fieldsUpdater;
 
@@ -124,7 +124,7 @@ final class BaseUserManagerTest extends TestCase
     }
 
     /**
-     * @return MockObject&BaseUserManager
+     * @return BaseUserManager&MockObject
      */
     private function getUserManager(array $args): MockObject
     {
