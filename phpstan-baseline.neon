@@ -11,9 +11,19 @@ parameters:
 			path: src/Action/CheckEmailAction.php
 
 		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Console\\\\Helper\\\\HelperInterface\\:\\:ask\\(\\)\\.$#"
+			count: 1
+			path: src/Command/ActivateUserCommand.php
+
+		-
 			message: "#^Only booleans are allowed in a negated boolean, mixed given\\.$#"
 			count: 1
 			path: src/Command/ActivateUserCommand.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Console\\\\Helper\\\\HelperInterface\\:\\:ask\\(\\)\\.$#"
+			count: 1
+			path: src/Command/ChangePasswordCommand.php
 
 		-
 			message: "#^Only booleans are allowed in a negated boolean, mixed given\\.$#"
@@ -21,14 +31,29 @@ parameters:
 			path: src/Command/ChangePasswordCommand.php
 
 		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Console\\\\Helper\\\\HelperInterface\\:\\:ask\\(\\)\\.$#"
+			count: 1
+			path: src/Command/CreateUserCommand.php
+
+		-
 			message: "#^Only booleans are allowed in a negated boolean, mixed given\\.$#"
 			count: 4
 			path: src/Command/CreateUserCommand.php
 
 		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Console\\\\Helper\\\\HelperInterface\\:\\:ask\\(\\)\\.$#"
+			count: 1
+			path: src/Command/DeactivateUserCommand.php
+
+		-
 			message: "#^Only booleans are allowed in a negated boolean, mixed given\\.$#"
 			count: 1
 			path: src/Command/DeactivateUserCommand.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Console\\\\Helper\\\\HelperInterface\\:\\:ask\\(\\)\\.$#"
+			count: 1
+			path: src/Command/RoleCommand.php
 
 		-
 			message: "#^Only booleans are allowed in a negated boolean, mixed given\\.$#"
@@ -94,6 +119,11 @@ parameters:
 			message: "#^Method Nucleos\\\\UserBundle\\\\EventListener\\\\FlashListener\\:\\:trans\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/EventListener/FlashListener.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Symfony\\\\\\\\Component\\\\\\\\DependencyInjection\\\\\\\\ContainerBuilder' and Symfony\\\\Component\\\\DependencyInjection\\\\ContainerBuilder will always evaluate to true\\.$#"
+			count: 2
+			path: tests/DependencyInjection/NucleosUserExtensionTest.php
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\DependencyInjection\\\\NucleosUserExtensionTest\\:\\:getEmptyConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
