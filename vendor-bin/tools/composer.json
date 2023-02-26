@@ -23,9 +23,6 @@
         "allow-plugins": {
             "phpstan/extension-installer": true
         },
-        "bin-dir": "../../vendor/bin",
-        "platform": {
-            "php": "8.0.2"
-        }
+        "bin-dir": "../../vendor/bin"
     }
 }
