@@ -103,7 +103,7 @@ final class UserTest extends TestCase
     }
 
     /**
-     * @return User<GroupInterface>&MockObject
+     * @return MockObject&User<GroupInterface>
      */
     private function getUser(): MockObject
     {

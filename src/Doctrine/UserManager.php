@@ -15,7 +15,7 @@ namespace Nucleos\UserBundle\Doctrine;
 
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
-use Nucleos\UserBundle\Model\BaseUserManager as BaseUserManager;
+use Nucleos\UserBundle\Model\BaseUserManager;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
 
