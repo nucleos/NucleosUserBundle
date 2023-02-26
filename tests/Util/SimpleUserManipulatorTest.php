@@ -394,7 +394,7 @@ final class SimpleUserManipulatorTest extends TestCase
     }
 
     /**
-     * @return MockObject&EventDispatcherInterface
+     * @return EventDispatcherInterface&MockObject
      */
     protected function getEventDispatcherMock(string $event, bool $once = true): MockObject
     {

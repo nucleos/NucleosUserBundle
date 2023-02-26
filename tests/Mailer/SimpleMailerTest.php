@@ -25,17 +25,17 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 final class SimpleMailerTest extends TestCase
 {
     /**
-     * @var SymfonyMailer&MockObject
+     * @var MockObject&SymfonyMailer
      */
     private $swiftMailer;
 
     /**
-     * @var TranslatorInterface&MockObject
+     * @var MockObject&TranslatorInterface
      */
     private $translator;
 
     /**
-     * @var UrlGeneratorInterface&MockObject
+     * @var MockObject&UrlGeneratorInterface
      */
     private $generator;
 
@@ -75,7 +75,7 @@ final class SimpleMailerTest extends TestCase
     }
 
     /**
-     * @return UserInterface&MockObject
+     * @return MockObject&UserInterface
      */
     private function getUser(): MockObject
     {

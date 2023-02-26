@@ -15,6 +15,7 @@ namespace Nucleos\UserBundle\Model;
 
 /**
  * @phpstan-template GroupTemplate of \Nucleos\UserBundle\Model\GroupInterface
+ *
  * @phpstan-implements GroupManager<GroupTemplate>
  */
 abstract class BaseGroupManager implements GroupManager

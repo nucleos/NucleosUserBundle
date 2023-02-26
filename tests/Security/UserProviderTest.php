@@ -135,7 +135,7 @@ final class UserProviderTest extends TestCase
     }
 
     /**
-     * @return UserInterface&MockObject
+     * @return MockObject&UserInterface
      */
     private function createUser(): UserInterface
     {

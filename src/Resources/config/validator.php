@@ -26,5 +26,5 @@ return static function (ContainerConfigurator $container): void {
 
         ->set(PatternValidator::class)
             ->tag('validator.constraint_validator', [])
-        ;
+    ;
 };
