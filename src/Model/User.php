@@ -22,6 +22,7 @@ use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  *
  * @phpstan-template GroupTemplate of GroupInterface
+ *
  * @phpstan-implements GroupAwareUser<GroupTemplate>
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)

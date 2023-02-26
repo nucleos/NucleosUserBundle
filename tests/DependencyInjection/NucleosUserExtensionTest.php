@@ -207,6 +207,7 @@ final class NucleosUserExtensionTest extends TestCase
     public function userManagerSetFactoryProvider(): Generator
     {
         yield ['orm', 'doctrine'];
+
         yield ['mongodb', 'doctrine_mongodb'];
     }
 
@@ -289,11 +290,11 @@ EOF;
 
     private function assertHasDefinition(string $id): void
     {
-        static::assertTrue(($this->configuration->hasDefinition($id) ? true : $this->configuration->hasAlias($id)));
+        static::assertTrue($this->configuration->hasDefinition($id) ? true : $this->configuration->hasAlias($id));
     }
 
     private function assertNotHasDefinition(string $id): void
     {
-        static::assertFalse(($this->configuration->hasDefinition($id) ? true : $this->configuration->hasAlias($id)));
+        static::assertFalse($this->configuration->hasDefinition($id) ? true : $this->configuration->hasAlias($id));
     }
 }

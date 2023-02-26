@@ -34,6 +34,7 @@ final class SimpleCanonicalizerTest extends TestCase
     public function canonicalizeProvider(): Generator
     {
         yield ['FOO', 'foo'];
+
         yield [\chr(171), \PHP_VERSION_ID < 50600 ? \chr(171) : '?'];
     }
 }

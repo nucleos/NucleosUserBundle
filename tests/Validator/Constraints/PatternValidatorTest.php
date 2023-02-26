@@ -134,9 +134,13 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
     public function lowerProvider(): Generator
     {
         yield 'Empty' => ['', false];
+
         yield 'All lower' => ['somelowertext', true];
+
         yield 'No lower' => ['SOME LOWER TEXT 123', false];
+
         yield 'One lower' => ['SOME LOWeR TEXT 123', false];
+
         yield 'Two lower' => ['SOME LOWeR TeXT 123', true];
     }
 
@@ -148,9 +152,13 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
     public function upperProvider(): Generator
     {
         yield 'Empty' => ['', false];
+
         yield 'All upper' => ['SOMELOWERTEXT', true];
+
         yield 'No upper' => ['some lower text', false];
+
         yield 'One upper' => ['some lowEr text 123', false];
+
         yield 'Two upper' => ['some lowEr tExt 123', true];
     }
 
@@ -162,9 +170,13 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
     public function numericProvider(): Generator
     {
         yield 'Empty' => ['', false];
+
         yield 'All numbers' => ['151555151', true];
+
         yield 'No numbers' => ['some generic Text', false];
+
         yield 'One number' => ['s0me generic Text', false];
+
         yield 'Two numbers' => ['s0me generic T3xt', true];
     }
 
@@ -176,9 +188,13 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
     public function specialProvider(): Generator
     {
         yield 'Empty' => ['', false];
+
         yield 'All special' => ['][}{)(|/\\#*-+:?!;:,./', true];
+
         yield 'No special' => ['some generic Text', false];
+
         yield 'One special' => ['s?me generic Text', false];
+
         yield 'Two specials' => ['s#me generic T?xt', true];
     }
 

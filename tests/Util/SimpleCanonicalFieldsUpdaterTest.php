@@ -65,7 +65,7 @@ final class SimpleCanonicalFieldsUpdaterTest extends TestCase
     }
 
     /**
-     * @return MockObject&Canonicalizer
+     * @return Canonicalizer&MockObject
      */
     private function getMockCanonicalizer(): MockObject
     {
