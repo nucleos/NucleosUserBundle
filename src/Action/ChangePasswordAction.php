@@ -21,6 +21,7 @@ use Nucleos\UserBundle\Form\Type\ChangePasswordFormType;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
+use Nucleos\UserBundle\Util\UserManipulator;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -46,7 +47,7 @@ final class ChangePasswordAction
 
     private FormFactoryInterface $formFactory;
 
-    private UserManager $userManager;
+    private UserManager|UserManipulator $userManipulatorOrDeprecatedUserManager;
 
     private UserPasswordHasherInterface $passwordHasher;
 
@@ -58,18 +59,18 @@ final class ChangePasswordAction
         Security $security,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
-        UserManager $userManager,
+        UserManager|UserManipulator $userManipulatorOrDeprecatedUserManager,
         UserPasswordHasherInterface $passwordHasher,
         string $loggedinRoute
     ) {
-        $this->twig            = $twig;
-        $this->router          = $router;
-        $this->security        = $security;
-        $this->eventDispatcher = $eventDispatcher;
-        $this->formFactory     = $formFactory;
-        $this->userManager     = $userManager;
-        $this->passwordHasher  = $passwordHasher;
-        $this->loggedinRoute   = $loggedinRoute;
+        $this->twig                                   = $twig;
+        $this->router                                 = $router;
+        $this->security                               = $security;
+        $this->eventDispatcher                        = $eventDispatcher;
+        $this->formFactory                            = $formFactory;
+        $this->userManipulatorOrDeprecatedUserManager = $userManipulatorOrDeprecatedUserManager;
+        $this->passwordHasher                         = $passwordHasher;
+        $this->loggedinRoute                          = $loggedinRoute;
     }
 
     /**
@@ -132,10 +133,16 @@ final class ChangePasswordAction
             return;
         }
 
+        if ($this->userManipulatorOrDeprecatedUserManager instanceof UserManipulator) {
+            $this->userManipulatorOrDeprecatedUserManager->changePassword($user->getUsername(), $model->getPlainPassword());
+
+            return;
+        }
+
         $user->setPassword(
             $this->passwordHasher->hashPassword($user, $model->getPlainPassword())
         );
 
-        $this->userManager->updateUser($user);
+        $this->userManipulatorOrDeprecatedUserManager->updateUser($user);
     }
 }
