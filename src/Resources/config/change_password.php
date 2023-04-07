@@ -33,7 +33,7 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('security.helper'),
                 new Reference('event_dispatcher'),
                 new Reference('form.factory'),
-                new Reference('nucleos_user.user_manager'),
+                new Reference('nucleos_user.util.user_manipulator'),
                 new Reference('security.password_hasher'),
                 '%nucleos_user.loggedin.route%',
             ])
