@@ -37,6 +37,5 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('security.password_hasher'),
                 '%nucleos_user.loggedin.route%',
             ])
-
     ;
 };

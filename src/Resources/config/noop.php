@@ -24,6 +24,5 @@ return static function (ContainerConfigurator $container): void {
             ])
 
         ->set('nucleos_user.user_listener', UserListener::class)
-
     ;
 };

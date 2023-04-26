@@ -47,6 +47,5 @@ return static function (ContainerConfigurator $container): void {
         ->alias(CanonicalFieldsUpdater::class, 'nucleos_user.util.canonical_fields_updater')
 
         ->alias(UserManager::class, 'nucleos_user.user_manager')
-
     ;
 };

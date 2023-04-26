@@ -79,6 +79,5 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('router'),
                 new Parameter('nucleos_user.resetting.retry_ttl'),
             ])
-
     ;
 };

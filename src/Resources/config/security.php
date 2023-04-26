@@ -85,6 +85,5 @@ return static function (ContainerConfigurator $container): void {
             ->public()
 
         ->set(UserChecker::class)
-
     ;
 };
