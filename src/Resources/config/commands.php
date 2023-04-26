@@ -69,6 +69,5 @@ return static function (ContainerConfigurator $container): void {
             ->args([
                 new Reference('nucleos_user.util.user_manipulator'),
             ])
-
     ;
 };

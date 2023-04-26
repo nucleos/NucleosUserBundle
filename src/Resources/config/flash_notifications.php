@@ -23,6 +23,5 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('request_stack'),
                 new Reference('translator'),
             ])
-
     ;
 };

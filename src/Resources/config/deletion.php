@@ -40,6 +40,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->args([
             AccountDeletion::class,
         ])
-
     ;
 };

@@ -23,6 +23,5 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('nucleos_user.object_manager'),
                 new Parameter('nucleos_user.model.group.class'),
             ])
-
     ;
 };
