@@ -28,6 +28,5 @@ return static function (ContainerConfigurator $container): void {
             ])
 
         ->set('nucleos_user.mailer.noop', NoopResettingMailer::class)
-
     ;
 };

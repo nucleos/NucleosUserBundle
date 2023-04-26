@@ -31,6 +31,5 @@ return static function (ContainerConfigurator $container): void {
             ->args([
                 new Reference('translator'),
             ])
-
     ;
 };
