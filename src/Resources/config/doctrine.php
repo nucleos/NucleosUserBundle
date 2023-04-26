@@ -38,6 +38,5 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('security.password_hasher'),
                 new Reference('nucleos_user.util.canonical_fields_updater'),
             ])
-
     ;
 };

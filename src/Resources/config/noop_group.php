@@ -17,6 +17,5 @@ return static function (ContainerConfigurator $container): void {
     $container->services()
 
         ->set('nucleos_user.group_manager.default', GroupManager::class)
-
     ;
 };

@@ -58,8 +58,7 @@ final class SimpleMailerTest extends TestCase
             ->willReturn('http://something.local')
         ;
 
-        $this->swiftMailer->expects(static::once())->method('send')->with(static::isInstanceOf(TemplatedEmail::class))
-        ;
+        $this->swiftMailer->expects(static::once())->method('send')->with(static::isInstanceOf(TemplatedEmail::class));
 
         $mailer->sendResettingEmailMessage($this->getUser());
     }
