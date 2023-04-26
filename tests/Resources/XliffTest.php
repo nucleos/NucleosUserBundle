@@ -47,7 +47,7 @@ final class XliffTest extends TestCase
     /**
      * @return Generator<string[]>
      */
-    public function getFiles(): iterable
+    public static function getFiles(): iterable
     {
         $files = glob(sprintf('%s/*.xlf', __DIR__.'/../../src/Resources/translations'));
 

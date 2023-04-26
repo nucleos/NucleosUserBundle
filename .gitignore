@@ -1,9 +1,9 @@
 .php-cs-fixer.cache
 .php-cs-fixer.php
-.phpunit.result.cache
 coverage
 composer.lock
 phpunit.xml
+/.phpunit.cache/
 /build/
 /vendor/
 !/vendor-bin/tools/composer.lock
