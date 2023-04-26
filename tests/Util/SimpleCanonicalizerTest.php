@@ -31,7 +31,7 @@ final class SimpleCanonicalizerTest extends TestCase
     /**
      * @phpstan-return Generator<array{string, string}>
      */
-    public function canonicalizeProvider(): Generator
+    public static function canonicalizeProvider(): Generator
     {
         yield ['FOO', 'foo'];
 

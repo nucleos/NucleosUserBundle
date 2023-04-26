@@ -48,7 +48,7 @@ final class RoutingTest extends TestCase
     /**
      * @phpstan-return Generator<array{string, string, string[]}>
      */
-    public function loadRoutingProvider(): Generator
+    public static function loadRoutingProvider(): Generator
     {
         yield ['nucleos_user_change_password', '/change-password', ['GET', 'POST']];
 
