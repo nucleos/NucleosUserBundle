@@ -131,7 +131,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
      *
      * @phpstan-return Generator<array{string, bool}>
      */
-    public function lowerProvider(): Generator
+    public static function lowerProvider(): Generator
     {
         yield 'Empty' => ['', false];
 
@@ -149,7 +149,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
      *
      * @phpstan-return Generator<array{string, bool}>
      */
-    public function upperProvider(): Generator
+    public static function upperProvider(): Generator
     {
         yield 'Empty' => ['', false];
 
@@ -167,7 +167,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
      *
      * @phpstan-return Generator<array{string, bool}>
      */
-    public function numericProvider(): Generator
+    public static function numericProvider(): Generator
     {
         yield 'Empty' => ['', false];
 
@@ -185,7 +185,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
      *
      * @phpstan-return Generator<array{string, bool}>
      */
-    public function specialProvider(): Generator
+    public static function specialProvider(): Generator
     {
         yield 'Empty' => ['', false];
 
