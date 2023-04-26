@@ -204,7 +204,7 @@ final class NucleosUserExtensionTest extends TestCase
     /**
      * @phpstan-return Generator<array{string, string}>
      */
-    public function userManagerSetFactoryProvider(): Generator
+    public static function userManagerSetFactoryProvider(): Generator
     {
         yield ['orm', 'doctrine'];
 
