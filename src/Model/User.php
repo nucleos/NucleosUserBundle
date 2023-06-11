@@ -322,16 +322,6 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
     }
 
     /**
-     * @deprecated since symfony 5.4
-     *
-     * @return string|null
-     */
-    public function getSalt()
-    {
-        return null;
-    }
-
-    /**
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     public function isEqualTo(BaseUserInterface $user): bool
