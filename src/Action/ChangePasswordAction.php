@@ -19,7 +19,6 @@ use Nucleos\UserBundle\Event\GetResponseUserEvent;
 use Nucleos\UserBundle\Form\Model\ChangePassword;
 use Nucleos\UserBundle\Form\Type\ChangePasswordFormType;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Nucleos\UserBundle\Util\UserManipulator;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -28,7 +27,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Security;
@@ -47,9 +45,7 @@ final class ChangePasswordAction
 
     private FormFactoryInterface $formFactory;
 
-    private UserManager|UserManipulator $userManipulatorOrDeprecatedUserManager;
-
-    private UserPasswordHasherInterface $passwordHasher;
+    private UserManipulator $userManipulator;
 
     private string $loggedinRoute;
 
@@ -59,18 +55,16 @@ final class ChangePasswordAction
         Security $security,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
-        UserManager|UserManipulator $userManipulatorOrDeprecatedUserManager,
-        UserPasswordHasherInterface $passwordHasher,
+        UserManipulator $userManipulator,
         string $loggedinRoute
     ) {
-        $this->twig                                   = $twig;
-        $this->router                                 = $router;
-        $this->security                               = $security;
-        $this->eventDispatcher                        = $eventDispatcher;
-        $this->formFactory                            = $formFactory;
-        $this->userManipulatorOrDeprecatedUserManager = $userManipulatorOrDeprecatedUserManager;
-        $this->passwordHasher                         = $passwordHasher;
-        $this->loggedinRoute                          = $loggedinRoute;
+        $this->twig             = $twig;
+        $this->router           = $router;
+        $this->security         = $security;
+        $this->eventDispatcher  = $eventDispatcher;
+        $this->formFactory      = $formFactory;
+        $this->userManipulator  = $userManipulator;
+        $this->loggedinRoute    = $loggedinRoute;
     }
 
     /**
@@ -133,16 +127,6 @@ final class ChangePasswordAction
             return;
         }
 
-        if ($this->userManipulatorOrDeprecatedUserManager instanceof UserManipulator) {
-            $this->userManipulatorOrDeprecatedUserManager->changePassword($user->getUsername(), $model->getPlainPassword());
-
-            return;
-        }
-
-        $user->setPassword(
-            $this->passwordHasher->hashPassword($user, $model->getPlainPassword())
-        );
-
-        $this->userManipulatorOrDeprecatedUserManager->updateUser($user);
+        $this->userManipulator->changePassword($user->getUsername(), $model->getPlainPassword());
     }
 }
