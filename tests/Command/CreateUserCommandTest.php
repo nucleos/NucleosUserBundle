@@ -43,7 +43,7 @@ final class CreateUserCommandTest extends TestCase
     {
         $application = new Application();
 
-        $helper = $this->createQuestionHelper();
+        $helper = $this->createMock(QuestionHelper::class);
 
         $helper->expects(static::exactly(3))
             ->method('ask')
@@ -97,20 +97,5 @@ final class CreateUserCommandTest extends TestCase
         ;
 
         return $manipulator;
-    }
-
-    /**
-     * @return MockObject&QuestionHelper
-     */
-    private function createQuestionHelper(): MockObject
-    {
-        $builder = $this->getMockBuilder(QuestionHelper::class);
-
-        // @phpstan-ignore-next-line
-        if (!method_exists(QuestionHelper::class, 'ask')) {
-            $builder->addMethods(['ask']);
-        }
-
-        return $builder->getMock();
     }
 }
