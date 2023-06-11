@@ -18,7 +18,6 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
 use Nucleos\UserBundle\Doctrine\UserManager;
 use Nucleos\UserBundle\Tests\App\Entity\TestUser;
-use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -43,7 +42,6 @@ final class BaseUserManagerTest extends TestCase
 
     protected function setUp(): void
     {
-        $fieldsUpdater    = $this->createMock(CanonicalFieldsUpdater::class);
         $class            = $this->getMockBuilder(ClassMetadata::class)->getMock();
         $this->om         = $this->getMockBuilder(ObjectManager::class)->getMock();
         $this->repository = $this->getMockBuilder(ObjectRepository::class)->getMock();
@@ -63,7 +61,7 @@ final class BaseUserManagerTest extends TestCase
             ->willReturn(static::USER_CLASS)
         ;
 
-        $this->userManager = new UserManager($fieldsUpdater, $this->om, static::USER_CLASS);
+        $this->userManager = new UserManager($this->om, static::USER_CLASS);
     }
 
     public function testDeleteUser(): void

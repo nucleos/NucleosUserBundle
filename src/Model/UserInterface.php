@@ -40,32 +40,12 @@ interface UserInterface extends PasswordAuthenticatedUserInterface, BaseUserInte
      */
     public function setUsername(string $username): void;
 
-    /**
-     * Gets the canonical username in search and sort queries.
-     */
-    public function getUsernameCanonical(): string;
-
-    /**
-     * Sets the canonical username.
-     */
-    public function setUsernameCanonical(string $usernameCanonical): void;
-
     public function getEmail(): string;
 
     /**
      * Sets the email.
      */
     public function setEmail(string $email): void;
-
-    /**
-     * Gets the canonical email in search and sort queries.
-     */
-    public function getEmailCanonical(): string;
-
-    /**
-     * Sets the canonical email.
-     */
-    public function setEmailCanonical(string $emailCanonical): void;
 
     /**
      * Gets the plain password.

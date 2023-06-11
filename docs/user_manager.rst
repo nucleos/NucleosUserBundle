@@ -59,8 +59,7 @@ users.
 - ``findUsers()``
 
 To save a user object, you can use the ``updateUser`` method of the user manager.
-This method will update the encoded password and the canonical fields and
-then persist the changes.
+This method will update the encoded password field and then persist the changes.
 
 Updating a User object
 ----------------------
@@ -76,7 +75,7 @@ Updating a User object
 .. note::
 
     To make it easier, the bundle comes with a Doctrine listener handling
-    the update of the password and the canonical fields for you behind the
+    the update of the password fields for you behind the
     scenes. If you always save the user through the user manager, you may
     want to disable it to improve performance.
 
@@ -92,8 +91,7 @@ Updating a User object
     For the Doctrine implementations, the default behavior is to flush the
     unit of work when calling the ``updateUser`` method. You can disable the
     flush by passing a second argument set to ``false``.
-    This will then be equivalent to calling ``updateCanonicalFields`` and
-    ``updatePassword``.
+    This will then be equivalent to calling ``updatePassword``.
 
 An ORM example:
 

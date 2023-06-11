@@ -22,7 +22,6 @@ return static function (ContainerConfigurator $container): void {
 
         ->set('nucleos_user.user_manager.default', UserManager::class)
             ->args([
-                new Reference('nucleos_user.util.canonical_fields_updater'),
                 new Reference('nucleos_user.object_manager'),
                 new Parameter('nucleos_user.model.user.class'),
             ])
@@ -36,7 +35,6 @@ return static function (ContainerConfigurator $container): void {
         ->set('nucleos_user.user_listener', UserListener::class)
             ->args([
                 new Reference('security.password_hasher'),
-                new Reference('nucleos_user.util.canonical_fields_updater'),
             ])
     ;
 };

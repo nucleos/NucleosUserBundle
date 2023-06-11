@@ -50,9 +50,7 @@ final class ConfigurationTest extends TestCase
             ],
             'service' => [
                 'mailer'                 => 'nucleos_user.mailer.simple',
-                'email_canonicalizer'    => 'nucleos_user.util.canonicalizer.simple',
                 'token_generator'        => 'nucleos_user.util.token_generator.simple',
-                'username_canonicalizer' => 'nucleos_user.util.canonicalizer.simple',
                 'user_manager'           => 'nucleos_user.user_manager.default',
             ],
         ];

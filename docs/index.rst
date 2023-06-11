@@ -22,7 +22,6 @@ The following documents are available:
     emails
     groups
     doctrine
-    canonicalizer
     custom_storage_layer
     security
     deletion

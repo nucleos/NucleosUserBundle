@@ -20,8 +20,6 @@ All available configuration options are listed below with their default values.
             from_email: # Use this node only if you don't want the global email address for the resetting email
         service:
             mailer:                 nucleos_user.mailer.simple
-            email_canonicalizer:    nucleos_user.util.canonicalizer.simple
-            username_canonicalizer: nucleos_user.util.canonicalizer.simple
             token_generator:        nucleos_user.util.token_generator.simple
             user_manager:           nucleos_user.user_manager.default
         group:

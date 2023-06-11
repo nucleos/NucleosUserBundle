@@ -70,9 +70,4 @@ interface UserManager
      * Updates a user.
      */
     public function updateUser(UserInterface $user, bool $andFlush = true): void;
-
-    /**
-     * Updates the canonical username and email fields for a user.
-     */
-    public function updateCanonicalFields(UserInterface $user): void;
 }

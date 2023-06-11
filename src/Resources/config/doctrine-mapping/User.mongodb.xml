@@ -2,9 +2,7 @@
 <doctrine-mongo-mapping xmlns="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping                         http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
   <mapped-superclass name="Nucleos\UserBundle\Model\User" collection="nucleos_user_user">
     <field name="username" type="string"/>
-    <field name="usernameCanonical" type="string"/>
     <field name="email" type="string"/>
-    <field name="emailCanonical" type="string"/>
     <field name="enabled" type="boolean"/>
     <field name="password" type="string"/>
     <field name="lastLogin" type="date"/>
@@ -15,11 +13,11 @@
     <field name="roles" type="collection"/>
     <indexes>
       <index>
-        <key name="usernameCanonical" order="asc"/>
+        <key name="username" order="asc"/>
         <option name="unique" value="true"/>
       </index>
       <index>
-        <key name="emailCanonical" order="asc"/>
+        <key name="email" order="asc"/>
         <option name="unique" value="true"/>
       </index>
       <index>
