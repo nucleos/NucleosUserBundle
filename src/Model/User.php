@@ -31,11 +31,7 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 {
     protected ?string $username = null;
 
-    protected ?string $usernameCanonical = null;
-
     protected ?string $email = null;
-
-    protected ?string $emailCanonical = null;
 
     protected bool $enabled = false;
 
@@ -97,19 +93,9 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
         return $this->getUsername();
     }
 
-    public function getUsernameCanonical(): string
-    {
-        return $this->usernameCanonical ?? '';
-    }
-
     public function getEmail(): string
     {
         return $this->email ?? '';
-    }
-
-    public function getEmailCanonical(): string
-    {
-        return $this->emailCanonical ?? '';
     }
 
     public function getPassword(): string
@@ -186,22 +172,12 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 
     public function setUsername(string $username): void
     {
-        $this->username = $username;
-    }
-
-    public function setUsernameCanonical(string $usernameCanonical): void
-    {
-        $this->usernameCanonical = $usernameCanonical;
+        $this->username = strtolower($username);
     }
 
     public function setEmail(string $email): void
     {
-        $this->email = $email;
-    }
-
-    public function setEmailCanonical(string $emailCanonical): void
-    {
-        $this->emailCanonical = $emailCanonical;
+        $this->email = strtolower($email);
     }
 
     public function setEnabled(bool $boolean): void

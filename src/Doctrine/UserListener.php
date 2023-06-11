@@ -22,19 +22,15 @@ use Doctrine\ORM\Mapping\ClassMetadata as ORMClassMetadata;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Doctrine\Persistence\ObjectManager;
 use Nucleos\UserBundle\Model\UserInterface;
-use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 final class UserListener implements EventSubscriber
 {
     private UserPasswordHasherInterface $userPasswordHasher;
 
-    private CanonicalFieldsUpdater $canonicalFieldsUpdater;
-
-    public function __construct(UserPasswordHasherInterface $userPasswordHasher, CanonicalFieldsUpdater $canonicalFieldsUpdater)
+    public function __construct(UserPasswordHasherInterface $userPasswordHasher)
     {
         $this->userPasswordHasher     = $userPasswordHasher;
-        $this->canonicalFieldsUpdater = $canonicalFieldsUpdater;
     }
 
     public function getSubscribedEvents(): array
@@ -70,8 +66,6 @@ final class UserListener implements EventSubscriber
 
     private function updateUserFields(UserInterface $user): void
     {
-        $this->canonicalFieldsUpdater->updateCanonicalFields($user);
-
         if (null === $user->getPlainPassword()) {
             return;
         }

@@ -14,9 +14,6 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\Model;
 
 use Nucleos\UserBundle\Model\BaseUserManager;
-use Nucleos\UserBundle\Model\GroupInterface;
-use Nucleos\UserBundle\Model\User;
-use Nucleos\UserBundle\Util\CanonicalFieldsUpdater;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -27,42 +24,16 @@ final class BaseUserManagerTest extends TestCase
      */
     private $manager;
 
-    /**
-     * @var CanonicalFieldsUpdater&MockObject
-     */
-    private $fieldsUpdater;
-
     protected function setUp(): void
     {
-        $this->fieldsUpdater = $this->createMock(CanonicalFieldsUpdater::class);
-
-        $this->manager = $this->getUserManager([
-            $this->fieldsUpdater,
-        ]);
-    }
-
-    public function testUpdateCanonicalFields(): void
-    {
-        $user = $this->getUser();
-
-        $this->fieldsUpdater->expects(static::once())
-            ->method('updateCanonicalFields')
-            ->with(static::identicalTo($user))
-        ;
-
-        $this->manager->updateCanonicalFields($user);
+        $this->manager = $this->getUserManager([]);
     }
 
     public function testFindUserByUsername(): void
     {
         $this->manager->expects(static::once())
             ->method('findUserBy')
-            ->with(static::equalTo(['usernameCanonical' => 'jack']))
-        ;
-        $this->fieldsUpdater->expects(static::once())
-            ->method('canonicalizeUsername')
-            ->with('jack')
-            ->willReturn('jack')
+            ->with(static::equalTo(['username' => 'jack']))
         ;
 
         $this->manager->findUserByUsername('jack');
@@ -72,12 +43,7 @@ final class BaseUserManagerTest extends TestCase
     {
         $this->manager->expects(static::once())
             ->method('findUserBy')
-            ->with(static::equalTo(['usernameCanonical' => 'jack']))
-        ;
-        $this->fieldsUpdater->expects(static::once())
-            ->method('canonicalizeUsername')
-            ->with('JaCk')
-            ->willReturn('jack')
+            ->with(static::equalTo(['username' => 'jack']))
         ;
 
         $this->manager->findUserByUsername('JaCk');
@@ -87,12 +53,7 @@ final class BaseUserManagerTest extends TestCase
     {
         $this->manager->expects(static::once())
             ->method('findUserBy')
-            ->with(static::equalTo(['emailCanonical' => 'jack@email.org']))
-        ;
-        $this->fieldsUpdater->expects(static::once())
-            ->method('canonicalizeEmail')
-            ->with('jack@email.org')
-            ->willReturn('jack@email.org')
+            ->with(static::equalTo(['email' => 'jack@email.org']))
         ;
 
         $this->manager->findUserByEmail('jack@email.org');
@@ -102,25 +63,10 @@ final class BaseUserManagerTest extends TestCase
     {
         $this->manager->expects(static::once())
             ->method('findUserBy')
-            ->with(static::equalTo(['emailCanonical' => 'jack@email.org']))
-        ;
-        $this->fieldsUpdater->expects(static::once())
-            ->method('canonicalizeEmail')
-            ->with('JaCk@EmAiL.oRg')
-            ->willReturn('jack@email.org')
+            ->with(static::equalTo(['email' => 'jack@email.org']))
         ;
 
         $this->manager->findUserByEmail('JaCk@EmAiL.oRg');
-    }
-
-    /**
-     * @return MockObject&User<GroupInterface>
-     */
-    private function getUser(): MockObject
-    {
-        return $this->getMockBuilder(User::class)
-            ->getMockForAbstractClass()
-        ;
     }
 
     /**

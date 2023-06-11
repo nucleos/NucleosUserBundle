@@ -135,8 +135,6 @@ final class NucleosUserExtensionTest extends TestCase
 
         $this->assertParameter('custom_loggedin', 'nucleos_user.loggedin.route');
         $this->assertAlias('nucleos_user.mailer.simple', 'nucleos_user.mailer');
-        $this->assertAlias('nucleos_user.util.canonicalizer.simple', 'nucleos_user.util.email_canonicalizer');
-        $this->assertAlias('nucleos_user.util.canonicalizer.simple', 'nucleos_user.util.username_canonicalizer');
     }
 
     public function testUserLoadUtilService(): void
@@ -144,8 +142,6 @@ final class NucleosUserExtensionTest extends TestCase
         $this->createFullConfiguration();
 
         $this->assertAlias('acme_my.mailer', 'nucleos_user.mailer');
-        $this->assertAlias('acme_my.email_canonicalizer', 'nucleos_user.util.email_canonicalizer');
-        $this->assertAlias('acme_my.username_canonicalizer', 'nucleos_user.util.username_canonicalizer');
     }
 
     public function testUserLoadFlashesByDefault(): void
@@ -260,8 +256,6 @@ resetting:
     from_email: Acme Corp <reset@acme.org>
 service:
     mailer: acme_my.mailer
-    email_canonicalizer: acme_my.email_canonicalizer
-    username_canonicalizer: acme_my.username_canonicalizer
     user_manager: acme_my.user_manager
 group:
     group_class: Acme\MyBundle\Entity\Group

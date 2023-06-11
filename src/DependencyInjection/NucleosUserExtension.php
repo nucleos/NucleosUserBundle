@@ -86,9 +86,6 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
             $loader->load('flash_notifications.php');
         }
 
-        $container->setAlias('nucleos_user.util.email_canonicalizer', new Alias($config['service']['email_canonicalizer'], true));
-        $container->setAlias('nucleos_user.util.username_canonicalizer', new Alias($config['service']['username_canonicalizer'], true));
-
         $container->setAlias('nucleos_user.util.token_generator', new Alias($config['service']['token_generator'], true));
         $container->setAlias(TokenGenerator::class, new Alias($config['service']['token_generator'], true));
 
