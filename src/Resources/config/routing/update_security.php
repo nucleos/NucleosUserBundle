@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Symfony\Component\Routing\Loader\Configurator;
 
-use Nucleos\UserBundle\Action\ChangePasswordAction;
+use Nucleos\UserBundle\Action\UpdateSecurityAction;
 
 return static function (RoutingConfigurator $routes): void {
-    $routes->add('nucleos_user_change_password', '/change-password')
-        ->controller(ChangePasswordAction::class)
+    $routes->add('nucleos_user_update_security', '/change-password')
+        ->controller(UpdateSecurityAction::class)
         ->methods(['GET', 'POST'])
     ;
 };

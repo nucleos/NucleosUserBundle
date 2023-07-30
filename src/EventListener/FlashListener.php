@@ -29,7 +29,7 @@ final class FlashListener implements EventSubscriberInterface
      * @var string[]
      */
     private static array $successMessages = [
-        NucleosUserEvents::CHANGE_PASSWORD_COMPLETED => 'change_password.flash.success',
+        NucleosUserEvents::UPDATE_SECURITY_COMPLETED => 'update_security.flash.success',
         NucleosUserEvents::RESETTING_RESET_COMPLETED => 'resetting.flash.success',
         NucleosUserEvents::ACCOUNT_DELETION_SUCCESS  => 'deletion.success',
     ];
@@ -47,7 +47,7 @@ final class FlashListener implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            NucleosUserEvents::CHANGE_PASSWORD_COMPLETED => 'addSuccessFlash',
+            NucleosUserEvents::UPDATE_SECURITY_COMPLETED => 'addSuccessFlash',
             NucleosUserEvents::RESETTING_RESET_COMPLETED => 'addSuccessFlash',
             NucleosUserEvents::ACCOUNT_DELETION_SUCCESS  => 'addSuccessFlash',
         ];

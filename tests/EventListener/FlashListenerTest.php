@@ -57,6 +57,6 @@ final class FlashListenerTest extends TestCase
     {
         $this->expectNotToPerformAssertions();
 
-        $this->listener->addSuccessFlash($this->event, NucleosUserEvents::CHANGE_PASSWORD_COMPLETED);
+        $this->listener->addSuccessFlash($this->event, NucleosUserEvents::UPDATE_SECURITY_COMPLETED);
     }
 }

@@ -11,21 +11,20 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Nucleos\UserBundle\Action\ChangePasswordAction;
-use Nucleos\UserBundle\Form\Model\ChangePassword;
-use Nucleos\UserBundle\Form\Type\ChangePasswordFormType;
+use Nucleos\UserBundle\Action\UpdateSecurityAction;
+use Nucleos\UserBundle\Form\Type\UpdateSecurityFormType;
 use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
 
-        ->set(ChangePasswordFormType::class)
+        ->set(UpdateSecurityFormType::class)
             ->tag('form.type')
             ->args([
-                ChangePassword::class,
+                '%nucleos_user.model.user.class%',
             ])
 
-        ->set(ChangePasswordAction::class)
+        ->set(UpdateSecurityAction::class)
             ->public()
             ->args([
                 new Reference('twig'),

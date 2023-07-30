@@ -31,7 +31,6 @@
         <option name="message">nucleos_user.password.blank</option>
         <option name="groups">
           <value>ResetPassword</value>
-          <value>ChangePassword</value>
         </option>
       </constraint>
       <constraint name="Length">
@@ -40,7 +39,7 @@
         <option name="minMessage">nucleos_user.password.short</option>
         <option name="groups">
           <value>ResetPassword</value>
-          <value>ChangePassword</value>
+          <value>UpdateSecurity</value>
         </option>
       </constraint>
     </property>
