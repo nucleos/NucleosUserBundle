@@ -16,8 +16,7 @@ namespace Nucleos\UserBundle\Action;
 use Nucleos\UserBundle\Event\FilterUserResponseEvent;
 use Nucleos\UserBundle\Event\FormEvent;
 use Nucleos\UserBundle\Event\GetResponseUserEvent;
-use Nucleos\UserBundle\Form\Model\ChangePassword;
-use Nucleos\UserBundle\Form\Type\ChangePasswordFormType;
+use Nucleos\UserBundle\Form\Type\UpdateSecurityFormType;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Nucleos\UserBundle\Util\UserManipulator;
@@ -33,7 +32,7 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 
-final class ChangePasswordAction
+final class UpdateSecurityAction
 {
     private Environment $twig;
 
@@ -79,54 +78,54 @@ final class ChangePasswordAction
         }
 
         $event = new GetResponseUserEvent($user, $request);
-        $this->eventDispatcher->dispatch($event, NucleosUserEvents::CHANGE_PASSWORD_INITIALIZE);
+        $this->eventDispatcher->dispatch($event, NucleosUserEvents::UPDATE_SECURITY_INITIALIZE);
 
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
 
-        $form = $this->createForm($formModel = new ChangePassword());
+        $form = $this->createForm($user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $event = new FormEvent($form, $request);
-            $this->eventDispatcher->dispatch($event, NucleosUserEvents::CHANGE_PASSWORD_SUCCESS);
+            $this->eventDispatcher->dispatch($event, NucleosUserEvents::UPDATE_SECURITY_SUCCESS);
 
-            $this->updatePassword($user, $formModel);
+            $this->updatePassword($user);
 
             if (null === $response = $event->getResponse()) {
                 $url      = $this->router->generate($this->loggedinRoute);
                 $response = new RedirectResponse($url);
             }
 
-            $this->eventDispatcher->dispatch(new FilterUserResponseEvent($user, $request, $response), NucleosUserEvents::CHANGE_PASSWORD_COMPLETED);
+            $this->eventDispatcher->dispatch(new FilterUserResponseEvent($user, $request, $response), NucleosUserEvents::UPDATE_SECURITY_COMPLETED);
 
             return $response;
         }
 
-        return new Response($this->twig->render('@NucleosUser/ChangePassword/change_password.html.twig', [
+        return new Response($this->twig->render('@NucleosUser/UpdateSecurity/update_security.html.twig', [
             'form' => $form->createView(),
         ]));
     }
 
-    private function createForm(ChangePassword $model): FormInterface
+    private function createForm(UserInterface $model): FormInterface
     {
         return $this->formFactory
-            ->create(ChangePasswordFormType::class, $model, [
-                'validation_groups' => ['ChangePassword', 'Default'],
+            ->create(UpdateSecurityFormType::class, $model, [
+                'validation_groups' => ['UpdateSecurity', 'Default'],
             ])
             ->add('save', SubmitType::class, [
-                'label'  => 'change_password.submit',
+                'label'  => 'update_security.submit',
             ])
         ;
     }
 
-    private function updatePassword(UserInterface $user, ChangePassword $model): void
+    private function updatePassword(UserInterface $user): void
     {
-        if (null === $model->getPlainPassword()) {
+        if (null === $user->getPlainPassword()) {
             return;
         }
 
-        $this->userManipulator->changePassword($user->getUsername(), $model->getPlainPassword());
+        $this->userManipulator->changePassword($user->getUsername(), $user->getPlainPassword());
     }
 }

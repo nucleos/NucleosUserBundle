@@ -60,7 +60,7 @@ final class AppKernel extends Kernel
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
         $routes->import('@NucleosUserBundle/Resources/config/routing/security.php');
-        $routes->import('@NucleosUserBundle/Resources/config/routing/change_password.php');
+        $routes->import('@NucleosUserBundle/Resources/config/routing/update_security.php');
         $routes->import('@NucleosUserBundle/Resources/config/routing/resetting.php')
             ->prefix('/resetting')
         ;

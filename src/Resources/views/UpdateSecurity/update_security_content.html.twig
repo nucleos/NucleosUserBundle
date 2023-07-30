@@ -1,0 +1,5 @@
+{% trans_default_domain 'NucleosUserBundle' %}
+
+{{ form_start(form, { 'action': path('nucleos_user_update_security'), 'attr': { 'class': 'nucleos_user_update_security' } }) }}
+    {{ form_widget(form) }}
+{{ form_end(form) }}

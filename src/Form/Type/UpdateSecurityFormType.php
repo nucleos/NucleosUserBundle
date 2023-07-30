@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Form\Type;
 
-use Nucleos\UserBundle\Form\Model\ChangePassword;
+use Nucleos\UserBundle\Model\UserInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -22,15 +22,15 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-final class ChangePasswordFormType extends AbstractType
+final class UpdateSecurityFormType extends AbstractType
 {
     /**
-     * @phpstan-var class-string<ChangePassword>
+     * @phpstan-var class-string<UserInterface>
      */
     private string $class;
 
     /**
-     * @phpstan-param class-string<ChangePassword> $class
+     * @phpstan-param class-string<UserInterface> $class
      */
     public function __construct(string $class)
     {
@@ -77,7 +77,7 @@ final class ChangePasswordFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class'         => $this->class,
-            'csrf_token_id'      => 'change_password',
+            'csrf_token_id'      => 'update_security',
             'translation_domain' => 'NucleosUserBundle',
         ]);
     }

@@ -19,13 +19,13 @@ namespace Nucleos\UserBundle;
 final class NucleosUserEvents
 {
     /**
-     * The CHANGE_PASSWORD_COMPLETED event occurs after saving the user in the change password process.
+     * The UPDATE_SECURITY_COMPLETED event occurs after saving the user in the security update process.
      *
      * This event allows you to access the response which will be sent.
      *
      * @Event("Nucleos\UserBundle\Event\FilterUserResponseEvent")
      */
-    public const CHANGE_PASSWORD_COMPLETED = 'nucleos_user.change_password.edit.completed';
+    public const UPDATE_SECURITY_COMPLETED = 'nucleos_user.update_security.edit.completed';
 
     /**
      * The USER_CREATED event occurs when the user is created with UserManipulator.
@@ -100,22 +100,22 @@ final class NucleosUserEvents
     public const USER_TIMEZONE_CHANGED = 'nucleos_user.user.timezone_changed';
 
     /**
-     * The CHANGE_PASSWORD_INITIALIZE event occurs when the change password process is initialized.
+     * The UPDATE_SECURITY_INITIALIZE event occurs when the security update process is initialized.
      *
      * This event allows you to modify the default values of the user before binding the form.
      *
      * @Event("Nucleos\UserBundle\Event\GetResponseUserEvent")
      */
-    public const CHANGE_PASSWORD_INITIALIZE = 'nucleos_user.change_password.edit.initialize';
+    public const UPDATE_SECURITY_INITIALIZE = 'nucleos_user.update_security.edit.initialize';
 
     /**
-     * The CHANGE_PASSWORD_SUCCESS event occurs when the change password form is submitted successfully.
+     * The UPDATE_SECURITY_SUCCESS event occurs when the security update form is submitted successfully.
      *
      * This event allows you to set the response instead of using the default one.
      *
      * @Event("Nucleos\UserBundle\Event\FormEvent")
      */
-    public const CHANGE_PASSWORD_SUCCESS = 'nucleos_user.change_password.edit.success';
+    public const UPDATE_SECURITY_SUCCESS = 'nucleos_user.update_security.edit.success';
 
     /**
      * The RESETTING_RESET_REQUEST event occurs when a user requests a password reset of the account.

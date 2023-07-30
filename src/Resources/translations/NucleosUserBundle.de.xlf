@@ -25,12 +25,12 @@
         <source>security.forgotten_password</source>
         <target>Passwort vergessen?</target>
       </trans-unit>
-      <trans-unit id="change_password.submit">
-        <source>change_password.submit</source>
+      <trans-unit id="update_security.submit">
+        <source>update_security.submit</source>
         <target>Passwort ändern</target>
       </trans-unit>
-      <trans-unit id="change_password.flash.success">
-        <source>change_password.flash.success</source>
+      <trans-unit id="update_security.flash.success">
+        <source>update_security.flash.success</source>
         <target>Das Passwort wurde geändert.</target>
       </trans-unit>
       <trans-unit id="resetting.check_email">

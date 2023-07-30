@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\Form\Type;
 
-use Nucleos\UserBundle\Form\Model\ChangePassword;
-use Nucleos\UserBundle\Form\Type\ChangePasswordFormType;
+use Nucleos\UserBundle\Form\Type\UpdateSecurityFormType;
+use Nucleos\UserBundle\Tests\App\Entity\TestUser;
 
-final class ChangePasswordFormTypeTest extends ValidatorExtensionTypeTestCase
+final class UpdateSecurityFormTypeTest extends ValidatorExtensionTypeTestCase
 {
     public function testSubmit(): void
     {
-        $model = new ChangePassword();
+        $model = new TestUser();
         $model->setPlainPassword('foo');
 
-        $form     = $this->factory->create(ChangePasswordFormType::class, $model);
+        $form     = $this->factory->create(UpdateSecurityFormType::class, $model);
         $formData = [
             'current_password' => 'foo',
             'plainPassword'    => [
@@ -41,7 +41,7 @@ final class ChangePasswordFormTypeTest extends ValidatorExtensionTypeTestCase
     protected function getTypes(): array
     {
         return array_merge(parent::getTypes(), [
-            new ChangePasswordFormType(ChangePassword::class),
+            new UpdateSecurityFormType(TestUser::class),
         ]);
     }
 }

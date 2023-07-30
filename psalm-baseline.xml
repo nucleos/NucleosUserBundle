@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.7.7@e028ba46ba0d7f9a78bc3201c251e137383e145f">
-  <file src="src/Action/ChangePasswordAction.php">
+  <file src="src/Action/UpdateSecurityAction.php">
     <InvalidNullableReturnType>
       <code>Response</code>
     </InvalidNullableReturnType>

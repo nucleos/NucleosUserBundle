@@ -32,7 +32,7 @@ final class RoutingTest extends TestCase
         $loader  = new PhpFileLoader($locator);
 
         $collection = new RouteCollection();
-        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/change_password.php'));
+        $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/update_security.php'));
 
         $subCollection = $loader->load(__DIR__.'/../../src/Resources/config/routing/resetting.php');
         $subCollection->addPrefix('/resetting');
@@ -50,7 +50,7 @@ final class RoutingTest extends TestCase
      */
     public static function loadRoutingProvider(): Generator
     {
-        yield ['nucleos_user_change_password', '/change-password', ['GET', 'POST']];
+        yield ['nucleos_user_update_security', '/change-password', ['GET', 'POST']];
 
         yield ['nucleos_user_resetting_request', '/resetting/request', ['GET']];
 

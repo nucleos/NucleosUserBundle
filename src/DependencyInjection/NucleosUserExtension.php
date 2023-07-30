@@ -109,7 +109,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
             ],
         ]);
 
-        $this->loadChangePassword($loader);
+        $this->loadUpdateSecurity($loader);
         $this->loadDeletion($config['deletion'], $loader);
         $this->loadResetting($config['resetting'], $container, $loader, $config['from_email']);
         $this->loadLoggedin($config['loggedin'], $container);
@@ -184,9 +184,9 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         }
     }
 
-    private function loadChangePassword(FileLoader $loader): void
+    private function loadUpdateSecurity(FileLoader $loader): void
     {
-        $loader->load('change_password.php');
+        $loader->load('update_security.php');
     }
 
     private function loadDeletion(array $config, FileLoader $loader): void

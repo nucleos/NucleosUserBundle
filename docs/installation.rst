@@ -296,8 +296,8 @@ logging in, creating users, etc.
         resource: "@NucleosUserBundle/Resources/config/routing/resetting.php"
         prefix: /resetting
 
-    nucleos_user_change_password:
-        resource: "@NucleosUserBundle/Resources/config/routing/change_password.php"
+    nucleos_user_update_security:
+        resource: "@NucleosUserBundle/Resources/config/routing/update_security.php"
         prefix: /security
 
     nucleos_user_deletion:
