@@ -31,7 +31,7 @@
       </trans-unit>
       <trans-unit id="update_security.flash.success">
         <source>update_security.flash.success</source>
-        <target>Пароль изменен.</target>
+        <target>Изменения были сохранены.</target>
       </trans-unit>
       <trans-unit id="resetting.check_email">
         <source>resetting.check_email</source>
