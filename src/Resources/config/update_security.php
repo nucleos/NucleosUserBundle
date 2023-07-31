@@ -33,7 +33,6 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('event_dispatcher'),
                 new Reference('form.factory'),
                 new Reference('nucleos_user.util.user_manipulator'),
-                '%nucleos_user.loggedin.route%',
             ])
     ;
 };
