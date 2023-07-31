@@ -60,8 +60,9 @@ final class UpdateSecurityFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', RepeatedType::class, [
-                'type'    => PasswordType::class,
-                'options' => [
+                'type'     => PasswordType::class,
+                'required' => false,
+                'options'  => [
                     'attr'               => [
                         'autocomplete' => 'new-password',
                     ],
