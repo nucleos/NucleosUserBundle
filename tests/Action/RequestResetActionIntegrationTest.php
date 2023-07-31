@@ -19,11 +19,11 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class RequestResetActionIntegrationTest extends WebTestCase
 {
-    private KernelBrowser $client;
+    private readonly KernelBrowser $client;
 
     protected function setUp(): void
     {
-        $this->client = static::createClient();
+        $this->client = self::createClient();
     }
 
     public function testLogin(): void
@@ -31,7 +31,7 @@ final class RequestResetActionIntegrationTest extends WebTestCase
         $this->client->followRedirects(true);
         $this->client->request('GET', '/resetting');
 
-        static::assertResponseStatusCodeSame(200);
+        self::assertResponseStatusCodeSame(200);
     }
 
     protected static function getKernelClass(): string

@@ -23,13 +23,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class SimpleResettingMailer implements ResettingMailer
 {
-    private SymfonyMailer $mailer;
+    private readonly SymfonyMailer $mailer;
 
-    private TranslatorInterface $translator;
+    private readonly TranslatorInterface $translator;
 
-    private UrlGeneratorInterface $router;
+    private readonly UrlGeneratorInterface $router;
 
-    private string $fromEmail;
+    private readonly string $fromEmail;
 
     public function __construct(SymfonyMailer $mailer, TranslatorInterface $translator, UrlGeneratorInterface $router, string $fromEmail)
     {

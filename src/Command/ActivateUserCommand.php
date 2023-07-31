@@ -25,7 +25,7 @@ final class ActivateUserCommand extends Command
 {
     protected static $defaultName = 'nucleos:user:activate';
 
-    private UserManipulator $userManipulator;
+    private readonly UserManipulator $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
     {

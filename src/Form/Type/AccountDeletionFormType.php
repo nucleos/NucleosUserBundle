@@ -27,7 +27,7 @@ final class AccountDeletionFormType extends AbstractType
     /**
      * @phpstan-var class-string<AccountDeletion>
      */
-    private string $class;
+    private readonly string $class;
 
     /**
      * @phpstan-param class-string<AccountDeletion> $class
@@ -55,7 +55,7 @@ final class AccountDeletionFormType extends AbstractType
                     new NotBlank(),
                     new UserPassword($constraintsOptions),
                 ],
-                'attr' => [
+                'attr'               => [
                     'autocomplete' => 'current-password',
                 ],
             ])

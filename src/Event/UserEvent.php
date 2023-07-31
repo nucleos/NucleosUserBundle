@@ -21,7 +21,7 @@ class UserEvent extends Event
 {
     protected ?Request $request = null;
 
-    protected UserInterface $user;
+    protected readonly UserInterface $user;
 
     public function __construct(UserInterface $user, Request $request = null)
     {

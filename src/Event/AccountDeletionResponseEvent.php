@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class AccountDeletionResponseEvent extends AccountDeletionEvent
 {
-    private Response $response;
+    private readonly Response $response;
 
     public function __construct(UserInterface $user, Request $request, Response $response)
     {

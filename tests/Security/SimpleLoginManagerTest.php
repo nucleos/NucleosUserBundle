@@ -46,30 +46,30 @@ final class SimpleLoginManagerTest extends TestCase
         $tokenStorage = $this->getMockBuilder(TokenStorageInterface::class)->getMock();
 
         $tokenStorage
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('setToken')
-            ->with(static::isInstanceOf(TokenInterface::class))
+            ->with(self::isInstanceOf(TokenInterface::class))
         ;
 
         $userChecker = $this->getMockBuilder(UserCheckerInterface::class)->getMock();
         $userChecker
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('checkPreAuth')
-            ->with(static::isInstanceOf(UserInterface::class))
+            ->with(self::isInstanceOf(UserInterface::class))
         ;
 
         $request = new Request();
 
         $sessionStrategy = $this->getMockBuilder(SessionAuthenticationStrategyInterface::class)->getMock();
         $sessionStrategy
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('onAuthentication')
-            ->with($request, static::isInstanceOf(TokenInterface::class))
+            ->with($request, self::isInstanceOf(TokenInterface::class))
         ;
 
         $requestStack = $this->getMockBuilder(RequestStack::class)->getMock();
         $requestStack
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getCurrentRequest')
             ->willReturn($request)
         ;
@@ -84,7 +84,7 @@ final class SimpleLoginManagerTest extends TestCase
     {
         $user = $this->getMockBuilder(UserInterface::class)->getMock();
         $user
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('getRoles')
             ->willReturn(['ROLE_USER'])
         ;

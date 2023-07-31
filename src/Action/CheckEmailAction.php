@@ -21,11 +21,11 @@ use Twig\Environment;
 
 final class CheckEmailAction
 {
-    private Environment $twig;
+    private readonly Environment $twig;
 
-    private RouterInterface $router;
+    private readonly RouterInterface $router;
 
-    private int $retryTtl;
+    private readonly int $retryTtl;
 
     public function __construct(Environment $twig, RouterInterface $router, int $retryTtl)
     {

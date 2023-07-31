@@ -25,17 +25,17 @@ use Nucleos\UserBundle\Model\GroupInterface;
  */
 final class GroupManager extends BaseGroupManager
 {
-    private ObjectManager $objectManager;
+    private readonly ObjectManager $objectManager;
 
     /**
      * @phpstan-var class-string<GroupTemplate>
      */
-    private string $class;
+    private readonly string $class;
 
     /**
      * @phpstan-var ObjectRepository<GroupTemplate>
      */
-    private ObjectRepository $repository;
+    private readonly ObjectRepository $repository;
 
     /**
      * @phpstan-param class-string<GroupTemplate> $class

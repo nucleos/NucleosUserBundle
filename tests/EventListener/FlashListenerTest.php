@@ -25,9 +25,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class FlashListenerTest extends TestCase
 {
-    private Event $event;
+    private readonly Event $event;
 
-    private FlashListener $listener;
+    private readonly FlashListener $listener;
 
     protected function setUp(): void
     {

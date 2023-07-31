@@ -20,12 +20,12 @@ use Nucleos\UserBundle\Model\UserInterface;
 
 final class UserManager extends BaseUserManager
 {
-    private ObjectManager $objectManager;
+    private readonly ObjectManager $objectManager;
 
     /**
      * @phpstan-var class-string<UserInterface>
      */
-    private string $class;
+    private readonly string $class;
 
     /**
      * @phpstan-param class-string<UserInterface> $class

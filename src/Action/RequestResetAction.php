@@ -20,11 +20,11 @@ use Twig\Environment;
 
 final class RequestResetAction
 {
-    private Environment $twig;
+    private readonly Environment $twig;
 
-    private FormFactoryInterface $formFactory;
+    private readonly FormFactoryInterface $formFactory;
 
-    private RouterInterface $router;
+    private readonly RouterInterface $router;
 
     public function __construct(Environment $twig, FormFactoryInterface $formFactory, RouterInterface $router)
     {

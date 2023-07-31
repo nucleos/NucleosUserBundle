@@ -23,13 +23,13 @@ use Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterfa
 
 final class SimpleLoginManager implements LoginManager
 {
-    private TokenStorageInterface $tokenStorage;
+    private readonly TokenStorageInterface $tokenStorage;
 
-    private UserCheckerInterface $userChecker;
+    private readonly UserCheckerInterface $userChecker;
 
-    private SessionAuthenticationStrategyInterface $sessionStrategy;
+    private readonly SessionAuthenticationStrategyInterface $sessionStrategy;
 
-    private RequestStack $requestStack;
+    private readonly RequestStack $requestStack;
 
     public function __construct(
         TokenStorageInterface $tokenStorage,

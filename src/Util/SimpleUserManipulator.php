@@ -24,11 +24,11 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final class SimpleUserManipulator implements UserManipulator
 {
-    private UserManager $userManager;
+    private readonly UserManager $userManager;
 
-    private EventDispatcherInterface $dispatcher;
+    private readonly EventDispatcherInterface $dispatcher;
 
-    private RequestStack $requestStack;
+    private readonly RequestStack $requestStack;
 
     public function __construct(UserManager $userManager, EventDispatcherInterface $dispatcher, RequestStack $requestStack)
     {

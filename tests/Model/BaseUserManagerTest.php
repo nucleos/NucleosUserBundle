@@ -31,9 +31,9 @@ final class BaseUserManagerTest extends TestCase
 
     public function testFindUserByUsername(): void
     {
-        $this->manager->expects(static::once())
+        $this->manager->expects(self::once())
             ->method('findUserBy')
-            ->with(static::equalTo(['username' => 'jack']))
+            ->with(self::equalTo(['username' => 'jack']))
         ;
 
         $this->manager->findUserByUsername('jack');
@@ -41,9 +41,9 @@ final class BaseUserManagerTest extends TestCase
 
     public function testFindUserByUsernameLowercasesTheUsername(): void
     {
-        $this->manager->expects(static::once())
+        $this->manager->expects(self::once())
             ->method('findUserBy')
-            ->with(static::equalTo(['username' => 'jack']))
+            ->with(self::equalTo(['username' => 'jack']))
         ;
 
         $this->manager->findUserByUsername('JaCk');
@@ -51,9 +51,9 @@ final class BaseUserManagerTest extends TestCase
 
     public function testFindUserByEmail(): void
     {
-        $this->manager->expects(static::once())
+        $this->manager->expects(self::once())
             ->method('findUserBy')
-            ->with(static::equalTo(['email' => 'jack@email.org']))
+            ->with(self::equalTo(['email' => 'jack@email.org']))
         ;
 
         $this->manager->findUserByEmail('jack@email.org');
@@ -61,9 +61,9 @@ final class BaseUserManagerTest extends TestCase
 
     public function testFindUserByEmailLowercasesTheEmail(): void
     {
-        $this->manager->expects(static::once())
+        $this->manager->expects(self::once())
             ->method('findUserBy')
-            ->with(static::equalTo(['email' => 'jack@email.org']))
+            ->with(self::equalTo(['email' => 'jack@email.org']))
         ;
 
         $this->manager->findUserByEmail('JaCk@EmAiL.oRg');

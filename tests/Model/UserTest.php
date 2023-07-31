@@ -26,7 +26,7 @@ final class UserTest extends TestCase
     {
         $user = $this->getUser();
         $user->setUsername('tony');
-        static::assertSame('tony', $user->getUsername());
+        self::assertSame('tony', $user->getUsername());
     }
 
     public function testEmail(): void
@@ -34,7 +34,7 @@ final class UserTest extends TestCase
         $user = $this->getUser();
 
         $user->setEmail('tony@mail.org');
-        static::assertSame('tony@mail.org', $user->getEmail());
+        self::assertSame('tony@mail.org', $user->getEmail());
     }
 
     public function testIsPasswordRequestNonExpired(): void
@@ -44,9 +44,9 @@ final class UserTest extends TestCase
 
         $user->setPasswordRequestedAt($passwordRequestedAt);
 
-        static::assertSame($passwordRequestedAt, $user->getPasswordRequestedAt());
-        static::assertTrue($user->isPasswordRequestNonExpired(15));
-        static::assertFalse($user->isPasswordRequestNonExpired(5));
+        self::assertSame($passwordRequestedAt, $user->getPasswordRequestedAt());
+        self::assertTrue($user->isPasswordRequestNonExpired(15));
+        self::assertFalse($user->isPasswordRequestNonExpired(5));
     }
 
     public function testIsPasswordRequestAtCleared(): void
@@ -57,8 +57,8 @@ final class UserTest extends TestCase
         $user->setPasswordRequestedAt($passwordRequestedAt);
         $user->setPasswordRequestedAt(null);
 
-        static::assertFalse($user->isPasswordRequestNonExpired(15));
-        static::assertFalse($user->isPasswordRequestNonExpired(5));
+        self::assertFalse($user->isPasswordRequestNonExpired(15));
+        self::assertFalse($user->isPasswordRequestNonExpired(5));
     }
 
     public function testTrueHasRole(): void
@@ -66,40 +66,40 @@ final class UserTest extends TestCase
         $user        = $this->getUser();
         $defaultrole = User::ROLE_DEFAULT;
         $newrole     = 'ROLE_X';
-        static::assertTrue($user->hasRole($defaultrole));
+        self::assertTrue($user->hasRole($defaultrole));
         $user->addRole($defaultrole);
-        static::assertTrue($user->hasRole($defaultrole));
+        self::assertTrue($user->hasRole($defaultrole));
         $user->addRole($newrole);
-        static::assertTrue($user->hasRole($newrole));
+        self::assertTrue($user->hasRole($newrole));
     }
 
     public function testFalseHasRole(): void
     {
         $user    = $this->getUser();
         $newrole = 'ROLE_X';
-        static::assertFalse($user->hasRole($newrole));
+        self::assertFalse($user->hasRole($newrole));
         $user->addRole($newrole);
-        static::assertTrue($user->hasRole($newrole));
+        self::assertTrue($user->hasRole($newrole));
     }
 
     public function testIsEqualTo(): void
     {
         $user = $this->getUser();
-        static::assertTrue($user->isEqualTo($user));
-        static::assertFalse($user->isEqualTo($this->getMockBuilder(UserInterface::class)->getMock()));
+        self::assertTrue($user->isEqualTo($user));
+        self::assertFalse($user->isEqualTo($this->getMockBuilder(UserInterface::class)->getMock()));
 
         $user2 = $this->getUser();
         $user2->setPassword('secret');
-        static::assertFalse($user->isEqualTo($user2));
+        self::assertFalse($user->isEqualTo($user2));
 
         $user3 = $this->getUser();
         $user3->setPassword('secret');
-        static::assertFalse($user->isEqualTo($user3));
+        self::assertFalse($user->isEqualTo($user3));
 
         $user4 = $this->getUser();
         $user4->setPassword('secret');
         $user4->setUsername('f00b4r');
-        static::assertFalse($user->isEqualTo($user4));
+        self::assertFalse($user->isEqualTo($user4));
     }
 
     /**

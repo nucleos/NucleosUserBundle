@@ -20,9 +20,9 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class FormEvent extends Event
 {
-    private FormInterface $form;
+    private readonly FormInterface $form;
 
-    private Request $request;
+    private readonly Request $request;
 
     private ?Response $response = null;
 

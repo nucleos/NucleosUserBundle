@@ -25,9 +25,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class LoginFormType extends AbstractType
 {
-    private AuthenticationUtils $authenticationUtils;
+    private readonly AuthenticationUtils $authenticationUtils;
 
-    private TranslatorInterface $translator;
+    private readonly TranslatorInterface $translator;
 
     public function __construct(AuthenticationUtils $authenticationUtils, TranslatorInterface $translator)
     {

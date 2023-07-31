@@ -29,19 +29,19 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final class SendEmailAction
 {
-    private RouterInterface $router;
+    private readonly RouterInterface $router;
 
-    private EventDispatcherInterface $eventDispatcher;
+    private readonly EventDispatcherInterface $eventDispatcher;
 
-    private UserManager $userManager;
+    private readonly UserManager $userManager;
 
-    private TokenGenerator $tokenGenerator;
+    private readonly TokenGenerator $tokenGenerator;
 
-    private ResettingMailer $mailer;
+    private readonly ResettingMailer $mailer;
 
-    private int $retryTtl;
+    private readonly int $retryTtl;
 
-    private UserProviderInterface $userProvider;
+    private readonly UserProviderInterface $userProvider;
 
     public function __construct(
         RouterInterface $router,

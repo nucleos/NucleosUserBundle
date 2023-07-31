@@ -37,14 +37,14 @@ final class SimpleUserManipulatorTest extends TestCase
         $password   = 'test_password';
         $email      = 'test@email.org';
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('createUser')
             ->willReturn($user)
         ;
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('updateUser')
-            ->with(static::isInstanceOf(TestUser::class))
+            ->with(self::isInstanceOf(TestUser::class))
         ;
 
         $eventDispatcherMock = $this->getEventDispatcherMock(NucleosUserEvents::USER_CREATED, true);
@@ -54,11 +54,11 @@ final class SimpleUserManipulatorTest extends TestCase
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->create($username, $password, $email, true, false);
 
-        static::assertSame($username, $user->getUsername());
-        static::assertSame($password, $user->getPlainPassword());
-        static::assertSame($email, $user->getEmail());
-        static::assertTrue($user->isEnabled());
-        static::assertFalse($user->isSuperAdmin());
+        self::assertSame($username, $user->getUsername());
+        self::assertSame($password, $user->getPlainPassword());
+        self::assertSame($email, $user->getEmail());
+        self::assertTrue($user->isEnabled());
+        self::assertFalse($user->isSuperAdmin());
     }
 
     public function testActivateWithValidUsername(): void
@@ -70,15 +70,15 @@ final class SimpleUserManipulatorTest extends TestCase
         $user->setUsername($username);
         $user->setEnabled(false);
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn($user)
-            ->with(static::equalTo($username))
+            ->with(self::equalTo($username))
         ;
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('updateUser')
-            ->with(static::isInstanceOf(TestUser::class))
+            ->with(self::isInstanceOf(TestUser::class))
         ;
 
         $eventDispatcherMock = $this->getEventDispatcherMock(NucleosUserEvents::USER_ACTIVATED, true);
@@ -88,8 +88,8 @@ final class SimpleUserManipulatorTest extends TestCase
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->activate($username);
 
-        static::assertSame($username, $user->getUsername());
-        static::assertTrue($user->isEnabled());
+        self::assertSame($username, $user->getUsername());
+        self::assertTrue($user->isEnabled());
     }
 
     public function testActivateWithInvalidUsername(): void
@@ -99,13 +99,13 @@ final class SimpleUserManipulatorTest extends TestCase
         $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $invalidusername = 'invalid_username';
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn(null)
-            ->with(static::equalTo($invalidusername))
+            ->with(self::equalTo($invalidusername))
         ;
 
-        $userManagerMock->expects(static::never())
+        $userManagerMock->expects(self::never())
             ->method('updateUser')
         ;
 
@@ -126,15 +126,15 @@ final class SimpleUserManipulatorTest extends TestCase
         $user->setUsername($username);
         $user->setEnabled(true);
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn($user)
-            ->with(static::equalTo($username))
+            ->with(self::equalTo($username))
         ;
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('updateUser')
-            ->with(static::isInstanceOf(TestUser::class))
+            ->with(self::isInstanceOf(TestUser::class))
         ;
 
         $eventDispatcherMock = $this->getEventDispatcherMock(NucleosUserEvents::USER_DEACTIVATED, true);
@@ -144,8 +144,8 @@ final class SimpleUserManipulatorTest extends TestCase
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->deactivate($username);
 
-        static::assertSame($username, $user->getUsername());
-        static::assertFalse($user->isEnabled());
+        self::assertSame($username, $user->getUsername());
+        self::assertFalse($user->isEnabled());
     }
 
     public function testDeactivateWithInvalidUsername(): void
@@ -155,13 +155,13 @@ final class SimpleUserManipulatorTest extends TestCase
         $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $invalidusername = 'invalid_username';
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn(null)
-            ->with(static::equalTo($invalidusername))
+            ->with(self::equalTo($invalidusername))
         ;
 
-        $userManagerMock->expects(static::never())
+        $userManagerMock->expects(self::never())
             ->method('updateUser')
         ;
 
@@ -182,15 +182,15 @@ final class SimpleUserManipulatorTest extends TestCase
         $user->setUsername($username);
         $user->setSuperAdmin(false);
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn($user)
-            ->with(static::equalTo($username))
+            ->with(self::equalTo($username))
         ;
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('updateUser')
-            ->with(static::isInstanceOf(TestUser::class))
+            ->with(self::isInstanceOf(TestUser::class))
         ;
 
         $eventDispatcherMock = $this->getEventDispatcherMock(NucleosUserEvents::USER_PROMOTED, true);
@@ -200,8 +200,8 @@ final class SimpleUserManipulatorTest extends TestCase
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->promote($username);
 
-        static::assertSame($username, $user->getUsername());
-        static::assertTrue($user->isSuperAdmin());
+        self::assertSame($username, $user->getUsername());
+        self::assertTrue($user->isSuperAdmin());
     }
 
     public function testPromoteWithInvalidUsername(): void
@@ -211,13 +211,13 @@ final class SimpleUserManipulatorTest extends TestCase
         $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $invalidusername = 'invalid_username';
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn(null)
-            ->with(static::equalTo($invalidusername))
+            ->with(self::equalTo($invalidusername))
         ;
 
-        $userManagerMock->expects(static::never())
+        $userManagerMock->expects(self::never())
             ->method('updateUser')
         ;
 
@@ -238,15 +238,15 @@ final class SimpleUserManipulatorTest extends TestCase
         $user->setUsername($username);
         $user->setSuperAdmin(true);
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn($user)
-            ->with(static::equalTo($username))
+            ->with(self::equalTo($username))
         ;
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('updateUser')
-            ->with(static::isInstanceOf(TestUser::class))
+            ->with(self::isInstanceOf(TestUser::class))
         ;
 
         $eventDispatcherMock = $this->getEventDispatcherMock(NucleosUserEvents::USER_DEMOTED, true);
@@ -256,8 +256,8 @@ final class SimpleUserManipulatorTest extends TestCase
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->demote($username);
 
-        static::assertSame($username, $user->getUsername());
-        static::assertFalse($user->isSuperAdmin());
+        self::assertSame($username, $user->getUsername());
+        self::assertFalse($user->isSuperAdmin());
     }
 
     public function testDemoteWithInvalidUsername(): void
@@ -267,13 +267,13 @@ final class SimpleUserManipulatorTest extends TestCase
         $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
         $invalidusername = 'invalid_username';
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn(null)
-            ->with(static::equalTo($invalidusername))
+            ->with(self::equalTo($invalidusername))
         ;
 
-        $userManagerMock->expects(static::never())
+        $userManagerMock->expects(self::never())
             ->method('updateUser')
         ;
 
@@ -297,15 +297,15 @@ final class SimpleUserManipulatorTest extends TestCase
         $user->setUsername($username);
         $user->setPlainPassword($oldpassword);
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn($user)
-            ->with(static::equalTo($username))
+            ->with(self::equalTo($username))
         ;
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('updateUser')
-            ->with(static::isInstanceOf(TestUser::class))
+            ->with(self::isInstanceOf(TestUser::class))
         ;
 
         $eventDispatcherMock = $this->getEventDispatcherMock(NucleosUserEvents::USER_PASSWORD_CHANGED, true);
@@ -315,8 +315,8 @@ final class SimpleUserManipulatorTest extends TestCase
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
         $manipulator->changePassword($username, $password);
 
-        static::assertSame($username, $user->getUsername());
-        static::assertSame($password, $user->getPlainPassword());
+        self::assertSame($username, $user->getUsername());
+        self::assertSame($password, $user->getPlainPassword());
     }
 
     public function testChangePasswordWithInvalidUsername(): void
@@ -328,13 +328,13 @@ final class SimpleUserManipulatorTest extends TestCase
         $invalidusername = 'invalid_username';
         $password        = 'test_password';
 
-        $userManagerMock->expects(static::once())
+        $userManagerMock->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn(null)
-            ->with(static::equalTo($invalidusername))
+            ->with(self::equalTo($invalidusername))
         ;
 
-        $userManagerMock->expects(static::never())
+        $userManagerMock->expects(self::never())
             ->method('updateUser')
         ;
 
@@ -353,10 +353,10 @@ final class SimpleUserManipulatorTest extends TestCase
         $userRole        = 'test_role';
         $user            = new TestUser();
 
-        $userManagerMock->expects(static::exactly(2))
+        $userManagerMock->expects(self::exactly(2))
             ->method('findUserByUsername')
             ->willReturn($user)
-            ->with(static::equalTo($username))
+            ->with(self::equalTo($username))
         ;
 
         $eventDispatcherMock = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
@@ -364,9 +364,9 @@ final class SimpleUserManipulatorTest extends TestCase
 
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
 
-        static::assertTrue($manipulator->addRole($username, $userRole));
-        static::assertFalse($manipulator->addRole($username, $userRole));
-        static::assertTrue($user->hasRole($userRole));
+        self::assertTrue($manipulator->addRole($username, $userRole));
+        self::assertFalse($manipulator->addRole($username, $userRole));
+        self::assertTrue($user->hasRole($userRole));
     }
 
     public function testRemoveRole(): void
@@ -377,10 +377,10 @@ final class SimpleUserManipulatorTest extends TestCase
         $user            = new TestUser();
         $user->addRole($userRole);
 
-        $userManagerMock->expects(static::exactly(2))
+        $userManagerMock->expects(self::exactly(2))
             ->method('findUserByUsername')
             ->willReturn($user)
-            ->with(static::equalTo($username))
+            ->with(self::equalTo($username))
         ;
 
         $eventDispatcherMock = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
@@ -388,9 +388,9 @@ final class SimpleUserManipulatorTest extends TestCase
 
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock);
 
-        static::assertTrue($manipulator->removeRole($username, $userRole));
-        static::assertFalse($user->hasRole($userRole));
-        static::assertFalse($manipulator->removeRole($username, $userRole));
+        self::assertTrue($manipulator->removeRole($username, $userRole));
+        self::assertFalse($user->hasRole($userRole));
+        self::assertFalse($manipulator->removeRole($username, $userRole));
     }
 
     /**
@@ -400,9 +400,9 @@ final class SimpleUserManipulatorTest extends TestCase
     {
         $eventDispatcherMock = $this->getMockBuilder(EventDispatcherInterface::class)->getMock();
 
-        $eventDispatcherMock->expects($once ? static::once() : static::never())
+        $eventDispatcherMock->expects($once ? self::once() : self::never())
             ->method('dispatch')
-            ->with(static::anything(), $event)
+            ->with(self::anything(), $event)
         ;
 
         return $eventDispatcherMock;
@@ -415,7 +415,7 @@ final class SimpleUserManipulatorTest extends TestCase
     {
         $requestStackMock = $this->getMockBuilder(RequestStack::class)->getMock();
 
-        $requestStackMock->expects($once ? static::once() : static::never())
+        $requestStackMock->expects($once ? self::once() : self::never())
             ->method('getCurrentRequest')
             ->willReturn(null)
         ;

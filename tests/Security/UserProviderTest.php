@@ -29,9 +29,9 @@ final class UserProviderTest extends TestCase
     /**
      * @var MockObject&UserManager
      */
-    private UserManager $userManager;
+    private readonly UserManager $userManager;
 
-    private UserProvider $userProvider;
+    private readonly UserProvider $userProvider;
 
     protected function setUp(): void
     {
@@ -42,20 +42,20 @@ final class UserProviderTest extends TestCase
     public function testLoadUserByUsername(): void
     {
         $user = $this->getMockBuilder(UserInterface::class)->getMock();
-        $this->userManager->expects(static::once())
+        $this->userManager->expects(self::once())
             ->method('findUserByUsername')
             ->with('foobar')
             ->willReturn($user)
         ;
 
-        static::assertSame($user, $this->userProvider->loadUserByUsername('foobar'));
+        self::assertSame($user, $this->userProvider->loadUserByUsername('foobar'));
     }
 
     public function testLoadUserByInvalidUsername(): void
     {
         $this->expectException(AuthenticationException::class);
 
-        $this->userManager->expects(static::once())
+        $this->userManager->expects(self::once())
             ->method('findUserByUsername')
             ->with('foobar')
             ->willReturn(null)
@@ -68,24 +68,24 @@ final class UserProviderTest extends TestCase
     {
         $user = $this->createUser();
 
-        $user->expects(static::once())
+        $user->expects(self::once())
             ->method('getUserIdentifier')
             ->willReturn('123')
         ;
 
         $refreshedUser = $this->getMockBuilder(UserInterface::class)->getMock();
-        $this->userManager->expects(static::once())
+        $this->userManager->expects(self::once())
             ->method('findUserByUsername')
             ->with('123')
             ->willReturn($refreshedUser)
         ;
 
-        $this->userManager->expects(static::atLeastOnce())
+        $this->userManager->expects(self::atLeastOnce())
             ->method('getClass')
             ->willReturn(\get_class($user))
         ;
 
-        static::assertSame($refreshedUser, $this->userProvider->refreshUser($user));
+        self::assertSame($refreshedUser, $this->userProvider->refreshUser($user));
     }
 
     public function testRefreshDeleted(): void
@@ -93,12 +93,12 @@ final class UserProviderTest extends TestCase
         $this->expectException(AuthenticationException::class);
 
         $user = $this->createUser();
-        $this->userManager->expects(static::once())
+        $this->userManager->expects(self::once())
             ->method('findUserByUsername')
             ->willReturn(null)
         ;
 
-        $this->userManager->expects(static::atLeastOnce())
+        $this->userManager->expects(self::atLeastOnce())
             ->method('getClass')
             ->willReturn(\get_class($user))
         ;
@@ -126,7 +126,7 @@ final class UserProviderTest extends TestCase
         $user         = $this->getMockBuilder(User::class)->getMock();
         $providedUser = $this->getMockBuilder(TestUser::class)->getMock();
 
-        $this->userManager->expects(static::atLeastOnce())
+        $this->userManager->expects(self::atLeastOnce())
             ->method('getClass')
             ->willReturn(\get_class($user))
         ;

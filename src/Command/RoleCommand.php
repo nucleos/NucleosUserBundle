@@ -25,7 +25,7 @@ use Symfony\Component\Console\Question\Question;
 
 abstract class RoleCommand extends Command
 {
-    private UserManipulator $userManipulator;
+    private readonly UserManipulator $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
     {

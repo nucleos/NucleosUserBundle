@@ -24,7 +24,7 @@ use Symfony\Component\Security\Http\SecurityEvents;
 
 final class LastLoginListener implements EventSubscriberInterface
 {
-    private UserManager $userManager;
+    private readonly UserManager $userManager;
 
     public function __construct(UserManager $userManager)
     {

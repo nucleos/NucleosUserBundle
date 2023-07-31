@@ -23,9 +23,9 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final class AuthenticationListener implements EventSubscriberInterface
 {
-    private LoginManager $loginManager;
+    private readonly LoginManager $loginManager;
 
-    private string $firewallName;
+    private readonly string $firewallName;
 
     public function __construct(LoginManager $loginManager, string $firewallName)
     {

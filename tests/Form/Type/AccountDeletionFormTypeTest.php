@@ -27,9 +27,9 @@ final class AccountDeletionFormTypeTest extends ValidatorExtensionTypeTestCase
         ];
         $form->submit($formData);
 
-        static::assertTrue($form->isSynchronized());
-        static::assertSame($model, $form->getData());
-        static::assertTrue($model->isConfirm());
+        self::assertTrue($form->isSynchronized());
+        self::assertSame($model, $form->getData());
+        self::assertTrue($model->isConfirm());
     }
 
     protected function getTypes(): array

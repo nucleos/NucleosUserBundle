@@ -175,7 +175,7 @@ final class NucleosUserExtensionTest extends TestCase
     }
 
     /**
-     * @dataProvider userManagerSetFactoryProvider
+     * @dataProvider provideUserManagerSetFactoryCases
      */
     public function testUserManagerSetFactory(string $dbDriver, string $doctrineService): void
     {
@@ -191,16 +191,16 @@ final class NucleosUserExtensionTest extends TestCase
 
         $factory = $definition->getFactory();
 
-        static::assertIsArray($factory);
-        static::assertInstanceOf(Reference::class, $factory[0]);
-        static::assertSame('nucleos_user.doctrine_registry', (string) $factory[0]);
-        static::assertSame('getManager', $factory[1]);
+        self::assertIsArray($factory);
+        self::assertInstanceOf(Reference::class, $factory[0]);
+        self::assertSame('nucleos_user.doctrine_registry', (string) $factory[0]);
+        self::assertSame('getManager', $factory[1]);
     }
 
     /**
      * @phpstan-return Generator<array{string, string}>
      */
-    public static function userManagerSetFactoryProvider(): Generator
+    public static function provideUserManagerSetFactoryCases(): iterable
     {
         yield ['orm', 'doctrine'];
 
@@ -213,7 +213,7 @@ final class NucleosUserExtensionTest extends TestCase
         $loader              = new NucleosUserExtension();
         $config              = $this->getEmptyConfig();
         $loader->load([$config], $this->configuration);
-        static::assertInstanceOf(ContainerBuilder::class, $this->configuration);
+        self::assertInstanceOf(ContainerBuilder::class, $this->configuration);
     }
 
     protected function createFullConfiguration(): void
@@ -222,7 +222,7 @@ final class NucleosUserExtensionTest extends TestCase
         $loader              = new NucleosUserExtension();
         $config              = $this->getFullConfig();
         $loader->load([$config], $this->configuration);
-        static::assertInstanceOf(ContainerBuilder::class, $this->configuration);
+        self::assertInstanceOf(ContainerBuilder::class, $this->configuration);
     }
 
     protected function getEmptyConfig(): array
@@ -271,7 +271,7 @@ EOF;
 
     private function assertAlias(string $value, string $key): void
     {
-        static::assertSame($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
+        self::assertSame($value, (string) $this->configuration->getAlias($key), sprintf('%s alias is correct', $key));
     }
 
     /**
@@ -279,16 +279,16 @@ EOF;
      */
     private function assertParameter($value, string $key): void
     {
-        static::assertSame($value, $this->configuration->getParameter($key), sprintf('%s parameter is correct', $key));
+        self::assertSame($value, $this->configuration->getParameter($key), sprintf('%s parameter is correct', $key));
     }
 
     private function assertHasDefinition(string $id): void
     {
-        static::assertTrue($this->configuration->hasDefinition($id) ? true : $this->configuration->hasAlias($id));
+        self::assertTrue($this->configuration->hasDefinition($id) ? true : $this->configuration->hasAlias($id));
     }
 
     private function assertNotHasDefinition(string $id): void
     {
-        static::assertFalse($this->configuration->hasDefinition($id) ? true : $this->configuration->hasAlias($id));
+        self::assertFalse($this->configuration->hasDefinition($id) ? true : $this->configuration->hasAlias($id));
     }
 }

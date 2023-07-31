@@ -27,7 +27,7 @@ final class UpdateSecurityFormType extends AbstractType
     /**
      * @phpstan-var class-string<UserInterface>
      */
-    private string $class;
+    private readonly string $class;
 
     /**
      * @phpstan-param class-string<UserInterface> $class
@@ -55,14 +55,14 @@ final class UpdateSecurityFormType extends AbstractType
                     new NotBlank(),
                     new UserPassword($constraintsOptions),
                 ],
-                'attr' => [
+                'attr'               => [
                     'autocomplete' => 'current-password',
                 ],
             ])
             ->add('plainPassword', RepeatedType::class, [
-                'type'     => PasswordType::class,
-                'required' => false,
-                'options'  => [
+                'type'            => PasswordType::class,
+                'required'        => false,
+                'options'         => [
                     'attr'               => [
                         'autocomplete' => 'new-password',
                     ],
