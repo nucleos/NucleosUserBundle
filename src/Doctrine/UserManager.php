@@ -44,11 +44,6 @@ final class UserManager extends BaseUserManager
 
     public function getClass(): string
     {
-        if (false !== strpos($this->class, ':')) {
-            $metadata    = $this->objectManager->getClassMetadata($this->class);
-            $this->class = $metadata->getName();
-        }
-
         return $this->class;
     }
 
