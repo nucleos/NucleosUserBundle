@@ -18,6 +18,7 @@ use Nucleos\UserBundle\Event\FormEvent;
 use Nucleos\UserBundle\Event\GetResponseUserEvent;
 use Nucleos\UserBundle\Form\Type\UpdateSecurityFormType;
 use Nucleos\UserBundle\Model\UserInterface;
+use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Nucleos\UserBundle\Util\UserManipulator;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -46,13 +47,16 @@ final class UpdateSecurityAction
 
     private UserManipulator $userManipulator;
 
+    private UserManager $userManager;
+
     public function __construct(
         Environment $twig,
         RouterInterface $router,
         Security $security,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
-        UserManipulator $userManipulator
+        UserManipulator $userManipulator,
+        UserManager $userManager
     ) {
         $this->twig             = $twig;
         $this->router           = $router;
@@ -60,6 +64,7 @@ final class UpdateSecurityAction
         $this->eventDispatcher  = $eventDispatcher;
         $this->formFactory      = $formFactory;
         $this->userManipulator  = $userManipulator;
+        $this->userManager      = $userManager;
     }
 
     /**
@@ -88,6 +93,7 @@ final class UpdateSecurityAction
             $this->eventDispatcher->dispatch($event, NucleosUserEvents::UPDATE_SECURITY_SUCCESS);
 
             $this->updatePassword($user);
+            $this->userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
                 $response = new RedirectResponse($this->router->generate('nucleos_user_update_security'));
