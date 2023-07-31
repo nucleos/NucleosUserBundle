@@ -27,7 +27,7 @@
       </trans-unit>
       <trans-unit id="update_security.submit">
         <source>update_security.submit</source>
-        <target>Passwort ändern</target>
+        <target>Speichern</target>
       </trans-unit>
       <trans-unit id="update_security.flash.success">
         <source>update_security.flash.success</source>
