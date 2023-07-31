@@ -17,7 +17,7 @@ final class Resetting
 {
     private ?string $plainPassword = null;
 
-    private UserInterface $user;
+    private readonly UserInterface $user;
 
     public function __construct(UserInterface $user)
     {

@@ -20,7 +20,7 @@ use Symfony\Component\Translation\Loader\XliffFileLoader;
 
 final class XliffTest extends TestCase
 {
-    private XliffFileLoader $loader;
+    private readonly XliffFileLoader $loader;
 
     /**
      * @var string[]
@@ -33,21 +33,21 @@ final class XliffTest extends TestCase
     }
 
     /**
-     * @dataProvider getFiles
+     * @dataProvider provideXliffCases
      */
     public function testXliff(string $locale): void
     {
         $this->validateXliff($locale);
 
         if (\count($this->errors) > 0) {
-            static::fail(sprintf('Unable to parse xliff files: %s', implode(', ', $this->errors)));
+            self::fail(sprintf('Unable to parse xliff files: %s', implode(', ', $this->errors)));
         }
     }
 
     /**
      * @return Generator<string[]>
      */
-    public static function getFiles(): iterable
+    public static function provideXliffCases(): iterable
     {
         $files = glob(sprintf('%s/*.xlf', __DIR__.'/../../src/Resources/translations'));
 
@@ -67,7 +67,7 @@ final class XliffTest extends TestCase
         try {
             $catalogue = $this->loader->load($file, $locale);
 
-            static::assertGreaterThan(0, $catalogue->getResources());
+            self::assertGreaterThan(0, $catalogue->getResources());
         } catch (InvalidResourceException $e) {
             $this->errors[] = sprintf('%s => %s', $locale, $e->getMessage());
         }

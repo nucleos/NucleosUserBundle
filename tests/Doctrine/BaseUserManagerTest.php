@@ -28,7 +28,7 @@ final class BaseUserManagerTest extends TestCase
      */
     private const USER_CLASS = TestUser::class;
 
-    private UserManager $userManager;
+    private readonly UserManager $userManager;
 
     /**
      * @var MockObject&ObjectManager
@@ -48,40 +48,40 @@ final class BaseUserManagerTest extends TestCase
 
         $this->om
             ->method('getRepository')
-            ->with(static::equalTo(static::USER_CLASS))
+            ->with(self::equalTo(self::USER_CLASS))
             ->willReturn($this->repository)
         ;
         $this->om
             ->method('getClassMetadata')
-            ->with(static::equalTo(static::USER_CLASS))
+            ->with(self::equalTo(self::USER_CLASS))
             ->willReturn($class)
         ;
         $class
             ->method('getName')
-            ->willReturn(static::USER_CLASS)
+            ->willReturn(self::USER_CLASS)
         ;
 
-        $this->userManager = new UserManager($this->om, static::USER_CLASS);
+        $this->userManager = new UserManager($this->om, self::USER_CLASS);
     }
 
     public function testDeleteUser(): void
     {
         $user = $this->getUser();
-        $this->om->expects(static::once())->method('remove')->with(static::equalTo($user));
-        $this->om->expects(static::once())->method('flush');
+        $this->om->expects(self::once())->method('remove')->with(self::equalTo($user));
+        $this->om->expects(self::once())->method('flush');
 
         $this->userManager->deleteUser($user);
     }
 
     public function testGetClass(): void
     {
-        static::assertSame(static::USER_CLASS, $this->userManager->getClass());
+        self::assertSame(self::USER_CLASS, $this->userManager->getClass());
     }
 
     public function testFindUserBy(): void
     {
         $crit = ['foo' => 'bar'];
-        $this->repository->expects(static::once())->method('findOneBy')->with(static::equalTo($crit))
+        $this->repository->expects(self::once())->method('findOneBy')->with(self::equalTo($crit))
             ->willReturn(null)
         ;
 
@@ -90,7 +90,7 @@ final class BaseUserManagerTest extends TestCase
 
     public function testFindUsers(): void
     {
-        $this->repository->expects(static::once())->method('findAll')->willReturn([]);
+        $this->repository->expects(self::once())->method('findAll')->willReturn([]);
 
         $this->userManager->findUsers();
     }
@@ -98,15 +98,15 @@ final class BaseUserManagerTest extends TestCase
     public function testUpdateUser(): void
     {
         $user = $this->getUser();
-        $this->om->expects(static::once())->method('persist')->with(static::equalTo($user));
-        $this->om->expects(static::once())->method('flush');
+        $this->om->expects(self::once())->method('persist')->with(self::equalTo($user));
+        $this->om->expects(self::once())->method('flush');
 
         $this->userManager->updateUser($user);
     }
 
     private function getUser(): TestUser
     {
-        $userClass = static::USER_CLASS;
+        $userClass = self::USER_CLASS;
 
         return new $userClass();
     }

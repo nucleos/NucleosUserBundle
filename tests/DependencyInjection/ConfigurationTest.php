@@ -26,14 +26,14 @@ final class ConfigurationTest extends TestCase
         $config = $processor->processConfiguration(new Configuration(), [$this->basicConfig()]);
 
         $expected = [
-            'firewall_name' => 'main',
-            'from_email'    => 'no-reply@localhost',
-            'user_class'    => User::class,
-            'group'         => [
+            'firewall_name'               => 'main',
+            'from_email'                  => 'no-reply@localhost',
+            'user_class'                  => User::class,
+            'group'                       => [
                 'group_class'   => Group::class,
                 'group_manager' => 'nucleos_user.group_manager.default',
             ],
-            'loggedin' => [
+            'loggedin'                    => [
                 'route' => 'custom_loggedin',
             ],
             'db_driver'                   => 'noop',
@@ -45,17 +45,17 @@ final class ConfigurationTest extends TestCase
                 'retry_ttl' => 7200,
                 'token_ttl' => 86400,
             ],
-            'deletion' => [
+            'deletion'                    => [
                 'enabled' => false,
             ],
-            'service' => [
+            'service'                     => [
                 'mailer'                 => 'nucleos_user.mailer.simple',
                 'token_generator'        => 'nucleos_user.util.token_generator.simple',
                 'user_manager'           => 'nucleos_user.user_manager.default',
             ],
         ];
 
-        static::assertSame($expected, $config);
+        self::assertSame($expected, $config);
     }
 
     /**
@@ -70,7 +70,7 @@ final class ConfigurationTest extends TestCase
             'group'         => [
                 'group_class' => Group::class,
             ],
-            'loggedin' => [
+            'loggedin'      => [
                 'route' => 'custom_loggedin',
             ],
         ];

@@ -33,9 +33,9 @@ final class UpdateSecurityFormTypeTest extends ValidatorExtensionTypeTestCase
         ];
         $form->submit($formData);
 
-        static::assertTrue($form->isSynchronized());
-        static::assertSame($model, $form->getData());
-        static::assertSame('bar', $model->getPlainPassword());
+        self::assertTrue($form->isSynchronized());
+        self::assertSame($model, $form->getData());
+        self::assertSame('bar', $model->getPlainPassword());
     }
 
     protected function getTypes(): array

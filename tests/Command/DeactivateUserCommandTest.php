@@ -33,8 +33,8 @@ final class DeactivateUserCommandTest extends TestCase
             'interactive' => false,
         ]);
 
-        static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertMatchesRegularExpression('/User "user" has been deactivated/', $commandTester->getDisplay());
+        self::assertSame(0, $exitCode, 'Returns 0 in case of success');
+        self::assertMatchesRegularExpression('/User "user" has been deactivated/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper(): void
@@ -43,7 +43,7 @@ final class DeactivateUserCommandTest extends TestCase
 
         $helper = $this->createMock(QuestionHelper::class);
 
-        $helper->expects(static::once())
+        $helper->expects(self::once())
             ->method('ask')
             ->willReturn('user')
         ;
@@ -56,8 +56,8 @@ final class DeactivateUserCommandTest extends TestCase
             'interactive' => true,
         ]);
 
-        static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertMatchesRegularExpression('/User "user" has been deactivated/', $commandTester->getDisplay());
+        self::assertSame(0, $exitCode, 'Returns 0 in case of success');
+        self::assertMatchesRegularExpression('/User "user" has been deactivated/', $commandTester->getDisplay());
     }
 
     private function createCommandTester(UserManipulator $manipulator, Application $application = null): CommandTester
@@ -82,7 +82,7 @@ final class DeactivateUserCommandTest extends TestCase
     {
         $manipulator = $this->createMock(UserManipulator::class);
         $manipulator
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('deactivate')
             ->with($username)
         ;

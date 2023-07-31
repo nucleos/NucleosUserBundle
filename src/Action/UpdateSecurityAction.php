@@ -35,19 +35,19 @@ use Twig\Environment;
 
 final class UpdateSecurityAction
 {
-    private Environment $twig;
+    private readonly Environment $twig;
 
-    private RouterInterface $router;
+    private readonly RouterInterface $router;
 
-    private Security $security;
+    private readonly Security $security;
 
-    private EventDispatcherInterface $eventDispatcher;
+    private readonly EventDispatcherInterface $eventDispatcher;
 
-    private FormFactoryInterface $formFactory;
+    private readonly FormFactoryInterface $formFactory;
 
-    private UserManipulator $userManipulator;
+    private readonly UserManipulator $userManipulator;
 
-    private UserManager $userManager;
+    private readonly UserManager $userManager;
 
     public function __construct(
         Environment $twig,

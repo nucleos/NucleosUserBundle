@@ -26,7 +26,7 @@ use Symfony\Contracts\Translation\LocaleAwareInterface as LocaleAwareTranslator;
 
 final class LocaleEventListener implements EventSubscriberInterface
 {
-    private LocaleAwareTranslator $translator;
+    private readonly LocaleAwareTranslator $translator;
 
     public function __construct(LocaleAwareTranslator $translator)
     {

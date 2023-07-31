@@ -66,7 +66,7 @@ final class UserCheckerTest extends TestCase
         try {
             $checker->checkPreAuth($userMock);
         } catch (Exception $exception) {
-            static::fail();
+            self::fail();
         }
     }
 
@@ -90,7 +90,7 @@ final class UserCheckerTest extends TestCase
         try {
             $checker->checkPostAuth($userMock);
         } catch (Exception $exception) {
-            static::fail();
+            self::fail();
         }
     }
 

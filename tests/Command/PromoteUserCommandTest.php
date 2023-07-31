@@ -34,8 +34,8 @@ final class PromoteUserCommandTest extends TestCase
             'interactive' => false,
         ]);
 
-        static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertMatchesRegularExpression('/Role "role" has been added to user "user"/', $commandTester->getDisplay());
+        self::assertSame(0, $exitCode, 'Returns 0 in case of success');
+        self::assertMatchesRegularExpression('/Role "role" has been added to user "user"/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper(): void
@@ -44,7 +44,7 @@ final class PromoteUserCommandTest extends TestCase
 
         $helper = $this->createMock(QuestionHelper::class);
 
-        $helper->expects(static::exactly(2))
+        $helper->expects(self::exactly(2))
             ->method('ask')
             ->willReturn(
                 'user',
@@ -60,8 +60,8 @@ final class PromoteUserCommandTest extends TestCase
             'interactive' => true,
         ]);
 
-        static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertMatchesRegularExpression('/Role "role" has been added to user "user"/', $commandTester->getDisplay());
+        self::assertSame(0, $exitCode, 'Returns 0 in case of success');
+        self::assertMatchesRegularExpression('/Role "role" has been added to user "user"/', $commandTester->getDisplay());
     }
 
     private function createCommandTester(UserManipulator $manipulator, Application $application = null): CommandTester
@@ -87,14 +87,14 @@ final class PromoteUserCommandTest extends TestCase
         $manipulator = $this->createMock(UserManipulator::class);
         if ($super) {
             $manipulator
-                ->expects(static::once())
+                ->expects(self::once())
                 ->method('promote')
                 ->with($username)
                 ->willReturn(true)
             ;
         } else {
             $manipulator
-                ->expects(static::once())
+                ->expects(self::once())
                 ->method('addRole')
                 ->with($username, $role)
                 ->willReturn(true)

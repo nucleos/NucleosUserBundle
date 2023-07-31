@@ -28,17 +28,17 @@ use Twig\Environment;
 
 final class LoginAction
 {
-    private Environment $twig;
+    private readonly Environment $twig;
 
-    private EventDispatcherInterface $eventDispatcher;
+    private readonly EventDispatcherInterface $eventDispatcher;
 
-    private FormFactoryInterface $formFactory;
+    private readonly FormFactoryInterface $formFactory;
 
-    private RouterInterface $router;
+    private readonly RouterInterface $router;
 
-    private CsrfTokenManagerInterface $csrfTokenManager;
+    private readonly CsrfTokenManagerInterface $csrfTokenManager;
 
-    private AuthenticationUtils $authenticationUtils;
+    private readonly AuthenticationUtils $authenticationUtils;
 
     public function __construct(
         Environment $twig,

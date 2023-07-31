@@ -29,17 +29,17 @@ use Twig\Environment;
 
 final class ResetAction
 {
-    private Environment $twig;
+    private readonly Environment $twig;
 
-    private RouterInterface $router;
+    private readonly RouterInterface $router;
 
-    private EventDispatcherInterface $eventDispatcher;
+    private readonly EventDispatcherInterface $eventDispatcher;
 
-    private FormFactoryInterface $formFactory;
+    private readonly FormFactoryInterface $formFactory;
 
-    private UserManager $userManager;
+    private readonly UserManager $userManager;
 
-    private string $loggedinRoute;
+    private readonly string $loggedinRoute;
 
     public function __construct(
         Environment $twig,

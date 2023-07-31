@@ -19,9 +19,9 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class AccountDeletionEvent extends Event
 {
-    private Request $request;
+    private readonly Request $request;
 
-    private UserInterface $user;
+    private readonly UserInterface $user;
 
     public function __construct(UserInterface $user, Request $request)
     {

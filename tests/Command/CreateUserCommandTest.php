@@ -35,8 +35,8 @@ final class CreateUserCommandTest extends TestCase
             'interactive' => false,
         ]);
 
-        static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertMatchesRegularExpression('/Created user user/', $commandTester->getDisplay());
+        self::assertSame(0, $exitCode, 'Returns 0 in case of success');
+        self::assertMatchesRegularExpression('/Created user user/', $commandTester->getDisplay());
     }
 
     public function testExecuteInteractiveWithQuestionHelper(): void
@@ -45,7 +45,7 @@ final class CreateUserCommandTest extends TestCase
 
         $helper = $this->createMock(QuestionHelper::class);
 
-        $helper->expects(static::exactly(3))
+        $helper->expects(self::exactly(3))
             ->method('ask')
             ->willReturn(
                 'user',
@@ -65,8 +65,8 @@ final class CreateUserCommandTest extends TestCase
             'interactive' => true,
         ]);
 
-        static::assertSame(0, $exitCode, 'Returns 0 in case of success');
-        static::assertMatchesRegularExpression('/Created user user/', $commandTester->getDisplay());
+        self::assertSame(0, $exitCode, 'Returns 0 in case of success');
+        self::assertMatchesRegularExpression('/Created user user/', $commandTester->getDisplay());
     }
 
     private function createCommandTester(UserManipulator $manipulator, Application $application = null): CommandTester
@@ -91,7 +91,7 @@ final class CreateUserCommandTest extends TestCase
     {
         $manipulator = $this->createMock(UserManipulator::class);
         $manipulator
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('create')
             ->with($username, $password, $email, $active, $superadmin)
         ;

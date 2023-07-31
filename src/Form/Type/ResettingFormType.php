@@ -25,7 +25,7 @@ final class ResettingFormType extends AbstractType
     /**
      * @phpstan-var class-string<Resetting>
      */
-    private string $class;
+    private readonly string $class;
 
     /**
      * @phpstan-param class-string<Resetting> $class
@@ -39,8 +39,8 @@ final class ResettingFormType extends AbstractType
     {
         $builder
             ->add('plainPassword', RepeatedType::class, [
-                'type'    => PasswordType::class,
-                'options' => [
+                'type'            => PasswordType::class,
+                'options'         => [
                     'attr'               => [
                         'autocomplete' => 'new-password',
                     ],

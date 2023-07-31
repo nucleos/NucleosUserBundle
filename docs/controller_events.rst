@@ -38,7 +38,7 @@ resetting to go to the homepage.
      */
     class PasswordResettingListener implements EventSubscriberInterface
     {
-        private $router;
+        private readonly $router;
 
         public function __construct(UrlGeneratorInterface $router)
         {

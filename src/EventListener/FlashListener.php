@@ -34,9 +34,9 @@ final class FlashListener implements EventSubscriberInterface
         NucleosUserEvents::ACCOUNT_DELETION_SUCCESS  => 'deletion.success',
     ];
 
-    private RequestStack $requestStack;
+    private readonly RequestStack $requestStack;
 
-    private TranslatorInterface $translator;
+    private readonly TranslatorInterface $translator;
 
     public function __construct(RequestStack $requestStack, TranslatorInterface $translator)
     {

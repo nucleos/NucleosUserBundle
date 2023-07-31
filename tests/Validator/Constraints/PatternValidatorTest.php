@@ -46,7 +46,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
     }
 
     /**
-     * @dataProvider lowerProvider
+     * @dataProvider provideValidateLowerCases
      */
     public function testValidateLower(string $text, bool $pass): void
     {
@@ -66,7 +66,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
     }
 
     /**
-     * @dataProvider upperProvider
+     * @dataProvider provideValidateUpperCases
      */
     public function testValidateUpper(string $text, bool $pass): void
     {
@@ -86,7 +86,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
     }
 
     /**
-     * @dataProvider numericProvider
+     * @dataProvider provideValidateNumericCases
      */
     public function testValidateNumeric(string $text, bool $pass): void
     {
@@ -106,7 +106,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
     }
 
     /**
-     * @dataProvider specialProvider
+     * @dataProvider provideValidateSpecialCases
      */
     public function testValidateSpecial(string $text, bool $pass): void
     {
@@ -131,7 +131,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
      *
      * @phpstan-return Generator<array{string, bool}>
      */
-    public static function lowerProvider(): Generator
+    public static function provideValidateLowerCases(): iterable
     {
         yield 'Empty' => ['', false];
 
@@ -149,7 +149,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
      *
      * @phpstan-return Generator<array{string, bool}>
      */
-    public static function upperProvider(): Generator
+    public static function provideValidateUpperCases(): iterable
     {
         yield 'Empty' => ['', false];
 
@@ -167,7 +167,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
      *
      * @phpstan-return Generator<array{string, bool}>
      */
-    public static function numericProvider(): Generator
+    public static function provideValidateNumericCases(): iterable
     {
         yield 'Empty' => ['', false];
 
@@ -185,7 +185,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
      *
      * @phpstan-return Generator<array{string, bool}>
      */
-    public static function specialProvider(): Generator
+    public static function provideValidateSpecialCases(): iterable
     {
         yield 'Empty' => ['', false];
 

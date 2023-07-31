@@ -33,7 +33,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
      * @var array<string, array<string, string>>
      */
     private static array $doctrineDrivers = [
-        'orm' => [
+        'orm'     => [
             'registry' => 'doctrine',
             'tag'      => 'doctrine.event_subscriber',
         ],
@@ -212,7 +212,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         $container->setParameter('nucleos_user.resetting.from_email', $fromEmail);
 
         $this->remapParametersNamespaces($config, $container, [
-            '' => [
+            ''      => [
                 'retry_ttl' => 'nucleos_user.resetting.retry_ttl',
                 'token_ttl' => 'nucleos_user.resetting.token_ttl',
             ],

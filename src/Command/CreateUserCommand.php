@@ -26,7 +26,7 @@ final class CreateUserCommand extends Command
 {
     protected static $defaultName = 'nucleos:user:create';
 
-    private UserManipulator $userManipulator;
+    private readonly UserManipulator $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
     {

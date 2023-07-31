@@ -32,9 +32,9 @@ final class ResettingFormTypeTest extends ValidatorExtensionTypeTestCase
         ];
         $form->submit($formData);
 
-        static::assertTrue($form->isSynchronized());
-        static::assertSame($model, $form->getData());
-        static::assertSame('test', $model->getPlainPassword());
+        self::assertTrue($form->isSynchronized());
+        self::assertSame($model, $form->getData());
+        self::assertSame('test', $model->getPlainPassword());
     }
 
     protected function getTypes(): array

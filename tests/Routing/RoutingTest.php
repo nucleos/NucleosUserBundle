@@ -22,7 +22,7 @@ use Symfony\Component\Routing\RouteCollection;
 final class RoutingTest extends TestCase
 {
     /**
-     * @dataProvider loadRoutingProvider
+     * @dataProvider provideLoadRoutingCases
      *
      * @param string[] $methods
      */
@@ -40,15 +40,15 @@ final class RoutingTest extends TestCase
         $collection->addCollection($loader->load(__DIR__.'/../../src/Resources/config/routing/security.php'));
 
         $route = $collection->get($routeName);
-        static::assertNotNull($route, sprintf('The route "%s" should exists', $routeName));
-        static::assertSame($path, $route->getPath());
-        static::assertSame($methods, $route->getMethods());
+        self::assertNotNull($route, sprintf('The route "%s" should exists', $routeName));
+        self::assertSame($path, $route->getPath());
+        self::assertSame($methods, $route->getMethods());
     }
 
     /**
      * @phpstan-return Generator<array{string, string, string[]}>
      */
-    public static function loadRoutingProvider(): Generator
+    public static function provideLoadRoutingCases(): iterable
     {
         yield ['nucleos_user_update_security', '/change-password', ['GET', 'POST']];
 
