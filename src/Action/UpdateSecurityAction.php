@@ -46,16 +46,13 @@ final class UpdateSecurityAction
 
     private UserManipulator $userManipulator;
 
-    private string $loggedinRoute;
-
     public function __construct(
         Environment $twig,
         RouterInterface $router,
         Security $security,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
-        UserManipulator $userManipulator,
-        string $loggedinRoute
+        UserManipulator $userManipulator
     ) {
         $this->twig             = $twig;
         $this->router           = $router;
@@ -63,7 +60,6 @@ final class UpdateSecurityAction
         $this->eventDispatcher  = $eventDispatcher;
         $this->formFactory      = $formFactory;
         $this->userManipulator  = $userManipulator;
-        $this->loggedinRoute    = $loggedinRoute;
     }
 
     /**
@@ -94,8 +90,7 @@ final class UpdateSecurityAction
             $this->updatePassword($user);
 
             if (null === $response = $event->getResponse()) {
-                $url      = $this->router->generate($this->loggedinRoute);
-                $response = new RedirectResponse($url);
+                $response = new RedirectResponse($this->router->generate('nucleos_user_update_security'));
             }
 
             $this->eventDispatcher->dispatch(new FilterUserResponseEvent($user, $request, $response), NucleosUserEvents::UPDATE_SECURITY_COMPLETED);
