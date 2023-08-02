@@ -17,9 +17,10 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\ClassMetadata as MongoClassMetadata;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Event\PrePersistEventArgs;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\ClassMetadata as ORMClassMetadata;
-use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Doctrine\Persistence\ObjectManager;
 use Nucleos\UserBundle\Model\UserInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -36,28 +37,24 @@ final class UserListener implements EventSubscriber
     public function getSubscribedEvents(): array
     {
         return [
-            'prePersist',
-            'preUpdate',
+            Events::prePersist,
+            Events::preUpdate,
         ];
     }
 
-    /**
-     * @psalm-param LifecycleEventArgs<EntityManagerInterface> $args
-     */
-    public function prePersist(LifecycleEventArgs $args): void
+    public function prePersist(PrePersistEventArgs $args): void
     {
         $object = $args->getObject();
+
         if ($object instanceof UserInterface) {
             $this->updateUserFields($object);
         }
     }
 
-    /**
-     * @psalm-param LifecycleEventArgs<EntityManagerInterface> $args
-     */
-    public function preUpdate(LifecycleEventArgs $args): void
+    public function preUpdate(PreUpdateEventArgs $args): void
     {
         $object = $args->getObject();
+
         if ($object instanceof UserInterface) {
             $this->updateUserFields($object);
             $this->recomputeChangeSet($args->getObjectManager(), $object);
