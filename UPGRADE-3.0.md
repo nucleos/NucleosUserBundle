@@ -1,9 +1,15 @@
 UPGRADE FROM 2.x to 3.0
 =======================
 
+## Refactor request password action
+
+The `SendEmailAction` was merged with the `RequestResetAction` and the `nucleos_user_resetting_send_email` route was
+removed.
+
 ## Change "Update Password" to "Update Security"
 
-The action was refactored to have one common page to update all security information. This bundle only allow password changes, but it could be extended to allow more changes (e.g. e-mail).
+The action was refactored to have one common page to update all security information. This bundle only allow password
+changes, but it could be extended to allow more changes (e.g. e-mail).
 
 - Class `ChangePasswordAction` is renamed to `UpdateSecurityAction` and corresponding templates too
 - Class `ChangePasswordFormType` is renamed to `UpdateSecurityFormType` and uses the `UserInterface` as model class

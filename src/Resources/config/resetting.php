@@ -14,7 +14,6 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Nucleos\UserBundle\Action\CheckEmailAction;
 use Nucleos\UserBundle\Action\RequestResetAction;
 use Nucleos\UserBundle\Action\ResetAction;
-use Nucleos\UserBundle\Action\SendEmailAction;
 use Nucleos\UserBundle\EventListener\ResettingListener;
 use Nucleos\UserBundle\Form\Model\Resetting;
 use Nucleos\UserBundle\Form\Type\RequestPasswordFormType;
@@ -47,6 +46,12 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('twig'),
                 new Reference('form.factory'),
                 new Reference('router'),
+                new Reference('event_dispatcher'),
+                new Reference('nucleos_user.user_manager'),
+                new Reference('nucleos_user.util.token_generator'),
+                new Reference('security.user_providers'),
+                new Reference('nucleos_user.mailer'),
+                new Parameter('nucleos_user.resetting.retry_ttl'),
             ])
 
         ->set(ResetAction::class)
@@ -58,18 +63,6 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('form.factory'),
                 new Reference('nucleos_user.user_manager'),
                 '%nucleos_user.loggedin.route%',
-            ])
-
-        ->set(SendEmailAction::class)
-            ->public()
-            ->args([
-                new Reference('router'),
-                new Reference('event_dispatcher'),
-                new Reference('nucleos_user.user_manager'),
-                new Reference('nucleos_user.util.token_generator'),
-                new Reference('security.user_providers'),
-                new Reference('nucleos_user.mailer'),
-                new Parameter('nucleos_user.resetting.retry_ttl'),
             ])
 
         ->set(CheckEmailAction::class)

@@ -16,18 +16,12 @@ namespace Symfony\Component\Routing\Loader\Configurator;
 use Nucleos\UserBundle\Action\CheckEmailAction;
 use Nucleos\UserBundle\Action\RequestResetAction;
 use Nucleos\UserBundle\Action\ResetAction;
-use Nucleos\UserBundle\Action\SendEmailAction;
 use Symfony\Bundle\FrameworkBundle\Controller\RedirectController;
 
 return static function (RoutingConfigurator $routes): void {
     $routes->add('nucleos_user_resetting_request', '/request')
         ->controller(RequestResetAction::class)
-        ->methods(['GET'])
-    ;
-
-    $routes->add('nucleos_user_resetting_send_email', '/send-email')
-        ->controller(SendEmailAction::class)
-        ->methods(['POST'])
+        ->methods(['GET', 'POST'])
     ;
 
     $routes->add('nucleos_user_resetting_check_email', '/check-email')
