@@ -1,4 +1,4 @@
-Pygments==2.15.1
+Pygments==2.16.1
 sphinx==1.8.6
 git+https://github.com/fabpot/sphinx-php.git@v2.0.2#egg_name=sphinx-php
 sphinx_rtd_theme==1.2.2
