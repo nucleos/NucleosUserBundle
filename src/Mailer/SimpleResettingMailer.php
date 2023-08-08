@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Mailer;
 
-use Nucleos\UserBundle\Mailer\Mail\ResettingMail;
 use Nucleos\UserBundle\Model\UserInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface as SymfonyMailer;
 use Symfony\Component\Mime\Address;
@@ -48,14 +48,18 @@ final class SimpleResettingMailer implements ResettingMailer
             'token' => $user->getConfirmationToken(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
 
-        $mail = (new ResettingMail())
+        $mail = (new TemplatedEmail())
+            ->textTemplate('@NucleosUser/Resetting/email.txt.twig')
+            ->htmlTemplate('@NucleosUser/Resetting/email.html.twig')
             ->from(Address::create($this->fromEmail))
             ->to(new Address($user->getEmail()))
             ->subject($this->translator->trans('resetting.email.subject', [
                 '%username%' => $user->getUsername(),
             ], 'NucleosUserBundle'))
-            ->setUser($user)
-            ->setConfirmationUrl($url)
+            ->context([
+                'user'             => $user,
+                'confirmationUrl'  => $url,
+            ])
         ;
 
         $this->mailer->send($mail);
