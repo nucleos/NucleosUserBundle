@@ -46,7 +46,6 @@
         <option name="message">nucleos_user.password.blank</option>
         <option name="groups">
           <value>ResetPassword</value>
-          <value>User</value>
         </option>
       </constraint>
       <constraint name="Length">
