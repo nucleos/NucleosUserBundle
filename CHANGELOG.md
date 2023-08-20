@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.0.1 - TBD
+## 3.0.1 - 2023-08-20
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.0.1](https://github.com/nucleos/NucleosUserBundle/milestone/26)
 
-- Nothing.
+3.0.x bugfix release (patch)
 
-### Deprecated
+### 3.0.1
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [716: Remove password constraint from &quot;User&quot; group](https://github.com/nucleos/NucleosUserBundle/pull/716) thanks to @core23
 
 ## 2.2.0 - 2022-10-08
 
