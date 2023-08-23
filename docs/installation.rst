@@ -199,7 +199,7 @@ in your application:
                 anonymous:    true
 
         access_control:
-            - { path: ^/change-password, role: IS_AUTHENTICATED_REMEMBERED }
+            - { path: ^/update-security, role: IS_AUTHENTICATED_REMEMBERED }
             # If you have an admin backend, uncomment the following line
             # - { path: ^/admin/, role: ROLE_ADMIN }
 
