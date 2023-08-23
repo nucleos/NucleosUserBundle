@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.0.2 - TBD
+## 3.0.2 - 2023-08-23
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.0.2](https://github.com/nucleos/NucleosUserBundle/milestone/29)
 
-- Nothing.
+3.0.x bugfix release (patch)
 
-### Deprecated
+### 3.0.2
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [719: Fix routing](https://github.com/nucleos/NucleosUserBundle/pull/719) thanks to @core23
 
 ## 3.0.1 - 2023-08-20
 
