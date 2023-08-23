@@ -50,7 +50,9 @@ final class RoutingTest extends TestCase
      */
     public static function provideLoadRoutingCases(): iterable
     {
-        yield ['nucleos_user_update_security', '/change-password', ['GET', 'POST']];
+        yield ['nucleos_user_update_security', '/update-security', ['GET', 'POST']];
+
+        yield ['nucleos_user_update_security_legacy', '/change-password', ['GET', 'POST']];
 
         yield ['nucleos_user_resetting_request', '/resetting/request', ['GET', 'POST']];
 
