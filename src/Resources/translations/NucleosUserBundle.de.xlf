@@ -35,7 +35,7 @@
       </trans-unit>
       <trans-unit id="resetting.check_email">
         <source>resetting.check_email</source>
-        <target><![CDATA[Eine E-Mail wurde verschickt. Sie beinhaltet einen Link zum Zurücksetzen des Passwortes.
+        <target><![CDATA[Eine E-Mail wurde verschickt, falls wir ein Konto finden konnten. Sie beinhaltet einen Link zum Zurücksetzen des Passwortes.
 Hinweis: Ein neues Passwort kann nur alle %tokenLifetime% Stunden beantragt werden.
 
 Eventuell wurde diese E-Mail als Spam markiert, wenn sie nicht angekommen ist.]]></target>
