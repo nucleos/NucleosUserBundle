@@ -19,6 +19,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 
+/**
+ * @deprecated
+ */
 final class CheckEmailAction
 {
     private readonly Environment $twig;

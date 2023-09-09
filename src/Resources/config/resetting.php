@@ -52,6 +52,7 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('security.user_providers'),
                 new Reference('nucleos_user.mailer'),
                 new Parameter('nucleos_user.resetting.retry_ttl'),
+                new Reference('translator'),
             ])
 
         ->set(ResetAction::class)
