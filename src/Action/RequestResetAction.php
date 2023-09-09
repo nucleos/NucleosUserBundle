@@ -104,6 +104,10 @@ final class RequestResetAction
     {
         $username = (string) $request->request->get('username', '');
 
+        if ('' === trim($username)) {
+            return null;
+        }
+
         $user = null;
 
         try {
@@ -112,7 +116,7 @@ final class RequestResetAction
         }
 
         if (!$user instanceof UserInterface) {
-            return null;
+            return new RedirectResponse($this->router->generate('nucleos_user_resetting_check_email'));
         }
 
         $event = new GetResponseNullableUserEvent($user, $request);
@@ -123,7 +127,7 @@ final class RequestResetAction
         }
 
         if ($user->isPasswordRequestNonExpired($this->retryTtl)) {
-            return null;
+            return new RedirectResponse($this->router->generate('nucleos_user_resetting_check_email'));
         }
 
         $event = new GetResponseUserEvent($user, $request);
@@ -155,8 +159,6 @@ final class RequestResetAction
             return $event->getResponse();
         }
 
-        return new RedirectResponse($this->router->generate('nucleos_user_resetting_check_email', [
-            'username' => $username,
-        ]));
+        return new RedirectResponse($this->router->generate('nucleos_user_resetting_check_email'));
     }
 }
