@@ -22,13 +22,17 @@ use Nucleos\UserBundle\NucleosUserEvents;
 use Nucleos\UserBundle\Util\TokenGenerator;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Environment;
 
 final class RequestResetAction
@@ -51,6 +55,11 @@ final class RequestResetAction
 
     private readonly UserProviderInterface $userProvider;
 
+    private readonly TranslatorInterface $translator;
+
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     */
     public function __construct(
         Environment $twig,
         FormFactoryInterface $formFactory,
@@ -60,7 +69,8 @@ final class RequestResetAction
         TokenGenerator $tokenGenerator,
         UserProviderInterface $userProvider,
         ResettingMailer $mailer,
-        int $retryTtl
+        int $retryTtl,
+        TranslatorInterface $translator
     ) {
         $this->twig            = $twig;
         $this->formFactory     = $formFactory;
@@ -71,25 +81,29 @@ final class RequestResetAction
         $this->userProvider    = $userProvider;
         $this->mailer          = $mailer;
         $this->retryTtl        = $retryTtl;
+        $this->translator      = $translator;
     }
 
     public function __invoke(Request $request): Response
     {
-        $response = $this->process($request);
+        $form = $this->createForm();
+        $form->handleRequest($request);
 
-        if (null !== $response) {
-            return $response;
+        if ($form->isSubmitted() && $form->isValid()) {
+            $response = $this->process($request);
+
+            $this->getFlashBag($request)
+                ?->add('success', $this->translator->trans('resetting.check_email', [
+                    '%tokenLifetime%' => ceil($this->retryTtl / 3600),
+                ], 'NucleosUserBundle'))
+            ;
+
+            if (null !== $response) {
+                return $response;
+            }
+
+            return new RedirectResponse($this->router->generate('nucleos_user_resetting_request'));
         }
-
-        $form = $this->formFactory
-            ->create(RequestPasswordFormType::class, null, [
-                'action' => $this->router->generate('nucleos_user_resetting_request'),
-                'method' => 'POST',
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'resetting.request.submit',
-            ])
-        ;
 
         return new Response($this->twig->render('@NucleosUser/Resetting/request.html.twig', [
             'form' => $form->createView(),
@@ -116,7 +130,7 @@ final class RequestResetAction
         }
 
         if (!$user instanceof UserInterface) {
-            return new RedirectResponse($this->router->generate('nucleos_user_resetting_check_email'));
+            return null;
         }
 
         $event = new GetResponseNullableUserEvent($user, $request);
@@ -127,7 +141,7 @@ final class RequestResetAction
         }
 
         if ($user->isPasswordRequestNonExpired($this->retryTtl)) {
-            return new RedirectResponse($this->router->generate('nucleos_user_resetting_check_email'));
+            return null;
         }
 
         $event = new GetResponseUserEvent($user, $request);
@@ -159,6 +173,30 @@ final class RequestResetAction
             return $event->getResponse();
         }
 
-        return new RedirectResponse($this->router->generate('nucleos_user_resetting_check_email'));
+        return null;
+    }
+
+    private function getFlashBag(Request $request): ?FlashBagInterface
+    {
+        $session = $request->hasSession() ? $request->getSession() : null;
+
+        if (!$session instanceof Session) {
+            return null;
+        }
+
+        return $session->getFlashBag();
+    }
+
+    private function createForm(): FormInterface
+    {
+        return $this->formFactory
+            ->create(RequestPasswordFormType::class, null, [
+                'action' => $this->router->generate('nucleos_user_resetting_request'),
+                'method' => 'POST',
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'resetting.request.submit',
+            ])
+        ;
     }
 }
