@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.1.0 - TBD
+## 3.1.0 - 2023-10-01
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.1.0](https://github.com/nucleos/NucleosUserBundle/milestone/27)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.1.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### Enhancement
 
-- Nothing.
+ - [723: Deprecate CheckEmailAction in favor of flash messages](https://github.com/nucleos/NucleosUserBundle/pull/723) thanks to @core23
 
-### Fixed
+#### Bug
 
-- Nothing.
+ - [716: Remove password constraint from &quot;User&quot; group](https://github.com/nucleos/NucleosUserBundle/pull/716) thanks to @core23
 
 ## 3.0.3 - 2023-09-09
 
