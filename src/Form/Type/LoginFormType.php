@@ -64,7 +64,7 @@ final class LoginFormType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($authenticationUtils): void {
             $error = $authenticationUtils->getLastAuthenticationError();
             if (null !== $error) {
-                $message = $error->getMessage();
+                $message = $error->getMessageKey();
                 if (null !== $this->translator) {
                     $message = $this->translator->trans($message, [], 'NucleosUserBundle');
                 }
