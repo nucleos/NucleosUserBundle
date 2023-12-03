@@ -136,6 +136,11 @@ parameters:
 			path: tests/DependencyInjection/NucleosUserExtensionTest.php
 
 		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\TestCase\\:\\:createStub\\(\\)\\.$#"
+			count: 1
+			path: tests/Form/Type/ResettingFormTypeTest.php
+
+		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Model\\\\BaseUserManagerTest\\:\\:getUserManager\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Model/BaseUserManagerTest.php

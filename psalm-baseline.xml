@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.7.7@e028ba46ba0d7f9a78bc3201c251e137383e145f">
-  <file src="src/Action/UpdateSecurityAction.php">
+<files psalm-version="5.16.0@2897ba636551a8cb61601cc26f6ccfbba6c36591">
+  <file src="src/Action/ResetAction.php">
     <InvalidNullableReturnType>
       <code>Response</code>
     </InvalidNullableReturnType>
@@ -8,7 +8,7 @@
       <code><![CDATA[$event->getResponse()]]></code>
     </NullableReturnStatement>
   </file>
-  <file src="src/Action/ResetAction.php">
+  <file src="src/Action/UpdateSecurityAction.php">
     <InvalidNullableReturnType>
       <code>Response</code>
     </InvalidNullableReturnType>

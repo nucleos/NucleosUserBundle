@@ -17,7 +17,5 @@ use Nucleos\UserBundle\Model\UserInterface;
 
 final class NoopResettingMailer implements ResettingMailer
 {
-    public function sendResettingEmailMessage(UserInterface $user): void
-    {
-    }
+    public function sendResettingEmailMessage(UserInterface $user): void {}
 }
