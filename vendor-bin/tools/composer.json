@@ -24,5 +24,10 @@
             "phpstan/extension-installer": true
         },
         "bin-dir": "../../vendor/bin"
+    },
+    "extra": {
+        "symfony": {
+            "require": "6.4.*"
+        }
     }
 }
