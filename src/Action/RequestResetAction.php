@@ -53,12 +53,17 @@ final class RequestResetAction
 
     private readonly int $retryTtl;
 
+    /**
+     * @var UserProviderInterface<UserInterface>
+     */
     private readonly UserProviderInterface $userProvider;
 
     private readonly TranslatorInterface $translator;
 
     /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     *
+     * @param UserProviderInterface<UserInterface> $userProvider
      */
     public function __construct(
         Environment $twig,

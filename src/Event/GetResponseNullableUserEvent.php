@@ -13,6 +13,4 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Event;
 
-final class GetResponseNullableUserEvent extends GetResponseUserEvent
-{
-}
+final class GetResponseNullableUserEvent extends GetResponseUserEvent {}
