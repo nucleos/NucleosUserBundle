@@ -14,19 +14,17 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Command;
 
 use Nucleos\UserBundle\Util\UserManipulator;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'nucleos:user:promote', description: 'Promotes a user by adding a role')]
 final class PromoteUserCommand extends RoleCommand
 {
-    protected static $defaultName = 'nucleos:user:promote';
-
     protected function configure(): void
     {
         parent::configure();
 
         $this
-            ->setName('nucleos:user:promote')
-            ->setDescription('Promotes a user by adding a role')
             ->setHelp(
                 <<<'EOT'
 The <info>nucleos:user:promote</info> command promotes a user by adding a role

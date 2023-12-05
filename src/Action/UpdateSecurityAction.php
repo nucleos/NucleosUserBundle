@@ -21,6 +21,7 @@ use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Nucleos\UserBundle\Util\UserManipulator;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -29,7 +30,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Twig\Environment;
 
