@@ -14,6 +14,6 @@ jobs:
     with:
       PHP_EXTENSIONS: "mbstring, json, mongodb"
       SYMFONY_KERNEL: "Nucleos\\UserBundle\\Tests\\App\\AppKernel"
-      SYMFONY_VERSIONS: "6.3"
+      SYMFONY_VERSIONS: "6.4,7.0"
     secrets:
       CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
