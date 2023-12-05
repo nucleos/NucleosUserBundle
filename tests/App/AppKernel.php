@@ -69,8 +69,7 @@ final class AppKernel extends Kernel
 
     protected function configureContainer(ContainerConfigurator $container): void
     {
-        $container->import(__DIR__.'/config/config.yaml');
-        $container->import(__DIR__.'/config/security.yaml');
+        $container->import(__DIR__.'/config/config.php');
     }
 
     private function getBaseDir(): string
