@@ -14,19 +14,17 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Command;
 
 use Nucleos\UserBundle\Util\UserManipulator;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'nucleos:user:demote', description: 'Demote a user by removing a role')]
 final class DemoteUserCommand extends RoleCommand
 {
-    protected static $defaultName = 'nucleos:user:demote';
-
     protected function configure(): void
     {
         parent::configure();
 
         $this
-            ->setName('nucleos:user:demote')
-            ->setDescription('Demote a user by removing a role')
             ->setHelp(
                 <<<'EOT'
 The <info>nucleos:user:demote</info> command demotes a user by removing a role

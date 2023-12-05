@@ -15,6 +15,7 @@ namespace Nucleos\UserBundle\Command;
 
 use Nucleos\UserBundle\Util\UserManipulator;
 use RuntimeException;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -22,10 +23,9 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
+#[AsCommand(name: 'nucleos:user:create', description: 'Create a user.')]
 final class CreateUserCommand extends Command
 {
-    protected static $defaultName = 'nucleos:user:create';
-
     private readonly UserManipulator $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
@@ -38,8 +38,6 @@ final class CreateUserCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setName('nucleos:user:create')
-            ->setDescription('Create a user.')
             ->setDefinition([
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
                 new InputArgument('email', InputArgument::REQUIRED, 'The email'),

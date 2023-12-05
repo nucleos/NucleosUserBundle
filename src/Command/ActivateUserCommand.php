@@ -15,16 +15,16 @@ namespace Nucleos\UserBundle\Command;
 
 use Nucleos\UserBundle\Util\UserManipulator;
 use RuntimeException;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
+#[AsCommand(name: 'nucleos:user:activate', description: 'Activate a user')]
 final class ActivateUserCommand extends Command
 {
-    protected static $defaultName = 'nucleos:user:activate';
-
     private readonly UserManipulator $userManipulator;
 
     public function __construct(UserManipulator $userManipulator)
@@ -37,8 +37,6 @@ final class ActivateUserCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setName('nucleos:user:activate')
-            ->setDescription('Activate a user')
             ->setDefinition([
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
             ])

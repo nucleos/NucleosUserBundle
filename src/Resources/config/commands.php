@@ -23,49 +23,37 @@ return static function (ContainerConfigurator $container): void {
     $container->services()
 
         ->set(ActivateUserCommand::class)
-            ->tag('console.command', [
-                'command' => 'nucleos:user:activate',
-            ])
+            ->tag('console.command')
             ->args([
                 new Reference('nucleos_user.util.user_manipulator'),
             ])
 
         ->set(ChangePasswordCommand::class)
-            ->tag('console.command', [
-                'command' => 'nucleos:user:change-password',
-            ])
+            ->tag('console.command')
             ->args([
                 new Reference('nucleos_user.util.user_manipulator'),
             ])
 
         ->set(CreateUserCommand::class)
-            ->tag('console.command', [
-                'command' => 'nucleos:user:create',
-            ])
+            ->tag('console.command')
             ->args([
                 new Reference('nucleos_user.util.user_manipulator'),
             ])
 
         ->set(DeactivateUserCommand::class)
-            ->tag('console.command', [
-                'command' => 'nucleos:user:deactivate',
-            ])
+            ->tag('console.command')
             ->args([
                 new Reference('nucleos_user.util.user_manipulator'),
             ])
 
         ->set(DemoteUserCommand::class)
-            ->tag('console.command', [
-                'command' => 'nucleos:user:demote',
-            ])
+            ->tag('console.command')
             ->args([
                 new Reference('nucleos_user.util.user_manipulator'),
             ])
 
         ->set(PromoteUserCommand::class)
-            ->tag('console.command', [
-                'command' => 'nucleos:user:promote',
-            ])
+            ->tag('console.command')
             ->args([
                 new Reference('nucleos_user.util.user_manipulator'),
             ])
