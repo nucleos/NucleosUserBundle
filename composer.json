@@ -71,7 +71,7 @@
         "ext-mongodb": "*",
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/mongodb-odm": "^2.3",
-        "doctrine/mongodb-odm-bundle": "^4.4",
+        "doctrine/mongodb-odm-bundle": "^5.0",
         "doctrine/orm": "^2.12",
         "ergebnis/composer-normalize": "^2.0.1",
         "symfony/browser-kit": "^6.3",
