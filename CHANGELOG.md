@@ -43,6 +43,28 @@ Feature release (minor)
 
  - [745: Fix roles doctrine type mapping](https://github.com/nucleos/NucleosUserBundle/pull/745) thanks to @core23
 
+## 3.2.1 - TBD
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+-
 ## 3.2.0 - 2024-02-04
 
 
