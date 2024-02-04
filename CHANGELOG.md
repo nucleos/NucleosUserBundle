@@ -2,27 +2,34 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.2.0 - TBD
+## 3.2.0 - 2024-02-04
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.2.0](https://github.com/nucleos/NucleosUserBundle/milestone/33)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.2.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **5**
+- Total contributors: **3**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [741: Update dependency doctrine/orm to ^2.18 || ^3.0](https://github.com/nucleos/NucleosUserBundle/pull/741) thanks to @core23
+ - [733: Bump to symfony ^6.4 || ^7.0](https://github.com/nucleos/NucleosUserBundle/pull/733) thanks to @core23
+ - [729: Update dependency matthiasnoback/symfony-dependency-injection-test to v5](https://github.com/nucleos/NucleosUserBundle/pull/729) thanks to @renovate[bot]
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [732: Update tools ](https://github.com/nucleos/NucleosUserBundle/pull/732) thanks to @core23
+
+#### Bug
+
+ - [728: Fix login form uses getMessage() instead of getMessageKey()](https://github.com/nucleos/NucleosUserBundle/pull/728) thanks to @pohlm01
 
 ## 3.1.0 - 2023-10-01
 
