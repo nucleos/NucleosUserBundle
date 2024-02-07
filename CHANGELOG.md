@@ -43,28 +43,25 @@ Feature release (minor)
 
  - [745: Fix roles doctrine type mapping](https://github.com/nucleos/NucleosUserBundle/pull/745) thanks to @core23
 
-## 3.2.1 - TBD
+## 3.2.1 - 2024-02-07
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.2.1](https://github.com/nucleos/NucleosUserBundle/milestone/34)
 
-- Nothing.
+3.2.x bugfix release (patch)
 
-### Deprecated
+### 3.2.1
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
+- [742: Fix doctrine listener registration](https://github.com/nucleos/NucleosUserBundle/pull/742) thanks to @core23
 
-### Fixed
-
-- Nothing.
--
 ## 3.2.0 - 2024-02-04
 
 
