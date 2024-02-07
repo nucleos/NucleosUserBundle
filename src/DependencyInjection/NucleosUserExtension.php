@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\DependencyInjection;
 
+use Doctrine\ORM\Events;
 use Nucleos\UserBundle\Mailer\ResettingMailer;
 use Nucleos\UserBundle\Model\GroupManager;
 use Nucleos\UserBundle\Model\UserManager;
@@ -35,11 +36,19 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
     private static array $doctrineDrivers = [
         'orm'     => [
             'registry' => 'doctrine',
-            'tag'      => 'doctrine.event_subscriber',
+            'tag'      => 'doctrine.event_listener',
+            'events'   => [
+                Events::prePersist,
+                Events::preUpdate,
+            ],
         ],
         'mongodb' => [
             'registry' => 'doctrine_mongodb',
-            'tag'      => 'doctrine_mongodb.odm.event_subscriber',
+            'tag'      => 'doctrine_mongodb.odm.event_listener',
+            'events'   => [
+                Events::prePersist,
+                Events::preUpdate,
+            ],
         ],
     ];
 
@@ -94,9 +103,12 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
 
         if ($config['use_listener'] && isset(self::$doctrineDrivers[$config['db_driver']])) {
             $listenerDefinition = $container->getDefinition('nucleos_user.user_listener');
-            $listenerDefinition->addTag(self::$doctrineDrivers[$config['db_driver']]['tag']);
             if (isset(self::$doctrineDrivers[$config['db_driver']]['listener_class'])) {
                 $listenerDefinition->setClass(self::$doctrineDrivers[$config['db_driver']]['listener_class']);
+            }
+
+            foreach (self::$doctrineDrivers[$config['db_driver']]['events'] as $event) {
+                $listenerDefinition->addTag(self::$doctrineDrivers[$config['db_driver']]['tag'], ['event' => $event]);
             }
         }
 
