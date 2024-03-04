@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.3.1 - TBD
+## 3.3.1 - 2024-03-04
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.3.1](https://github.com/nucleos/NucleosUserBundle/milestone/37)
 
-- Nothing.
+3.3.x bugfix release (patch)
 
-### Deprecated
+### 3.3.1
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [746: Revert: Fix roles doctrine type mapping](https://github.com/nucleos/NucleosUserBundle/pull/746) thanks to @core23
 
 ## 3.3.0 - 2024-03-04
 
