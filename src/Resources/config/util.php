@@ -25,6 +25,7 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('nucleos_user.user_manager'),
                 new Reference('event_dispatcher'),
                 new Reference('request_stack'),
+                new Reference('security.password_hasher'),
             ])
 
         ->alias('nucleos_user.util.user_manipulator', 'nucleos_user.util.user_manipulator.simple')

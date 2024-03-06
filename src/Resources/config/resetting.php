@@ -64,6 +64,7 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('form.factory'),
                 new Reference('nucleos_user.user_manager'),
                 '%nucleos_user.loggedin.route%',
+                new Reference('nucleos_user.util.user_manipulator'),
             ])
 
         ->set(CheckEmailAction::class)

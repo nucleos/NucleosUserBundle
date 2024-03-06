@@ -49,11 +49,15 @@ interface UserInterface extends PasswordAuthenticatedUserInterface, BaseUserInte
 
     /**
      * Gets the plain password.
+     *
+     * @deprecated
      */
     public function getPlainPassword(): ?string;
 
     /**
      * Sets the plain password.
+     *
+     * @deprecated
      */
     public function setPlainPassword(?string $password): void;
 
