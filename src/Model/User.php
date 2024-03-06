@@ -201,7 +201,8 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 
     public function setPlainPassword(?string $password): void
     {
-        $this->plainPassword = $password;
+        $this->plainPassword       = $password;
+        $this->passwordRequestedAt = null;
     }
 
     public function setLastLogin(DateTime $time = null): void
