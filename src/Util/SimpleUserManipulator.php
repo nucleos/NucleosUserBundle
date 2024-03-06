@@ -20,6 +20,7 @@ use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final class SimpleUserManipulator implements UserManipulator
@@ -30,11 +31,18 @@ final class SimpleUserManipulator implements UserManipulator
 
     private readonly RequestStack $requestStack;
 
-    public function __construct(UserManager $userManager, EventDispatcherInterface $dispatcher, RequestStack $requestStack)
-    {
-        $this->userManager  = $userManager;
-        $this->dispatcher   = $dispatcher;
-        $this->requestStack = $requestStack;
+    private readonly ?UserPasswordHasherInterface $userPasswordHasher;
+
+    public function __construct(
+        UserManager $userManager,
+        EventDispatcherInterface $dispatcher,
+        RequestStack $requestStack,
+        ?UserPasswordHasherInterface $userPasswordHasher = null
+    ) {
+        $this->userManager        = $userManager;
+        $this->dispatcher         = $dispatcher;
+        $this->requestStack       = $requestStack;
+        $this->userPasswordHasher = $userPasswordHasher;
     }
 
     public function create(string $username, string $password, string $email, bool $active, bool $superadmin): UserInterface
@@ -42,7 +50,7 @@ final class SimpleUserManipulator implements UserManipulator
         $user = $this->userManager->createUser();
         $user->setUsername($username);
         $user->setEmail($email);
-        $user->setPlainPassword($password);
+        $this->setPassword($user, $password);
         $user->setEnabled($active);
         $user->setSuperAdmin($superadmin);
         $this->userManager->updateUser($user);
@@ -76,7 +84,7 @@ final class SimpleUserManipulator implements UserManipulator
     public function changePassword(string $username, string $password): void
     {
         $user = $this->findUserByUsernameOrThrowException($username);
-        $user->setPlainPassword($password);
+        $this->setPassword($user, $password);
         $this->userManager->updateUser($user);
 
         $event = new UserEvent($user, $this->getRequest());
@@ -150,5 +158,16 @@ final class SimpleUserManipulator implements UserManipulator
     private function getRequest(): ?Request
     {
         return $this->requestStack->getCurrentRequest();
+    }
+
+    private function setPassword(UserInterface $user, string $password): void
+    {
+        $user->setPlainPassword($password);
+
+        if (null !== $this->userPasswordHasher) {
+            $user->setPassword(
+                $this->userPasswordHasher->hashPassword($user, $password)
+            );
+        }
     }
 }

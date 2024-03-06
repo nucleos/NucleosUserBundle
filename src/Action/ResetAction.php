@@ -16,8 +16,10 @@ use Nucleos\UserBundle\Event\FormEvent;
 use Nucleos\UserBundle\Event\GetResponseUserEvent;
 use Nucleos\UserBundle\Form\Model\Resetting;
 use Nucleos\UserBundle\Form\Type\ResettingFormType;
+use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Model\UserManager;
 use Nucleos\UserBundle\NucleosUserEvents;
+use Nucleos\UserBundle\Util\UserManipulator;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -41,13 +43,16 @@ final class ResetAction
 
     private readonly string $loggedinRoute;
 
+    private readonly ?UserManipulator $userManipulator;
+
     public function __construct(
         Environment $twig,
         RouterInterface $router,
         EventDispatcherInterface $eventDispatcher,
         FormFactoryInterface $formFactory,
         UserManager $userManager,
-        string $loggedinRoute
+        string $loggedinRoute,
+        ?UserManipulator $userManipulator = null
     ) {
         $this->twig            = $twig;
         $this->router          = $router;
@@ -55,6 +60,7 @@ final class ResetAction
         $this->formFactory     = $formFactory;
         $this->userManager     = $userManager;
         $this->loggedinRoute   = $loggedinRoute;
+        $this->userManipulator = $userManipulator;
     }
 
     public function __invoke(Request $request, string $token): Response
@@ -87,9 +93,7 @@ final class ResetAction
             $event = new FormEvent($form, $request);
             $this->eventDispatcher->dispatch($event, NucleosUserEvents::RESETTING_RESET_SUCCESS);
 
-            $user->setPlainPassword($formModel->getPlainPassword());
-
-            $this->userManager->updateUser($user);
+            $this->changePassword($user, $formModel);
 
             if (null === $response = $event->getResponse()) {
                 $response = new RedirectResponse($this->router->generate($this->loggedinRoute));
@@ -107,5 +111,15 @@ final class ResetAction
             'token' => $token,
             'form'  => $form->createView(),
         ]));
+    }
+
+    private function changePassword(UserInterface $user, Resetting $formModel): void
+    {
+        $user->setPlainPassword($formModel->getPlainPassword());
+        $this->userManager->updateUser($user);
+
+        if (null !== $this->userManipulator) {
+            $this->userManipulator->changePassword($user->getUsername(), $formModel->getPlainPassword());
+        }
     }
 }

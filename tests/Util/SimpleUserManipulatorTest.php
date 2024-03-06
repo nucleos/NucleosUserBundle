@@ -21,6 +21,7 @@ use Nucleos\UserBundle\Util\SimpleUserManipulator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -56,6 +57,43 @@ final class SimpleUserManipulatorTest extends TestCase
 
         self::assertSame($username, $user->getUsername());
         self::assertSame($password, $user->getPlainPassword());
+        self::assertSame($email, $user->getEmail());
+        self::assertTrue($user->isEnabled());
+        self::assertFalse($user->isSuperAdmin());
+    }
+
+    public function testCreateWithHasher(): void
+    {
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
+        $user            = new TestUser();
+
+        $username   = 'test_username';
+        $password   = 'test_password';
+        $email      = 'test@email.org';
+
+        $userManagerMock->expects(self::once())
+            ->method('createUser')
+            ->willReturn($user)
+        ;
+
+        $userManagerMock->expects(self::once())
+            ->method('updateUser')
+            ->with(self::isInstanceOf(TestUser::class))
+        ;
+
+        $eventDispatcherMock = $this->getEventDispatcherMock(NucleosUserEvents::USER_CREATED, true);
+
+        $requestStackMock = $this->getRequestStackMock(true);
+
+        $hasher = $this->createMock(UserPasswordHasherInterface::class);
+        $hasher->method('hashPassword')->with($user, $password)->willReturn('hashed_password');
+
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock, $hasher);
+        $manipulator->create($username, $password, $email, true, false);
+
+        self::assertSame($username, $user->getUsername());
+        self::assertSame($password, $user->getPlainPassword());
+        self::assertSame('hashed_password', $user->getPassword());
         self::assertSame($email, $user->getEmail());
         self::assertTrue($user->isEnabled());
         self::assertFalse($user->isSuperAdmin());
@@ -317,6 +355,44 @@ final class SimpleUserManipulatorTest extends TestCase
 
         self::assertSame($username, $user->getUsername());
         self::assertSame($password, $user->getPlainPassword());
+    }
+
+    public function testChangePasswordWithValidUsernameAndHasher(): void
+    {
+        $userManagerMock = $this->getMockBuilder(UserManager::class)->getMock();
+
+        $user        = new TestUser();
+        $username    = 'test_username';
+        $password    = 'test_password';
+        $oldpassword = 'old_password';
+
+        $user->setUsername($username);
+        $user->setPlainPassword($oldpassword);
+
+        $userManagerMock->expects(self::once())
+            ->method('findUserByUsername')
+            ->willReturn($user)
+            ->with(self::equalTo($username))
+        ;
+
+        $userManagerMock->expects(self::once())
+            ->method('updateUser')
+            ->with(self::isInstanceOf(TestUser::class))
+        ;
+
+        $eventDispatcherMock = $this->getEventDispatcherMock(NucleosUserEvents::USER_PASSWORD_CHANGED, true);
+
+        $requestStackMock = $this->getRequestStackMock(true);
+
+        $hasher = $this->createMock(UserPasswordHasherInterface::class);
+        $hasher->method('hashPassword')->with($user, $password)->willReturn('hashed_password');
+
+        $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock, $hasher);
+        $manipulator->changePassword($username, $password);
+
+        self::assertSame($username, $user->getUsername());
+        self::assertSame($password, $user->getPlainPassword());
+        self::assertSame('hashed_password', $user->getPassword());
     }
 
     public function testChangePasswordWithInvalidUsername(): void
