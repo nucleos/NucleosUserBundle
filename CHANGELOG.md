@@ -24,27 +24,24 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
-## 3.3.2 - TBD
+## 3.3.2 - 2024-03-06
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.3.2](https://github.com/nucleos/NucleosUserBundle/milestone/39)
 
-- Nothing.
+3.3.x bugfix release (patch)
 
-### Deprecated
+### 3.3.2
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [748: Reset passwordRequestedAt on plain password change to trigger doctrine listener](https://github.com/nucleos/NucleosUserBundle/pull/748) thanks to @core23
 
 ## 3.3.1 - 2024-03-04
 
