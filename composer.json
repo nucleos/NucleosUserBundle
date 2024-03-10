@@ -69,12 +69,14 @@
     },
     "require-dev": {
         "ext-mongodb": "*",
+        "dama/doctrine-test-bundle": "^8.0",
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/mongodb-odm": "^2.3",
         "doctrine/mongodb-odm-bundle": "^4.4 || ^5.0",
         "doctrine/orm": "^2.18 || ^3.0",
         "ergebnis/composer-normalize": "^2.0.1",
         "symfony/browser-kit": "^6.4 || ^7.0",
+        "symfony/css-selector": "^6.4 || ^7.0",
         "symfony/doctrine-bridge": "^6.4 || ^7.0",
         "symfony/yaml": "^6.4 || ^7.0"
     },

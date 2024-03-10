@@ -3,12 +3,19 @@
   <coverage/>
   <php>
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0"/>
+    <env name="APP_DEBUG" value="false"/>
+    <env name="APP_ENV" value="test"/>
+    <env name="KERNEL_CLASS" value="Nucleos\UserBundle\Tests\App\AppKernel"/>
+    <ini name="date.timezone" value="UTC"/>
   </php>
   <testsuites>
     <testsuite name="UserBundle Test Suite">
       <directory>./tests/</directory>
     </testsuite>
   </testsuites>
+    <extensions>
+        <bootstrap class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension"/>
+    </extensions>
   <source>
     <include>
       <directory suffix=".php">./src/</directory>
