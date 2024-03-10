@@ -43,8 +43,6 @@ final class Pattern extends Constraint
 
     /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
-     *
-     * @param array<string, mixed> $options
      */
     public function __construct(
         mixed $options = null,
