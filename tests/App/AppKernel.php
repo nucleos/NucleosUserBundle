@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\App;
 
+use DAMA\DoctrineTestBundle\DAMADoctrineTestBundle;
+use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Nucleos\UserBundle\NucleosUserBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -26,9 +28,9 @@ final class AppKernel extends Kernel
 {
     use MicroKernelTrait;
 
-    public function __construct()
+    public function __construct(string $environment = 'test', bool $debug = false)
     {
-        parent::__construct('test', false);
+        parent::__construct($environment, $debug);
     }
 
     public function registerBundles(): iterable
@@ -38,6 +40,10 @@ final class AppKernel extends Kernel
         yield new TwigBundle();
 
         yield new SecurityBundle();
+
+        yield new DoctrineBundle();
+
+        yield new DAMADoctrineTestBundle();
 
         yield new NucleosUserBundle();
     }
