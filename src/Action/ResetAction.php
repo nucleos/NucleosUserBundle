@@ -115,11 +115,15 @@ final class ResetAction
 
     private function changePassword(UserInterface $user, Resetting $formModel): void
     {
-        $user->setPlainPassword($formModel->getPlainPassword());
+        $password = $formModel->getPlainPassword();
+
+        \assert(null !== $password);
+
+        $user->setPlainPassword($password);
         $this->userManager->updateUser($user);
 
         if (null !== $this->userManipulator) {
-            $this->userManipulator->changePassword($user->getUsername(), $formModel->getPlainPassword());
+            $this->userManipulator->changePassword($user->getUsername(), $password);
         }
     }
 }
