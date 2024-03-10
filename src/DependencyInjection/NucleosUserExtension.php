@@ -31,7 +31,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 final class NucleosUserExtension extends Extension implements PrependExtensionInterface
 {
     /**
-     * @var array<string, array<string, string>>
+     * @var array<array{registry: string, tag: string, events: string[]}>
      */
     private static array $doctrineDrivers = [
         'orm'     => [
@@ -103,10 +103,6 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
 
         if ($config['use_listener'] && isset(self::$doctrineDrivers[$config['db_driver']])) {
             $listenerDefinition = $container->getDefinition('nucleos_user.user_listener');
-            if (isset(self::$doctrineDrivers[$config['db_driver']]['listener_class'])) {
-                $listenerDefinition->setClass(self::$doctrineDrivers[$config['db_driver']]['listener_class']);
-            }
-
             foreach (self::$doctrineDrivers[$config['db_driver']]['events'] as $event) {
                 $listenerDefinition->addTag(self::$doctrineDrivers[$config['db_driver']]['tag'], ['event' => $event]);
             }
