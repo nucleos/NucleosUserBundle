@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.4.1 - TBD
+## 3.4.1 - 2024-05-20
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.4.1](https://github.com/nucleos/NucleosUserBundle/milestone/41)
 
-- Nothing.
+3.4.x bugfix release (patch)
 
-### Deprecated
+### 3.4.1
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
+ - [754: Fix translation of auth provider messages](https://github.com/nucleos/NucleosUserBundle/pull/754) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [751: Add functional tests for all actions](https://github.com/nucleos/NucleosUserBundle/pull/751) thanks to @core23
 
 ## 3.4.0 - 2024-03-06
 
