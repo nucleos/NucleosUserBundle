@@ -56,8 +56,8 @@ final class LocaleEventListener implements EventSubscriberInterface
             return;
         }
 
-        $this->setLocale($event->getRequest(), $user);
-        $this->setTimezone($event->getRequest(), $user);
+        $this->setLocale($event->getRequest(), $user->getLocale());
+        $this->setTimezone($event->getRequest(), $user->getTimezone());
     }
 
     public function onSecurityInteractiveLogin(InteractiveLoginEvent $event): void
@@ -68,8 +68,8 @@ final class LocaleEventListener implements EventSubscriberInterface
             return;
         }
 
-        $this->setLocale($event->getRequest(), $user);
-        $this->setTimezone($event->getRequest(), $user);
+        $this->setLocale($event->getRequest(), $user->getLocale());
+        $this->setTimezone($event->getRequest(), $user->getTimezone());
     }
 
     public function onKernelRequest(RequestEvent $event): void
@@ -92,7 +92,7 @@ final class LocaleEventListener implements EventSubscriberInterface
         $user = $event->getUser();
 
         if ($user instanceof LocaleAwareUser && null !== $event->getRequest()) {
-            $this->setTimezone($event->getRequest(), $user);
+            $this->setTimezone($event->getRequest(), $user->getTimezone());
         }
     }
 
@@ -101,19 +101,17 @@ final class LocaleEventListener implements EventSubscriberInterface
         $user = $event->getUser();
 
         if ($user instanceof LocaleAwareUser && null !== $event->getRequest()) {
-            $this->setLocale($event->getRequest(), $user);
+            $this->setLocale($event->getRequest(), $user->getLocale());
         }
     }
 
-    private function setLocale(Request $request, LocaleAwareUser $user): void
+    private function setLocale(Request $request, ?string $locale): void
     {
         if (!$request->hasSession()) {
             return;
         }
 
         $session = $request->getSession();
-
-        $locale = $user->getLocale();
 
         if ('' === $locale || null === $locale) {
             $session->remove(self::ATTR_LOCALE);
@@ -126,15 +124,13 @@ final class LocaleEventListener implements EventSubscriberInterface
         $session->set(self::ATTR_LOCALE, $locale);
     }
 
-    private function setTimezone(Request $request, LocaleAwareUser $user): void
+    private function setTimezone(Request $request, ?string $timezone): void
     {
         if (!$request->hasSession()) {
             return;
         }
 
         $session = $request->getSession();
-
-        $timezone = $user->getTimezone();
 
         if ('' === $timezone || null === $timezone) {
             $session->remove(self::ATTR_TIMEZONE);
