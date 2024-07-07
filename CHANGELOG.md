@@ -24,27 +24,24 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
-## 3.4.2 - TBD
+## 3.4.2 - 2024-07-07
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.4.2](https://github.com/nucleos/NucleosUserBundle/milestone/43)
 
-- Nothing.
+3.4.x bugfix release (patch)
 
-### Deprecated
+### 3.4.2
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [757: Fix unsetting locale](https://github.com/nucleos/NucleosUserBundle/pull/757) thanks to @core23
 
 ## 3.4.1 - 2024-05-20
 
