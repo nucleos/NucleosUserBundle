@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.4.3 - TBD
+## 3.4.3 - 2024-07-07
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.4.3](https://github.com/nucleos/NucleosUserBundle/milestone/44)
 
-- Nothing.
+3.4.x bugfix release (patch)
 
-### Deprecated
+### 3.4.3
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [759: Fix setting locale](https://github.com/nucleos/NucleosUserBundle/pull/759) thanks to @core23
 
 ## 3.4.2 - 2024-07-07
 
