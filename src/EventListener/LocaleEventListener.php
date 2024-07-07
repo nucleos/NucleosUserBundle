@@ -26,6 +26,10 @@ use Symfony\Contracts\Translation\LocaleAwareInterface as LocaleAwareTranslator;
 
 final class LocaleEventListener implements EventSubscriberInterface
 {
+    private const ATTR_LOCALE = '_locale';
+
+    private const ATTR_TIMEZONE = '_timezone';
+
     private readonly LocaleAwareTranslator $translator;
 
     public function __construct(LocaleAwareTranslator $translator)
@@ -78,9 +82,8 @@ final class LocaleEventListener implements EventSubscriberInterface
 
         $session = $request->getSession();
 
-        if (null !== $locale = $session->get('_locale')) {
-            $this->translator->setLocale($locale);
-            $request->setLocale($locale);
+        if (null !== $locale = $session->get(self::ATTR_LOCALE)) {
+            $this->setLocale($request, $locale);
         }
     }
 
@@ -113,12 +116,14 @@ final class LocaleEventListener implements EventSubscriberInterface
         $locale = $user->getLocale();
 
         if ('' === $locale || null === $locale) {
+            $session->remove(self::ATTR_LOCALE);
+
             return;
         }
 
         $this->translator->setLocale($locale);
         $request->setLocale($locale);
-        $session->set('_locale', $locale);
+        $session->set(self::ATTR_LOCALE, $locale);
     }
 
     private function setTimezone(Request $request, LocaleAwareUser $user): void
@@ -127,13 +132,16 @@ final class LocaleEventListener implements EventSubscriberInterface
             return;
         }
 
+        $session = $request->getSession();
+
         $timezone = $user->getTimezone();
 
         if ('' === $timezone || null === $timezone) {
+            $session->remove(self::ATTR_TIMEZONE);
+
             return;
         }
 
-        $session = $request->getSession();
-        $session->set('_timezone', $timezone);
+        $session->set(self::ATTR_TIMEZONE, $timezone);
     }
 }
