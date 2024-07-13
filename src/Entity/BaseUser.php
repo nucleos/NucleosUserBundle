@@ -11,15 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Nucleos\UserBundle\Noop;
+namespace Nucleos\UserBundle\Entity;
 
-use Doctrine\Common\EventSubscriber;
+use Nucleos\UserBundle\Model\GroupInterface;
+use Nucleos\UserBundle\Model\User;
 
-final class UserListener implements EventSubscriber
-{
-    public function getSubscribedEvents(): array
-    {
-        return [
-        ];
-    }
-}
+/**
+ * @phpstan-template GroupTemplate of GroupInterface
+ *
+ * @phpstan-extends  User<GroupTemplate>
+ */
+class BaseUser extends User {}

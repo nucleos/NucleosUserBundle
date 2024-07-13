@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use Doctrine\ORM\Events;
 use Doctrine\Persistence\ObjectManager;
 use Nucleos\UserBundle\Doctrine\UserListener;
 use Nucleos\UserBundle\Doctrine\UserManager;
@@ -33,6 +34,8 @@ return static function (ContainerConfigurator $container): void {
             ])
 
         ->set('nucleos_user.user_listener', UserListener::class)
+            ->tag('doctrine.event_listener', ['event' => Events::prePersist])
+            ->tag('doctrine.event_listener', ['event' => Events::preUpdate])
             ->args([
                 new Reference('security.password_hasher'),
             ])

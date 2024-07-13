@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\DependencyInjection;
 
-use Doctrine\ORM\Events;
 use Nucleos\UserBundle\Mailer\ResettingMailer;
 use Nucleos\UserBundle\Model\GroupManager;
 use Nucleos\UserBundle\Model\UserManager;
@@ -23,35 +22,12 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\FileLoader;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-final class NucleosUserExtension extends Extension implements PrependExtensionInterface
+final class NucleosUserExtension extends Extension
 {
-    /**
-     * @var array<array{registry: string, tag: string, events: string[]}>
-     */
-    private static array $doctrineDrivers = [
-        'orm'     => [
-            'registry' => 'doctrine',
-            'tag'      => 'doctrine.event_listener',
-            'events'   => [
-                Events::prePersist,
-                Events::preUpdate,
-            ],
-        ],
-        'mongodb' => [
-            'registry' => 'doctrine_mongodb',
-            'tag'      => 'doctrine_mongodb.odm.event_listener',
-            'events'   => [
-                Events::prePersist,
-                Events::preUpdate,
-            ],
-        ],
-    ];
-
     private bool $mailerNeeded  = false;
 
     /**
@@ -68,20 +44,12 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
 
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        if ('custom' !== $config['db_driver']) {
-            if (isset(self::$doctrineDrivers[$config['db_driver']])) {
-                $loader->load('doctrine.php');
-                $container->setAlias('nucleos_user.doctrine_registry', new Alias(self::$doctrineDrivers[$config['db_driver']]['registry'], false));
-            } else {
-                $loader->load(sprintf('%s.php', $config['db_driver']));
-            }
-            $container->setParameter($this->getAlias().'.backend_type_'.$config['db_driver'], true);
-        }
+        $loader->load('doctrine.php');
+        $container->setAlias('nucleos_user.doctrine_registry', new Alias('doctrine', false));
+        $container->setParameter($this->getAlias().'.backend_type_orm', true);
 
-        if (isset(self::$doctrineDrivers[$config['db_driver']])) {
-            $definition = $container->getDefinition('nucleos_user.object_manager');
-            $definition->setFactory([new Reference('nucleos_user.doctrine_registry'), 'getManager']);
-        }
+        $definition = $container->getDefinition('nucleos_user.object_manager');
+        $definition->setFactory([new Reference('nucleos_user.doctrine_registry'), 'getManager']);
 
         foreach (['validator', 'security', 'util', 'mailer', 'listeners', 'commands'] as $basename) {
             $loader->load(sprintf('%s.php', $basename));
@@ -101,16 +69,8 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         $container->setAlias('nucleos_user.user_manager', new Alias($config['service']['user_manager'], true));
         $container->setAlias(UserManager::class, new Alias($config['service']['user_manager'], true));
 
-        if ($config['use_listener'] && isset(self::$doctrineDrivers[$config['db_driver']])) {
-            $listenerDefinition = $container->getDefinition('nucleos_user.user_listener');
-            foreach (self::$doctrineDrivers[$config['db_driver']]['events'] as $event) {
-                $listenerDefinition->addTag(self::$doctrineDrivers[$config['db_driver']]['tag'], ['event' => $event]);
-            }
-        }
-
         $this->remapParametersNamespaces($config, $container, [
             '' => [
-                'db_driver'          => 'nucleos_user.storage',
                 'firewall_name'      => 'nucleos_user.firewall_name',
                 'model_manager_name' => 'nucleos_user.model_manager_name',
                 'user_class'         => 'nucleos_user.model.user.class',
@@ -123,39 +83,13 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         $this->loadLoggedin($config['loggedin'], $container);
 
         if (isset($config['group'])) {
-            $this->loadGroups($config['group'], $container, $loader, $config['db_driver']);
+            $this->loadGroups($config['group'], $container, $loader);
         }
 
         if ($this->mailerNeeded) {
             $container->setAlias('nucleos_user.mailer', new Alias($config['service']['mailer'], true));
             $container->setAlias(ResettingMailer::class, new Alias($config['service']['mailer'], true));
         }
-    }
-
-    public function prepend(ContainerBuilder $container): void
-    {
-        $configs = $container->getExtensionConfig('nucleos_user');
-
-        $storage = null;
-        foreach ($configs as $config) {
-            if (isset($config['db_driver'])) {
-                $storage = $config['db_driver'];
-            }
-        }
-
-        if (null === $storage || !isset(self::$doctrineDrivers[$storage])) {
-            return;
-        }
-
-        $container->prependExtensionConfig('framework', [
-            'validation' => [
-                'mapping' => [
-                    'paths' => [
-                        __DIR__.'/../Resources/config/storage-validation/'.$storage,
-                    ],
-                ],
-            ],
-        ]);
     }
 
     private function remapParameters(array $config, ContainerBuilder $container, array $map): void
@@ -228,15 +162,9 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         ]);
     }
 
-    private function loadGroups(array $config, ContainerBuilder $container, FileLoader $loader, string $dbDriver): void
+    private function loadGroups(array $config, ContainerBuilder $container, FileLoader $loader): void
     {
-        if ('custom' !== $dbDriver) {
-            if (isset(self::$doctrineDrivers[$dbDriver])) {
-                $loader->load('doctrine_group.php');
-            } else {
-                $loader->load(sprintf('%s_group.php', $dbDriver));
-            }
-        }
+        $loader->load('doctrine_group.php');
 
         $container->setAlias('nucleos_user.group_manager', new Alias($config['group_manager'], true));
         $container->setAlias(GroupManager::class, new Alias('nucleos_user.group_manager', true));

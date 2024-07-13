@@ -17,15 +17,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Nucleos\UserBundle\Entity\BaseUser;
 use Nucleos\UserBundle\Model\GroupInterface;
-use Nucleos\UserBundle\Model\User;
 
 /**
- * @phpstan-extends User<GroupInterface>
+ * @phpstan-extends BaseUser<GroupInterface>
  */
 #[ORM\Entity]
 #[ORM\Table(name: 'user__user')]
-class TestUser extends User
+class TestUser extends BaseUser
 {
     #[ORM\Id]
     #[ORM\Column(type: Types::INTEGER)]
@@ -38,6 +38,7 @@ class TestUser extends User
     #[ORM\ManyToMany(targetEntity: TestGroup::class)]
     #[ORM\JoinTable(name: 'user__user_group')]
     protected Collection $groups;
+
     private static int $index = 1;
 
     public function __construct()

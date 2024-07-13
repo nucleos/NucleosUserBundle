@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Nucleos\UserBundle\Tests\DependencyInjection;
 
-use Generator;
 use Nucleos\UserBundle\Action\AccountDeletionAction;
 use Nucleos\UserBundle\DependencyInjection\NucleosUserExtension;
 use Nucleos\UserBundle\EventListener\FlashListener;
@@ -21,7 +20,6 @@ use Nucleos\UserBundle\Form\Type\AccountDeletionFormType;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -30,16 +28,6 @@ use Symfony\Component\Yaml\Parser;
 final class NucleosUserExtensionTest extends TestCase
 {
     protected ContainerBuilder $configuration;
-
-    public function testUserLoadThrowsExceptionUnlessDatabaseDriverIsValid(): void
-    {
-        $this->expectException(InvalidConfigurationException::class);
-
-        $loader              = new NucleosUserExtension();
-        $config              = $this->getEmptyConfig();
-        $config['db_driver'] = 'foo';
-        $loader->load([$config], new ContainerBuilder());
-    }
 
     public function testUserLoadThrowsExceptionUnlessFirewallNameSet(): void
     {
@@ -71,30 +59,6 @@ final class NucleosUserExtensionTest extends TestCase
         $loader->load([$config], new ContainerBuilder());
     }
 
-    public function testCustomDriverWithoutManager(): void
-    {
-        $this->expectException(InvalidConfigurationException::class);
-
-        $loader              = new NucleosUserExtension();
-        $config              = $this->getEmptyConfig();
-        $config['db_driver'] = 'custom';
-        $loader->load([$config], new ContainerBuilder());
-    }
-
-    public function testCustomDriver(): void
-    {
-        $this->configuration               = new ContainerBuilder();
-        $loader                            = new NucleosUserExtension();
-        $config                            = $this->getEmptyConfig();
-        $config['db_driver']               = 'custom';
-        $config['service']['user_manager'] = 'acme.user_manager';
-        $loader->load([$config], $this->configuration);
-
-        $this->assertNotHasDefinition('nucleos_user.user_manager.default');
-        $this->assertAlias('acme.user_manager', 'nucleos_user.user_manager');
-        $this->assertParameter('custom', 'nucleos_user.storage');
-    }
-
     public function testUserLoadModelClassWithDefaults(): void
     {
         $this->createEmptyConfiguration();
@@ -109,21 +73,10 @@ final class NucleosUserExtensionTest extends TestCase
         $this->assertParameter('Acme\MyBundle\Entity\User', 'nucleos_user.model.user.class');
     }
 
-    public function testUserLoadManagerClassWithDefaults(): void
-    {
-        $this->createEmptyConfiguration();
-
-        $this->assertParameter('mongodb', 'nucleos_user.storage');
-        $this->assertParameter(null, 'nucleos_user.model_manager_name');
-        $this->assertAlias('nucleos_user.user_manager.default', 'nucleos_user.user_manager');
-        $this->assertNotHasDefinition('nucleos_user.group_manager');
-    }
-
     public function testUserLoadManagerClass(): void
     {
         $this->createFullConfiguration();
 
-        $this->assertParameter('orm', 'nucleos_user.storage');
         $this->assertParameter('custom', 'nucleos_user.model_manager_name');
         $this->assertAlias('acme_my.user_manager', 'nucleos_user.user_manager');
         $this->assertAlias('nucleos_user.group_manager.default', 'nucleos_user.group_manager');
@@ -174,39 +127,6 @@ final class NucleosUserExtensionTest extends TestCase
         $this->assertHasDefinition(AccountDeletionFormType::class);
     }
 
-    /**
-     * @dataProvider provideUserManagerSetFactoryCases
-     */
-    public function testUserManagerSetFactory(string $dbDriver, string $doctrineService): void
-    {
-        $this->configuration = new ContainerBuilder();
-        $loader              = new NucleosUserExtension();
-        $config              = $this->getEmptyConfig();
-        $config['db_driver'] = $dbDriver;
-        $loader->load([$config], $this->configuration);
-
-        $definition = $this->configuration->getDefinition('nucleos_user.object_manager');
-
-        $this->assertAlias($doctrineService, 'nucleos_user.doctrine_registry');
-
-        $factory = $definition->getFactory();
-
-        self::assertIsArray($factory);
-        self::assertInstanceOf(Reference::class, $factory[0]);
-        self::assertSame('nucleos_user.doctrine_registry', (string) $factory[0]);
-        self::assertSame('getManager', $factory[1]);
-    }
-
-    /**
-     * @phpstan-return Generator<array{string, string}>
-     */
-    public static function provideUserManagerSetFactoryCases(): iterable
-    {
-        yield ['orm', 'doctrine'];
-
-        yield ['mongodb', 'doctrine_mongodb'];
-    }
-
     protected function createEmptyConfiguration(): void
     {
         $this->configuration = new ContainerBuilder();
@@ -228,7 +148,6 @@ final class NucleosUserExtensionTest extends TestCase
     protected function getEmptyConfig(): array
     {
         $yaml = <<<'EOF'
-db_driver: mongodb
 firewall_name: nucleos_user
 user_class: Acme\MyBundle\Document\User
 from_email: Acme Corp <admin@acme.org>
@@ -243,9 +162,7 @@ EOF;
     protected function getFullConfig(): array
     {
         $yaml = <<<'EOF'
-db_driver: orm
 firewall_name: nucleos_user
-use_listener: true
 use_flash_notifications: false
 user_class: Acme\MyBundle\Entity\User
 model_manager_name: custom

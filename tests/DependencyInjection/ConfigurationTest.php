@@ -36,10 +36,8 @@ final class ConfigurationTest extends TestCase
             'loggedin'                    => [
                 'route' => 'custom_loggedin',
             ],
-            'db_driver'                   => 'noop',
             'model_manager_name'          => null,
             'use_authentication_listener' => true,
-            'use_listener'                => true,
             'use_flash_notifications'     => true,
             'resetting'                   => [
                 'retry_ttl' => 7200,

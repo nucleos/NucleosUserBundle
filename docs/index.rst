@@ -22,7 +22,6 @@ The following documents are available:
     emails
     groups
     doctrine
-    custom_storage_layer
     security
     deletion
     configuration_reference

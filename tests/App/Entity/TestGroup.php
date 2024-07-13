@@ -15,11 +15,11 @@ namespace Nucleos\UserBundle\Tests\App\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Nucleos\UserBundle\Model\Group;
+use Nucleos\UserBundle\Entity\BaseGroup;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'user__group')]
-class TestGroup extends Group
+class TestGroup extends BaseGroup
 {
     #[ORM\Id]
     #[ORM\Column(type: Types::INTEGER)]

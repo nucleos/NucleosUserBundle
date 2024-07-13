@@ -38,7 +38,7 @@ Require the bundle with composer:
 
     $ composer require nucleos/user-bundle
 
-If you encounter installation errors pointing at a lack of configuration parameters, such as ``The child node "db_driver" at path "nucleos_user" must be configured``, you should complete the configuration in Step 5 first and then re-run this step.
+If you encounter installation errors pointing at a lack of configuration parameters, you should complete the configuration in Step 5 first and then re-run this step.
 
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,8 +57,8 @@ Enable the bundle in the kernel:
 Step 3: Create your User class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The goal of this bundle is to persist some ``User`` class to a database (MySql,
-MongoDB, etc). Your first job, then, is to create the ``User`` class
+The goal of this bundle is to persist some ``User`` class to a database.
+Your first job, then, is to create the ``User`` class
 for your application. This class can look and act however you want: add any
 properties or methods you find useful. This is *your* ``User`` class.
 
@@ -75,7 +75,7 @@ to make it easier to create your entity. Here is how you use it:
     redefine the mapping for the other fields as it is provided by the bundle.
 
 In the following sections, you'll see examples of how your ``User`` class should
-look, depending on how you're storing your users (Doctrine ORM or MongoDB ODM).
+look.
 
 .. note::
 
@@ -88,9 +88,6 @@ look, depending on how you're storing your users (Doctrine ORM or MongoDB ODM).
     If you override the __construct() method in your User class, be sure
     to call parent::__construct(), as the base User class depends on
     this to initialize some fields.
-
-a) Doctrine ORM User class
-..........................
 
 If you're persisting your users via the Doctrine ORM, then your ``User`` class
 should live in the ``Entity`` namespace of your bundle and look like this to
@@ -128,38 +125,6 @@ start:
 .. caution::
 
     ``user`` is a reserved keyword in the SQL standard. If you need to use reserved words, surround them with backticks, *e.g.* ``@ORM\Table(name="`user`")``
-
-b) MongoDB User class
-.....................
-
-If you're persisting your users via the Doctrine MongoDB ODM, then your ``User``
-class should live in the ``Document`` namespace of your bundle and look like
-this to start.
-
-.. code-block:: php-annotations
-
-    // src/Document/User.php
-    namespace App\Document;
-
-    use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-    use Nucleos\UserBundle\Model\User as BaseUser;
-
-    /**
-     * @MongoDB\Document
-     */
-    class User extends BaseUser
-    {
-        /**
-         * @MongoDB\Id(strategy="auto")
-         */
-        protected $id;
-
-        public function __construct()
-        {
-            parent::__construct();
-            // your own logic
-        }
-    }
 
 
 Step 4: Configure your application's security.yaml
@@ -256,7 +221,6 @@ of datastore you are using.
 
     # config/packages/nucleos_user.yaml
     nucleos_user:
-        db_driver: orm # other valid values is 'mongodb'
         firewall_name: main
         user_class: App\Entity\User
         from_email:   "%mailer_user%"
@@ -266,7 +230,6 @@ of datastore you are using.
 
 Only four configuration's nodes are required to use the bundle:
 
-* The type of datastore you are using (``orm`` or ``mongodb``).
 * The firewall name which you configured in Step 4.
 * The fully qualified class name (FQCN) of the ``User`` class which you created in Step 3.
 
@@ -316,12 +279,6 @@ For ORM run the following command.
 .. code-block:: bash
 
     $ php bin/console doctrine:schema:update --force
-
-For MongoDB users you can run the following command to create the indexes.
-
-.. code-block:: bash
-
-    $ php bin/console doctrine:mongodb:schema:create --index
 
 .. _Symfony documentation: https://symfony.com/doc/current/book/translation.html
 .. _security component documentation: https://symfony.com/doc/current/book/security.html
