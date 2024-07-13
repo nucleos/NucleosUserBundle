@@ -7,13 +7,6 @@ Using it ensures that your code will continue to work if you change the storage.
 The controllers provided by the bundle use the configured user manager instead
 of interacting directly with the storage layer.
 
-If you configure the ``db_driver`` option to ``orm``, this service is an instance
-of ``Nucleos\UserBundle\Doctrine\UserManager``.
-
-If you configure the ``db_driver`` option to ``mongodb``, this service is an
-instance of ``Nucleos\UserBundle\Doctrine\UserManager``.
-
-
 Accessing the User Manager service
 ----------------------------------
 
@@ -71,20 +64,6 @@ Updating a User object
     $user->setEmail('john.doe@example.com');
 
     $userManager->updateUser($user);
-
-.. note::
-
-    To make it easier, the bundle comes with a Doctrine listener handling
-    the update of the password fields for you behind the
-    scenes. If you always save the user through the user manager, you may
-    want to disable it to improve performance.
-
-.. code-block:: yaml
-
-    # config/packages/nucleos_user.yaml
-    nucleos_user:
-        # ...
-        use_listener: false
 
 .. note::
 

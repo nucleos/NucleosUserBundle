@@ -16,7 +16,6 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Nucleos\UserBundle\Model\UserInterface;
 use Nucleos\UserBundle\Tests\App\Entity\TestGroup;
 use Nucleos\UserBundle\Tests\App\Entity\TestUser;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('framework', ['secret' => 'secret']);
@@ -35,7 +34,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('twig', ['exception_controller' => null]);
 
-    $securityConfig = [
+    $containerConfigurator->extension('security', [
         'firewalls'  => ['main' => [
             'security'   => true,
             'form_login' => [
@@ -44,14 +43,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'default_target_path' => '/profile',
             ],
         ]],
-    ];
-
-    // TODO: Remove if when dropping support of Symfony 5.4
-    if (!class_exists(IsGranted::class)) {
-        $securityConfig['enable_authenticator_manager'] = true;
-    }
-
-    $containerConfigurator->extension('security', $securityConfig);
+    ]);
 
     $containerConfigurator->extension('security', [
         'providers' => ['nucleos_userbundle' => ['id' => 'nucleos_user.user_provider.username']],
@@ -78,8 +70,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ],
     ]]);
 
-    $containerConfigurator->extension('nucleos_user', ['db_driver' => 'orm']);
-
     $containerConfigurator->extension('nucleos_user', ['firewall_name' => 'main']);
 
     $containerConfigurator->extension('nucleos_user', ['from_email' => 'no-reply@localhost']);
@@ -90,8 +80,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('nucleos_user', ['loggedin' => ['route' => 'nucleos_user_update_security']]);
 
-    $containerConfigurator->extension('nucleos_user', ['deletion' => [
-    ]]);
+    $containerConfigurator->extension('nucleos_user', ['deletion' => []]);
 
     $containerConfigurator->extension('dama_doctrine_test', ['enable_static_connection' => true, 'enable_static_meta_data_cache' => true, 'enable_static_query_cache' => true]);
 };

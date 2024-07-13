@@ -21,7 +21,6 @@ Below is an example configuration for enabling groups support.
 
     # config/packages/nucleos_user.yaml
     nucleos_user:
-        db_driver: orm
         firewall_name: main
         user_class: App\Entity\User
         group:
@@ -32,9 +31,6 @@ The Group class
 
 The simplest way to create a Group class is to extend the mapped superclass
 provided by the bundle.
-
-a) ORM Group class implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: php-annotations
 
@@ -62,36 +58,10 @@ a) ORM Group class implementation
 
     ``Group`` is a reserved keyword in SQL so it cannot be used as the table name.
 
-b) MongoDB Group class implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: php
-
-    // src/Document/Group.php
-    namespace App\Document;
-
-    use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-    use Nucleos\UserBundle\Model\Group as BaseGroup;
-
-    /**
-     * @MongoDB\Document
-     */
-    class Group extends BaseGroup
-    {
-        /**
-         * @MongoDB\Id(strategy="auto")
-         */
-        protected $id;
-    }
-
 Defining the User-Group relation
 --------------------------------
 
 The next step is to map the relation in your ``User`` class.
-
-a) ORM User-Group mapping
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 .. code-block:: php-annotations
 
@@ -119,31 +89,6 @@ a) ORM User-Group mapping
          *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
          *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
          * )
-         */
-        protected $groups;
-    }
-
-b) MongoDB User-Group mapping
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: php
-
-    // src/Document/User.php
-    namespace App\Document;
-
-    use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-    use Nucleos\UserBundle\Model\User as BaseUser;
-
-    /**
-     * @MongoDB\Document
-     */
-    class User extends BaseUser
-    {
-        /** @MongoDB\Id(strategy="auto") */
-        protected $id;
-
-        /**
-         * @MongoDB\ReferenceMany(targetDocument="App\Document\Group")
          */
         protected $groups;
     }

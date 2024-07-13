@@ -28,11 +28,6 @@ final class AppKernel extends Kernel
 {
     use MicroKernelTrait;
 
-    public function __construct(string $environment = 'test', bool $debug = false)
-    {
-        parent::__construct($environment, $debug);
-    }
-
     public function registerBundles(): iterable
     {
         yield new FrameworkBundle();

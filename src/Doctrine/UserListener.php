@@ -14,8 +14,6 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Doctrine;
 
 use Doctrine\Common\EventSubscriber;
-use Doctrine\ODM\MongoDB\DocumentManager;
-use Doctrine\ODM\MongoDB\Mapping\ClassMetadata as MongoClassMetadata;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Event\PrePersistEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
@@ -80,10 +78,6 @@ final class UserListener implements EventSubscriber
             $om->getUnitOfWork()->recomputeSingleEntityChangeSet($meta, $user);
 
             return;
-        }
-
-        if ($om instanceof DocumentManager && $meta instanceof MongoClassMetadata) {
-            $om->getUnitOfWork()->recomputeSingleDocumentChangeSet($meta, $user);
         }
     }
 }

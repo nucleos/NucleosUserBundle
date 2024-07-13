@@ -37,39 +37,14 @@ final class Configuration implements ConfigurationInterface
 
     private function addMainSection(NodeDefinition $node): void
     {
-        $supportedDrivers = ['noop', 'orm', 'mongodb', 'custom'];
-
         $node
             ->children()
-                ->scalarNode('db_driver')
-                    ->validate()
-                        ->ifNotInArray($supportedDrivers)
-                        ->thenInvalid('The driver %s is not supported. Please choose one of '.json_encode($supportedDrivers))
-                    ->end()
-                    ->cannotBeOverwritten()
-                    ->defaultValue('noop')
-                    ->cannotBeEmpty()
-                ->end()
                 ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('firewall_name')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('model_manager_name')->defaultNull()->end()
                 ->booleanNode('use_authentication_listener')->defaultTrue()->end()
-                ->booleanNode('use_listener')->defaultTrue()->end()
                 ->booleanNode('use_flash_notifications')->defaultTrue()->end()
                 ->scalarNode('from_email')->isRequired()->cannotBeEmpty()->end()
-            ->end()
-            // Using the custom driver requires changing the manager services
-            ->validate()
-                ->ifTrue(static function ($v): bool {
-                    return 'custom' === $v['db_driver'] && 'nucleos_user.user_manager.default' === $v['service']['user_manager'];
-                })
-                ->thenInvalid('You need to specify your own user manager service when using the "custom" driver.')
-            ->end()
-            ->validate()
-                ->ifTrue(static function ($v): bool {
-                    return 'custom' === $v['db_driver'] && isset($v['group']) && 'nucleos_user.group_manager.default' === $v['group']['group_manager'];
-                })
-                ->thenInvalid('You need to specify your own group manager service when using the "custom" driver.')
             ->end()
         ;
     }

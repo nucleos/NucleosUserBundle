@@ -6,10 +6,8 @@ All available configuration options are listed below with their default values.
 .. code-block:: yaml
 
     nucleos_user:
-        db_driver:              ~ # Required
         firewall_name:          ~ # Required
         user_class:             ~ # Required
-        use_listener:               true
         use_flash_notifications:    true
         model_manager_name:         null  # change it to the name of your entity/document manager if you don't want to use the default one.
         use_authentication_listener: true
