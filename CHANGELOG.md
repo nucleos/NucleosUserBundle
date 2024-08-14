@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.5.0 - TBD
+## 3.5.0 - 2024-08-14
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.5.0](https://github.com/nucleos/NucleosUserBundle/milestone/42)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.5.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **2**
 
-### Removed
+#### Enhancement
 
-- Nothing.
+ - [764: Fix symfony deprecation](https://github.com/nucleos/NucleosUserBundle/pull/764) thanks to @core23
 
-### Fixed
+#### dependency
 
-- Nothing.
+ - [753: Update dependency Pygments to v2.18.0](https://github.com/nucleos/NucleosUserBundle/pull/753) thanks to @renovate[bot]
 
 ## 3.4.3 - 2024-07-07
 
