@@ -77,7 +77,7 @@ final class PatternValidator extends ConstraintValidator
         if ($constraint->minNumeric <= 0) {
             return;
         }
-        if ($this->countMatches('/[\\d]/', $value) < $constraint->minNumeric) {
+        if ($this->countMatches('/[\d]/', $value) < $constraint->minNumeric) {
             $this->context
                 ->buildViolation($constraint->minNumericMessage, [
                     '{{ count }}' => $constraint->minNumeric,

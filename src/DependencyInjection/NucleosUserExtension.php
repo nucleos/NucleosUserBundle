@@ -73,7 +73,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
                 $loader->load('doctrine.php');
                 $container->setAlias('nucleos_user.doctrine_registry', new Alias(self::$doctrineDrivers[$config['db_driver']]['registry'], false));
             } else {
-                $loader->load(sprintf('%s.php', $config['db_driver']));
+                $loader->load(\sprintf('%s.php', $config['db_driver']));
             }
             $container->setParameter($this->getAlias().'.backend_type_'.$config['db_driver'], true);
         }
@@ -84,7 +84,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
         }
 
         foreach (['validator', 'security', 'util', 'mailer', 'listeners', 'commands'] as $basename) {
-            $loader->load(sprintf('%s.php', $basename));
+            $loader->load(\sprintf('%s.php', $basename));
         }
 
         if (!$config['use_authentication_listener']) {
@@ -186,7 +186,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
                 $this->remapParameters($namespaceConfig, $container, $map);
             } else {
                 foreach ($namespaceConfig as $name => $value) {
-                    $container->setParameter(sprintf($map, $name), $value);
+                    $container->setParameter(\sprintf($map, $name), $value);
                 }
             }
         }
@@ -234,7 +234,7 @@ final class NucleosUserExtension extends Extension implements PrependExtensionIn
             if (isset(self::$doctrineDrivers[$dbDriver])) {
                 $loader->load('doctrine_group.php');
             } else {
-                $loader->load(sprintf('%s_group.php', $dbDriver));
+                $loader->load(\sprintf('%s_group.php', $dbDriver));
             }
         }
 

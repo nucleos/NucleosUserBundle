@@ -208,7 +208,7 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
         $this->passwordRequestedAt = null;
     }
 
-    public function setLastLogin(DateTime $time = null): void
+    public function setLastLogin(?DateTime $time = null): void
     {
         $this->lastLogin = $time;
     }
@@ -218,7 +218,7 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
         $this->confirmationToken = $confirmationToken;
     }
 
-    public function setPasswordRequestedAt(DateTime $date = null): void
+    public function setPasswordRequestedAt(?DateTime $date = null): void
     {
         $this->passwordRequestedAt = $date;
     }
