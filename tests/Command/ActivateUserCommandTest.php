@@ -60,7 +60,7 @@ final class ActivateUserCommandTest extends TestCase
         self::assertMatchesRegularExpression('/User "user" has been activated/', $commandTester->getDisplay());
     }
 
-    private function createCommandTester(UserManipulator $manipulator, Application $application = null): CommandTester
+    private function createCommandTester(UserManipulator $manipulator, ?Application $application = null): CommandTester
     {
         if (null === $application) {
             $application = new Application();

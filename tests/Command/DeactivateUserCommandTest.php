@@ -60,7 +60,7 @@ final class DeactivateUserCommandTest extends TestCase
         self::assertMatchesRegularExpression('/User "user" has been deactivated/', $commandTester->getDisplay());
     }
 
-    private function createCommandTester(UserManipulator $manipulator, Application $application = null): CommandTester
+    private function createCommandTester(UserManipulator $manipulator, ?Application $application = null): CommandTester
     {
         if (null === $application) {
             $application = new Application();

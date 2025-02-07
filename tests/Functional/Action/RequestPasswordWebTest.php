@@ -78,7 +78,7 @@ class RequestPasswordWebTest extends WebTestCase
     {
         $oldPassword = $user->getPassword();
 
-        $client->request('GET', sprintf('/resetting/reset/%s', $user->getConfirmationToken()));
+        $client->request('GET', \sprintf('/resetting/reset/%s', $user->getConfirmationToken()));
 
         self::assertResponseIsSuccessful();
 

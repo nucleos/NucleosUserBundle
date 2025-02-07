@@ -23,7 +23,7 @@ trait DoctrineSetupTrait
      * @param string[] $roles
      */
     public static function createUser(
-        string $username = null,
+        ?string $username = null,
         array $roles = []
     ): TestUser {
         $entity = new TestUser();
@@ -32,7 +32,7 @@ trait DoctrineSetupTrait
         $username ??= ('my-user'.$entity->getId());
 
         $entity->setUsername($username);
-        $entity->setEmail(sprintf('%s@localhost', $username));
+        $entity->setEmail(\sprintf('%s@localhost', $username));
         $entity->setRoles($roles);
 
         return $entity;

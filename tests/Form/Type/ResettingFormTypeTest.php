@@ -21,7 +21,7 @@ final class ResettingFormTypeTest extends ValidatorExtensionTypeTestCase
 {
     public function testSubmit(): void
     {
-        $model = new Resetting($this->createStub(UserInterface::class));
+        $model = new Resetting(self::createStub(UserInterface::class));
 
         $form     = $this->factory->create(ResettingFormType::class, $model);
         $formData = [
