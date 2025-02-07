@@ -43,7 +43,7 @@ final class SimpleLoginManager implements LoginManager
         $this->requestStack      = $requestStack;
     }
 
-    public function logInUser(string $firewallName, UserInterface $user, Response $response = null): void
+    public function logInUser(string $firewallName, UserInterface $user, ?Response $response = null): void
     {
         $this->userChecker->checkPreAuth($user);
 

@@ -65,7 +65,7 @@ EOT
 
         $this->userManipulator->changePassword($username, $password);
 
-        $output->writeln(sprintf('Changed password for user <comment>%s</comment>', $username));
+        $output->writeln(\sprintf('Changed password for user <comment>%s</comment>', $username));
 
         return 0;
     }
