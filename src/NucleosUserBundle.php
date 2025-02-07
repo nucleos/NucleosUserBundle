@@ -40,7 +40,6 @@ final class NucleosUserBundle extends Bundle
             $container->addCompilerPass(DoctrineOrmMappingsPass::createXmlMappingDriver($mappings, ['nucleos_user.model_manager_name'], 'nucleos_user.backend_type_orm'));
         }
         if (class_exists(DoctrineMongoDBMappingsPass::class)) {
-            /** @psalm-suppress InternalClass, InternalMethod */
             $container->addCompilerPass(DoctrineMongoDBMappingsPass::createXmlMappingDriver($mappings, ['nucleos_user.model_manager_name'], 'nucleos_user.backend_type_mongodb'));
         }
     }
