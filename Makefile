@@ -47,10 +47,6 @@ cs: vendor-bin/tools/vendor
 cs-fix: vendor-bin/tools/vendor
 	vendor/bin/php-cs-fixer fix --verbose
 
-.PHONY: psalm
-psalm: vendor-bin/tools/vendor
-	vendor/bin/psalm --config=psalm.xml --diff --shepherd --show-info=false --stats --threads=4
-
 .PHONY: phpstan
 phpstan: vendor-bin/tools/vendor
 	vendor/bin/phpstan analyse
