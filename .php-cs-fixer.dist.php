@@ -36,7 +36,7 @@ $config = (new PhpCsFixer\Config())
             'null_adjustment' => 'always_last',
         ],
         'phpdoc_to_comment' => [
-            'ignored_tags' => ['psalm-suppress'],
+            'ignored_tags' => [],
         ],
         'php_unit_internal_class' => false,
         'php_unit_test_class_requires_covers' => false,
