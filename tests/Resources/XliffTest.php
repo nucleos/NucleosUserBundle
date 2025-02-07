@@ -40,7 +40,7 @@ final class XliffTest extends TestCase
         $this->validateXliff($locale);
 
         if (\count($this->errors) > 0) {
-            self::fail(sprintf('Unable to parse xliff files: %s', implode(', ', $this->errors)));
+            self::fail(\sprintf('Unable to parse xliff files: %s', implode(', ', $this->errors)));
         }
     }
 
@@ -49,7 +49,7 @@ final class XliffTest extends TestCase
      */
     public static function provideXliffCases(): iterable
     {
-        $files = glob(sprintf('%s/*.xlf', __DIR__.'/../../src/Resources/translations'));
+        $files = glob(\sprintf('%s/*.xlf', __DIR__.'/../../src/Resources/translations'));
 
         if (false === $files) {
             return;
@@ -69,7 +69,7 @@ final class XliffTest extends TestCase
 
             self::assertGreaterThan(0, $catalogue->getResources());
         } catch (InvalidResourceException $e) {
-            $this->errors[] = sprintf('%s => %s', $locale, $e->getMessage());
+            $this->errors[] = \sprintf('%s => %s', $locale, $e->getMessage());
         }
     }
 }

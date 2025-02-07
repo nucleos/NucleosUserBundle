@@ -39,23 +39,23 @@ final class Pattern extends Constraint
 
     public int $minSpecial = 0;
 
-    public string $specialChars = '.,:;!?:+-*#\\/|(){}[]';
+    public string $specialChars = '.,:;!?:+-*#\/|(){}[]';
 
     /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
         mixed $options = null,
-        int $minUpper = null,
-        int $minLower = null,
-        int $minNumeric = null,
-        int $minSpecial = null,
-        string $specialChars = null,
-        string $minUpperMessage = null,
-        string $minLowerMessage = null,
-        string $minNumericMessage = null,
-        string $minSpecialMessage = null,
-        array $groups = null,
+        ?int $minUpper = null,
+        ?int $minLower = null,
+        ?int $minNumeric = null,
+        ?int $minSpecial = null,
+        ?string $specialChars = null,
+        ?string $minUpperMessage = null,
+        ?string $minLowerMessage = null,
+        ?string $minNumericMessage = null,
+        ?string $minSpecialMessage = null,
+        ?array $groups = null,
         mixed $payload = null
     ) {
         parent::__construct($options, $groups, $payload);

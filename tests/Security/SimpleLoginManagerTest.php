@@ -41,7 +41,7 @@ final class SimpleLoginManagerTest extends TestCase
         $loginManager->logInUser('main', $this->mockUser(), $response);
     }
 
-    private function createLoginManager(Response $response = null): SimpleLoginManager
+    private function createLoginManager(?Response $response = null): SimpleLoginManager
     {
         $tokenStorage = $this->getMockBuilder(TokenStorageInterface::class)->getMock();
 

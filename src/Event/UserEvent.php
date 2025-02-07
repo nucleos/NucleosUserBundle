@@ -23,7 +23,7 @@ class UserEvent extends Event
 
     protected readonly UserInterface $user;
 
-    public function __construct(UserInterface $user, Request $request = null)
+    public function __construct(UserInterface $user, ?Request $request = null)
     {
         $this->user    = $user;
         $this->request = $request;

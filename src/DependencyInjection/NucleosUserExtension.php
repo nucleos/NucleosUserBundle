@@ -52,7 +52,7 @@ final class NucleosUserExtension extends Extension
         $definition->setFactory([new Reference('nucleos_user.doctrine_registry'), 'getManager']);
 
         foreach (['validator', 'security', 'util', 'mailer', 'listeners', 'commands'] as $basename) {
-            $loader->load(sprintf('%s.php', $basename));
+            $loader->load(\sprintf('%s.php', $basename));
         }
 
         if (!$config['use_authentication_listener']) {
@@ -120,7 +120,7 @@ final class NucleosUserExtension extends Extension
                 $this->remapParameters($namespaceConfig, $container, $map);
             } else {
                 foreach ($namespaceConfig as $name => $value) {
-                    $container->setParameter(sprintf($map, $name), $value);
+                    $container->setParameter(\sprintf($map, $name), $value);
                 }
             }
         }

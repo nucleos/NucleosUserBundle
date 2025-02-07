@@ -21,7 +21,7 @@ final class GetResponseLoginEvent extends Event
 
     private ?Response $response = null;
 
-    public function __construct(Request $request = null)
+    public function __construct(?Request $request = null)
     {
         $this->request = $request;
     }

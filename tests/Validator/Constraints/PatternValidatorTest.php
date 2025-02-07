@@ -189,7 +189,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
     {
         yield 'Empty' => ['', false];
 
-        yield 'All special' => ['][}{)(|/\\#*-+:?!;:,./', true];
+        yield 'All special' => ['][}{)(|/\#*-+:?!;:,./', true];
 
         yield 'No special' => ['some generic Text', false];
 

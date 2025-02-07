@@ -91,7 +91,7 @@ interface UserInterface extends PasswordAuthenticatedUserInterface, BaseUserInte
     /**
      * Sets the timestamp that the user requested a password reset.
      */
-    public function setPasswordRequestedAt(DateTime $date = null): void;
+    public function setPasswordRequestedAt(?DateTime $date = null): void;
 
     /**
      * Checks whether the password reset request has expired.
@@ -103,7 +103,7 @@ interface UserInterface extends PasswordAuthenticatedUserInterface, BaseUserInte
     /**
      * Sets the last login time.
      */
-    public function setLastLogin(DateTime $time = null): void;
+    public function setLastLogin(?DateTime $time = null): void;
 
     /**
      * Never use this to check if this user has access to anything!

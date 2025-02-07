@@ -149,7 +149,7 @@ final class SimpleUserManipulator implements UserManipulator
         $user = $this->userManager->findUserByUsername($username);
 
         if (null === $user) {
-            throw new InvalidArgumentException(sprintf('User identified by "%s" username does not exist.', $username));
+            throw new InvalidArgumentException(\sprintf('User identified by "%s" username does not exist.', $username));
         }
 
         return $user;
