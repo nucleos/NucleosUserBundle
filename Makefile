@@ -35,10 +35,6 @@ lint-symfony-yaml:
 test: vendor-bin/tools/vendor
 	vendor/bin/phpunit --colors=always
 
-.PHONY: infection
-infection: vendor/bin/infection
-	vendor/bin/infection --threads=4
-
 .PHONY: coverage
 coverage: vendor-bin/tools/vendor
 	vendor/bin/phpunit --colors=always --coverage-clover=build/logs/clover.xml
@@ -79,5 +75,3 @@ check-dependencies: vendor-bin/tools/vendor
 vendor-bin/tools/vendor:
 	composer --working-dir=vendor-bin/tools install
 
-vendor/bin/infection: vendor-bin/tools/vendor
-	wget -O vendor/bin/infection https://github.com/infection/infection/releases/latest/download/infection.phar && chmod +x vendor/bin/infection
