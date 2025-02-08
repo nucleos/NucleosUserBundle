@@ -4,9 +4,13 @@ includes:
 parameters:
     level: 8
 
+    parallel:
+        maximumNumberOfProcesses: 4
+
     paths:
         - src
         - tests
 
     bootstrapFiles:
         - vendor-bin/tools/vendor/autoload.php
+
