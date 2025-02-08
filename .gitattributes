@@ -1,5 +1,4 @@
 .*                      export-ignore
-infection.json          export-ignore
 Makefile                export-ignore
 phpstan.neon.dist       export-ignore
 phpstan-baseline.neon   export-ignore
