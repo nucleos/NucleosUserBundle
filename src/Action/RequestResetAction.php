@@ -190,6 +190,9 @@ final class RequestResetAction
         return $session->getFlashBag();
     }
 
+    /**
+     * @return FormInterface<mixed>
+     */
     private function createForm(): FormInterface
     {
         return $this->formFactory
