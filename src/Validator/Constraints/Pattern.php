@@ -40,7 +40,7 @@ final class Pattern extends Constraint
     public string $specialChars = '.,:;!?:+-*#\/|(){}[]';
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @SuppressWarnings("PHPMD.ExcessiveParameterList")
      */
     public function __construct(
         mixed $options = null,

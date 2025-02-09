@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Yaml\Parser;
 
 /**
- * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  */
 final class NucleosUserExtensionTest extends TestCase
 {
