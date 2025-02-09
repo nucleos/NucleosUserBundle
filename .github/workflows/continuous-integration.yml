@@ -13,7 +13,5 @@ jobs:
     uses: "nucleos/actions/.github/workflows/continuous-integration.yml@main"
     with:
       PHP_EXTENSIONS: "mbstring, json, mongodb"
-      SYMFONY_KERNEL: "Nucleos\\UserBundle\\Tests\\App\\AppKernel"
-      SYMFONY_VERSIONS: "6.4,7.0"
     secrets:
       CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
