@@ -70,7 +70,7 @@
     "require-dev": {
         "ext-mongodb": "*",
         "dama/doctrine-test-bundle": "^8.0",
-        "doctrine/doctrine-bundle": "^2.4",
+        "doctrine/doctrine-bundle": "^2.13.2",
         "doctrine/mongodb-odm": "^2.3",
         "doctrine/mongodb-odm-bundle": "^4.4 || ^5.0",
         "doctrine/orm": "^2.18 || ^3.0",
