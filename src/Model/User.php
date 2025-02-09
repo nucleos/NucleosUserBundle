@@ -17,13 +17,13 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface as BaseUserInterface;
 
 /**
- * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  *
  * @phpstan-template GroupTemplate of GroupInterface
  *
  * @phpstan-implements GroupAwareUser<GroupTemplate>
  *
- * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  */
 abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 {
@@ -300,7 +300,7 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
     }
 
     /**
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity")
      */
     public function isEqualTo(BaseUserInterface $user): bool
     {

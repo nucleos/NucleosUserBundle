@@ -29,9 +29,9 @@ final class NucleosUserExtension extends Extension
     private bool $mailerNeeded  = false;
 
     /**
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity")
+     * @SuppressWarnings("PHPMD.NPathComplexity")
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -100,7 +100,7 @@ final class NucleosUserExtension extends Extension
     }
 
     /**
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity")
      */
     private function remapParametersNamespaces(array $config, ContainerBuilder $container, array $namespaces): void
     {

@@ -59,7 +59,7 @@ final class RequestResetAction
     private readonly TranslatorInterface $translator;
 
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @SuppressWarnings("PHPMD.ExcessiveParameterList")
      *
      * @param UserProviderInterface<UserInterface> $userProvider
      */
@@ -114,8 +114,8 @@ final class RequestResetAction
     }
 
     /**
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity")
+     * @SuppressWarnings("PHPMD.NPathComplexity")
      */
     private function process(Request $request): ?Response
     {
