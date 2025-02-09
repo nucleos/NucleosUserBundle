@@ -47,13 +47,12 @@ final class ResettingListener implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @param FormEvent<Resetting> $event
+     */
     public function onResettingResetSuccess(FormEvent $event): void
     {
         $model = $event->getForm()->getData();
-
-        if (!$model instanceof Resetting) {
-            return;
-        }
 
         $user = $model->getUser();
 

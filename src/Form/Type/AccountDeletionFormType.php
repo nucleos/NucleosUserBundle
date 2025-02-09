@@ -20,6 +20,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+/**
+ * @extends AbstractType<AccountDeletion>
+ */
 final class AccountDeletionFormType extends AbstractType
 {
     /**
