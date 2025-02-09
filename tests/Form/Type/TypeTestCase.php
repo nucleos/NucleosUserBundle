@@ -3,8 +3,6 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the NucleosUserBundle package.
- *
  * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
@@ -15,6 +13,8 @@ namespace Nucleos\UserBundle\Tests\Form\Type;
 
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\Forms;
+use Symfony\Component\Form\FormTypeExtensionInterface;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\Test\TypeTestCase as BaseTypeTestCase;
 
 abstract class TypeTestCase extends BaseTypeTestCase
@@ -34,7 +34,7 @@ abstract class TypeTestCase extends BaseTypeTestCase
     }
 
     /**
-     * @return mixed[]
+     * @return FormTypeExtensionInterface<mixed>[]
      */
     protected function getTypeExtensions(): array
     {
@@ -42,7 +42,7 @@ abstract class TypeTestCase extends BaseTypeTestCase
     }
 
     /**
-     * @return mixed[]
+     * @return FormTypeInterface<mixed>[]
      */
     protected function getTypes(): array
     {
