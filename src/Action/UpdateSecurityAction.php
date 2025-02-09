@@ -107,6 +107,9 @@ final class UpdateSecurityAction
         ]));
     }
 
+    /**
+     * @return FormInterface<UserInterface>
+     */
     private function createForm(UserInterface $model): FormInterface
     {
         return $this->formFactory

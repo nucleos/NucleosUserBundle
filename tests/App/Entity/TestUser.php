@@ -16,10 +16,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Nucleos\UserBundle\Entity\BaseUser;
-use Nucleos\UserBundle\Model\GroupInterface;
 
 /**
- * @phpstan-extends BaseUser<GroupInterface>
+ * @phpstan-extends BaseUser<TestGroup>
  */
 #[ORM\Entity]
 #[ORM\Table(name: 'user__user')]
@@ -31,7 +30,7 @@ class TestUser extends BaseUser
     protected int $id;
 
     /**
-     * @var Collection<array-key, GroupInterface>
+     * @var Collection<array-key, TestGroup>
      */
     #[ORM\ManyToMany(targetEntity: TestGroup::class)]
     #[ORM\JoinTable(name: 'user__user_group')]
