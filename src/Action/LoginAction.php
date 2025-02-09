@@ -55,7 +55,7 @@ final class LoginAction
     }
 
     /**
-     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @SuppressWarnings("PHPMD.NPathComplexity")
      */
     public function __invoke(Request $request): Response
     {
