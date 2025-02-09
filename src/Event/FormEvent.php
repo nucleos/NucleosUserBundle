@@ -16,20 +16,32 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\EventDispatcher\Event;
 
+/**
+ * @template T
+ */
 class FormEvent extends Event
 {
+    /**
+     * @var FormInterface<T>
+     */
     private readonly FormInterface $form;
 
     private readonly Request $request;
 
     private ?Response $response = null;
 
+    /**
+     * @param FormInterface<T> $form
+     */
     public function __construct(FormInterface $form, Request $request)
     {
         $this->form    = $form;
         $this->request = $request;
     }
 
+    /**
+     * @return FormInterface<T>
+     */
     public function getForm(): FormInterface
     {
         return $this->form;
