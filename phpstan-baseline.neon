@@ -121,6 +121,11 @@ parameters:
 			path: src/EventListener/FlashListener.php
 
 		-
+			message: "#^Method Nucleos\\\\UserBundle\\\\Model\\\\User\\:\\:getUserIdentifier\\(\\) should return non\\-empty\\-string but returns string\\.$#"
+			count: 1
+			path: src/Model/User.php
+
+		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Symfony\\\\\\\\Component\\\\\\\\DependencyInjection\\\\\\\\ContainerBuilder' and Symfony\\\\Component\\\\DependencyInjection\\\\ContainerBuilder will always evaluate to true\\.$#"
 			count: 2
 			path: tests/DependencyInjection/NucleosUserExtensionTest.php
@@ -134,11 +139,6 @@ parameters:
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\DependencyInjection\\\\NucleosUserExtensionTest\\:\\:getFullConfig\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/DependencyInjection/NucleosUserExtensionTest.php
-
-		-
-			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\TestCase\\:\\:createStub\\(\\)\\.$#"
-			count: 1
-			path: tests/Form/Type/ResettingFormTypeTest.php
 
 		-
 			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Model\\\\BaseUserManagerTest\\:\\:getUserManager\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
