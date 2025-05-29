@@ -13,6 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * @extends AbstractType<mixed>
@@ -26,6 +27,9 @@ final class RequestPasswordFormType extends AbstractType
                 'label' => 'resetting.request.username',
                 'attr'  => [
                     'autocomplete' => 'username',
+                ],
+                'constraints' => [
+                    new NotBlank(),
                 ],
             ])
         ;
