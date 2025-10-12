@@ -128,7 +128,7 @@ final class RequestResetAction
         $user = null;
 
         try {
-            $user = '' === $username ? null : $this->userProvider->loadUserByIdentifier($username);
+            $user = $this->userProvider->loadUserByIdentifier($username);
         } catch (UserNotFoundException) {
         }
 
