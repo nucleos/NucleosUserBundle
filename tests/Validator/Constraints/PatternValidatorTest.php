@@ -14,6 +14,7 @@ namespace Nucleos\UserBundle\Tests\Validator\Constraints;
 use Generator;
 use Nucleos\UserBundle\Validator\Constraints\Pattern;
 use Nucleos\UserBundle\Validator\Constraints\PatternValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use stdClass;
 use Symfony\Component\Validator\Constraints\Blank;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
@@ -43,9 +44,7 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
         $this->validator->validate(new stdClass(), $constraint);
     }
 
-    /**
-     * @dataProvider provideValidateLowerCases
-     */
+    #[DataProvider('provideValidateLowerCases')]
     public function testValidateLower(string $text, bool $pass): void
     {
         $constraint           = new Pattern();
@@ -58,67 +57,6 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
         } else {
             $this->buildViolation($constraint->minLowerMessage)
                 ->setParameter('{{ count }}', (string) $constraint->minLower)
-                ->assertRaised()
-            ;
-        }
-    }
-
-    /**
-     * @dataProvider provideValidateUpperCases
-     */
-    public function testValidateUpper(string $text, bool $pass): void
-    {
-        $constraint           = new Pattern();
-        $constraint->minUpper = 2;
-
-        $this->validator->validate($text, $constraint);
-
-        if ($pass) {
-            $this->assertNoViolation();
-        } else {
-            $this->buildViolation($constraint->minUpperMessage)
-                ->setParameter('{{ count }}', (string) $constraint->minUpper)
-                ->assertRaised()
-            ;
-        }
-    }
-
-    /**
-     * @dataProvider provideValidateNumericCases
-     */
-    public function testValidateNumeric(string $text, bool $pass): void
-    {
-        $constraint               = new Pattern();
-        $constraint->minNumeric   = 2;
-
-        $this->validator->validate($text, $constraint);
-
-        if ($pass) {
-            $this->assertNoViolation();
-        } else {
-            $this->buildViolation($constraint->minNumericMessage)
-                ->setParameter('{{ count }}', (string) $constraint->minNumeric)
-                ->assertRaised()
-            ;
-        }
-    }
-
-    /**
-     * @dataProvider provideValidateSpecialCases
-     */
-    public function testValidateSpecial(string $text, bool $pass): void
-    {
-        $constraint               = new Pattern();
-        $constraint->minSpecial   = 2;
-
-        $this->validator->validate($text, $constraint);
-
-        if ($pass) {
-            $this->assertNoViolation();
-        } else {
-            $this->buildViolation($constraint->minSpecialMessage)
-                ->setParameter('{{ count }}', (string) $constraint->minSpecial)
-                ->setParameter('{{ chars }}', $constraint->specialChars)
                 ->assertRaised()
             ;
         }
@@ -142,6 +80,24 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
         yield 'Two lower' => ['SOME LOWeR TeXT 123', true];
     }
 
+    #[DataProvider('provideValidateUpperCases')]
+    public function testValidateUpper(string $text, bool $pass): void
+    {
+        $constraint           = new Pattern();
+        $constraint->minUpper = 2;
+
+        $this->validator->validate($text, $constraint);
+
+        if ($pass) {
+            $this->assertNoViolation();
+        } else {
+            $this->buildViolation($constraint->minUpperMessage)
+                ->setParameter('{{ count }}', (string) $constraint->minUpper)
+                ->assertRaised()
+            ;
+        }
+    }
+
     /**
      * @return Generator<mixed[]>
      *
@@ -160,6 +116,24 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
         yield 'Two upper' => ['some lowEr tExt 123', true];
     }
 
+    #[DataProvider('provideValidateNumericCases')]
+    public function testValidateNumeric(string $text, bool $pass): void
+    {
+        $constraint               = new Pattern();
+        $constraint->minNumeric   = 2;
+
+        $this->validator->validate($text, $constraint);
+
+        if ($pass) {
+            $this->assertNoViolation();
+        } else {
+            $this->buildViolation($constraint->minNumericMessage)
+                ->setParameter('{{ count }}', (string) $constraint->minNumeric)
+                ->assertRaised()
+            ;
+        }
+    }
+
     /**
      * @return Generator<mixed[]>
      *
@@ -176,6 +150,25 @@ final class PatternValidatorTest extends ConstraintValidatorTestCase
         yield 'One number' => ['s0me generic Text', false];
 
         yield 'Two numbers' => ['s0me generic T3xt', true];
+    }
+
+    #[DataProvider('provideValidateSpecialCases')]
+    public function testValidateSpecial(string $text, bool $pass): void
+    {
+        $constraint               = new Pattern();
+        $constraint->minSpecial   = 2;
+
+        $this->validator->validate($text, $constraint);
+
+        if ($pass) {
+            $this->assertNoViolation();
+        } else {
+            $this->buildViolation($constraint->minSpecialMessage)
+                ->setParameter('{{ count }}', (string) $constraint->minSpecial)
+                ->setParameter('{{ chars }}', $constraint->specialChars)
+                ->assertRaised()
+            ;
+        }
     }
 
     /**

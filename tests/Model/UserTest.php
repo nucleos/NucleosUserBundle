@@ -15,7 +15,6 @@ use DateTime;
 use Nucleos\UserBundle\Model\GroupInterface;
 use Nucleos\UserBundle\Model\User;
 use Nucleos\UserBundle\Model\UserInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 final class UserTest extends TestCase
@@ -101,11 +100,11 @@ final class UserTest extends TestCase
     }
 
     /**
-     * @return MockObject&User<GroupInterface>
+     * @return User<GroupInterface>
      */
-    private function getUser(): MockObject
+    private function getUser(): User
     {
-        $user =  $this->getMockForAbstractClass(User::class);
+        $user =  new class extends User {};
         $user->setUsername('username');
         $user->setPassword('password');
 
