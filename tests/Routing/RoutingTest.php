@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\Routing;
 
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\PhpFileLoader;
@@ -20,10 +21,9 @@ use Symfony\Component\Routing\RouteCollection;
 final class RoutingTest extends TestCase
 {
     /**
-     * @dataProvider provideLoadRoutingCases
-     *
      * @param string[] $methods
      */
+    #[DataProvider('provideLoadRoutingCases')]
     public function testLoadRouting(string $routeName, string $path, array $methods): void
     {
         $locator = new FileLocator();
