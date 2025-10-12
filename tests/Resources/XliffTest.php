@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Tests\Resources;
 
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\Exception\InvalidResourceException;
 use Symfony\Component\Translation\Loader\XliffFileLoader;
@@ -30,9 +31,7 @@ final class XliffTest extends TestCase
         $this->loader = new XliffFileLoader();
     }
 
-    /**
-     * @dataProvider provideXliffCases
-     */
+    #[DataProvider('provideXliffCases')]
     public function testXliff(string $locale): void
     {
         $this->validateXliff($locale);

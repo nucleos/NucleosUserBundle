@@ -16,6 +16,7 @@ use Nucleos\UserBundle\Action\AccountDeletionAction;
 use Nucleos\UserBundle\DependencyInjection\NucleosUserExtension;
 use Nucleos\UserBundle\EventListener\FlashListener;
 use Nucleos\UserBundle\Form\Type\AccountDeletionFormType;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -172,9 +173,7 @@ final class NucleosUserExtensionTest extends TestCase
         $this->assertHasDefinition(AccountDeletionFormType::class);
     }
 
-    /**
-     * @dataProvider provideUserManagerSetFactoryCases
-     */
+    #[DataProvider('provideUserManagerSetFactoryCases')]
     public function testUserManagerSetFactory(string $dbDriver, string $doctrineService): void
     {
         $this->configuration = new ContainerBuilder();
