@@ -140,8 +140,3 @@ parameters:
 			count: 1
 			path: tests/DependencyInjection/NucleosUserExtensionTest.php
 
-		-
-			message: "#^Method Nucleos\\\\UserBundle\\\\Tests\\\\Model\\\\BaseUserManagerTest\\:\\:getUserManager\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: tests/Model/BaseUserManagerTest.php
-
