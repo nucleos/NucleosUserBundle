@@ -1,16 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
-			count: 1
-			path: src/Action/CheckEmailAction.php
-
-		-
-			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
-			count: 1
-			path: src/Action/CheckEmailAction.php
-
-		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Console\\\\Helper\\\\HelperInterface\\:\\:ask\\(\\)\\.$#"
 			count: 1
 			path: src/Command/ActivateUserCommand.php

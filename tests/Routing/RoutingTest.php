@@ -54,8 +54,6 @@ final class RoutingTest extends TestCase
 
         yield ['nucleos_user_resetting_request', '/resetting/request', ['GET', 'POST']];
 
-        yield ['nucleos_user_resetting_check_email', '/resetting/check-email', ['GET']];
-
         yield ['nucleos_user_resetting_reset', '/resetting/reset/{token}', ['GET', 'POST']];
 
         yield ['nucleos_user_security_login', '/login', ['GET', 'POST']];

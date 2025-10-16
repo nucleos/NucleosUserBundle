@@ -35,9 +35,6 @@ abstract class User implements UserInterface, GroupAwareUser, LocaleAwareUser
 
     protected ?string $password = null;
 
-    /**
-     * @deprecated
-     */
     protected ?string $plainPassword = null;
 
     protected ?DateTime $lastLogin = null;

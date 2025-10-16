@@ -9,7 +9,6 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Nucleos\UserBundle\Action\CheckEmailAction;
 use Nucleos\UserBundle\Action\RequestResetAction;
 use Nucleos\UserBundle\Action\ResetAction;
 use Nucleos\UserBundle\EventListener\ResettingListener;
@@ -63,14 +62,6 @@ return static function (ContainerConfigurator $container): void {
                 new Reference('nucleos_user.user_manager'),
                 '%nucleos_user.loggedin.route%',
                 new Reference('nucleos_user.util.user_manipulator'),
-            ])
-
-        ->set(CheckEmailAction::class)
-            ->public()
-            ->args([
-                new Reference('twig'),
-                new Reference('router'),
-                new Parameter('nucleos_user.resetting.retry_ttl'),
             ])
     ;
 };
