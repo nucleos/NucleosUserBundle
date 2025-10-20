@@ -68,7 +68,7 @@
         "twig/twig": "^2.14 || ^3.1"
     },
     "require-dev": {
-        "dama/doctrine-test-bundle": "^8.0",
+        "dama/doctrine-test-bundle": "^8.3",
         "doctrine/doctrine-bundle": "^2.18 || ^3.0",
         "doctrine/orm": "^2.18 || ^3.0",
         "ergebnis/composer-normalize": "^2.0.1",
@@ -78,8 +78,8 @@
         "symfony/yaml": "^6.4 || ^7.0"
     },
     "conflict": {
-        "doctrine/dbal": ">=4",
-        "doctrine/doctrine-bundle": "<1.12",
+        "doctrine/dbal": "<4.0",
+        "doctrine/doctrine-bundle": "<2.18",
         "doctrine/orm": "<2.18"
     },
     "autoload": {
