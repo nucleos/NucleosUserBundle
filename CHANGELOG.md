@@ -2,27 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 4.0.0 - TBD
+## 4.0.0 - 2025-10-20
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [4.0.0](https://github.com/nucleos/NucleosUserBundle/milestone/28)
 
-- Nothing.
+Backwards incompatible release (major)
 
-### Deprecated
+### 4.0.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **3**
+- Total contributors: **1**
 
-### Removed
+#### BC Break
 
-- Nothing.
+ - [790: Remove deprecated code](https://github.com/nucleos/NucleosUserBundle/pull/790) thanks to @core23
+ - [761: Remove mongodb support](https://github.com/nucleos/NucleosUserBundle/pull/761) thanks to @core23
 
-### Fixed
+#### dependency
 
-- Nothing.
+ - [785: Drop support for doctrine/dbal 3](https://github.com/nucleos/NucleosUserBundle/pull/785) thanks to @core23
 
 ## 3.5.0 - 2024-08-14
 
