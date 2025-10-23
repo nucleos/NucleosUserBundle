@@ -38,7 +38,7 @@ provided by the bundle.
     namespace App\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
-    use Nucleos\UserBundle\Model\Group as BaseGroup;
+    use Nucleos\UserBundle\Entity\BaseGroup;
 
     /**
      * @ORM\Entity
@@ -68,7 +68,7 @@ The next step is to map the relation in your ``User`` class.
     // src/Entity/User.php
     namespace App\Entity;
 
-    use Nucleos\UserBundle\Model\User as BaseUser;
+    use Nucleos\UserBundle\Entity\BaseUser;
 
     /**
      * @ORM\Entity
