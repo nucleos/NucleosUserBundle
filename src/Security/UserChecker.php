@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Nucleos\UserBundle\Security;
 
 use Nucleos\UserBundle\Model\UserInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AccountExpiredException;
 use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
 use Symfony\Component\Security\Core\Exception\DisabledException;
@@ -32,7 +33,7 @@ final class UserChecker implements UserCheckerInterface
         $this->verifyAccountExpired($user);
     }
 
-    public function checkPostAuth(BaseUserInterface $user): void
+    public function checkPostAuth(BaseUserInterface $user, ?TokenInterface $token = null): void
     {
         if (!$user instanceof UserInterface) {
             return;

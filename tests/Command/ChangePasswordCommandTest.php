@@ -72,7 +72,7 @@ final class ChangePasswordCommandTest extends TestCase
 
         $command = new ChangePasswordCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommand($command);
 
         return new CommandTester($application->find('nucleos:user:change-password'));
     }

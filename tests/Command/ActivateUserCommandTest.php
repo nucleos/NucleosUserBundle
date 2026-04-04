@@ -68,7 +68,7 @@ final class ActivateUserCommandTest extends TestCase
 
         $command = new ActivateUserCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommand($command);
 
         return new CommandTester($application->find('nucleos:user:activate'));
     }
