@@ -36,7 +36,7 @@
         "php": "^8.3",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "doctrine/collections": "^1.8 || ^2.0",
+        "doctrine/collections": "^1.8 || ^2.0 || ^3.0",
         "doctrine/common": "^3.0",
         "doctrine/event-manager": "^1.2 || ^2.0",
         "doctrine/persistence": "^4.0",
