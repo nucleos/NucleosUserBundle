@@ -48,15 +48,19 @@ final class SimpleMailerTest extends TestCase
     {
         $mailer = $this->getMailer();
 
-        $this->translator->method('trans')->with(self::anything(), self::anything(), self::anything())
+        $this->translator->expects(self::once())->method('trans')
+            ->with(self::anything(), self::anything(), self::anything())
             ->willReturnArgument(0)
         ;
 
-        $this->generator->method('generate')->with(self::anything(), self::anything(), self::anything())
+        $this->generator->expects(self::once())->method('generate')
+            ->with(self::anything(), self::anything(), self::anything())
             ->willReturn('http://something.local')
         ;
 
-        $this->swiftMailer->expects(self::once())->method('send')->with(self::isInstanceOf(TemplatedEmail::class));
+        $this->swiftMailer->expects(self::once())->method('send')
+            ->with(self::isInstanceOf(TemplatedEmail::class))
+        ;
 
         $mailer->sendResettingEmailMessage($this->getUser());
     }

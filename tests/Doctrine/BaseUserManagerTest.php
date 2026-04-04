@@ -45,15 +45,16 @@ final class BaseUserManagerTest extends TestCase
         $this->repository = $this->getMockBuilder(ObjectRepository::class)->getMock();
 
         $this->om
-            ->method('getRepository')
+            ->expects(self::any())->method('getRepository')
             ->with(self::equalTo(self::USER_CLASS))
             ->willReturn($this->repository)
         ;
         $this->om
-            ->method('getClassMetadata')
+            ->expects(self::any())->method('getClassMetadata')
             ->with(self::equalTo(self::USER_CLASS))
             ->willReturn($class)
         ;
+
         $class
             ->method('getName')
             ->willReturn(self::USER_CLASS)

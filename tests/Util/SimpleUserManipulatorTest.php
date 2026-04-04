@@ -84,7 +84,10 @@ final class SimpleUserManipulatorTest extends TestCase
         $requestStackMock = $this->getRequestStackMock(true);
 
         $hasher = $this->createMock(UserPasswordHasherInterface::class);
-        $hasher->method('hashPassword')->with($user, $password)->willReturn('hashed_password');
+        $hasher->expects(self::once())->method('hashPassword')
+            ->with($user, $password)
+            ->willReturn('hashed_password')
+        ;
 
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock, $hasher);
         $manipulator->create($username, $password, $email, true, false);
@@ -383,7 +386,10 @@ final class SimpleUserManipulatorTest extends TestCase
         $requestStackMock = $this->getRequestStackMock(true);
 
         $hasher = $this->createMock(UserPasswordHasherInterface::class);
-        $hasher->method('hashPassword')->with($user, $password)->willReturn('hashed_password');
+        $hasher->expects(self::once())->method('hashPassword')
+            ->with($user, $password)
+            ->willReturn('hashed_password')
+        ;
 
         $manipulator = new SimpleUserManipulator($userManagerMock, $eventDispatcherMock, $requestStackMock, $hasher);
         $manipulator->changePassword($username, $password);
