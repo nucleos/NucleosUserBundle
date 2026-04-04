@@ -72,7 +72,7 @@ final class DemoteUserCommandTest extends TestCase
 
         $command = new DemoteUserCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommand($command);
 
         return new CommandTester($application->find('nucleos:user:demote'));
     }

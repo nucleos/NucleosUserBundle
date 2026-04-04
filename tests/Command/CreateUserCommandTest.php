@@ -77,7 +77,7 @@ final class CreateUserCommandTest extends TestCase
 
         $command = new CreateUserCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommand($command);
 
         return new CommandTester($application->find('nucleos:user:create'));
     }

@@ -31,8 +31,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('twig', ['strict_variables' => true]);
 
-    $containerConfigurator->extension('twig', ['exception_controller' => null]);
-
     $containerConfigurator->extension('security', [
         'firewalls'  => ['main' => [
             'security'   => true,

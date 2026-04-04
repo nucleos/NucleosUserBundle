@@ -68,7 +68,7 @@ final class DeactivateUserCommandTest extends TestCase
 
         $command = new DeactivateUserCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommand($command);
 
         return new CommandTester($application->find('nucleos:user:deactivate'));
     }

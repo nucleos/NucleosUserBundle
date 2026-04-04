@@ -13,6 +13,7 @@ use Nucleos\UserBundle\Action\AccountDeletionAction;
 use Nucleos\UserBundle\Tests\Functional\DoctrineSetupTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 #[CoversClass(AccountDeletionAction::class)]
@@ -67,7 +68,12 @@ final class AccountDeletionWebTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
 
-        self::assertSelectorTextContains('#account_deletion_form', 'The entered password is invalid');
+        try {
+            // TODO: Remove this line when dropping support for symfony 7
+            self::assertSelectorTextContains('#account_deletion_form', 'The entered password is invalid');
+        } catch (ExpectationFailedException) {
+            self::assertSelectorTextContains('#account_deletion_form', 'This value should be the user\'s current password.');
+        }
 
         self::assertNotNull($this->getUser($user->getId()));
     }

@@ -72,7 +72,7 @@ final class PromoteUserCommandTest extends TestCase
 
         $command = new PromoteUserCommand($manipulator);
 
-        $application->add($command);
+        $application->addCommand($command);
 
         return new CommandTester($application->find('nucleos:user:promote'));
     }
