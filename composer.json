@@ -40,7 +40,6 @@
         "doctrine/common": "^3.0",
         "doctrine/event-manager": "^1.2 || ^2.0",
         "doctrine/persistence": "^4.0",
-        "paragonie/random_compat": "^1 || ^2 || ^9",
         "symfony/config": "^7.4 || ^8.0",
         "symfony/console": "^7.4 || ^8.0",
         "symfony/dependency-injection": "^7.4 || ^8.0",
