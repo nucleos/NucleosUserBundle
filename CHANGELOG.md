@@ -2,27 +2,27 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 4.1.0 - TBD
+## 4.1.0 - 2026-04-09
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [4.1.0](https://github.com/nucleos/NucleosUserBundle/milestone/52)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 4.1.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [805: Add support for doctrine/collections 3](https://github.com/nucleos/NucleosUserBundle/pull/805) thanks to @core23
+ - [804: Add support for symfony 8](https://github.com/nucleos/NucleosUserBundle/pull/804) thanks to @core23
+ - [803: Use phpunit 13 where possible](https://github.com/nucleos/NucleosUserBundle/pull/803) thanks to @core23
+ - [802: Remove redundant paragonie/random&#95;compat dependency](https://github.com/nucleos/NucleosUserBundle/pull/802) thanks to @brendt
 
 ## 4.0.0 - 2025-10-20
 
