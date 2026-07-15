@@ -36,7 +36,7 @@
       <trans-unit id="resetting.check_email">
         <source>resetting.check_email</source>
         <target><![CDATA[Un courriel vous a été envoyé. Il contient un lien sur lequel vous devez
-cliquer to réinitialiser votre mot de passe.
+cliquer pour réinitialiser votre mot de passe.
 Notez que vous ne pouvez demander un nouveau mot de passe qu'une fois
 toutes les %tokenLifetime% heures.
 
